@@ -231,6 +231,33 @@
             height: 300px;
         }
 
+        .range-selector {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .range-btn {
+            background: var(--bg-accent);
+            border: none;
+            border-radius: 8px;
+            padding: 0.5rem 0.75rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .range-btn:hover {
+            background: var(--border-color);
+            color: var(--text-primary);
+        }
+
+        .range-btn.active {
+            background: var(--accent-blue);
+            color: #ffffff;
+        }
+
         /* Disclaimer */
         .disclaimer {
             background: var(--disclaimer-bg);
@@ -348,6 +375,12 @@
         <section class="chart-section">
             <div class="chart-header">
                 <h2 class="chart-title">Daily Growth Trend</h2>
+                <div class="range-selector">
+                    <button class="range-btn" data-range="7">7D</button>
+                    <button class="range-btn active" data-range="30">30D</button>
+                    <button class="range-btn" data-range="90">90D</button>
+                    <button class="range-btn" data-range="all">All</button>
+                </div>
             </div>
             <div class="chart-container">
                 <canvas id="trendChart"></canvas>
@@ -376,6 +409,8 @@
         ];
 
         let trendChart = null;
+        let allRows = [];
+        let currentRange = 30;
 
         // Theme functions
         function getThemePreference() {
@@ -494,22 +529,31 @@
             container.innerHTML = html;
         }
 
+        // Filter rows by range
+        function filterRowsByRange(rows, range) {
+            if (range === 'all' || rows.length <= range) {
+                return rows;
+            }
+            return rows.slice(-range);
+        }
+
         // Render chart
-        function renderChart(rows) {
+        function renderChart(rows, range = currentRange) {
+            const filteredRows = filterRowsByRange(rows, range);
             const ctx = document.getElementById('trendChart').getContext('2d');
             const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
             const textColor = isDark ? '#cbd5e1' : '#4a5568';
             const gridColor = isDark ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.05)';
 
             // Prepare data
-            const labels = rows.map(row => {
+            const labels = filteredRows.map(row => {
                 const date = new Date(row.fetch_date);
                 return date.toLocaleDateString('en-IN', { day: 'numeric', month: 'short' });
             });
 
             const datasets = METRICS.map(metric => ({
                 label: metric.label,
-                data: rows.map(row => parseInt(row[metric.deltaKey], 10) || 0),
+                data: filteredRows.map(row => parseInt(row[metric.deltaKey], 10) || 0),
                 borderColor: metric.color,
                 backgroundColor: metric.color + '20',
                 fill: false,
@@ -578,6 +622,7 @@
 
         // Render dashboard
         function renderDashboard(rows) {
+            allRows = rows; // Store globally for range switching
             const metaEl = document.getElementById('meta');
 
             if (rows.length === 0) {
@@ -598,7 +643,25 @@
 
             // Render cards and chart
             renderCards(latest);
-            renderChart(rows);
+            renderChart(rows, currentRange);
+        }
+
+        // Setup range buttons
+        function setupRangeButtons() {
+            document.querySelectorAll('.range-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Update active state
+                    document.querySelectorAll('.range-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+
+                    // Update range and re-render chart
+                    const range = btn.dataset.range;
+                    currentRange = range === 'all' ? 'all' : parseInt(range, 10);
+                    if (allRows.length > 0) {
+                        renderChart(allRows, currentRange);
+                    }
+                });
+            });
         }
 
         // Load data
@@ -623,6 +686,7 @@
 
         // Initialize
         setTheme(getThemePreference());
+        setupRangeButtons();
         loadData();
     </script>
 </body>
