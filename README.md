@@ -46,7 +46,7 @@ Returns metrics like registered users, Aadhaar-linked PANs, e-verified returns, 
 ### 4. Access Your Dashboard
 Your site will be available at:
 ```
-https://<username>.github.io/<repo-name>/site/
+https://itrstats.in
 ```
 
 ## Folder Structure
@@ -58,8 +58,7 @@ itr-daily-updates/
 ├── data/
 │   ├── daily.csv           # Historical daily snapshots (auto-generated)
 │   └── last_payload.json   # Raw API response for debugging
-├── site/
-│   └── index.html          # Static dashboard
+├── index.html              # Static dashboard
 ├── .github/
 │   └── workflows/
 │       └── daily.yml       # Scheduled GitHub Action
@@ -75,8 +74,8 @@ python scripts/fetch_daily.py
 
 Serve the site locally:
 ```bash
-cd site && python -m http.server 8000
-# Open http://localhost:8000 (CSV path won't work locally due to CORS)
+python -m http.server 8000
+# Open http://localhost:8000
 ```
 
 ## Disclaimer
