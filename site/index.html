@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Daily statistics dashboard tracking India's Income Tax e-Filing portal metrics including registered users, Aadhaar-linked PANs, and e-verified returns.">
+    <title>ITR Portal Daily Stats</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: #f5f7fa;
+            color: #333;
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        h1 {
+            font-size: 1.75rem;
+            color: #1a365d;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .meta {
+            background: #e2e8f0;
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            color: #4a5568;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+
+        .card-title {
+            font-size: 0.85rem;
+            color: #718096;
+            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .card-value {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-delta {
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .delta-positive {
+            color: #38a169;
+        }
+
+        .delta-negative {
+            color: #e53e3e;
+        }
+
+        .delta-neutral {
+            color: #a0aec0;
+        }
+
+        .disclaimer {
+            background: #fefcbf;
+            border: 1px solid #ecc94b;
+            border-radius: 8px;
+            padding: 1rem;
+            font-size: 0.85rem;
+            color: #744210;
+            text-align: center;
+        }
+
+        .loading, .error {
+            text-align: center;
+            padding: 3rem;
+            color: #718096;
+        }
+
+        .error {
+            color: #e53e3e;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 2rem;
+            font-size: 0.8rem;
+            color: #a0aec0;
+        }
+
+        footer a {
+            color: #4299e1;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>ITR Portal Success Enablers</h1>
+            <p class="subtitle">Daily Statistics Dashboard</p>
+        </header>
+
+        <div id="meta" class="meta">Loading...</div>
+
+        <div id="content" class="loading">Loading data...</div>
+
+        <div class="disclaimer">
+            <strong>Disclaimer:</strong> This is an unofficial dashboard and is not affiliated with the Income Tax Department of India.
+            Data is sourced from the public ITR portal API and may update irregularly.
+        </div>
+
+        <footer>
+            <p>Data source: <a href="https://eportal.incometax.gov.in" target="_blank" rel="noopener noreferrer">eportal.incometax.gov.in</a></p>
+        </footer>
+    </div>
+
+    <script>
+        const CSV_URL = '../data/daily.csv';
+
+        const METRICS = [
+            { key: 'IndvRegUsers', label: 'Registered Individual Users' },
+            { key: 'TotalAadharLinkedPAN', label: 'Aadhaar-Linked PAN' },
+            { key: 'eVerifiedReturns', label: 'e-Verified Returns' },
+            { key: 'TotalProcessedRefund', label: 'Processed Refunds' }
+        ];
+
+        function formatNumber(num) {
+            return num.toLocaleString('en-IN');
+        }
+
+        function formatDelta(delta) {
+            if (delta === null) {
+                return { text: '—', class: 'delta-neutral' };
+            }
+            const sign = delta >= 0 ? '+' : '';
+            const cls = delta > 0 ? 'delta-positive' : (delta < 0 ? 'delta-negative' : 'delta-neutral');
+            return { text: sign + formatNumber(delta), class: cls };
+        }
+
+        function parseCSV(text) {
+            const lines = text.trim().split('\n');
+            if (lines.length < 2) return [];
+
+            const headers = lines[0].split(',');
+            const rows = [];
+
+            for (let i = 1; i < lines.length; i++) {
+                const values = lines[i].split(',');
+                const row = {};
+                headers.forEach((h, idx) => {
+                    row[h.trim()] = values[idx] ? values[idx].trim() : '';
+                });
+                rows.push(row);
+            }
+
+            return rows;
+        }
+
+        function renderDashboard(rows) {
+            const contentEl = document.getElementById('content');
+            const metaEl = document.getElementById('meta');
+
+            if (rows.length === 0) {
+                contentEl.innerHTML = '<div class="error">No data available yet.</div>';
+                metaEl.textContent = 'No data';
+                return;
+            }
+
+            const latest = rows[rows.length - 1];
+            const previous = rows.length > 1 ? rows[rows.length - 2] : null;
+
+            // Update meta (sanitize values to prevent XSS)
+            const fetchDate = latest.fetch_date.replace(/[<>&"']/g, '');
+            const lastUpdated = (latest.last_updated || '—').replace(/[<>&"']/g, '');
+            metaEl.innerHTML = `
+                Fetched: <strong>${fetchDate}</strong> (IST) &bull;
+                Portal last updated: <strong>${lastUpdated}</strong>
+            `;
+
+            // Build cards
+            let cardsHTML = '<div class="grid">';
+
+            METRICS.forEach(metric => {
+                const currentVal = parseInt(latest[metric.key], 10) || 0;
+                let delta = null;
+
+                if (previous) {
+                    const prevVal = parseInt(previous[metric.key], 10) || 0;
+                    delta = currentVal - prevVal;
+                }
+
+                const deltaInfo = formatDelta(delta);
+
+                cardsHTML += `
+                    <div class="card">
+                        <div class="card-title">${metric.label}</div>
+                        <div class="card-value">${formatNumber(currentVal)}</div>
+                        <div class="card-delta ${deltaInfo.class}">${deltaInfo.text}</div>
+                    </div>
+                `;
+            });
+
+            cardsHTML += '</div>';
+            contentEl.innerHTML = cardsHTML;
+        }
+
+        async function loadData() {
+            const contentEl = document.getElementById('content');
+            const metaEl = document.getElementById('meta');
+
+            try {
+                const response = await fetch(CSV_URL);
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}`);
+                }
+                const text = await response.text();
+                const rows = parseCSV(text);
+                renderDashboard(rows);
+            } catch (err) {
+                console.error('Failed to load data:', err);
+                contentEl.innerHTML = '<div class="error">Failed to load data. Please try again later.</div>';
+                metaEl.textContent = 'Error loading data';
+            }
+        }
+
+        // Load data on page load
+        loadData();
+    </script>
+</body>
+</html>
