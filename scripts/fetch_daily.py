@@ -24,10 +24,22 @@ DATA_DIR = REPO_ROOT / "data"
 CSV_PATH = DATA_DIR / "daily.csv"
 PAYLOAD_PATH = DATA_DIR / "last_payload.json"
 
-# CSV columns
+# CSV columns (includes delta columns for tracking daily changes)
 CSV_COLUMNS = [
     "fetch_date",
     "last_updated",
+    "IndvRegUsers",
+    "TotalAadharLinkedPAN",
+    "eVerifiedReturns",
+    "TotalProcessedRefund",
+    "delta_IndvRegUsers",
+    "delta_TotalAadharLinkedPAN",
+    "delta_eVerifiedReturns",
+    "delta_TotalProcessedRefund",
+]
+
+# Metric keys for iteration
+METRIC_KEYS = [
     "IndvRegUsers",
     "TotalAadharLinkedPAN",
     "eVerifiedReturns",
@@ -88,6 +100,16 @@ def date_exists_in_csv(fetch_date: str) -> bool:
     return False
 
 
+def get_last_row() -> dict | None:
+    """Get the last row from CSV for delta calculation."""
+    if not CSV_PATH.exists():
+        return None
+
+    with open(CSV_PATH, "r", newline="", encoding="utf-8") as f:
+        rows = list(csv.DictReader(f))
+        return rows[-1] if rows else None
+
+
 def append_to_csv(row_data: dict) -> None:
     """Append a row to the CSV file, creating it if necessary."""
     file_exists = CSV_PATH.exists()
@@ -130,19 +152,31 @@ def main() -> None:
     print(f"Saved raw payload to: {PAYLOAD_PATH}")
 
     # Validate API response has expected structure
-    expected_keys = ["IndvRegUsers", "TotalAadharLinkedPAN", "eVerifiedReturns", "TotalProcessedRefund"]
-    missing_keys = [k for k in expected_keys if k not in payload]
+    missing_keys = [k for k in METRIC_KEYS if k not in payload]
     if missing_keys:
         print(f"WARNING: API response missing keys: {missing_keys}", file=sys.stderr)
 
-    # Extract and convert values
+    # Get previous row for delta calculation
+    previous = get_last_row()
+
+    # Extract current values
+    current_values = {key: safe_int(payload.get(key)) for key in METRIC_KEYS}
+
+    # Calculate deltas
+    deltas = {}
+    for key in METRIC_KEYS:
+        if previous:
+            prev_value = safe_int(previous.get(key))
+            deltas[f"delta_{key}"] = current_values[key] - prev_value
+        else:
+            deltas[f"delta_{key}"] = 0  # First row, no delta
+
+    # Build row data
     row_data = {
         "fetch_date": fetch_date,
         "last_updated": payload.get("LastUpdated", ""),
-        "IndvRegUsers": safe_int(payload.get("IndvRegUsers")),
-        "TotalAadharLinkedPAN": safe_int(payload.get("TotalAadharLinkedPAN")),
-        "eVerifiedReturns": safe_int(payload.get("eVerifiedReturns")),
-        "TotalProcessedRefund": safe_int(payload.get("TotalProcessedRefund")),
+        **current_values,
+        **deltas,
     }
 
     # Append to CSV
