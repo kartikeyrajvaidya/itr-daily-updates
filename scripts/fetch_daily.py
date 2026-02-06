@@ -91,12 +91,16 @@ def safe_int(value: int | str | None) -> int:
 
 
 def read_all_rows() -> list[dict]:
-    """Read all rows from CSV. Returns empty list if file doesn't exist."""
+    """Read all rows from CSV. Returns empty list if file doesn't exist or is corrupted."""
     if not CSV_PATH.exists():
         return []
 
-    with open(CSV_PATH, "r", newline="", encoding="utf-8") as f:
-        return list(csv.DictReader(f))
+    try:
+        with open(CSV_PATH, "r", newline="", encoding="utf-8") as f:
+            return list(csv.DictReader(f))
+    except (csv.Error, UnicodeDecodeError) as e:
+        print(f"WARNING: CSV read error, starting fresh: {e}", file=sys.stderr)
+        return []
 
 
 def write_all_rows(rows: list[dict]) -> None:

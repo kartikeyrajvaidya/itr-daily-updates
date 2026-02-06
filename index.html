@@ -445,6 +445,7 @@
                 icon: '⏳',
                 color: '#e53e3e',
                 computed: true,
+                invertDelta: true, // For this metric, negative delta is good (backlog reduced)
                 getValue: (row) => (parseInt(row.eVerifiedReturns, 10) || 0) - (parseInt(row.TotalProcessedRefund, 10) || 0),
                 getDelta: (row) => (parseInt(row.delta_eVerifiedReturns, 10) || 0) - (parseInt(row.delta_TotalProcessedRefund, 10) || 0)
             }
@@ -508,13 +509,23 @@
             return num.toString();
         }
 
-        function formatDelta(delta) {
+        function formatDelta(delta, invertColors = false) {
             if (delta === null || delta === undefined || isNaN(delta)) {
                 return { text: '—', class: 'delta-neutral', arrow: '' };
             }
             const sign = delta >= 0 ? '+' : '';
-            const cls = delta > 0 ? 'delta-positive' : (delta < 0 ? 'delta-negative' : 'delta-neutral');
             const arrow = delta > 0 ? '▲' : (delta < 0 ? '▼' : '');
+            
+            // For inverted metrics (like PendingRefunds), negative is good, positive is bad
+            let cls;
+            if (delta === 0) {
+                cls = 'delta-neutral';
+            } else if (invertColors) {
+                cls = delta < 0 ? 'delta-positive' : 'delta-negative';
+            } else {
+                cls = delta > 0 ? 'delta-positive' : 'delta-negative';
+            }
+            
             return { text: sign + formatNumber(delta), class: cls, arrow: arrow };
         }
 
@@ -557,7 +568,7 @@
                 const delta = metric.computed
                     ? metric.getDelta(latest)
                     : parseInt(latest[metric.deltaKey], 10);
-                const deltaInfo = formatDelta(delta);
+                const deltaInfo = formatDelta(delta, metric.invertDelta);
 
                 html += `
                     <div class="card">
@@ -661,7 +672,7 @@
                             ticks: { color: textColor }
                         },
                         y: {
-                            beginAtZero: true,
+                            // Don't force beginAtZero - PendingRefunds delta can be negative
                             grid: { color: gridColor },
                             ticks: {
                                 color: textColor,
