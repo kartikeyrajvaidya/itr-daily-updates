@@ -142,6 +142,11 @@
             margin-bottom: 1.5rem;
         }
 
+        /* Center the 5th card */
+        .card:nth-child(5) {
+            grid-column: 2 / 4;
+        }
+
         .card {
             background: var(--bg-secondary);
             border-radius: 16px;
@@ -157,6 +162,7 @@
         .card:nth-child(2) { animation-delay: 0.2s; }
         .card:nth-child(3) { animation-delay: 0.3s; }
         .card:nth-child(4) { animation-delay: 0.4s; }
+        .card:nth-child(5) { animation-delay: 0.5s; }
 
         .card:hover {
             transform: translateY(-4px);
@@ -319,6 +325,10 @@
                 grid-template-columns: repeat(2, 1fr);
             }
 
+            .card:nth-child(5) {
+                grid-column: 1 / -1;
+            }
+
             .card-value {
                 font-size: 1.25rem;
             }
@@ -331,6 +341,10 @@
         @media (max-width: 480px) {
             .cards-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .card:nth-child(5) {
+                grid-column: auto;
             }
 
             .card {
@@ -405,7 +419,16 @@
             { key: 'IndvRegUsers', deltaKey: 'delta_IndvRegUsers', label: 'Registered Users', icon: '👤', color: '#3182ce' },
             { key: 'TotalAadharLinkedPAN', deltaKey: 'delta_TotalAadharLinkedPAN', label: 'Aadhaar-Linked PAN', icon: '🔗', color: '#805ad5' },
             { key: 'eVerifiedReturns', deltaKey: 'delta_eVerifiedReturns', label: 'e-Verified Returns', icon: '✓', color: '#38a169' },
-            { key: 'TotalProcessedRefund', deltaKey: 'delta_TotalProcessedRefund', label: 'Processed Refunds', icon: '💰', color: '#dd6b20' }
+            { key: 'TotalProcessedRefund', deltaKey: 'delta_TotalProcessedRefund', label: 'Processed Refunds', icon: '💰', color: '#dd6b20' },
+            {
+                key: 'PendingRefunds',
+                label: 'Pending Refunds',
+                icon: '⏳',
+                color: '#e53e3e',
+                computed: true,
+                getValue: (row) => (parseInt(row.eVerifiedReturns, 10) || 0) - (parseInt(row.TotalProcessedRefund, 10) || 0),
+                getDelta: (row) => (parseInt(row.delta_eVerifiedReturns, 10) || 0) - (parseInt(row.delta_TotalProcessedRefund, 10) || 0)
+            }
         ];
 
         let trendChart = null;
@@ -508,8 +531,13 @@
             let html = '<div class="cards-grid">';
 
             METRICS.forEach(metric => {
-                const value = parseInt(latest[metric.key], 10) || 0;
-                const delta = parseInt(latest[metric.deltaKey], 10);
+                // Handle computed vs regular metrics
+                const value = metric.computed
+                    ? metric.getValue(latest)
+                    : (parseInt(latest[metric.key], 10) || 0);
+                const delta = metric.computed
+                    ? metric.getDelta(latest)
+                    : parseInt(latest[metric.deltaKey], 10);
                 const deltaInfo = formatDelta(delta);
 
                 html += `
@@ -554,7 +582,12 @@
 
             const datasets = METRICS.map(metric => ({
                 label: metric.label,
-                data: filteredRows.map(row => parseInt(row[metric.deltaKey], 10) || 0),
+                data: filteredRows.map(row => {
+                    if (metric.computed) {
+                        return metric.getDelta(row);
+                    }
+                    return parseInt(row[metric.deltaKey], 10) || 0;
+                }),
                 borderColor: metric.color,
                 backgroundColor: metric.color + '20',
                 fill: false,
