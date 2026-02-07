@@ -6,8 +6,8 @@
 
     <!-- SEO Meta Tags -->
     <title>ITR Stats - India Income Tax Portal Statistics & Daily Updates</title>
-    <meta name="description" content="Track daily ITR statistics for India's Income Tax e-Filing portal. Live data on registered users, Aadhaar-linked PANs, e-verified returns, processed refunds, and pending refunds with charts.">
-    <meta name="keywords" content="ITR stats, ITR statistics, income tax statistics India, ITR portal stats, e-filing statistics, ITR refund status, Aadhaar PAN link stats, e-verified returns, income tax India data, ITR daily updates">
+    <meta name="description" content="Track daily ITR statistics for India's Income Tax e-Filing portal. Live data on registered users, returns filed, returns verified, and ITRs processed with trend charts.">
+    <meta name="keywords" content="ITR stats, ITR statistics, income tax statistics India, ITR portal stats, e-filing statistics, ITR filing stats, returns verified, ITR processed, income tax India data, ITR daily updates">
     <meta name="author" content="ITR Stats">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://itrstats.in/">
@@ -16,13 +16,13 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://itrstats.in/">
     <meta property="og:title" content="ITR Stats - India Income Tax Portal Statistics">
-    <meta property="og:description" content="Track daily ITR statistics for India's Income Tax e-Filing portal. Live data on registered users, e-verified returns, and refunds.">
+    <meta property="og:description" content="Track daily ITR statistics for India's Income Tax e-Filing portal. Live data on registered users, returns filed, returns verified, and ITRs processed.">
     <meta property="og:site_name" content="ITR Stats">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="ITR Stats - India Income Tax Portal Statistics">
-    <meta name="twitter:description" content="Track daily ITR statistics for India's Income Tax e-Filing portal. Live data on registered users, e-verified returns, and refunds.">
+    <meta name="twitter:description" content="Track daily ITR statistics for India's Income Tax e-Filing portal. Live data on registered users, returns filed, returns verified, and ITRs processed.">
 
     <link rel="icon" type="image/png" href="./favicon.png">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" integrity="sha384-9nhczxUqK87bcKHh20fSQcTGD4qq5GhayNYSYWqwBkINBhOfQLg/P5HG5lF1urn4" crossorigin="anonymous"></script>
@@ -436,12 +436,12 @@
 
         const METRICS = [
             { key: 'IndvRegUsers', deltaKey: 'delta_IndvRegUsers', label: 'Registered Users', icon: '👤', color: '#3182ce' },
-            { key: 'TotalAadharLinkedPAN', deltaKey: 'delta_TotalAadharLinkedPAN', label: 'Aadhaar-Linked PAN', icon: '🔗', color: '#805ad5' },
-            { key: 'eVerifiedReturns', deltaKey: 'delta_eVerifiedReturns', label: 'e-Verified Returns', icon: '✓', color: '#38a169' },
-            { key: 'TotalProcessedRefund', deltaKey: 'delta_TotalProcessedRefund', label: 'Processed Refunds', icon: '💰', color: '#dd6b20' },
+            { key: 'TotalAadharLinkedPAN', deltaKey: 'delta_TotalAadharLinkedPAN', label: 'Returns Filed', icon: '📄', color: '#805ad5' },
+            { key: 'eVerifiedReturns', deltaKey: 'delta_eVerifiedReturns', label: 'Returns Verified', icon: '✓', color: '#38a169' },
+            { key: 'TotalProcessedRefund', deltaKey: 'delta_TotalProcessedRefund', label: 'ITRs Processed', icon: '✅', color: '#dd6b20' },
             {
-                key: 'PendingRefunds',
-                label: 'Pending Refunds',
+                key: 'PendingProcessing',
+                label: 'Pending Processing',
                 icon: '⏳',
                 color: '#e53e3e',
                 computed: true,
