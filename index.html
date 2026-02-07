@@ -652,6 +652,13 @@
             background: var(--bg-primary);
         }
 
+        /* Force visibility during capture */
+        .capturing .card {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+            animation: none !important;
+        }
+
         @media (max-width: 480px) {
             .share-fab {
                 bottom: 16px;
@@ -1196,6 +1203,9 @@
                 // Show watermark temporarily
                 watermarkEl.style.display = 'block';
                 
+                // Add capturing class to force card visibility
+                document.body.classList.add('capturing');
+                
                 // Small delay to ensure DOM is ready
                 await new Promise(resolve => setTimeout(resolve, 100));
                 
@@ -1248,8 +1258,9 @@
                     document.getElementById('watermark-full').style.display = 'none';
                 }
                 
-                // Hide watermark
+                // Hide watermark and remove capturing class
                 watermarkEl.style.display = 'none';
+                document.body.classList.remove('capturing');
                 
                 // Convert to blob
                 const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
@@ -1269,9 +1280,10 @@
                 preview.innerHTML = '<span class="share-preview-loading" style="color: var(--accent-red);">Capture failed. Please try again.</span>';
                 showToast('Failed to capture screenshot');
                 
-                // Hide watermarks on error
+                // Hide watermarks and remove capturing class on error
                 document.getElementById('watermark-stats').style.display = 'none';
                 document.getElementById('watermark-full').style.display = 'none';
+                document.body.classList.remove('capturing');
             }
         }
 
