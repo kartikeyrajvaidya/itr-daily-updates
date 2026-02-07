@@ -1,3 +1,4 @@
 fetch_date,last_updated,IndvRegUsers,TotalAadharLinkedPAN,eVerifiedReturns,TotalProcessedRefund,delta_IndvRegUsers,delta_TotalAadharLinkedPAN,delta_eVerifiedReturns,delta_TotalProcessedRefund
 2026-02-05,2026-02-04,136866957,88376565,87223225,82082657,0,0,0,0
 2026-02-06,2026-02-05,136879724,88390221,87236939,82086355,12767,13656,13714,3698
+2026-02-07,2026-02-06,136891632,88403161,87250079,82109386,11908,12940,13140,23031
