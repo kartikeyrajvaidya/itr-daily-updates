@@ -610,14 +610,12 @@
                 return date.toLocaleDateString('en-IN', { day: 'numeric', month: 'short' });
             });
 
-            const datasets = METRICS.map(metric => ({
+            // Exclude computed metrics (like Pending Refunds) from chart - they don't fit with growth metrics
+            const chartMetrics = METRICS.filter(m => !m.computed);
+
+            const datasets = chartMetrics.map(metric => ({
                 label: metric.label,
-                data: filteredRows.map(row => {
-                    if (metric.computed) {
-                        return metric.getDelta(row);
-                    }
-                    return parseInt(row[metric.deltaKey], 10) || 0;
-                }),
+                data: filteredRows.map(row => parseInt(row[metric.deltaKey], 10) || 0),
                 borderColor: metric.color,
                 backgroundColor: metric.color + '20',
                 fill: false,
@@ -672,7 +670,7 @@
                             ticks: { color: textColor }
                         },
                         y: {
-                            // Don't force beginAtZero - PendingRefunds delta can be negative
+                            beginAtZero: true,
                             grid: { color: gridColor },
                             ticks: {
                                 color: textColor,
