@@ -26,6 +26,7 @@
 
     <link rel="icon" type="image/png" href="./favicon.png">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" integrity="sha384-9nhczxUqK87bcKHh20fSQcTGD4qq5GhayNYSYWqwBkINBhOfQLg/P5HG5lF1urn4" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js" integrity="sha384-Fzh3u9A1l1MUrhPOlMX3h8L7e8JLYn9D+HdTX9AfrYS0+H+WOtr+Y5T5slH9Frjn" crossorigin="anonymous"></script>
     <style>
         /* CSS Variables for theming */
         :root {
@@ -387,25 +388,310 @@
                 justify-content: flex-start;
             }
         }
+
+        /* Floating Share Button */
+        .share-fab {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 56px;
+            height: 56px;
+            border-radius: 16px;
+            background: var(--accent-blue);
+            color: #ffffff;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            z-index: 1000;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .share-fab:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .share-fab:disabled {
+            opacity: 0.7;
+            cursor: wait;
+        }
+
+        .share-fab .spinner {
+            width: 24px;
+            height: 24px;
+            border: 3px solid rgba(255,255,255,0.3);
+            border-top-color: #ffffff;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Share Modal */
+        .share-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            padding: 1rem;
+        }
+
+        .share-modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .share-modal {
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            max-width: 500px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+
+        .share-modal-overlay.active .share-modal {
+            transform: scale(1);
+        }
+
+        .share-modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.25rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .share-modal-header h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .share-modal-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-muted);
+            padding: 0.25rem;
+            line-height: 1;
+        }
+
+        .share-modal-close:hover {
+            color: var(--text-primary);
+        }
+
+        .share-modal-body {
+            padding: 1.25rem;
+        }
+
+        .share-options {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .share-option-btn {
+            flex: 1;
+            padding: 0.625rem 1rem;
+            border: 2px solid var(--border-color);
+            background: var(--bg-primary);
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            transition: all 0.2s ease;
+        }
+
+        .share-option-btn:hover {
+            border-color: var(--accent-blue);
+            color: var(--accent-blue);
+        }
+
+        .share-option-btn.active {
+            border-color: var(--accent-blue);
+            background: var(--accent-blue);
+            color: #ffffff;
+        }
+
+        .share-preview {
+            background: var(--bg-primary);
+            border-radius: 8px;
+            padding: 0.75rem;
+            margin-bottom: 1rem;
+            text-align: center;
+            min-height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .share-preview img {
+            max-width: 100%;
+            max-height: 300px;
+            border-radius: 4px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+
+        .share-preview-loading {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .share-actions {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.75rem;
+        }
+
+        .share-action-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.875rem 1rem;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        .share-action-btn.primary {
+            background: var(--accent-blue);
+            color: #ffffff;
+        }
+
+        .share-action-btn.primary:hover {
+            filter: brightness(1.1);
+        }
+
+        .share-action-btn.secondary {
+            background: var(--bg-accent);
+            color: var(--text-primary);
+        }
+
+        .share-action-btn.secondary:hover {
+            background: var(--border-color);
+        }
+
+        .share-action-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .share-filename {
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 0.75rem;
+        }
+
+        .share-toast {
+            position: fixed;
+            bottom: 100px;
+            left: 50%;
+            transform: translateX(-50%) translateY(20px);
+            background: var(--text-primary);
+            color: var(--bg-primary);
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 3000;
+        }
+
+        .share-toast.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        /* Watermark for capture */
+        .capture-watermark {
+            display: none;
+            background: var(--bg-accent);
+            padding: 0.75rem 1rem;
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            border-radius: 0 0 16px 16px;
+            margin-top: -0.5rem;
+        }
+
+        .capture-watermark span {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        /* Capture container for screenshot */
+        #capture-area {
+            background: var(--bg-primary);
+        }
+
+        @media (max-width: 480px) {
+            .share-fab {
+                bottom: 16px;
+                right: 16px;
+                width: 50px;
+                height: 50px;
+                font-size: 1.25rem;
+            }
+
+            .share-actions {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <header class="header">
-            <div class="header-left">
-                <h1>ITR Portal Stats</h1>
-                <p>Daily Statistics Dashboard</p>
+        <!-- Capture area for stats only -->
+        <div id="capture-stats">
+            <header class="header">
+                <div class="header-left">
+                    <h1>ITR Portal Stats</h1>
+                    <p>Daily Statistics Dashboard</p>
+                </div>
+                <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">
+                    <span id="theme-icon"></span>
+                </button>
+            </header>
+
+            <div id="meta" class="meta">Loading...</div>
+
+            <div id="cards-container"></div>
+
+            <div id="watermark-stats" class="capture-watermark">
+                <span>itrstats.in</span> • <span id="watermark-date-stats"></span>
             </div>
-            <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">
-                <span id="theme-icon"></span>
-            </button>
-        </header>
+        </div>
 
-        <div id="meta" class="meta">Loading...</div>
-
-        <div id="cards-container"></div>
-
-        <section class="chart-section">
+        <!-- Chart section (separate for full capture) -->
+        <section id="chart-section" class="chart-section">
             <div class="chart-header">
                 <h2 class="chart-title">Daily Growth Trend</h2>
                 <div class="range-selector">
@@ -418,6 +704,9 @@
             <div class="chart-container">
                 <canvas id="trendChart"></canvas>
             </div>
+            <div id="watermark-full" class="capture-watermark">
+                <span>itrstats.in</span> • <span id="watermark-date-full"></span>
+            </div>
         </section>
 
         <div class="disclaimer">
@@ -429,6 +718,46 @@
             <p>Data source: <a href="https://eportal.incometax.gov.in" target="_blank" rel="noopener noreferrer">eportal.incometax.gov.in</a></p>
         </footer>
     </div>
+
+    <!-- Floating Share Button -->
+    <button class="share-fab" id="share-fab" onclick="openShareModal()" aria-label="Share statistics">
+        <span id="share-fab-icon">📤</span>
+    </button>
+
+    <!-- Share Modal -->
+    <div class="share-modal-overlay" id="share-modal-overlay" onclick="closeShareModalOnOverlay(event)">
+        <div class="share-modal">
+            <div class="share-modal-header">
+                <h3>Share Stats</h3>
+                <button class="share-modal-close" onclick="closeShareModal()" aria-label="Close">&times;</button>
+            </div>
+            <div class="share-modal-body">
+                <div class="share-options">
+                    <button class="share-option-btn active" data-capture="stats" onclick="switchCaptureMode('stats')">
+                        📊 Stats Only
+                    </button>
+                    <button class="share-option-btn" data-capture="full" onclick="switchCaptureMode('full')">
+                        📈 Stats + Chart
+                    </button>
+                </div>
+                <div class="share-preview" id="share-preview">
+                    <span class="share-preview-loading">Select an option to preview</span>
+                </div>
+                <div class="share-actions">
+                    <button class="share-action-btn primary" id="download-btn" onclick="downloadImage()" disabled>
+                        ⬇️ Download
+                    </button>
+                    <button class="share-action-btn secondary" id="copy-btn" onclick="copyImage()" disabled>
+                        📋 Copy
+                    </button>
+                </div>
+                <div class="share-filename" id="share-filename"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast notification -->
+    <div class="share-toast" id="share-toast"></div>
 
     <script>
         // Constants
@@ -760,6 +1089,227 @@
                 trendChart.update('none');
             }
         });
+
+        // ==================== SHARE FUNCTIONALITY ====================
+        
+        let currentCaptureMode = 'stats';
+        let capturedImageBlob = null;
+        let capturedImageUrl = null;
+
+        function getFormattedDate() {
+            const now = new Date();
+            return now.toLocaleDateString('en-IN', { 
+                day: 'numeric', 
+                month: 'short', 
+                year: 'numeric' 
+            });
+        }
+
+        function getFilename() {
+            const now = new Date();
+            const dateStr = now.toISOString().split('T')[0];
+            return `itrstats-${dateStr}.png`;
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('share-toast');
+            toast.textContent = message;
+            toast.classList.add('active');
+            setTimeout(() => toast.classList.remove('active'), 3000);
+        }
+
+        function setFabLoading(loading) {
+            const fab = document.getElementById('share-fab');
+            const icon = document.getElementById('share-fab-icon');
+            fab.disabled = loading;
+            icon.innerHTML = loading ? '<div class="spinner"></div>' : '📤';
+        }
+
+        function openShareModal() {
+            document.getElementById('share-modal-overlay').classList.add('active');
+            document.body.style.overflow = 'hidden';
+            // Auto-capture stats mode
+            switchCaptureMode('stats');
+        }
+
+        function closeShareModal() {
+            document.getElementById('share-modal-overlay').classList.remove('active');
+            document.body.style.overflow = '';
+            // Clean up
+            if (capturedImageUrl) {
+                URL.revokeObjectURL(capturedImageUrl);
+                capturedImageUrl = null;
+            }
+            capturedImageBlob = null;
+        }
+
+        function closeShareModalOnOverlay(event) {
+            if (event.target === event.currentTarget) {
+                closeShareModal();
+            }
+        }
+
+        function switchCaptureMode(mode) {
+            currentCaptureMode = mode;
+            
+            // Update button states
+            document.querySelectorAll('.share-option-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.capture === mode);
+            });
+            
+            // Capture the screenshot
+            captureScreenshot(mode);
+        }
+
+        async function captureScreenshot(mode) {
+            const preview = document.getElementById('share-preview');
+            const downloadBtn = document.getElementById('download-btn');
+            const copyBtn = document.getElementById('copy-btn');
+            const filenameEl = document.getElementById('share-filename');
+            
+            // Show loading
+            preview.innerHTML = '<span class="share-preview-loading">Capturing...</span>';
+            downloadBtn.disabled = true;
+            copyBtn.disabled = true;
+            
+            // Clean up previous capture
+            if (capturedImageUrl) {
+                URL.revokeObjectURL(capturedImageUrl);
+            }
+            
+            try {
+                // Determine what to capture
+                let captureElement;
+                let watermarkEl;
+                
+                if (mode === 'stats') {
+                    captureElement = document.getElementById('capture-stats');
+                    watermarkEl = document.getElementById('watermark-stats');
+                    document.getElementById('watermark-date-stats').textContent = getFormattedDate();
+                } else {
+                    // For full capture, we need to capture stats + chart
+                    captureElement = document.getElementById('capture-stats');
+                    watermarkEl = document.getElementById('watermark-full');
+                    document.getElementById('watermark-date-full').textContent = getFormattedDate();
+                }
+                
+                // Show watermark temporarily
+                watermarkEl.style.display = 'block';
+                
+                // Small delay to ensure DOM is ready
+                await new Promise(resolve => setTimeout(resolve, 100));
+                
+                let canvas;
+                
+                if (mode === 'stats') {
+                    canvas = await html2canvas(captureElement, {
+                        backgroundColor: null,
+                        scale: 2,
+                        useCORS: true,
+                        logging: false
+                    });
+                } else {
+                    // For full mode, capture stats and chart separately and combine
+                    const statsCanvas = await html2canvas(document.getElementById('capture-stats'), {
+                        backgroundColor: null,
+                        scale: 2,
+                        useCORS: true,
+                        logging: false
+                    });
+                    
+                    // Hide stats watermark, show chart watermark
+                    document.getElementById('watermark-stats').style.display = 'none';
+                    document.getElementById('watermark-full').style.display = 'block';
+                    
+                    const chartCanvas = await html2canvas(document.getElementById('chart-section'), {
+                        backgroundColor: null,
+                        scale: 2,
+                        useCORS: true,
+                        logging: false
+                    });
+                    
+                    // Combine canvases
+                    canvas = document.createElement('canvas');
+                    canvas.width = Math.max(statsCanvas.width, chartCanvas.width);
+                    canvas.height = statsCanvas.height + chartCanvas.height;
+                    
+                    const ctx = canvas.getContext('2d');
+                    
+                    // Fill background
+                    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+                    ctx.fillStyle = isDark ? '#0f172a' : '#f0f4f8';
+                    ctx.fillRect(0, 0, canvas.width, canvas.height);
+                    
+                    // Draw both canvases
+                    ctx.drawImage(statsCanvas, 0, 0);
+                    ctx.drawImage(chartCanvas, 0, statsCanvas.height);
+                    
+                    // Hide chart watermark
+                    document.getElementById('watermark-full').style.display = 'none';
+                }
+                
+                // Hide watermark
+                watermarkEl.style.display = 'none';
+                
+                // Convert to blob
+                const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
+                capturedImageBlob = blob;
+                capturedImageUrl = URL.createObjectURL(blob);
+                
+                // Show preview
+                preview.innerHTML = `<img src="${capturedImageUrl}" alt="Preview">`;
+                filenameEl.textContent = getFilename();
+                
+                // Enable buttons
+                downloadBtn.disabled = false;
+                copyBtn.disabled = !navigator.clipboard?.write;
+                
+            } catch (error) {
+                console.error('Capture failed:', error);
+                preview.innerHTML = '<span class="share-preview-loading" style="color: var(--accent-red);">Capture failed. Please try again.</span>';
+                showToast('Failed to capture screenshot');
+                
+                // Hide watermarks on error
+                document.getElementById('watermark-stats').style.display = 'none';
+                document.getElementById('watermark-full').style.display = 'none';
+            }
+        }
+
+        function downloadImage() {
+            if (!capturedImageUrl) return;
+            
+            const link = document.createElement('a');
+            link.href = capturedImageUrl;
+            link.download = getFilename();
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            
+            showToast('Image downloaded!');
+        }
+
+        async function copyImage() {
+            if (!capturedImageBlob) return;
+            
+            try {
+                await navigator.clipboard.write([
+                    new ClipboardItem({ 'image/png': capturedImageBlob })
+                ]);
+                showToast('Copied to clipboard!');
+            } catch (error) {
+                console.error('Copy failed:', error);
+                showToast('Failed to copy. Try downloading instead.');
+            }
+        }
+
+        // Close modal on Escape key
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape') {
+                closeShareModal();
+            }
+        });
+
+        // ==================== END SHARE FUNCTIONALITY ====================
 
         // Initialize
         setTheme(getThemePreference());
