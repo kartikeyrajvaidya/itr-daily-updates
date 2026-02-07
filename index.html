@@ -639,6 +639,13 @@
                         intersect: false,
                         mode: 'index'
                     },
+                    onClick: (event, elements) => {
+                        // Hide tooltip when clicking on empty area (mobile fix)
+                        if (elements.length === 0) {
+                            trendChart.tooltip.setActiveElements([], { x: 0, y: 0 });
+                            trendChart.update('none');
+                        }
+                    },
                     plugins: {
                         legend: {
                             position: 'bottom',
@@ -745,6 +752,14 @@
                 metaEl.textContent = 'Error loading data';
             }
         }
+
+        // Hide chart tooltip when clicking outside the chart (mobile fix)
+        document.addEventListener('click', (event) => {
+            if (trendChart && !event.target.closest('.chart-section')) {
+                trendChart.tooltip.setActiveElements([], { x: 0, y: 0 });
+                trendChart.update('none');
+            }
+        });
 
         // Initialize
         setTheme(getThemePreference());
