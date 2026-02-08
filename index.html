@@ -39,8 +39,6 @@
             --accent-blue: #3182ce;
             --accent-green: #38a169;
             --accent-red: #e53e3e;
-            --accent-purple: #805ad5;
-            --accent-orange: #dd6b20;
             --border-color: #e2e8f0;
             --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
             --card-shadow-hover: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
@@ -59,8 +57,6 @@
             --accent-blue: #60a5fa;
             --accent-green: #4ade80;
             --accent-red: #f87171;
-            --accent-purple: #a78bfa;
-            --accent-orange: #fb923c;
             --border-color: #334155;
             --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
             --card-shadow-hover: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
@@ -313,14 +309,10 @@
             text-decoration: underline;
         }
 
-        /* Loading and error states */
-        .loading, .error {
+        /* Error state */
+        .error {
             text-align: center;
             padding: 3rem;
-            color: var(--text-muted);
-        }
-
-        .error {
             color: var(--accent-red);
         }
 
@@ -389,7 +381,7 @@
             }
         }
 
-        /* Floating Share Button - hidden for now, WIP */
+        /* Floating Share Button */
         .share-fab {
             position: fixed;
             bottom: 24px;
@@ -402,8 +394,7 @@
             border: none;
             cursor: pointer;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-            /* display: flex; */ /* TODO: Uncomment to enable share button */
-            display: none; /* Hidden until mobile optimization is done */
+            display: flex;
             align-items: center;
             justify-content: center;
             font-size: 1.5rem;
@@ -416,31 +407,10 @@
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
         }
 
-        .share-fab:disabled {
-            opacity: 0.7;
-            cursor: wait;
-        }
-
-        .share-fab .spinner {
-            width: 24px;
-            height: 24px;
-            border: 3px solid rgba(255,255,255,0.3);
-            border-top-color: #ffffff;
-            border-radius: 50%;
-            animation: spin 0.8s linear infinite;
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-
         /* Share Modal */
         .share-modal-overlay {
             position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
+            inset: 0;
             background: rgba(0, 0, 0, 0.7);
             display: flex;
             align-items: center;
@@ -460,7 +430,7 @@
         .share-modal {
             background: var(--bg-secondary);
             border-radius: 16px;
-            max-width: 500px;
+            max-width: 400px;
             width: 100%;
             max-height: 90vh;
             overflow-y: auto;
@@ -504,43 +474,13 @@
             padding: 1.25rem;
         }
 
-        .share-options {
-            display: flex;
-            gap: 0.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .share-option-btn {
-            flex: 1;
-            padding: 0.625rem 1rem;
-            border: 2px solid var(--border-color);
-            background: var(--bg-primary);
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 0.85rem;
-            font-weight: 500;
-            color: var(--text-secondary);
-            transition: all 0.2s ease;
-        }
-
-        .share-option-btn:hover {
-            border-color: var(--accent-blue);
-            color: var(--accent-blue);
-        }
-
-        .share-option-btn.active {
-            border-color: var(--accent-blue);
-            background: var(--accent-blue);
-            color: #ffffff;
-        }
-
         .share-preview {
             background: var(--bg-primary);
-            border-radius: 8px;
-            padding: 0.75rem;
+            border-radius: 12px;
+            padding: 0.5rem;
             margin-bottom: 1rem;
             text-align: center;
-            min-height: 150px;
+            min-height: 200px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -548,9 +488,8 @@
 
         .share-preview img {
             max-width: 100%;
-            max-height: 300px;
-            border-radius: 4px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            max-height: 350px;
+            border-radius: 8px;
         }
 
         .share-preview-loading {
@@ -601,13 +540,6 @@
             cursor: not-allowed;
         }
 
-        .share-filename {
-            text-align: center;
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            margin-top: 0.75rem;
-        }
-
         .share-toast {
             position: fixed;
             bottom: 100px;
@@ -631,33 +563,88 @@
             transform: translateX(-50%) translateY(0);
         }
 
-        /* Watermark for capture */
-        .capture-watermark {
-            display: none;
-            background: var(--bg-accent);
-            padding: 0.75rem 1rem;
+        /* Hidden Share Card (for capture) */
+        .share-card {
+            position: absolute;
+            left: -9999px;
+            top: -9999px;
+            width: 540px;
+            height: 540px;
+            padding: 40px;
+            background: var(--bg-secondary);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .share-card-header {
             text-align: center;
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-            border-radius: 0 0 16px 16px;
-            margin-top: -0.5rem;
+            margin-bottom: 24px;
         }
 
-        .capture-watermark span {
-            font-weight: 600;
+        .share-card-title {
+            font-size: 28px;
+            font-weight: 700;
             color: var(--text-primary);
+            margin-bottom: 8px;
         }
 
-        /* Capture container for screenshot */
-        #capture-area {
-            background: var(--bg-primary);
+        .share-card-date {
+            font-size: 18px;
+            color: var(--text-muted);
         }
 
-        /* Force visibility during capture */
-        .capturing .card {
-            opacity: 1 !important;
-            transform: translateY(0) !important;
-            animation: none !important;
+        .share-card-stats {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .share-card-stat {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 20px;
+            color: var(--text-primary);
+            padding: 8px 0;
+        }
+
+        .share-card-stat-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .share-card-stat-icon {
+            font-size: 24px;
+        }
+
+        .share-card-stat-label {
+            color: var(--text-secondary);
+        }
+
+        .share-card-stat-value {
+            font-weight: 700;
+            text-align: right;
+        }
+
+        .share-card-stat-value.positive {
+            color: var(--accent-green);
+        }
+
+        .share-card-stat-value.negative {
+            color: var(--accent-red);
+        }
+
+        .share-card-footer {
+            text-align: center;
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-muted);
+            padding-top: 16px;
+            border-top: 1px solid var(--border-color);
         }
 
         @media (max-width: 480px) {
@@ -677,29 +664,21 @@
 </head>
 <body>
     <div class="container">
-        <!-- Capture area for stats only -->
-        <div id="capture-stats">
-            <header class="header">
-                <div class="header-left">
-                    <h1>ITR Portal Stats</h1>
-                    <p>Daily Statistics Dashboard</p>
-                </div>
-                <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">
-                    <span id="theme-icon"></span>
-                </button>
-            </header>
-
-            <div id="meta" class="meta">Loading...</div>
-
-            <div id="cards-container"></div>
-
-            <div id="watermark-stats" class="capture-watermark">
-                <span>itrstats.in</span> • <span id="watermark-date-stats"></span>
+        <header class="header">
+            <div class="header-left">
+                <h1>ITR Portal Stats</h1>
+                <p>Daily Statistics Dashboard</p>
             </div>
-        </div>
+            <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">
+                <span id="theme-icon"></span>
+            </button>
+        </header>
 
-        <!-- Chart section (separate for full capture) -->
-        <section id="chart-section" class="chart-section">
+        <div id="meta" class="meta">Loading...</div>
+
+        <div id="cards-container"></div>
+
+        <section class="chart-section">
             <div class="chart-header">
                 <h2 class="chart-title">Daily Growth Trend</h2>
                 <div class="range-selector">
@@ -711,9 +690,6 @@
             </div>
             <div class="chart-container">
                 <canvas id="trendChart"></canvas>
-            </div>
-            <div id="watermark-full" class="capture-watermark">
-                <span>itrstats.in</span> • <span id="watermark-date-full"></span>
             </div>
         </section>
 
@@ -729,39 +705,46 @@
 
     <!-- Floating Share Button -->
     <button class="share-fab" id="share-fab" onclick="openShareModal()" aria-label="Share statistics">
-        <span id="share-fab-icon">📤</span>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="18" cy="5" r="3"></circle>
+            <circle cx="6" cy="12" r="3"></circle>
+            <circle cx="18" cy="19" r="3"></circle>
+            <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+            <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+        </svg>
     </button>
 
     <!-- Share Modal -->
     <div class="share-modal-overlay" id="share-modal-overlay" onclick="closeShareModalOnOverlay(event)">
         <div class="share-modal">
             <div class="share-modal-header">
-                <h3>Share Stats</h3>
+                <h3>Share Today's Stats</h3>
                 <button class="share-modal-close" onclick="closeShareModal()" aria-label="Close">&times;</button>
             </div>
             <div class="share-modal-body">
-                <div class="share-options">
-                    <button class="share-option-btn active" data-capture="stats" onclick="switchCaptureMode('stats')">
-                        📊 Stats Only
-                    </button>
-                    <button class="share-option-btn" data-capture="full" onclick="switchCaptureMode('full')">
-                        📈 Stats + Chart
-                    </button>
-                </div>
                 <div class="share-preview" id="share-preview">
-                    <span class="share-preview-loading">Select an option to preview</span>
+                    <span class="share-preview-loading">Generating...</span>
                 </div>
                 <div class="share-actions">
-                    <button class="share-action-btn primary" id="download-btn" onclick="downloadImage()" disabled>
-                        ⬇️ Download
+                    <button class="share-action-btn primary" id="share-btn" onclick="shareImage()" disabled>
+                        Share
                     </button>
-                    <button class="share-action-btn secondary" id="copy-btn" onclick="copyImage()" disabled>
-                        📋 Copy
+                    <button class="share-action-btn secondary" id="download-btn" onclick="downloadImage()" disabled>
+                        Download
                     </button>
                 </div>
-                <div class="share-filename" id="share-filename"></div>
             </div>
         </div>
+    </div>
+
+    <!-- Hidden Share Card Template (for capture) -->
+    <div id="share-card" class="share-card">
+        <div class="share-card-header">
+            <div class="share-card-title">ITR Portal Stats</div>
+            <div class="share-card-date" id="share-card-date"></div>
+        </div>
+        <div class="share-card-stats" id="share-card-stats"></div>
+        <div class="share-card-footer">itrstats.in</div>
     </div>
 
     <!-- Toast notification -->
@@ -1092,7 +1075,7 @@
 
         // Hide chart tooltip when clicking outside the chart (mobile fix)
         document.addEventListener('click', (event) => {
-            if (trendChart && !event.target.closest('.chart-section')) {
+            if (trendChart && !event.target.closest('.chart-section') && !event.target.closest('.share-modal-overlay')) {
                 trendChart.tooltip.setActiveElements([], { x: 0, y: 0 });
                 trendChart.update('none');
             }
@@ -1100,25 +1083,33 @@
 
         // ==================== SHARE FUNCTIONALITY ====================
         
-        let currentCaptureMode = 'stats';
         let capturedImageBlob = null;
         let capturedImageUrl = null;
 
-        function getFormattedDate() {
-            const now = new Date();
-            return now.toLocaleDateString('en-IN', { 
+        // Get latest data for sharing
+        function getLatestData() {
+            if (allRows.length === 0) return null;
+            return allRows[allRows.length - 1];
+        }
+
+        // Format date from CSV (YYYY-MM-DD) to display format (D MMM YYYY)
+        function formatDateForShare(dateStr) {
+            const date = new Date(dateStr);
+            return date.toLocaleDateString('en-IN', { 
                 day: 'numeric', 
                 month: 'short', 
                 year: 'numeric' 
             });
         }
 
+        // Get filename based on portal's last_updated date
         function getFilename() {
-            const now = new Date();
-            const dateStr = now.toISOString().split('T')[0];
-            return `itrstats-${dateStr}.png`;
+            const data = getLatestData();
+            const dateStr = data?.last_updated || new Date().toISOString().split('T')[0];
+            return `itrstats-${dateStr}.jpg`;
         }
 
+        // Show toast notification
         function showToast(message) {
             const toast = document.getElementById('share-toast');
             toast.textContent = message;
@@ -1126,24 +1117,144 @@
             setTimeout(() => toast.classList.remove('active'), 3000);
         }
 
-        function setFabLoading(loading) {
-            const fab = document.getElementById('share-fab');
-            const icon = document.getElementById('share-fab-icon');
-            fab.disabled = loading;
-            icon.innerHTML = loading ? '<div class="spinner"></div>' : '📤';
+        // Populate the share card with current data
+        function populateShareCard() {
+            const data = getLatestData();
+            if (!data) return false;
+
+            const date = formatDateForShare(data.last_updated);
+            const pending = (parseInt(data.eVerifiedReturns, 10) || 0) - (parseInt(data.TotalProcessedRefund, 10) || 0);
+
+            document.getElementById('share-card-date').textContent = date;
+
+            // Calculate pending delta (positive = grew, negative = reduced)
+            const pendingDelta = (parseInt(data.delta_eVerifiedReturns, 10) || 0) - (parseInt(data.delta_TotalProcessedRefund, 10) || 0);
+            const pendingChangeLabel = pendingDelta >= 0 ? 'Backlog Grew By' : 'Backlog Reduced By';
+            const pendingChangeClass = pendingDelta >= 0 ? 'negative' : 'positive';
+            const pendingChangeValue = Math.abs(pendingDelta);
+
+            const statsHtml = `
+                <div class="share-card-stat">
+                    <div class="share-card-stat-left">
+                        <span class="share-card-stat-icon">👤</span>
+                        <span class="share-card-stat-label">New Users Added</span>
+                    </div>
+                    <span class="share-card-stat-value positive">+${formatNumber(parseInt(data.delta_IndvRegUsers, 10) || 0)}</span>
+                </div>
+                <div class="share-card-stat">
+                    <div class="share-card-stat-left">
+                        <span class="share-card-stat-icon">✓</span>
+                        <span class="share-card-stat-label">Returns Verified</span>
+                    </div>
+                    <span class="share-card-stat-value positive">+${formatNumber(parseInt(data.delta_eVerifiedReturns, 10) || 0)}</span>
+                </div>
+                <div class="share-card-stat">
+                    <div class="share-card-stat-left">
+                        <span class="share-card-stat-icon">✅</span>
+                        <span class="share-card-stat-label">Returns Processed</span>
+                    </div>
+                    <span class="share-card-stat-value positive">+${formatNumber(parseInt(data.delta_TotalProcessedRefund, 10) || 0)}</span>
+                </div>
+                <div class="share-card-stat">
+                    <div class="share-card-stat-left">
+                        <span class="share-card-stat-icon">⏳</span>
+                        <span class="share-card-stat-label">Pending Returns</span>
+                    </div>
+                    <span class="share-card-stat-value">${formatCrores(pending)}</span>
+                </div>
+                <div class="share-card-stat">
+                    <div class="share-card-stat-left">
+                        <span class="share-card-stat-icon">${pendingDelta >= 0 ? '📈' : '📉'}</span>
+                        <span class="share-card-stat-label">${pendingChangeLabel}</span>
+                    </div>
+                    <span class="share-card-stat-value ${pendingChangeClass}">${formatNumber(pendingChangeValue)}</span>
+                </div>
+            `;
+            document.getElementById('share-card-stats').innerHTML = statsHtml;
+
+            return true;
         }
 
+        // Capture the share card as an image
+        async function captureShareCard() {
+            const preview = document.getElementById('share-preview');
+            const downloadBtn = document.getElementById('download-btn');
+            const shareBtn = document.getElementById('share-btn');
+
+            preview.innerHTML = '<span class="share-preview-loading">Generating...</span>';
+            downloadBtn.disabled = true;
+            shareBtn.disabled = true;
+
+            // Clean up previous capture
+            if (capturedImageUrl) {
+                URL.revokeObjectURL(capturedImageUrl);
+                capturedImageUrl = null;
+            }
+            capturedImageBlob = null;
+
+            if (!populateShareCard()) {
+                preview.innerHTML = '<span class="share-preview-loading" style="color: var(--accent-red);">No data available</span>';
+                return;
+            }
+
+            try {
+                const shareCard = document.getElementById('share-card');
+                
+                // Temporarily move card to visible area for capture
+                shareCard.style.left = '0';
+                shareCard.style.top = '0';
+                shareCard.style.position = 'fixed';
+                shareCard.style.zIndex = '-1';
+
+                await new Promise(resolve => setTimeout(resolve, 50));
+
+                const canvas = await html2canvas(shareCard, {
+                    width: 540,
+                    height: 540,
+                    scale: 2,
+                    useCORS: true,
+                    logging: false,
+                    backgroundColor: null
+                });
+
+                // Move card back off-screen
+                shareCard.style.left = '-9999px';
+                shareCard.style.top = '-9999px';
+                shareCard.style.position = 'absolute';
+                shareCard.style.zIndex = '';
+
+                // Create JPEG blob
+                const blob = await new Promise(resolve => 
+                    canvas.toBlob(resolve, 'image/jpeg', 0.92)
+                );
+                capturedImageBlob = blob;
+                capturedImageUrl = URL.createObjectURL(blob);
+
+                preview.innerHTML = `<img src="${capturedImageUrl}" alt="Share card preview">`;
+                downloadBtn.disabled = false;
+                shareBtn.disabled = false;
+
+            } catch (error) {
+                console.error('Capture failed:', error);
+                preview.innerHTML = '<span class="share-preview-loading" style="color: var(--accent-red);">Failed to generate. Try again.</span>';
+            }
+        }
+
+        // Open share modal
         function openShareModal() {
+            if (allRows.length === 0) {
+                showToast('Data not loaded yet');
+                return;
+            }
             document.getElementById('share-modal-overlay').classList.add('active');
             document.body.style.overflow = 'hidden';
-            // Auto-capture stats mode
-            switchCaptureMode('stats');
+            captureShareCard();
         }
 
+        // Close share modal
         function closeShareModal() {
             document.getElementById('share-modal-overlay').classList.remove('active');
             document.body.style.overflow = '';
-            // Clean up
             if (capturedImageUrl) {
                 URL.revokeObjectURL(capturedImageUrl);
                 capturedImageUrl = null;
@@ -1157,137 +1268,7 @@
             }
         }
 
-        function switchCaptureMode(mode) {
-            currentCaptureMode = mode;
-            
-            // Update button states
-            document.querySelectorAll('.share-option-btn').forEach(btn => {
-                btn.classList.toggle('active', btn.dataset.capture === mode);
-            });
-            
-            // Capture the screenshot
-            captureScreenshot(mode);
-        }
-
-        async function captureScreenshot(mode) {
-            const preview = document.getElementById('share-preview');
-            const downloadBtn = document.getElementById('download-btn');
-            const copyBtn = document.getElementById('copy-btn');
-            const filenameEl = document.getElementById('share-filename');
-            
-            // Show loading
-            preview.innerHTML = '<span class="share-preview-loading">Capturing...</span>';
-            downloadBtn.disabled = true;
-            copyBtn.disabled = true;
-            
-            // Clean up previous capture
-            if (capturedImageUrl) {
-                URL.revokeObjectURL(capturedImageUrl);
-            }
-            
-            try {
-                // Determine what to capture
-                let captureElement;
-                let watermarkEl;
-                
-                if (mode === 'stats') {
-                    captureElement = document.getElementById('capture-stats');
-                    watermarkEl = document.getElementById('watermark-stats');
-                    document.getElementById('watermark-date-stats').textContent = getFormattedDate();
-                } else {
-                    // For full capture, we need to capture stats + chart
-                    captureElement = document.getElementById('capture-stats');
-                    watermarkEl = document.getElementById('watermark-full');
-                    document.getElementById('watermark-date-full').textContent = getFormattedDate();
-                }
-                
-                // Show watermark temporarily
-                watermarkEl.style.display = 'block';
-                
-                // Add capturing class to force card visibility
-                document.body.classList.add('capturing');
-                
-                // Small delay to ensure DOM is ready
-                await new Promise(resolve => setTimeout(resolve, 100));
-                
-                let canvas;
-                
-                if (mode === 'stats') {
-                    canvas = await html2canvas(captureElement, {
-                        backgroundColor: null,
-                        scale: 2,
-                        useCORS: true,
-                        logging: false
-                    });
-                } else {
-                    // For full mode, capture stats and chart separately and combine
-                    const statsCanvas = await html2canvas(document.getElementById('capture-stats'), {
-                        backgroundColor: null,
-                        scale: 2,
-                        useCORS: true,
-                        logging: false
-                    });
-                    
-                    // Hide stats watermark, show chart watermark
-                    document.getElementById('watermark-stats').style.display = 'none';
-                    document.getElementById('watermark-full').style.display = 'block';
-                    
-                    const chartCanvas = await html2canvas(document.getElementById('chart-section'), {
-                        backgroundColor: null,
-                        scale: 2,
-                        useCORS: true,
-                        logging: false
-                    });
-                    
-                    // Combine canvases
-                    canvas = document.createElement('canvas');
-                    canvas.width = Math.max(statsCanvas.width, chartCanvas.width);
-                    canvas.height = statsCanvas.height + chartCanvas.height;
-                    
-                    const ctx = canvas.getContext('2d');
-                    
-                    // Fill background
-                    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-                    ctx.fillStyle = isDark ? '#0f172a' : '#f0f4f8';
-                    ctx.fillRect(0, 0, canvas.width, canvas.height);
-                    
-                    // Draw both canvases
-                    ctx.drawImage(statsCanvas, 0, 0);
-                    ctx.drawImage(chartCanvas, 0, statsCanvas.height);
-                    
-                    // Hide chart watermark
-                    document.getElementById('watermark-full').style.display = 'none';
-                }
-                
-                // Hide watermark and remove capturing class
-                watermarkEl.style.display = 'none';
-                document.body.classList.remove('capturing');
-                
-                // Convert to blob
-                const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
-                capturedImageBlob = blob;
-                capturedImageUrl = URL.createObjectURL(blob);
-                
-                // Show preview
-                preview.innerHTML = `<img src="${capturedImageUrl}" alt="Preview">`;
-                filenameEl.textContent = getFilename();
-                
-                // Enable buttons
-                downloadBtn.disabled = false;
-                copyBtn.disabled = !navigator.clipboard?.write;
-                
-            } catch (error) {
-                console.error('Capture failed:', error);
-                preview.innerHTML = '<span class="share-preview-loading" style="color: var(--accent-red);">Capture failed. Please try again.</span>';
-                showToast('Failed to capture screenshot');
-                
-                // Hide watermarks and remove capturing class on error
-                document.getElementById('watermark-stats').style.display = 'none';
-                document.getElementById('watermark-full').style.display = 'none';
-                document.body.classList.remove('capturing');
-            }
-        }
-
+        // Download image
         function downloadImage() {
             if (!capturedImageUrl) return;
             
@@ -1301,17 +1282,31 @@
             showToast('Image downloaded!');
         }
 
-        async function copyImage() {
+        // Share image using native share API
+        async function shareImage() {
             if (!capturedImageBlob) return;
-            
-            try {
-                await navigator.clipboard.write([
-                    new ClipboardItem({ 'image/png': capturedImageBlob })
-                ]);
-                showToast('Copied to clipboard!');
-            } catch (error) {
-                console.error('Copy failed:', error);
-                showToast('Failed to copy. Try downloading instead.');
+
+            const file = new File([capturedImageBlob], getFilename(), { type: 'image/jpeg' });
+
+            // Check if native sharing with files is supported
+            if (navigator.canShare && navigator.canShare({ files: [file] })) {
+                try {
+                    await navigator.share({
+                        files: [file],
+                        title: 'ITR Portal Stats',
+                    });
+                    showToast('Shared successfully!');
+                } catch (error) {
+                    // User cancelled or share failed
+                    if (error.name !== 'AbortError') {
+                        console.error('Share failed:', error);
+                        showToast('Share failed. Try downloading instead.');
+                    }
+                }
+            } else {
+                // Fallback: download the image
+                showToast('Share not supported. Downloading instead...');
+                downloadImage();
             }
         }
 
