@@ -655,10 +655,6 @@
                 height: 50px;
                 font-size: 1.25rem;
             }
-
-            .share-actions {
-                grid-template-columns: 1fr;
-            }
         }
     </style>
 </head>
@@ -765,9 +761,9 @@
                 icon: '⏳',
                 color: '#e53e3e',
                 computed: true,
-                invertDelta: true, // For this metric, negative delta is good (backlog reduced)
-                getValue: (row) => (parseInt(row.eVerifiedReturns, 10) || 0) - (parseInt(row.TotalProcessedRefund, 10) || 0),
-                getDelta: (row) => (parseInt(row.delta_eVerifiedReturns, 10) || 0) - (parseInt(row.delta_TotalProcessedRefund, 10) || 0)
+                invertDelta: true,
+                getValue: (row) => safeInt(row.eVerifiedReturns) - safeInt(row.TotalProcessedRefund),
+                getDelta: (row) => safeInt(row.delta_eVerifiedReturns) - safeInt(row.delta_TotalProcessedRefund)
             }
         ];
 
@@ -807,6 +803,11 @@
             trendChart.options.scales.y.grid.color = gridColor;
             trendChart.options.plugins.legend.labels.color = textColor;
             trendChart.update('none');
+        }
+
+        // Parse integer safely
+        function safeInt(value) {
+            return parseInt(value, 10) || 0;
         }
 
         // Number formatting
@@ -881,13 +882,8 @@
             let html = '<div class="cards-grid">';
 
             METRICS.forEach(metric => {
-                // Handle computed vs regular metrics
-                const value = metric.computed
-                    ? metric.getValue(latest)
-                    : (parseInt(latest[metric.key], 10) || 0);
-                const delta = metric.computed
-                    ? metric.getDelta(latest)
-                    : parseInt(latest[metric.deltaKey], 10);
+                const value = metric.computed ? metric.getValue(latest) : safeInt(latest[metric.key]);
+                const delta = metric.computed ? metric.getDelta(latest) : safeInt(latest[metric.deltaKey]);
                 const deltaInfo = formatDelta(delta, metric.invertDelta);
 
                 html += `
@@ -935,7 +931,7 @@
 
             const datasets = chartMetrics.map(metric => ({
                 label: metric.label,
-                data: filteredRows.map(row => parseInt(row[metric.deltaKey], 10) || 0),
+                data: filteredRows.map(row => safeInt(row[metric.deltaKey])),
                 borderColor: metric.color,
                 backgroundColor: metric.color + '20',
                 fill: false,
@@ -1110,11 +1106,13 @@
         }
 
         // Show toast notification
+        let toastTimeout = null;
         function showToast(message) {
             const toast = document.getElementById('share-toast');
             toast.textContent = message;
             toast.classList.add('active');
-            setTimeout(() => toast.classList.remove('active'), 3000);
+            if (toastTimeout) clearTimeout(toastTimeout);
+            toastTimeout = setTimeout(() => toast.classList.remove('active'), 3000);
         }
 
         // Populate the share card with current data
@@ -1122,38 +1120,32 @@
             const data = getLatestData();
             if (!data) return false;
 
-            const date = formatDateForShare(data.last_updated);
-            const pending = (parseInt(data.eVerifiedReturns, 10) || 0) - (parseInt(data.TotalProcessedRefund, 10) || 0);
+            const pending = safeInt(data.eVerifiedReturns) - safeInt(data.TotalProcessedRefund);
+            const pendingDelta = safeInt(data.delta_eVerifiedReturns) - safeInt(data.delta_TotalProcessedRefund);
+            const isBacklogReduced = pendingDelta < 0;
 
-            document.getElementById('share-card-date').textContent = date;
-
-            // Calculate pending delta (positive = grew, negative = reduced)
-            const pendingDelta = (parseInt(data.delta_eVerifiedReturns, 10) || 0) - (parseInt(data.delta_TotalProcessedRefund, 10) || 0);
-            const pendingChangeLabel = pendingDelta >= 0 ? 'Backlog Grew By' : 'Backlog Reduced By';
-            const pendingChangeClass = pendingDelta >= 0 ? 'negative' : 'positive';
-            const pendingChangeValue = Math.abs(pendingDelta);
-
-            const statsHtml = `
+            document.getElementById('share-card-date').textContent = formatDateForShare(data.last_updated);
+            document.getElementById('share-card-stats').innerHTML = `
                 <div class="share-card-stat">
                     <div class="share-card-stat-left">
                         <span class="share-card-stat-icon">👤</span>
                         <span class="share-card-stat-label">New Users Added</span>
                     </div>
-                    <span class="share-card-stat-value positive">+${formatNumber(parseInt(data.delta_IndvRegUsers, 10) || 0)}</span>
+                    <span class="share-card-stat-value positive">+${formatNumber(safeInt(data.delta_IndvRegUsers))}</span>
                 </div>
                 <div class="share-card-stat">
                     <div class="share-card-stat-left">
                         <span class="share-card-stat-icon">✓</span>
                         <span class="share-card-stat-label">Returns Verified</span>
                     </div>
-                    <span class="share-card-stat-value positive">+${formatNumber(parseInt(data.delta_eVerifiedReturns, 10) || 0)}</span>
+                    <span class="share-card-stat-value positive">+${formatNumber(safeInt(data.delta_eVerifiedReturns))}</span>
                 </div>
                 <div class="share-card-stat">
                     <div class="share-card-stat-left">
                         <span class="share-card-stat-icon">✅</span>
                         <span class="share-card-stat-label">Returns Processed</span>
                     </div>
-                    <span class="share-card-stat-value positive">+${formatNumber(parseInt(data.delta_TotalProcessedRefund, 10) || 0)}</span>
+                    <span class="share-card-stat-value positive">+${formatNumber(safeInt(data.delta_TotalProcessedRefund))}</span>
                 </div>
                 <div class="share-card-stat">
                     <div class="share-card-stat-left">
@@ -1164,18 +1156,50 @@
                 </div>
                 <div class="share-card-stat">
                     <div class="share-card-stat-left">
-                        <span class="share-card-stat-icon">${pendingDelta >= 0 ? '📈' : '📉'}</span>
-                        <span class="share-card-stat-label">${pendingChangeLabel}</span>
+                        <span class="share-card-stat-icon">${isBacklogReduced ? '📉' : '📈'}</span>
+                        <span class="share-card-stat-label">${isBacklogReduced ? 'Backlog Reduced By' : 'Backlog Grew By'}</span>
                     </div>
-                    <span class="share-card-stat-value ${pendingChangeClass}">${formatNumber(pendingChangeValue)}</span>
+                    <span class="share-card-stat-value ${isBacklogReduced ? 'positive' : 'negative'}">${formatNumber(Math.abs(pendingDelta))}</span>
                 </div>
             `;
-            document.getElementById('share-card-stats').innerHTML = statsHtml;
-
             return true;
         }
 
-        // Capture the share card as an image
+        // Capture share card and return blob (reusable)
+        async function generateShareImage() {
+            if (!populateShareCard()) {
+                throw new Error('No data available');
+            }
+
+            const shareCard = document.getElementById('share-card');
+            
+            // Position card for capture (invisible to user)
+            shareCard.style.cssText = 'left:0;top:0;position:fixed;opacity:0;pointer-events:none;';
+
+            await new Promise(resolve => setTimeout(resolve, 50));
+
+            try {
+                const canvas = await html2canvas(shareCard, {
+                    width: 540,
+                    height: 540,
+                    scale: 2,
+                    useCORS: true,
+                    logging: false,
+                    backgroundColor: null,
+                    onclone: (clonedDoc) => {
+                        const clonedCard = clonedDoc.getElementById('share-card');
+                        if (clonedCard) clonedCard.style.opacity = '1';
+                    }
+                });
+
+                return await new Promise(resolve => canvas.toBlob(resolve, 'image/jpeg', 0.92));
+            } finally {
+                // Always reset card position
+                shareCard.style.cssText = 'left:-9999px;top:-9999px;position:absolute;';
+            }
+        }
+
+        // Capture for modal preview (desktop)
         async function captureShareCard() {
             const preview = document.getElementById('share-preview');
             const downloadBtn = document.getElementById('download-btn');
@@ -1192,55 +1216,13 @@
             }
             capturedImageBlob = null;
 
-            if (!populateShareCard()) {
-                preview.innerHTML = '<span class="share-preview-loading" style="color: var(--accent-red);">No data available</span>';
-                return;
-            }
-
             try {
-                const shareCard = document.getElementById('share-card');
-                
-                // Position card for capture (invisible to user)
-                shareCard.style.left = '0';
-                shareCard.style.top = '0';
-                shareCard.style.position = 'fixed';
-                shareCard.style.opacity = '0';
-                shareCard.style.pointerEvents = 'none';
-
-                await new Promise(resolve => setTimeout(resolve, 50));
-
-                const canvas = await html2canvas(shareCard, {
-                    width: 540,
-                    height: 540,
-                    scale: 2,
-                    useCORS: true,
-                    logging: false,
-                    backgroundColor: null,
-                    onclone: (clonedDoc) => {
-                        // Make the cloned element visible for capture
-                        const clonedCard = clonedDoc.getElementById('share-card');
-                        if (clonedCard) clonedCard.style.opacity = '1';
-                    }
-                });
-
-                // Reset card position
-                shareCard.style.left = '-9999px';
-                shareCard.style.top = '-9999px';
-                shareCard.style.position = 'absolute';
-                shareCard.style.opacity = '';
-                shareCard.style.pointerEvents = '';
-
-                // Create JPEG blob
-                const blob = await new Promise(resolve => 
-                    canvas.toBlob(resolve, 'image/jpeg', 0.92)
-                );
-                capturedImageBlob = blob;
-                capturedImageUrl = URL.createObjectURL(blob);
+                capturedImageBlob = await generateShareImage();
+                capturedImageUrl = URL.createObjectURL(capturedImageBlob);
 
                 preview.innerHTML = `<img src="${capturedImageUrl}" alt="Share card preview">`;
                 downloadBtn.disabled = false;
                 copyBtn.disabled = false;
-
             } catch (error) {
                 console.error('Capture failed:', error);
                 preview.innerHTML = '<span class="share-preview-loading" style="color: var(--accent-red);">Failed to generate. Try again.</span>';
@@ -1254,73 +1236,29 @@
                 return;
             }
 
-            // On mobile with native share support, skip modal and share directly
             if (canNativeShare()) {
                 await directShare();
             } else {
-                // Desktop: show modal with Copy/Download options
                 document.getElementById('share-modal-overlay').classList.add('active');
                 document.body.style.overflow = 'hidden';
                 captureShareCard();
             }
         }
 
-        // Direct share for mobile (generates image and shares immediately)
+        // Direct share for mobile
         async function directShare() {
             showToast('Generating...');
-            
-            if (!populateShareCard()) {
-                showToast('No data available');
-                return;
-            }
 
             try {
-                const shareCard = document.getElementById('share-card');
-                
-                // Position card for capture (invisible to user)
-                shareCard.style.left = '0';
-                shareCard.style.top = '0';
-                shareCard.style.position = 'fixed';
-                shareCard.style.opacity = '0';
-                shareCard.style.pointerEvents = 'none';
-
-                await new Promise(resolve => setTimeout(resolve, 50));
-
-                const canvas = await html2canvas(shareCard, {
-                    width: 540,
-                    height: 540,
-                    scale: 2,
-                    useCORS: true,
-                    logging: false,
-                    backgroundColor: null,
-                    onclone: (clonedDoc) => {
-                        const clonedCard = clonedDoc.getElementById('share-card');
-                        if (clonedCard) clonedCard.style.opacity = '1';
-                    }
-                });
-
-                // Reset card position
-                shareCard.style.left = '-9999px';
-                shareCard.style.top = '-9999px';
-                shareCard.style.position = 'absolute';
-                shareCard.style.opacity = '';
-                shareCard.style.pointerEvents = '';
-
-                const blob = await new Promise(resolve => 
-                    canvas.toBlob(resolve, 'image/jpeg', 0.92)
-                );
-
+                const blob = await generateShareImage();
                 const file = new File([blob], getFilename(), { type: 'image/jpeg' });
                 
-                await navigator.share({
-                    files: [file],
-                    title: 'ITR Portal Stats',
-                });
+                await navigator.share({ files: [file], title: 'ITR Portal Stats' });
                 showToast('Shared successfully!');
             } catch (error) {
                 if (error.name !== 'AbortError') {
                     console.error('Share failed:', error);
-                    showToast('Share failed. Try again.');
+                    showToast(error.message === 'No data available' ? 'No data available' : 'Share failed. Try again.');
                 }
             }
         }
