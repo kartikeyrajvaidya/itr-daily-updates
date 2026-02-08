@@ -1200,11 +1200,12 @@
             try {
                 const shareCard = document.getElementById('share-card');
                 
-                // Temporarily move card to visible area for capture
+                // Position card for capture (invisible to user)
                 shareCard.style.left = '0';
                 shareCard.style.top = '0';
                 shareCard.style.position = 'fixed';
-                shareCard.style.zIndex = '-1';
+                shareCard.style.opacity = '0';
+                shareCard.style.pointerEvents = 'none';
 
                 await new Promise(resolve => setTimeout(resolve, 50));
 
@@ -1214,14 +1215,20 @@
                     scale: 2,
                     useCORS: true,
                     logging: false,
-                    backgroundColor: null
+                    backgroundColor: null,
+                    onclone: (clonedDoc) => {
+                        // Make the cloned element visible for capture
+                        const clonedCard = clonedDoc.getElementById('share-card');
+                        if (clonedCard) clonedCard.style.opacity = '1';
+                    }
                 });
 
-                // Move card back off-screen
+                // Reset card position
                 shareCard.style.left = '-9999px';
                 shareCard.style.top = '-9999px';
                 shareCard.style.position = 'absolute';
-                shareCard.style.zIndex = '';
+                shareCard.style.opacity = '';
+                shareCard.style.pointerEvents = '';
 
                 // Create JPEG blob
                 const blob = await new Promise(resolve => 
@@ -1270,11 +1277,12 @@
             try {
                 const shareCard = document.getElementById('share-card');
                 
-                // Temporarily position card for capture
+                // Position card for capture (invisible to user)
                 shareCard.style.left = '0';
                 shareCard.style.top = '0';
                 shareCard.style.position = 'fixed';
-                shareCard.style.zIndex = '-1';
+                shareCard.style.opacity = '0';
+                shareCard.style.pointerEvents = 'none';
 
                 await new Promise(resolve => setTimeout(resolve, 50));
 
@@ -1284,14 +1292,19 @@
                     scale: 2,
                     useCORS: true,
                     logging: false,
-                    backgroundColor: null
+                    backgroundColor: null,
+                    onclone: (clonedDoc) => {
+                        const clonedCard = clonedDoc.getElementById('share-card');
+                        if (clonedCard) clonedCard.style.opacity = '1';
+                    }
                 });
 
                 // Reset card position
                 shareCard.style.left = '-9999px';
                 shareCard.style.top = '-9999px';
                 shareCard.style.position = 'absolute';
-                shareCard.style.zIndex = '';
+                shareCard.style.opacity = '';
+                shareCard.style.pointerEvents = '';
 
                 const blob = await new Promise(resolve => 
                     canvas.toBlob(resolve, 'image/jpeg', 0.92)
