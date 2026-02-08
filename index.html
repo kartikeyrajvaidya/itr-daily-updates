@@ -150,6 +150,63 @@
             color: var(--text-primary);
         }
 
+        .info-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: var(--text-muted);
+            color: var(--bg-secondary);
+            font-size: 0.7rem;
+            font-weight: 700;
+            font-style: normal;
+            cursor: pointer;
+            margin-left: 0.5rem;
+            vertical-align: middle;
+            position: relative;
+        }
+
+        .info-icon:hover {
+            background: var(--accent-blue);
+        }
+
+        .info-tooltip {
+            position: absolute;
+            bottom: calc(100% + 8px);
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--text-primary);
+            color: var(--bg-primary);
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 400;
+            width: 260px;
+            text-align: left;
+            line-height: 1.4;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.2s ease, visibility 0.2s ease;
+            z-index: 100;
+        }
+
+        .info-tooltip::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 6px solid transparent;
+            border-top-color: var(--text-primary);
+        }
+
+        .info-icon:hover .info-tooltip {
+            opacity: 1;
+            visibility: visible;
+        }
+
         /* Cards grid */
         .cards-grid {
             display: grid;
@@ -1024,6 +1081,7 @@
             metaEl.innerHTML = `
                 Fetched: <strong>${fetchDate}</strong> (IST) &bull;
                 Portal last updated: <strong>${lastUpdated}</strong>
+                <span class="info-icon">i<span class="info-tooltip">This tracker reflects officially published cumulative numbers from the Income Tax portal. Updates typically appear late at night and are captured the following morning.</span></span>
             `;
 
             // Render cards and chart
