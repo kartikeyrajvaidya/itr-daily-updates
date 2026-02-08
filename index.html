@@ -1240,16 +1240,77 @@
             }
         }
 
-        // Open share modal
-        function openShareModal() {
+        // Handle share button click
+        async function openShareModal() {
             if (allRows.length === 0) {
                 showToast('Data not loaded yet');
                 return;
             }
-            document.getElementById('share-modal-overlay').classList.add('active');
-            document.body.style.overflow = 'hidden';
-            updateShareButtonLabel();
-            captureShareCard();
+
+            // On mobile with native share support, skip modal and share directly
+            if (canNativeShare()) {
+                await directShare();
+            } else {
+                // Desktop: show modal with Copy/Download options
+                document.getElementById('share-modal-overlay').classList.add('active');
+                document.body.style.overflow = 'hidden';
+                updateShareButtonLabel();
+                captureShareCard();
+            }
+        }
+
+        // Direct share for mobile (generates image and shares immediately)
+        async function directShare() {
+            showToast('Generating...');
+            
+            if (!populateShareCard()) {
+                showToast('No data available');
+                return;
+            }
+
+            try {
+                const shareCard = document.getElementById('share-card');
+                
+                // Temporarily position card for capture
+                shareCard.style.left = '0';
+                shareCard.style.top = '0';
+                shareCard.style.position = 'fixed';
+                shareCard.style.zIndex = '-1';
+
+                await new Promise(resolve => setTimeout(resolve, 50));
+
+                const canvas = await html2canvas(shareCard, {
+                    width: 540,
+                    height: 540,
+                    scale: 2,
+                    useCORS: true,
+                    logging: false,
+                    backgroundColor: null
+                });
+
+                // Reset card position
+                shareCard.style.left = '-9999px';
+                shareCard.style.top = '-9999px';
+                shareCard.style.position = 'absolute';
+                shareCard.style.zIndex = '';
+
+                const blob = await new Promise(resolve => 
+                    canvas.toBlob(resolve, 'image/jpeg', 0.92)
+                );
+
+                const file = new File([blob], getFilename(), { type: 'image/jpeg' });
+                
+                await navigator.share({
+                    files: [file],
+                    title: 'ITR Portal Stats',
+                });
+                showToast('Shared successfully!');
+            } catch (error) {
+                if (error.name !== 'AbortError') {
+                    console.error('Share failed:', error);
+                    showToast('Share failed. Try again.');
+                }
+            }
         }
 
         // Close share modal
