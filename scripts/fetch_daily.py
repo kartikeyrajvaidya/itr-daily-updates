@@ -27,6 +27,7 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 DATA_DIR = REPO_ROOT / "data"
 CSV_PATH = DATA_DIR / "daily.csv"
 PAYLOAD_PATH = DATA_DIR / "last_payload.json"
+DUMP_PATH = DATA_DIR / "raw_dump.csv"
 
 # CSV columns (includes delta columns for tracking daily changes)
 CSV_COLUMNS = [
@@ -171,6 +172,41 @@ def save_payload(payload: dict) -> None:
         json.dump(payload, f, indent=2)
 
 
+def append_to_dump(payload: dict) -> None:
+    """
+    Append raw fetch data to dump file (audit log).
+    No business logic - just timestamp and raw values for analysis.
+    """
+    dump_columns = [
+        "fetch_timestamp",
+        "last_updated",
+        "IndvRegUsers",
+        "TotalAadharLinkedPAN",
+        "eVerifiedReturns",
+        "TotalProcessedRefund",
+    ]
+    
+    # Check if file exists to determine if we need header
+    write_header = not DUMP_PATH.exists()
+    
+    row = {
+        "fetch_timestamp": datetime.now(IST).strftime("%Y-%m-%d %H:%M:%S"),
+        "last_updated": payload.get("LastUpdated", ""),
+        "IndvRegUsers": safe_int(payload.get("IndvRegUsers")),
+        "TotalAadharLinkedPAN": safe_int(payload.get("TotalAadharLinkedPAN")),
+        "eVerifiedReturns": safe_int(payload.get("eVerifiedReturns")),
+        "TotalProcessedRefund": safe_int(payload.get("TotalProcessedRefund")),
+    }
+    
+    with open(DUMP_PATH, "a", newline="", encoding="utf-8") as f:
+        writer = csv.DictWriter(f, fieldnames=dump_columns)
+        if write_header:
+            writer.writeheader()
+        writer.writerow(row)
+    
+    print(f"Appended to raw dump: {DUMP_PATH}")
+
+
 def main() -> None:
     """Main entry point."""
     # Setup
@@ -185,6 +221,9 @@ def main() -> None:
     # Save raw payload for debugging
     save_payload(payload)
     print(f"Saved raw payload to: {PAYLOAD_PATH}")
+
+    # Append to raw dump (audit log - no business logic)
+    append_to_dump(payload)
 
     # Validate response
     missing_keys = [k for k in METRIC_KEYS if k not in payload]
