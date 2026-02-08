@@ -1247,8 +1247,6 @@
 
         // Direct share for mobile
         async function directShare() {
-            showToast('Generating...');
-
             try {
                 const blob = await generateShareImage();
                 const file = new File([blob], getFilename(), { type: 'image/jpeg' });
