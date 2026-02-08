@@ -726,11 +726,11 @@
                     <span class="share-preview-loading">Generating...</span>
                 </div>
                 <div class="share-actions">
-                    <button class="share-action-btn primary" id="share-btn" onclick="shareOrCopy()" disabled>
-                        Share
-                    </button>
-                    <button class="share-action-btn secondary" id="download-btn" onclick="downloadImage()" disabled>
+                    <button class="share-action-btn primary" id="download-btn" onclick="downloadImage()" disabled>
                         Download
+                    </button>
+                    <button class="share-action-btn secondary" id="copy-btn" onclick="copyToClipboard()" disabled>
+                        Copy
                     </button>
                 </div>
             </div>
@@ -1179,11 +1179,11 @@
         async function captureShareCard() {
             const preview = document.getElementById('share-preview');
             const downloadBtn = document.getElementById('download-btn');
-            const shareBtn = document.getElementById('share-btn');
+            const copyBtn = document.getElementById('copy-btn');
 
             preview.innerHTML = '<span class="share-preview-loading">Generating...</span>';
             downloadBtn.disabled = true;
-            shareBtn.disabled = true;
+            copyBtn.disabled = true;
 
             // Clean up previous capture
             if (capturedImageUrl) {
@@ -1232,7 +1232,7 @@
 
                 preview.innerHTML = `<img src="${capturedImageUrl}" alt="Share card preview">`;
                 downloadBtn.disabled = false;
-                shareBtn.disabled = false;
+                copyBtn.disabled = false;
 
             } catch (error) {
                 console.error('Capture failed:', error);
@@ -1254,7 +1254,6 @@
                 // Desktop: show modal with Copy/Download options
                 document.getElementById('share-modal-overlay').classList.add('active');
                 document.body.style.overflow = 'hidden';
-                updateShareButtonLabel();
                 captureShareCard();
             }
         }
@@ -1356,53 +1355,28 @@
             }
         }
 
-        // Update share button label based on platform
-        function updateShareButtonLabel() {
-            const btn = document.getElementById('share-btn');
-            if (btn) {
-                btn.textContent = canNativeShare() ? 'Share' : 'Copy';
-            }
-        }
-
-        // Share (mobile) or Copy (desktop)
-        async function shareOrCopy() {
+        // Copy image to clipboard (desktop only, needs PNG)
+        async function copyToClipboard() {
             if (!capturedImageBlob) return;
 
-            if (canNativeShare()) {
-                // Mobile: use native share
-                const file = new File([capturedImageBlob], getFilename(), { type: 'image/jpeg' });
-                try {
-                    await navigator.share({
-                        files: [file],
-                        title: 'ITR Portal Stats',
-                    });
-                    showToast('Shared successfully!');
-                } catch (error) {
-                    if (error.name !== 'AbortError') {
-                        console.error('Share failed:', error);
-                        showToast('Share failed. Try downloading instead.');
-                    }
-                }
-            } else {
-                // Desktop: copy to clipboard (need PNG for clipboard API)
-                try {
-                    const canvas = document.createElement('canvas');
-                    const img = new Image();
-                    img.src = capturedImageUrl;
-                    await new Promise(resolve => { img.onload = resolve; });
-                    canvas.width = img.width;
-                    canvas.height = img.height;
-                    canvas.getContext('2d').drawImage(img, 0, 0);
-                    
-                    const pngBlob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
-                    await navigator.clipboard.write([
-                        new ClipboardItem({ 'image/png': pngBlob })
-                    ]);
-                    showToast('Copied to clipboard!');
-                } catch (error) {
-                    console.error('Copy failed:', error);
-                    showToast('Copy failed. Try downloading instead.');
-                }
+            try {
+                // Convert JPEG to PNG for clipboard API
+                const canvas = document.createElement('canvas');
+                const img = new Image();
+                img.src = capturedImageUrl;
+                await new Promise(resolve => { img.onload = resolve; });
+                canvas.width = img.width;
+                canvas.height = img.height;
+                canvas.getContext('2d').drawImage(img, 0, 0);
+                
+                const pngBlob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
+                await navigator.clipboard.write([
+                    new ClipboardItem({ 'image/png': pngBlob })
+                ]);
+                showToast('Copied to clipboard!');
+            } catch (error) {
+                console.error('Copy failed:', error);
+                showToast('Copy failed. Try downloading instead.');
             }
         }
 
