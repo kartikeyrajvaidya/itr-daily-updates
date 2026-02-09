@@ -33,6 +33,10 @@
 
     <link rel="icon" type="image/png" href="./favicon.png">
 
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2843260079810330"
+        crossorigin="anonymous"></script>
+
     <!-- Structured Data (JSON-LD) -->
     <script type="application/ld+json">
     {
@@ -1187,17 +1191,13 @@
             // Position card for capture (invisible to user)
             shareCard.style.cssText = 'left:0;top:0;position:fixed;opacity:0;pointer-events:none;';
 
-            // Use smaller scale on mobile to reduce memory usage
-            const isMobile = window.innerWidth < 768;
-            const scale = isMobile ? 1.5 : 2;
-
-            await new Promise(resolve => setTimeout(resolve, isMobile ? 150 : 50));
+            await new Promise(resolve => setTimeout(resolve, 50));
 
             try {
                 const canvas = await html2canvas(shareCard, {
                     width: 540,
                     height: 540,
-                    scale: scale,
+                    scale: 2,
                     useCORS: true,
                     logging: false,
                     backgroundColor: null,
@@ -1245,43 +1245,15 @@
         }
 
         // Handle share button click
-        async function openShareModal() {
+        function openShareModal() {
             if (allRows.length === 0) {
                 showToast('Data not loaded yet');
                 return;
             }
 
-            if (canNativeShare()) {
-                await directShare();
-            } else {
-                document.getElementById('share-modal-overlay').classList.add('active');
-                document.body.style.overflow = 'hidden';
-                captureShareCard();
-            }
-        }
-
-        // Direct share for mobile
-        async function directShare() {
-            try {
-                const blob = await generateShareImage();
-                const file = new File([blob], getFilename(), { type: 'image/jpeg' });
-                
-                if (!navigator.canShare || !navigator.canShare({ files: [file] })) {
-                    throw new Error('File sharing not supported');
-                }
-                
-                await navigator.share({ files: [file], title: 'ITR Portal Stats' });
-                showToast('Shared successfully!');
-            } catch (error) {
-                if (error.name === 'AbortError') return; // User cancelled
-                
-                console.error('Share failed:', error.name, error.message);
-                
-                // Fallback to modal if native share fails
-                document.getElementById('share-modal-overlay').classList.add('active');
-                document.body.style.overflow = 'hidden';
-                captureShareCard();
-            }
+            document.getElementById('share-modal-overlay').classList.add('active');
+            document.body.style.overflow = 'hidden';
+            captureShareCard();
         }
 
         // Close share modal
@@ -1313,24 +1285,6 @@
             document.body.removeChild(link);
             
             showToast('Image downloaded!');
-        }
-
-        // Check if we should use native share (mobile devices only)
-        function canNativeShare() {
-            // Must be a mobile/tablet device
-            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) 
-                || (navigator.maxTouchPoints > 0 && window.innerWidth < 1024);
-            
-            if (!isMobile) return false;
-            
-            // Must support file sharing
-            if (!navigator.canShare) return false;
-            try {
-                const testFile = new File(['test'], 'test.jpg', { type: 'image/jpeg' });
-                return navigator.canShare({ files: [testFile] });
-            } catch {
-                return false;
-            }
         }
 
         // Copy image to clipboard (desktop only, needs PNG)
