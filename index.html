@@ -333,33 +333,6 @@
             height: 300px;
         }
 
-        .range-selector {
-            display: flex;
-            gap: 0.5rem;
-        }
-
-        .range-btn {
-            background: var(--bg-accent);
-            border: none;
-            border-radius: 8px;
-            padding: 0.5rem 0.75rem;
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: var(--text-muted);
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .range-btn:hover {
-            background: var(--border-color);
-            color: var(--text-primary);
-        }
-
-        .range-btn.active {
-            background: var(--accent-blue);
-            color: #ffffff;
-        }
-
         /* Disclaimer */
         .disclaimer {
             background: var(--disclaimer-bg);
@@ -688,17 +661,12 @@
             justify-content: space-between;
             font-size: 20px;
             color: var(--text-primary);
-            padding: 8px 0;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border-color);
         }
 
-        .share-card-stat-left {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .share-card-stat-icon {
-            font-size: 24px;
+        .share-card-stat:last-child {
+            border-bottom: none;
         }
 
         .share-card-stat-label {
@@ -757,12 +725,6 @@
         <section class="chart-section">
             <div class="chart-header">
                 <h2 class="chart-title">Daily Growth Trend</h2>
-                <div class="range-selector">
-                    <button class="range-btn" data-range="7">7D</button>
-                    <button class="range-btn active" data-range="30">30D</button>
-                    <button class="range-btn" data-range="90">90D</button>
-                    <button class="range-btn" data-range="all">All</button>
-                </div>
             </div>
             <div class="chart-container">
                 <canvas id="trendChart"></canvas>
@@ -849,7 +811,7 @@
 
         let trendChart = null;
         let allRows = [];
-        let currentRange = 30;
+        let currentRange = 'all';
 
         // Theme functions
         function getThemePreference() {
@@ -1112,23 +1074,6 @@
             renderChart(rows, currentRange);
         }
 
-        // Setup range buttons
-        function setupRangeButtons() {
-            document.querySelectorAll('.range-btn').forEach(btn => {
-                btn.addEventListener('click', () => {
-                    // Update active state
-                    document.querySelectorAll('.range-btn').forEach(b => b.classList.remove('active'));
-                    btn.classList.add('active');
-
-                    // Update range and re-render chart
-                    const range = btn.dataset.range;
-                    currentRange = range === 'all' ? 'all' : parseInt(range, 10);
-                    if (allRows.length > 0) {
-                        renderChart(allRows, currentRange);
-                    }
-                });
-            });
-        }
 
         // Load data
         async function loadData() {
@@ -1208,38 +1153,23 @@
             document.getElementById('share-card-date').textContent = formatDateForShare(data.last_updated);
             document.getElementById('share-card-stats').innerHTML = `
                 <div class="share-card-stat">
-                    <div class="share-card-stat-left">
-                        <span class="share-card-stat-icon">👤</span>
-                        <span class="share-card-stat-label">New Users Added</span>
-                    </div>
+                    <span class="share-card-stat-label">New Users Added</span>
                     <span class="share-card-stat-value positive">+${formatNumber(safeInt(data.delta_IndvRegUsers))}</span>
                 </div>
                 <div class="share-card-stat">
-                    <div class="share-card-stat-left">
-                        <span class="share-card-stat-icon">✓</span>
-                        <span class="share-card-stat-label">Returns Verified</span>
-                    </div>
+                    <span class="share-card-stat-label">Returns Verified</span>
                     <span class="share-card-stat-value positive">+${formatNumber(safeInt(data.delta_eVerifiedReturns))}</span>
                 </div>
                 <div class="share-card-stat">
-                    <div class="share-card-stat-left">
-                        <span class="share-card-stat-icon">✅</span>
-                        <span class="share-card-stat-label">Returns Processed</span>
-                    </div>
+                    <span class="share-card-stat-label">Returns Processed</span>
                     <span class="share-card-stat-value positive">+${formatNumber(safeInt(data.delta_TotalProcessedRefund))}</span>
                 </div>
                 <div class="share-card-stat">
-                    <div class="share-card-stat-left">
-                        <span class="share-card-stat-icon">⏳</span>
-                        <span class="share-card-stat-label">Pending Returns</span>
-                    </div>
+                    <span class="share-card-stat-label">Pending Returns</span>
                     <span class="share-card-stat-value">${formatCrores(pending)}</span>
                 </div>
                 <div class="share-card-stat">
-                    <div class="share-card-stat-left">
-                        <span class="share-card-stat-icon">${isBacklogReduced ? '📉' : '📈'}</span>
-                        <span class="share-card-stat-label">${isBacklogReduced ? 'Backlog Reduced By' : 'Backlog Grew By'}</span>
-                    </div>
+                    <span class="share-card-stat-label">${isBacklogReduced ? 'Backlog Reduced By' : 'Backlog Grew By'}</span>
                     <span class="share-card-stat-value ${isBacklogReduced ? 'positive' : 'negative'}">${formatNumber(Math.abs(pendingDelta))}</span>
                 </div>
             `;
@@ -1431,7 +1361,6 @@
 
         // Initialize
         setTheme(getThemePreference());
-        setupRangeButtons();
         loadData();
     </script>
 
