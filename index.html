@@ -1335,10 +1335,14 @@
                 await navigator.share({ files: [file], title: 'ITR Portal Stats' });
                 showToast('Shared successfully!');
             } catch (error) {
-                if (error.name !== 'AbortError') {
-                    console.error('Share failed:', error);
-                    showToast(error.message === 'No data available' ? 'No data available' : 'Share failed. Try again.');
-                }
+                if (error.name === 'AbortError') return; // User cancelled
+                
+                console.error('Share failed:', error);
+                
+                // Fallback to modal if native share fails
+                document.getElementById('share-modal-overlay').classList.add('active');
+                document.body.style.overflow = 'hidden';
+                captureShareCard();
             }
         }
 
