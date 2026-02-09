@@ -2,8 +2,8 @@ name: Daily ITR Snapshot
 
 on:
   schedule:
-    # 03:30 UTC ≈ 09:00 IST (morning run)
-    - cron: "30 3 * * *"
+    # 02:30 UTC ≈ 08:00 IST (morning run)
+    - cron: "30 2 * * *"
     # 12:30 UTC ≈ 18:00 IST (evening run - catch late updates)
     - cron: "30 12 * * *"
   workflow_dispatch:
