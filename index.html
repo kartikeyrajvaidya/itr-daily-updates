@@ -1187,13 +1187,17 @@
             // Position card for capture (invisible to user)
             shareCard.style.cssText = 'left:0;top:0;position:fixed;opacity:0;pointer-events:none;';
 
-            await new Promise(resolve => setTimeout(resolve, 50));
+            // Use smaller scale on mobile to reduce memory usage
+            const isMobile = window.innerWidth < 768;
+            const scale = isMobile ? 1.5 : 2;
+
+            await new Promise(resolve => setTimeout(resolve, isMobile ? 150 : 50));
 
             try {
                 const canvas = await html2canvas(shareCard, {
                     width: 540,
                     height: 540,
-                    scale: 2,
+                    scale: scale,
                     useCORS: true,
                     logging: false,
                     backgroundColor: null,
@@ -1262,12 +1266,16 @@
                 const blob = await generateShareImage();
                 const file = new File([blob], getFilename(), { type: 'image/jpeg' });
                 
+                if (!navigator.canShare || !navigator.canShare({ files: [file] })) {
+                    throw new Error('File sharing not supported');
+                }
+                
                 await navigator.share({ files: [file], title: 'ITR Portal Stats' });
                 showToast('Shared successfully!');
             } catch (error) {
                 if (error.name === 'AbortError') return; // User cancelled
                 
-                console.error('Share failed:', error);
+                console.error('Share failed:', error.name, error.message);
                 
                 // Fallback to modal if native share fails
                 document.getElementById('share-modal-overlay').classList.add('active');
