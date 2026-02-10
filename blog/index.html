@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Meta Tags -->
+    <title>ITR Stats Blog - Income Tax Insights & Updates</title>
+    <meta name="description" content="Stay informed with the latest insights on ITR processing, refund timelines, and income tax statistics in India. Data-driven analysis from the official IT portal.">
+    <meta name="keywords" content="ITR blog, income tax blog, ITR refund updates, tax insights India">
+    <meta name="author" content="ITR Stats">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://itrstats.in/blog/">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://itrstats.in/blog/">
+    <meta property="og:title" content="ITR Stats Blog - Income Tax Insights & Updates">
+    <meta property="og:description" content="Stay informed with the latest insights on ITR processing, refund timelines, and income tax statistics.">
+    <meta property="og:image" content="https://itrstats.in/og-image.png">
+    <meta property="og:site_name" content="ITR Stats">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="ITR Stats Blog - Income Tax Insights & Updates">
+    <meta name="twitter:description" content="Stay informed with the latest insights on ITR processing and refund timelines.">
+    <meta name="twitter:image" content="https://itrstats.in/og-image.png">
+
+    <link rel="icon" type="image/png" href="../favicon.png">
+
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2843260079810330"
+        crossorigin="anonymous"></script>
+
+    <style>
+        :root {
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --bg-accent: #334155;
+            --text-primary: #f1f5f9;
+            --text-secondary: #cbd5e1;
+            --text-muted: #94a3b8;
+            --accent-blue: #60a5fa;
+            --border-color: #334155;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            line-height: 1.7;
+        }
+
+        .header {
+            background: var(--bg-secondary);
+            padding: 1rem 2rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .header-content {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--accent-blue);
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .page-description {
+            color: var(--text-muted);
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+        }
+
+        .blog-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .blog-card {
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            padding: 1.75rem;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .blog-card h2 {
+            font-size: 1.35rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .blog-card h2 a {
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+
+        .blog-card h2 a:hover {
+            color: var(--accent-blue);
+        }
+
+        .blog-card .meta {
+            display: flex;
+            gap: 1rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+        }
+
+        .blog-card .excerpt {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .read-more {
+            display: inline-block;
+            margin-top: 1rem;
+            color: var(--accent-blue);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .read-more:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--border-color);
+            margin-top: 3rem;
+        }
+
+        footer a {
+            color: var(--accent-blue);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .container {
+                padding: 2rem 1rem;
+            }
+
+            .blog-card {
+                padding: 1.25rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <a href="../" class="logo">ITR Stats</a>
+            <nav class="nav-links">
+                <a href="../">Dashboard</a>
+                <a href="./" class="active">Blog</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <h1>Blog</h1>
+        <p class="page-description">Insights and analysis on ITR processing, refund timelines, and income tax statistics in India.</p>
+
+        <div class="blog-list">
+            <article class="blog-card">
+                <h2><a href="./itr-refund-time.html">When Will You Get Your ITR Refund? What Data Tells Us</a></h2>
+                <div class="meta">
+                    <span>February 10, 2026</span>
+                    <span>5 min read</span>
+                </div>
+                <p class="excerpt">Wondering when your ITR refund will arrive? We analyzed real-time data from the Income Tax portal to give you a clear picture of current processing times, the factors that affect your refund timeline, and what to expect.</p>
+                <a href="./itr-refund-time.html" class="read-more">Read more →</a>
+            </article>
+
+            <!-- Future blog posts will be added here -->
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2026 ITR Stats | <a href="../privacy-policy.html">Privacy Policy</a></p>
+        <p>Data source: <a href="https://eportal.incometax.gov.in" target="_blank" rel="noopener">eportal.incometax.gov.in</a></p>
+    </footer>
+
+    <!-- GoatCounter Analytics -->
+    <script data-goatcounter="https://itrstats.goatcounter.com/count"
+            async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
