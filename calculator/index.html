@@ -5,28 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- SEO Meta Tags -->
-    <title>ITR Stats Blog - Income Tax Insights & Updates</title>
-    <meta name="description" content="Stay informed with the latest insights on ITR processing, refund timelines, and income tax statistics in India. Data-driven analysis from the official IT portal.">
-    <meta name="keywords" content="ITR blog, income tax blog, ITR refund updates, tax insights India">
+    <title>Free Tax & Finance Calculators | ITR Stats</title>
+    <meta name="description" content="Free online calculators for income tax, HRA exemption, and gratuity. Compare old vs new tax regime, calculate HRA tax benefit, and estimate gratuity.">
+    <meta name="keywords" content="tax calculator, income tax calculator, HRA calculator, gratuity calculator, HRA exemption calculator, financial calculators India">
     <meta name="author" content="ITR Stats">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://itrstats.in/blog/">
+    <link rel="canonical" href="https://itrstats.in/calculator/">
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://itrstats.in/blog/">
-    <meta property="og:title" content="ITR Stats Blog - Income Tax Insights & Updates">
-    <meta property="og:description" content="Stay informed with the latest insights on ITR processing, refund timelines, and income tax statistics.">
+    <meta property="og:url" content="https://itrstats.in/calculator/">
+    <meta property="og:title" content="Free Tax & Finance Calculators | ITR Stats">
+    <meta property="og:description" content="Free online calculators for income tax, HRA exemption, and gratuity.">
     <meta property="og:image" content="https://itrstats.in/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
     <meta property="og:site_name" content="ITR Stats">
+    <meta property="og:locale" content="en_IN">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="ITR Stats Blog - Income Tax Insights & Updates">
-    <meta name="twitter:description" content="Stay informed with the latest insights on ITR processing and refund timelines.">
+    <meta name="twitter:title" content="Free Tax & Finance Calculators | ITR Stats">
+    <meta name="twitter:description" content="Free online calculators for income tax, HRA exemption, and gratuity.">
     <meta name="twitter:image" content="https://itrstats.in/og-image.png">
 
-    <link rel="icon" type="image/png" href="../favicon.png">
+    <link rel="icon" type="image/png" href="/favicon.png">
 
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2843260079810330"
@@ -42,6 +45,7 @@
             --text-secondary: #4a5568;
             --text-muted: #718096;
             --accent-blue: #3b82f6;
+            --accent-green: #22c55e;
             --border-color: #e2e8f0;
         }
 
@@ -54,6 +58,7 @@
             --text-secondary: #cbd5e1;
             --text-muted: #94a3b8;
             --accent-blue: #60a5fa;
+            --accent-green: #4ade80;
             --border-color: #334155;
         }
 
@@ -69,12 +74,16 @@
             color: var(--text-primary);
             min-height: 100vh;
             padding: 1rem;
-            line-height: 1.7;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
         }
 
         .container {
             max-width: 1000px;
             margin: 0 auto;
+            flex: 1;
+            width: 100%;
         }
 
         .header {
@@ -92,7 +101,6 @@
             font-size: 1.5rem;
             font-weight: 700;
             color: var(--text-primary);
-            margin: 0;
         }
 
         .header-left p {
@@ -144,77 +152,72 @@
             transform: scale(1.1);
         }
 
-        .content {
-            padding: 0;
-        }
-
         .description-bar {
             background: var(--bg-accent);
+            padding: 1rem 1.5rem;
             border-radius: 12px;
-            padding: 0.875rem 1.25rem;
-            text-align: center;
-            margin-bottom: 1rem;
-            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
             color: var(--text-secondary);
+            font-size: 0.95rem;
         }
 
-        .blog-list {
-            display: flex;
-            flex-direction: column;
+        .calculators-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 1.5rem;
         }
 
-        .blog-card {
+        .calculator-card {
             background: var(--bg-secondary);
-            border-radius: 12px;
-            padding: 1.75rem;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        .blog-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-        }
-
-        .blog-card h2 {
-            font-size: 1.35rem;
-            margin-bottom: 0.75rem;
-        }
-
-        .blog-card h2 a {
-            color: var(--text-primary);
+            border-radius: 16px;
+            padding: 1.5rem;
             text-decoration: none;
+            color: inherit;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            display: block;
         }
 
-        .blog-card h2 a:hover {
-            color: var(--accent-blue);
+        .calculator-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
         }
 
-        .blog-card .meta {
-            display: flex;
-            gap: 1rem;
-            color: var(--text-muted);
-            font-size: 0.85rem;
+        .calculator-card .icon {
+            font-size: 2.5rem;
             margin-bottom: 1rem;
         }
 
-        .blog-card .excerpt {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            line-height: 1.6;
+        .calculator-card h2 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
         }
 
-        .read-more {
-            display: inline-block;
-            margin-top: 1rem;
-            color: var(--accent-blue);
-            text-decoration: none;
-            font-weight: 500;
+        .calculator-card p {
             font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.5;
         }
 
-        .read-more:hover {
-            text-decoration: underline;
+        .calculator-card .tag {
+            display: inline-block;
+            background: var(--accent-blue);
+            color: white;
+            font-size: 0.7rem;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            margin-top: 1rem;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .coming-soon {
+            opacity: 0.6;
+            pointer-events: none;
+        }
+
+        .coming-soon .tag {
+            background: var(--text-muted);
         }
 
         footer {
@@ -222,8 +225,9 @@
             padding: 2rem;
             color: var(--text-muted);
             font-size: 0.85rem;
+            margin-top: auto;
             border-top: 1px solid var(--border-color);
-            margin-top: 3rem;
+            width: 100%;
         }
 
         footer a {
@@ -245,14 +249,6 @@
                 gap: 1rem;
                 text-align: center;
             }
-
-            h1 {
-                font-size: 1.5rem;
-            }
-
-            .blog-card {
-                padding: 1.25rem;
-            }
         }
     </style>
 </head>
@@ -260,13 +256,13 @@
     <div class="container">
         <header class="header">
             <div class="header-left">
-                <h1>Blog</h1>
-                <p>Insights & Analysis</p>
+                <h1>Calculators</h1>
+                <p>Free Financial Tools</p>
             </div>
             <div class="header-right">
-                <a href="../" class="header-link">Dashboard</a>
-                <a href="./" class="header-link active">Blog</a>
-                <a href="/calculator/" class="header-link">Calculator</a>
+                <a href="/" class="header-link">Dashboard</a>
+                <a href="/blog/" class="header-link">Blog</a>
+                <a href="/calculator/" class="header-link active">Calculator</a>
                 <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">
                     <span id="theme-icon"></span>
                 </button>
@@ -274,33 +270,30 @@
         </header>
 
         <div class="description-bar">
-            Insights and analysis on ITR processing, refund timelines, and income tax statistics in India.
+            Free online calculators to help you with tax planning and financial decisions.
         </div>
 
-        <main class="content">
+        <main class="calculators-grid">
+            <a href="/calculator/income-tax/" class="calculator-card">
+                <div class="icon">🧮</div>
+                <h2>Income Tax Calculator</h2>
+                <p>Compare old vs new tax regime for FY 2025-26. Calculate tax with 80C, 80D, HRA, NPS deductions.</p>
+                <span class="tag">FY 2025-26</span>
+            </a>
 
-        <div class="blog-list">
-            <article class="blog-card">
-                <h2><a href="./weekly-update.html">ITR Processing Weekly Update</a></h2>
-                <div class="meta">
-                    <span>Updated: February 10, 2026</span>
-                    <span>4 min read</span>
-                    <span style="color: #4ade80;">Weekly Update</span>
-                </div>
-                <p class="excerpt">Latest weekly stats: IT Department went beast mode - processing jumped from 25K/day to 2.3 lakh/day. 4.28 lakh returns cleared in just 2 days. Full breakdown with numbers.</p>
-                <a href="./weekly-update.html" class="read-more">Read more →</a>
-            </article>
+            <div class="calculator-card coming-soon">
+                <div class="icon">🏠</div>
+                <h2>HRA Calculator</h2>
+                <p>Calculate your HRA exemption based on rent paid, salary, and city of residence.</p>
+                <span class="tag">Coming Soon</span>
+            </div>
 
-            <article class="blog-card">
-                <h2><a href="./itr-refund-time.html">When Will You Get Your ITR Refund? What Data Tells Us</a></h2>
-                <div class="meta">
-                    <span>February 10, 2026</span>
-                    <span>5 min read</span>
-                </div>
-                <p class="excerpt">Wondering when your ITR refund will arrive? We analyzed real-time data from the Income Tax portal to give you a clear picture of current processing times, the factors that affect your refund timeline, and what to expect.</p>
-                <a href="./itr-refund-time.html" class="read-more">Read more →</a>
-            </article>
-        </div>
+            <div class="calculator-card coming-soon">
+                <div class="icon">💼</div>
+                <h2>Gratuity Calculator</h2>
+                <p>Calculate gratuity amount based on years of service and last drawn salary.</p>
+                <span class="tag">Coming Soon</span>
+            </div>
         </main>
     </div>
 
@@ -308,6 +301,10 @@
         <p>© 2026 ITR Stats | <a href="/privacy-policy.html">Privacy Policy</a></p>
         <p>Data source: <a href="https://eportal.incometax.gov.in" target="_blank" rel="noopener">eportal.incometax.gov.in</a></p>
     </footer>
+
+    <!-- GoatCounter Analytics -->
+    <script data-goatcounter="https://itrstats.goatcounter.com/count"
+            async src="//gc.zgo.at/count.js"></script>
 
     <script>
         function getThemePreference() {
@@ -329,9 +326,5 @@
 
         setTheme(getThemePreference());
     </script>
-
-    <!-- GoatCounter Analytics -->
-    <script data-goatcounter="https://itrstats.goatcounter.com/count"
-            async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>

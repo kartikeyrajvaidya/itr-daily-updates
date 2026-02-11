@@ -18,7 +18,10 @@
     <meta property="og:title" content="ITR Processing Weekly Update: Latest Stats">
     <meta property="og:description" content="Latest weekly update on ITR processing with real numbers from the Income Tax portal.">
     <meta property="og:image" content="https://itrstats.in/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
     <meta property="og:site_name" content="ITR Stats">
+    <meta property="og:locale" content="en_IN">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
@@ -89,7 +92,23 @@
     </script>
 
     <style>
+        /* Light mode (default) */
         :root {
+            --bg-primary: #f8fafc;
+            --bg-secondary: #ffffff;
+            --bg-accent: #f1f5f9;
+            --text-primary: #1e293b;
+            --text-secondary: #4a5568;
+            --text-muted: #718096;
+            --accent-blue: #3b82f6;
+            --accent-green: #22c55e;
+            --accent-red: #ef4444;
+            --accent-yellow: #f59e0b;
+            --border-color: #e2e8f0;
+        }
+
+        /* Dark mode */
+        [data-theme="dark"] {
             --bg-primary: #0f172a;
             --bg-secondary: #1e293b;
             --bg-accent: #334155;
@@ -114,64 +133,110 @@
             background: var(--bg-primary);
             color: var(--text-primary);
             min-height: 100vh;
+            padding: 1rem;
             line-height: 1.8;
         }
 
-        .header {
-            background: var(--bg-secondary);
-            padding: 1rem 2rem;
-            border-bottom: 1px solid var(--border-color);
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 1rem;
         }
 
-        .header-content {
-            max-width: 800px;
-            margin: 0 auto;
+        .header {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 1rem 1.5rem;
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
-        .logo {
-            font-size: 1.25rem;
+        .header-left h1 {
+            font-size: 1.5rem;
             font-weight: 700;
             color: var(--text-primary);
-            text-decoration: none;
+            margin: 0;
         }
 
-        .nav-links {
+        .header-left p {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            margin-top: 0.25rem;
+        }
+
+        .header-right {
             display: flex;
-            gap: 1.5rem;
+            align-items: center;
+            gap: 1rem;
         }
 
-        .nav-links a {
+        .header-link {
             color: var(--text-muted);
             text-decoration: none;
             font-size: 0.9rem;
+            font-weight: 500;
+            padding: 0.5rem 0.75rem;
+            border-radius: 8px;
+            transition: color 0.2s ease, background 0.2s ease;
         }
 
-        .nav-links a:hover {
+        .header-link:hover {
+            color: var(--accent-blue);
+            background: var(--bg-accent);
+        }
+
+        .header-link.active {
             color: var(--accent-blue);
         }
 
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 3rem 1.5rem;
+        .theme-toggle {
+            background: var(--bg-accent);
+            border: none;
+            border-radius: 12px;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s ease;
         }
 
-        .breadcrumb {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin-bottom: 2rem;
+        .theme-toggle:hover {
+            transform: scale(1.1);
         }
 
-        .breadcrumb a {
+        .content {
+            padding: 0;
+        }
+
+        .breadcrumb-bar {
+            background: var(--bg-accent);
+            border-radius: 12px;
+            padding: 0.875rem 1.25rem;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .breadcrumb-bar a {
             color: var(--accent-blue);
             text-decoration: none;
         }
 
-        .breadcrumb a:hover {
+        .breadcrumb-bar a:hover {
             text-decoration: underline;
+        }
+
+        article {
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
         .tag {
@@ -415,18 +480,19 @@
             color: var(--accent-blue);
         }
 
-        @media (max-width: 600px) {
-            h1 {
-                font-size: 1.75rem;
+        @media (max-width: 768px) {
+            body {
+                padding: 0.75rem;
             }
 
-            .header-content {
+            .header {
                 flex-direction: column;
                 gap: 1rem;
+                text-align: center;
             }
 
-            .container {
-                padding: 2rem 1rem;
+            h1 {
+                font-size: 1.75rem;
             }
 
             .stats-grid {
@@ -445,20 +511,27 @@
     </style>
 </head>
 <body>
-    <header class="header">
-        <div class="header-content">
-            <a href="../" class="logo">ITR Stats</a>
-            <nav class="nav-links">
-                <a href="../">Dashboard</a>
-                <a href="./">Blog</a>
-            </nav>
-        </div>
-    </header>
+    <div class="container">
+        <header class="header">
+            <div class="header-left">
+                <h1>ITR Stats</h1>
+                <p>Blog Article</p>
+            </div>
+            <div class="header-right">
+                <a href="../" class="header-link">Dashboard</a>
+                <a href="./" class="header-link active">Blog</a>
+                <a href="/calculator/" class="header-link">Calculator</a>
+                <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">
+                    <span id="theme-icon"></span>
+                </button>
+            </div>
+        </header>
 
-    <main class="container">
-        <div class="breadcrumb">
+        <div class="breadcrumb-bar">
             <a href="../">Home</a> → <a href="./">Blog</a> → Weekly Update
         </div>
+
+        <main class="content">
 
         <article>
             <span class="tag">Weekly Update</span>
@@ -643,12 +716,34 @@
             </div>
 
         </article>
-    </main>
+        </main>
+    </div>
 
     <footer>
-        <p>© 2026 ITR Stats | <a href="../privacy-policy.html">Privacy Policy</a></p>
+        <p>© 2026 ITR Stats | <a href="/privacy-policy.html">Privacy Policy</a></p>
         <p>Data source: <a href="https://eportal.incometax.gov.in" target="_blank" rel="noopener">eportal.incometax.gov.in</a></p>
     </footer>
+
+    <script>
+        function getThemePreference() {
+            const saved = localStorage.getItem('theme');
+            if (saved) return saved;
+            return 'dark';
+        }
+
+        function setTheme(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+            document.getElementById('theme-icon').textContent = theme === 'dark' ? '☀️' : '🌙';
+        }
+
+        function toggleTheme() {
+            const current = document.documentElement.getAttribute('data-theme');
+            setTheme(current === 'dark' ? 'light' : 'dark');
+        }
+
+        setTheme(getThemePreference());
+    </script>
 
     <!-- GoatCounter Analytics -->
     <script data-goatcounter="https://itrstats.goatcounter.com/count"

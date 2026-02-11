@@ -133,9 +133,6 @@
             font-size: 1.5rem;
             font-weight: 700;
             color: var(--text-primary);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
         }
 
         .header-left p {
@@ -163,6 +160,10 @@
         .header-link:hover {
             color: var(--accent-blue);
             background: var(--bg-accent);
+        }
+
+        .header-link.active {
+            color: var(--accent-blue);
         }
 
         .theme-toggle {
@@ -373,9 +374,11 @@
         /* Footer */
         footer {
             text-align: center;
-            padding: 1rem;
-            font-size: 0.8rem;
+            padding: 2rem;
+            font-size: 0.85rem;
             color: var(--text-muted);
+            border-top: 1px solid var(--border-color);
+            margin-top: 2rem;
         }
 
         footer a {
@@ -408,7 +411,6 @@
 
             .header-left h1 {
                 font-size: 1.25rem;
-                justify-content: center;
             }
 
             .cards-grid {
@@ -739,7 +741,9 @@
                 <p>Daily Statistics Dashboard</p>
             </div>
             <div class="header-right">
+                <a href="./" class="header-link active">Dashboard</a>
                 <a href="./blog/" class="header-link">Blog</a>
+                <a href="/calculator/" class="header-link">Calculator</a>
                 <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">
                     <span id="theme-icon"></span>
                 </button>
@@ -765,8 +769,8 @@
         </div>
 
         <footer>
-            <p>Data source: <a href="https://eportal.incometax.gov.in" target="_blank" rel="noopener noreferrer">eportal.incometax.gov.in</a></p>
-            <p><a href="./privacy-policy.html">Privacy Policy</a></p>
+            <p>© 2026 ITR Stats | <a href="/privacy-policy.html">Privacy Policy</a></p>
+            <p>Data source: <a href="https://eportal.incometax.gov.in" target="_blank" rel="noopener">eportal.incometax.gov.in</a></p>
         </footer>
     </div>
 
