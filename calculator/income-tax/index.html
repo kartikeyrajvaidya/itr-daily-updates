@@ -556,6 +556,102 @@
             color: var(--accent-green);
         }
 
+        .content-section {
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .content-section h2 {
+            font-size: 1.25rem;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .content-section p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+
+        .content-section ul {
+            color: var(--text-secondary);
+            margin-left: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .content-section li {
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+        }
+
+        .tax-slab-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            font-size: 0.9rem;
+        }
+
+        .tax-slab-table th,
+        .tax-slab-table td {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .tax-slab-table th {
+            background: var(--bg-accent);
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .tax-slab-table td {
+            color: var(--text-secondary);
+        }
+
+        .faq-section {
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .faq-section h2 {
+            font-size: 1.25rem;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem 0;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .faq-item:first-of-type {
+            padding-top: 0;
+        }
+
+        .faq-question {
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .faq-answer {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
         footer {
             text-align: center;
             padding: 2rem;
@@ -766,6 +862,104 @@
             </div>
         </div>
         </main>
+
+        <section class="content-section">
+            <h2>Income Tax Slabs for FY 2025-26</h2>
+            <p>India offers two tax regimes - the Old Regime with deductions and the New Regime with lower rates but fewer deductions. Here's a comparison:</p>
+
+            <h3 style="font-size: 1.1rem; margin-top: 1.5rem; margin-bottom: 0.75rem;">New Tax Regime (Default)</h3>
+            <table class="tax-slab-table">
+                <thead>
+                    <tr>
+                        <th>Income Slab</th>
+                        <th>Tax Rate</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Up to ₹4,00,000</td><td>Nil</td></tr>
+                    <tr><td>₹4,00,001 - ₹8,00,000</td><td>5%</td></tr>
+                    <tr><td>₹8,00,001 - ₹12,00,000</td><td>10%</td></tr>
+                    <tr><td>₹12,00,001 - ₹16,00,000</td><td>15%</td></tr>
+                    <tr><td>₹16,00,001 - ₹20,00,000</td><td>20%</td></tr>
+                    <tr><td>₹20,00,001 - ₹24,00,000</td><td>25%</td></tr>
+                    <tr><td>Above ₹24,00,000</td><td>30%</td></tr>
+                </tbody>
+            </table>
+            <p style="font-size: 0.85rem; color: var(--text-muted);">Standard deduction: ₹75,000 | Rebate u/s 87A: Full tax rebate if taxable income ≤ ₹12,00,000</p>
+
+            <h3 style="font-size: 1.1rem; margin-top: 1.5rem; margin-bottom: 0.75rem;">Old Tax Regime</h3>
+            <table class="tax-slab-table">
+                <thead>
+                    <tr>
+                        <th>Income Slab</th>
+                        <th>Tax Rate</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Up to ₹2,50,000</td><td>Nil</td></tr>
+                    <tr><td>₹2,50,001 - ₹5,00,000</td><td>5%</td></tr>
+                    <tr><td>₹5,00,001 - ₹10,00,000</td><td>20%</td></tr>
+                    <tr><td>Above ₹10,00,000</td><td>30%</td></tr>
+                </tbody>
+            </table>
+            <p style="font-size: 0.85rem; color: var(--text-muted);">Standard deduction: ₹50,000 | Rebate u/s 87A: Up to ₹12,500 if taxable income ≤ ₹5,00,000</p>
+        </section>
+
+        <section class="content-section">
+            <h2>Key Deductions (Old Regime Only)</h2>
+            <ul>
+                <li><strong>Section 80C (Max ₹1.5L):</strong> PPF, ELSS, LIC premium, EPF, home loan principal, tuition fees, NSC, tax-saver FDs</li>
+                <li><strong>Section 80D (Max ₹1L):</strong> Health insurance premium - ₹25K for self/family (₹50K if senior citizen) + ₹25K for parents (₹50K if senior)</li>
+                <li><strong>Section 80CCD(1B) (Max ₹50K):</strong> Additional NPS contribution beyond 80C limit</li>
+                <li><strong>Section 80CCD(2):</strong> Employer's NPS contribution (up to 10% of basic salary)</li>
+                <li><strong>Section 24 (Max ₹2L):</strong> Home loan interest for self-occupied property</li>
+                <li><strong>HRA Exemption:</strong> Based on actual HRA received, rent paid, and city of residence</li>
+            </ul>
+        </section>
+
+        <section class="content-section">
+            <h2>Surcharge and Cess</h2>
+            <p>In addition to the base tax, high-income earners pay surcharge, and everyone pays Health & Education Cess:</p>
+            <ul>
+                <li><strong>Surcharge:</strong> 10% (₹50L-1Cr), 15% (₹1-2Cr), 25% (₹2-5Cr), 37%/25% (above ₹5Cr for old/new regime)</li>
+                <li><strong>Health & Education Cess:</strong> 4% on (Tax + Surcharge)</li>
+                <li><strong>Marginal Relief:</strong> If your income just crosses a threshold, tax is capped so you don't pay more than the excess income</li>
+            </ul>
+        </section>
+
+        <section class="faq-section">
+            <h2>Frequently Asked Questions</h2>
+
+            <div class="faq-item">
+                <div class="faq-question">Which tax regime is better - Old or New?</div>
+                <div class="faq-answer">For FY 2025-26, the new regime is better for most taxpayers due to lower rates and ₹12L rebate limit. Old regime may be better only if your total deductions (80C, 80D, HRA, home loan interest) exceed ₹4-5 lakhs.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">What is the standard deduction?</div>
+                <div class="faq-answer">Standard deduction is a flat deduction from salary income. It's ₹75,000 in the new regime (FY 2025-26) and ₹50,000 in the old regime. No bills or proof required.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">What is the rebate under Section 87A?</div>
+                <div class="faq-answer">In the new regime, if your taxable income is up to ₹12,00,000, you get a full rebate and pay zero tax. In the old regime, the rebate is up to ₹12,500 if taxable income is up to ₹5,00,000.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">What is marginal relief?</div>
+                <div class="faq-answer">Marginal relief ensures that if your income slightly exceeds a threshold (like ₹12L for rebate or ₹50L for surcharge), your total tax doesn't exceed the excess income. This prevents unfair taxation at threshold crossings.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Can I switch between old and new regime?</div>
+                <div class="faq-answer">Salaried employees can switch regimes every year while filing ITR. Business owners can switch only once in their lifetime. The new regime is the default from FY 2023-24.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Is NPS contribution allowed in new regime?</div>
+                <div class="faq-answer">Yes, employer's NPS contribution under Section 80CCD(2) is allowed in both regimes. However, your own NPS contribution under 80CCD(1B) is only allowed in the old regime.</div>
+            </div>
+        </section>
     </div>
 
     <footer>
