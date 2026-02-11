@@ -425,44 +425,65 @@
 
         .timeline {
             margin: 2rem 0;
-            padding-left: 1.5rem;
-            border-left: 3px solid var(--border-color);
         }
 
         .timeline-item {
-            position: relative;
+            display: flex;
+            gap: 1rem;
             padding-bottom: 1.5rem;
-            padding-left: 1.5rem;
         }
 
         .timeline-item:last-child {
             padding-bottom: 0;
         }
 
-        .timeline-item::before {
+        .timeline-dot {
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 12px;
+        }
+
+        .timeline-dot::before {
             content: '';
-            position: absolute;
-            left: -1.65rem;
-            top: 0.25rem;
             width: 12px;
             height: 12px;
             background: var(--accent-blue);
             border-radius: 50%;
+            flex-shrink: 0;
         }
 
-        .timeline-item .date {
+        .timeline-dot::after {
+            content: '';
+            width: 2px;
+            flex-grow: 1;
+            background: var(--border-color);
+            margin-top: 0.5rem;
+        }
+
+        .timeline-item:last-child .timeline-dot::after {
+            display: none;
+        }
+
+        .timeline-content {
+            flex: 1;
+            padding-top: 0;
+        }
+
+        .timeline-content .date {
             font-weight: 600;
             color: var(--accent-blue);
             font-size: 0.9rem;
         }
 
-        .timeline-item .title {
+        .timeline-content .title {
             font-weight: 600;
             color: var(--text-primary);
             margin: 0.25rem 0;
         }
 
-        .timeline-item .desc {
+        .timeline-content .desc {
             color: var(--text-muted);
             font-size: 0.9rem;
         }
@@ -605,24 +626,36 @@
 
             <div class="timeline">
                 <div class="timeline-item">
-                    <div class="date">November 2015</div>
-                    <div class="title">SGB Scheme Launched</div>
-                    <div class="desc">Tax-free maturity for all holders. LTCG with indexation for early sale.</div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="date">November 2015</div>
+                        <div class="title">SGB Scheme Launched</div>
+                        <div class="desc">Tax-free maturity for all holders. LTCG with indexation for early sale.</div>
+                    </div>
                 </div>
                 <div class="timeline-item">
-                    <div class="date">July 23, 2024</div>
-                    <div class="title">Budget 2024: Indexation Removed</div>
-                    <div class="desc">LTCG rate changed to flat 12.5% without indexation. Maturity still tax-free for all.</div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="date">July 23, 2024</div>
+                        <div class="title">Budget 2024: Indexation Removed</div>
+                        <div class="desc">LTCG rate changed to flat 12.5% without indexation. Maturity still tax-free for all.</div>
+                    </div>
                 </div>
                 <div class="timeline-item">
-                    <div class="date">February 2024</div>
-                    <div class="title">Last SGB Issuance</div>
-                    <div class="desc">Government stops issuing new SGBs. Scheme effectively discontinued.</div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="date">February 2024</div>
+                        <div class="title">Last SGB Issuance</div>
+                        <div class="desc">Government stops issuing new SGBs. Scheme effectively discontinued.</div>
+                    </div>
                 </div>
                 <div class="timeline-item">
-                    <div class="date">April 1, 2026</div>
-                    <div class="title">Budget 2026: Exemption Restricted</div>
-                    <div class="desc">Tax-free maturity ONLY for original subscribers. Secondary market buyers now taxed.</div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="date">April 1, 2026</div>
+                        <div class="title">Budget 2026: Exemption Restricted</div>
+                        <div class="desc">Tax-free maturity ONLY for original subscribers. Secondary market buyers now taxed.</div>
+                    </div>
                 </div>
             </div>
 
