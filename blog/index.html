@@ -169,6 +169,18 @@
             border-radius: 12px;
             padding: 1.75rem;
             transition: transform 0.2s ease, box-shadow 0.2s ease;
+            position: relative;
+        }
+
+        .pinned-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
         }
 
         .blog-card:hover {
@@ -281,17 +293,7 @@
 
         <div class="blog-list">
             <article class="blog-card">
-                <h2><a href="./sgb-tax-changes/">SGB Tax Changes 2026: The End of Tax-Free Gold Investing?</a></h2>
-                <div class="meta">
-                    <span>February 11, 2026</span>
-                    <span>8 min read</span>
-                    <span style="color: #fbbf24;">Tax Guide</span>
-                </div>
-                <p class="excerpt">Budget 2026 fundamentally changed SGB taxation. Secondary market buyers lose tax exemption entirely. Original subscribers using 5-year exit now face 12.5% LTCG. Complete breakdown of old vs new rules.</p>
-                <a href="./sgb-tax-changes/" class="read-more">Read more →</a>
-            </article>
-
-            <article class="blog-card">
+                <span class="pinned-badge">📌 Pinned</span>
                 <h2><a href="./weekly-update.html">ITR Processing Weekly Update</a></h2>
                 <div class="meta">
                     <span>Updated: February 10, 2026</span>
@@ -303,6 +305,7 @@
             </article>
 
             <article class="blog-card">
+                <span class="pinned-badge">📌 Pinned</span>
                 <h2><a href="./itr-refund-time.html">When Will You Get Your ITR Refund? What Data Tells Us</a></h2>
                 <div class="meta">
                     <span>February 10, 2026</span>
@@ -310,6 +313,17 @@
                 </div>
                 <p class="excerpt">Wondering when your ITR refund will arrive? We analyzed real-time data from the Income Tax portal to give you a clear picture of current processing times, the factors that affect your refund timeline, and what to expect.</p>
                 <a href="./itr-refund-time.html" class="read-more">Read more →</a>
+            </article>
+
+            <article class="blog-card">
+                <h2><a href="./sgb-tax-changes/">SGB Tax Changes 2026: The End of Tax-Free Gold Investing?</a></h2>
+                <div class="meta">
+                    <span>February 11, 2026</span>
+                    <span>8 min read</span>
+                    <span style="color: #fbbf24;">Tax Guide</span>
+                </div>
+                <p class="excerpt">Budget 2026 fundamentally changed SGB taxation. Secondary market buyers lose tax exemption entirely. Original subscribers using 5-year exit now face 12.5% LTCG. Complete breakdown of old vs new rules.</p>
+                <a href="./sgb-tax-changes/" class="read-more">Read more →</a>
             </article>
         </div>
         </main>
