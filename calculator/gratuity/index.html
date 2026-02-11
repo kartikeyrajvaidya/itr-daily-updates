@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Meta Tags -->
+    <title>Gratuity Calculator India 2026 - Calculate Gratuity Online | ITR Stats</title>
+    <meta name="description" content="Free gratuity calculator for India. Calculate your gratuity amount instantly using the standard formula. Know eligibility, tax exemption rules, and more.">
+    <meta name="keywords" content="gratuity calculator, gratuity calculation India, gratuity formula, Payment of Gratuity Act, gratuity tax exemption">
+    <meta name="author" content="ITR Stats">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://itrstats.in/calculator/gratuity/">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://itrstats.in/calculator/gratuity/">
+    <meta property="og:title" content="Gratuity Calculator India 2026 - Calculate Gratuity Online">
+    <meta property="og:description" content="Calculate your gratuity amount instantly using the standard formula.">
+    <meta property="og:image" content="https://itrstats.in/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="ITR Stats">
+    <meta property="og:locale" content="en_IN">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Gratuity Calculator India 2026 - Calculate Gratuity Online">
+    <meta name="twitter:description" content="Calculate your gratuity amount instantly using the standard formula.">
+    <meta name="twitter:image" content="https://itrstats.in/og-image.png">
+
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2843260079810330"
+        crossorigin="anonymous"></script>
+
+    <!-- Structured Data - WebApplication -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Gratuity Calculator India 2026",
+        "description": "Free online gratuity calculator for India. Calculate your gratuity amount based on salary and years of service.",
+        "url": "https://itrstats.in/calculator/gratuity/",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "Any",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "INR"
+        },
+        "author": {
+            "@type": "Organization",
+            "name": "ITR Stats",
+            "url": "https://itrstats.in"
+        }
+    }
+    </script>
+
+    <!-- Structured Data - FAQ -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "How is gratuity calculated in India?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Gratuity is calculated using the formula: Gratuity = (Monthly Salary x 15 x Years of Service) / 26. Here, Monthly Salary means Basic + Dearness Allowance (DA), 15 represents days of wages per year, and 26 is the number of working days in a month."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What is the minimum service required for gratuity?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Under the Payment of Gratuity Act, 1972, an employee must complete a minimum of 5 years of continuous service to be eligible for gratuity. However, this condition is waived in case of death or disablement of the employee."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Is gratuity taxable in India?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "For private sector employees, gratuity is tax-free up to Rs. 20 lakh under Section 10(10) of the Income Tax Act. For government employees, the entire gratuity amount is fully exempt from tax. Any amount exceeding Rs. 20 lakh is taxable at your applicable slab rate."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What salary is used for gratuity calculation?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "For gratuity calculation, 'salary' means the last drawn Basic Salary plus Dearness Allowance (DA). It does not include HRA, special allowances, bonuses, or other components."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How are partial years counted in gratuity?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "If you have worked for 6 months or more in addition to completed years, it is rounded up to the next full year. For example, 8 years and 7 months is counted as 9 years. If it's less than 6 months, it is ignored (8 years 5 months = 8 years)."
+                }
+            }
+        ]
+    }
+    </script>
+
+    <style>
+        /* Light mode (default) */
+        :root {
+            --bg-primary: #f8fafc;
+            --bg-secondary: #ffffff;
+            --bg-accent: #f1f5f9;
+            --text-primary: #1e293b;
+            --text-secondary: #4a5568;
+            --text-muted: #718096;
+            --accent-blue: #3b82f6;
+            --accent-green: #22c55e;
+            --accent-red: #ef4444;
+            --border-color: #e2e8f0;
+        }
+
+        /* Dark mode */
+        [data-theme="dark"] {
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --bg-accent: #334155;
+            --text-primary: #f1f5f9;
+            --text-secondary: #cbd5e1;
+            --text-muted: #94a3b8;
+            --accent-blue: #60a5fa;
+            --accent-green: #4ade80;
+            --accent-red: #f87171;
+            --border-color: #334155;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            padding: 1rem;
+            line-height: 1.6;
+        }
+
+        .wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.5rem;
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-left h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin: 0;
+        }
+
+        .header-left p {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            margin-top: 0.25rem;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .header-link {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            padding: 0.5rem 0.75rem;
+            border-radius: 8px;
+            transition: color 0.2s ease, background 0.2s ease;
+        }
+
+        .header-link:hover {
+            color: var(--accent-blue);
+            background: var(--bg-accent);
+        }
+
+        .header-link.active {
+            color: var(--accent-blue);
+        }
+
+        .theme-toggle {
+            background: var(--bg-accent);
+            border: none;
+            border-radius: 12px;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s ease;
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        .description-bar {
+            background: var(--bg-accent);
+            border-radius: 12px;
+            padding: 0.875rem 1.25rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .calculator-section {
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .input-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .input-group:last-child {
+            margin-bottom: 0;
+        }
+
+        .input-group label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .input-group .hint {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 0.375rem;
+        }
+
+        .input-wrapper {
+            position: relative;
+        }
+
+        .input-wrapper .prefix {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 1rem 1rem 1rem 2.25rem;
+            background: var(--bg-accent);
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            color: var(--text-primary);
+            font-size: 1.1rem;
+            transition: border-color 0.2s ease;
+        }
+
+        input[type="number"]:focus {
+            outline: none;
+            border-color: var(--accent-blue);
+        }
+
+        input[type="number"]::placeholder {
+            color: var(--text-muted);
+        }
+
+        /* Hide number input arrows */
+        input[type="number"]::-webkit-outer-spin-button,
+        input[type="number"]::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        input[type="number"] {
+            -moz-appearance: textfield;
+        }
+
+        .result-section {
+            background: linear-gradient(135deg, var(--bg-secondary), var(--bg-accent));
+            border: 2px solid var(--accent-green);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .result-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .result-amount {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent-green);
+            margin-bottom: 0.75rem;
+        }
+
+        .result-formula {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            font-family: 'SF Mono', 'Consolas', monospace;
+            background: var(--bg-accent);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            display: inline-block;
+        }
+
+        .tax-info {
+            background: var(--bg-accent);
+            border-radius: 12px;
+            padding: 1rem 1.25rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .tax-info-icon {
+            font-size: 1.25rem;
+        }
+
+        .tax-info-text {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .tax-info-text strong {
+            color: var(--accent-green);
+        }
+
+        .warning-box {
+            background: var(--bg-accent);
+            border-left: 4px solid var(--accent-red);
+            border-radius: 0 12px 12px 0;
+            padding: 1rem 1.25rem;
+            margin-bottom: 1.5rem;
+            display: none;
+        }
+
+        .warning-box.show {
+            display: block;
+        }
+
+        .warning-box p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        .content-section {
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .content-section h2 {
+            font-size: 1.25rem;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .content-section p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+
+        .content-section ul {
+            color: var(--text-secondary);
+            margin-left: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .content-section li {
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+        }
+
+        .formula-box {
+            background: var(--bg-accent);
+            border-radius: 12px;
+            padding: 1.25rem;
+            margin: 1rem 0;
+            text-align: center;
+        }
+
+        .formula-box code {
+            font-size: 1.1rem;
+            font-family: 'SF Mono', 'Consolas', monospace;
+            color: var(--accent-blue);
+        }
+
+        .formula-legend {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 0.75rem;
+        }
+
+        .faq-section {
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .faq-section h2 {
+            font-size: 1.25rem;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem 0;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .faq-item:first-of-type {
+            padding-top: 0;
+        }
+
+        .faq-question {
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .faq-answer {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--border-color);
+            margin-top: 1rem;
+        }
+
+        footer a {
+            color: var(--accent-blue);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            body {
+                padding: 0.75rem;
+            }
+
+            .header {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+
+            .calculator-section,
+            .content-section,
+            .faq-section {
+                padding: 1.5rem;
+            }
+
+            .result-amount {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <header class="header">
+            <div class="header-left">
+                <h1>Gratuity Calculator</h1>
+                <p>Payment of Gratuity Act, 1972</p>
+            </div>
+            <div class="header-right">
+                <a href="/" class="header-link">Dashboard</a>
+                <a href="/blog/" class="header-link">Blog</a>
+                <a href="/calculator/" class="header-link active">Calculator</a>
+                <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">
+                    <span id="theme-icon"></span>
+                </button>
+            </div>
+        </header>
+
+        <div class="description-bar">
+            Calculate your gratuity amount instantly based on the standard formula under the Payment of Gratuity Act.
+        </div>
+
+        <main>
+            <section class="calculator-section">
+                <div class="input-group">
+                    <label for="salary">Monthly Salary (Basic + DA)</label>
+                    <div class="input-wrapper">
+                        <span class="prefix">₹</span>
+                        <input type="number" id="salary" placeholder="e.g. 50000" min="0">
+                    </div>
+                    <p class="hint">Enter your last drawn Basic Salary + Dearness Allowance</p>
+                </div>
+
+                <div class="input-group">
+                    <label for="years">Years of Service</label>
+                    <div class="input-wrapper">
+                        <span class="prefix"></span>
+                        <input type="number" id="years" placeholder="e.g. 10" min="0" max="60" style="padding-left: 1rem;">
+                    </div>
+                    <p class="hint">Minimum 5 years required for eligibility</p>
+                </div>
+            </section>
+
+            <div class="warning-box" id="eligibility-warning">
+                <p><strong>Note:</strong> Gratuity is payable only after completing 5 years of continuous service. The 5-year rule is waived in case of death or disablement.</p>
+            </div>
+
+            <section class="result-section">
+                <div class="result-label">Total Gratuity Payable</div>
+                <div class="result-amount" id="result">₹0</div>
+                <div class="result-formula" id="formula-display">Enter salary and years to calculate</div>
+            </section>
+
+            <div class="tax-info">
+                <span class="tax-info-icon">ℹ️</span>
+                <span class="tax-info-text">Gratuity is <strong>tax-free up to ₹20 lakh</strong> for private sector employees. Government employees receive full exemption.</span>
+            </div>
+
+            <section class="content-section">
+                <h2>How Gratuity is Calculated</h2>
+                <p>Under the Payment of Gratuity Act, 1972, gratuity is calculated using a simple formula:</p>
+
+                <div class="formula-box">
+                    <code>Gratuity = (Monthly Salary × 15 × Years of Service) ÷ 26</code>
+                    <div class="formula-legend">
+                        Monthly Salary = Basic + DA | 15 = Days of wages per year | 26 = Working days in a month
+                    </div>
+                </div>
+
+                <p><strong>Example:</strong> If your Basic + DA is ₹50,000 and you've worked for 20 years:</p>
+                <p style="margin-left: 1rem; font-family: monospace;">Gratuity = (50,000 × 15 × 20) ÷ 26 = <strong>₹5,76,923</strong></p>
+            </section>
+
+            <section class="content-section">
+                <h2>Eligibility Criteria</h2>
+                <ul>
+                    <li><strong>Minimum 5 years</strong> of continuous service with the same employer</li>
+                    <li>Applicable on <strong>retirement, resignation, death, or disablement</strong></li>
+                    <li>The 5-year rule is <strong>waived</strong> in case of death or disablement</li>
+                    <li>Applies to establishments with <strong>10 or more employees</strong></li>
+                    <li>Covers factories, mines, plantations, ports, railways, shops, and other establishments</li>
+                </ul>
+            </section>
+
+            <section class="content-section">
+                <h2>Tax Treatment</h2>
+                <ul>
+                    <li><strong>Government employees:</strong> Entire gratuity is fully exempt from tax</li>
+                    <li><strong>Private sector employees:</strong> Exempt up to ₹20,00,000 under Section 10(10)</li>
+                    <li>Amount exceeding ₹20 lakh is <strong>taxable at your slab rate</strong></li>
+                    <li>The ₹20 lakh limit is aggregate across all employers in your career</li>
+                </ul>
+            </section>
+
+            <section class="faq-section">
+                <h2>Frequently Asked Questions</h2>
+
+                <div class="faq-item">
+                    <div class="faq-question">How is gratuity calculated in India?</div>
+                    <div class="faq-answer">Gratuity = (Monthly Salary × 15 × Years of Service) ÷ 26. Monthly Salary means Basic + DA. The formula assumes 26 working days in a month and rewards 15 days' wages for each year of service.</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">What is the minimum service required for gratuity?</div>
+                    <div class="faq-answer">5 years of continuous service is required. However, this condition is waived if the employee dies or becomes disabled due to accident or disease.</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">Is gratuity taxable?</div>
+                    <div class="faq-answer">For private sector employees, gratuity up to ₹20 lakh is tax-free. Government employees receive full exemption. Any amount above ₹20 lakh is taxed at your applicable income tax slab.</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">What salary components are used for gratuity?</div>
+                    <div class="faq-answer">Only Basic Salary and Dearness Allowance (DA) are considered. HRA, special allowances, bonuses, and other components are not included.</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">How are partial years counted?</div>
+                    <div class="faq-answer">If you've worked 6 months or more beyond completed years, it rounds up to the next year. Example: 8 years 7 months = 9 years. Less than 6 months is ignored (8 years 5 months = 8 years).</div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <footer>
+        <p>© 2026 ITR Stats | <a href="/privacy-policy.html">Privacy Policy</a></p>
+        <p>Data source: <a href="https://eportal.incometax.gov.in" target="_blank" rel="noopener">eportal.incometax.gov.in</a></p>
+    </footer>
+
+    <!-- GoatCounter Analytics -->
+    <script data-goatcounter="https://itrstats.goatcounter.com/count"
+            async src="//gc.zgo.at/count.js"></script>
+
+    <script>
+        // Theme functions
+        function getThemePreference() {
+            const saved = localStorage.getItem('theme');
+            if (saved) return saved;
+            return 'dark';
+        }
+
+        function setTheme(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+            document.getElementById('theme-icon').textContent = theme === 'dark' ? '☀️' : '🌙';
+        }
+
+        function toggleTheme() {
+            const current = document.documentElement.getAttribute('data-theme');
+            setTheme(current === 'dark' ? 'light' : 'dark');
+        }
+
+        // Initialize theme
+        setTheme(getThemePreference());
+
+        // Format currency in Indian format
+        function formatCurrency(amount) {
+            return '₹' + Math.round(amount).toLocaleString('en-IN');
+        }
+
+        // Format number in Indian format
+        function formatNumber(num) {
+            return num.toLocaleString('en-IN');
+        }
+
+        // Calculate gratuity
+        function calculateGratuity() {
+            const salary = Math.max(0, parseFloat(document.getElementById('salary').value) || 0);
+            const years = Math.max(0, parseInt(document.getElementById('years').value) || 0);
+
+            // Show eligibility warning if less than 5 years
+            const warningBox = document.getElementById('eligibility-warning');
+            if (years > 0 && years < 5) {
+                warningBox.classList.add('show');
+            } else {
+                warningBox.classList.remove('show');
+            }
+
+            // Calculate gratuity: (Salary × 15 × Years) ÷ 26
+            const gratuity = (salary * 15 * years) / 26;
+
+            // Update result display
+            document.getElementById('result').textContent = formatCurrency(gratuity);
+
+            // Update formula display
+            if (salary > 0 && years > 0) {
+                document.getElementById('formula-display').textContent =
+                    `(₹${formatNumber(salary)} × 15 × ${years}) ÷ 26`;
+            } else {
+                document.getElementById('formula-display').textContent =
+                    'Enter salary and years to calculate';
+            }
+        }
+
+        // Add event listeners to inputs
+        document.getElementById('salary').addEventListener('input', calculateGratuity);
+        document.getElementById('years').addEventListener('input', calculateGratuity);
+
+        // Initialize
+        calculateGratuity();
+    </script>
+</body>
+</html>
