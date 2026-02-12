@@ -525,6 +525,57 @@
             text-decoration: underline;
         }
 
+        .info-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--text-muted);
+            color: var(--bg-secondary);
+            font-size: 0.6rem;
+            font-weight: 700;
+            cursor: pointer;
+            margin-left: 0.3rem;
+            vertical-align: middle;
+            position: relative;
+        }
+
+        .info-icon:hover { background: var(--accent-blue); }
+
+        .info-tooltip {
+            position: absolute;
+            bottom: calc(100% + 8px);
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--text-primary);
+            color: var(--bg-primary);
+            padding: 0.6rem 0.8rem;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 400;
+            width: 200px;
+            text-align: left;
+            line-height: 1.4;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.2s ease;
+            z-index: 100;
+        }
+
+        .info-tooltip::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 5px solid transparent;
+            border-top-color: var(--text-primary);
+        }
+
+        .info-icon:hover .info-tooltip { opacity: 1; visibility: visible; }
+
         .footer-social {
             margin-top: 0.75rem;
             font-size: 0.8rem;
@@ -696,7 +747,9 @@
 
     <footer>
         <p>© 2026 ITR Stats | <a href="/privacy-policy.html">Privacy Policy</a></p>
-        <p>Data source: <a href="https://eportal.incometax.gov.in" target="_blank" rel="noopener">eportal.incometax.gov.in</a></p>
+        <p>Data source: <a href="https://eportal.incometax.gov.in" target="_blank" rel="noopener">eportal.incometax.gov.in</a>
+            <span class="info-icon">i<span class="info-tooltip">Unofficial dashboard · Not affiliated with Income Tax Department</span></span>
+        </p>
         <p class="footer-social">
             Made by Kartikey ·
             <a href="https://x.com/kartikey_19" target="_blank" rel="noopener">𝕏</a> ·
