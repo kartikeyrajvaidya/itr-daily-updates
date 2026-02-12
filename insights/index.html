@@ -253,10 +253,60 @@
             cursor: not-allowed;
         }
 
+
         #year-chips {
             display: flex;
-            gap: 0.5rem;
+            gap: 0.75rem;
             flex-wrap: wrap;
+        }
+
+        .year-chip-wrapper {
+            position: relative;
+        }
+
+        .chip-info-icon {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            width: 14px;
+            height: 14px;
+            background: var(--text-muted);
+            color: var(--bg-primary);
+            border-radius: 50%;
+            font-size: 10px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-style: italic;
+            font-family: Georgia, serif;
+        }
+
+        .chip-info-icon::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            top: 100%;
+            right: 0;
+            margin-top: 6px;
+            padding: 6px 10px;
+            background: var(--text-primary);
+            color: var(--bg-primary);
+            font-size: 11px;
+            font-style: normal;
+            font-family: inherit;
+            font-weight: 500;
+            white-space: nowrap;
+            border-radius: 4px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.15s;
+            z-index: 100;
+        }
+
+        .chip-info-icon:hover::after {
+            opacity: 1;
+            visibility: visible;
         }
 
         .data-timestamp {
@@ -673,8 +723,8 @@
             const months = ['January', 'February', 'March', 'April', 'May', 'June',
                            'July', 'August', 'September', 'October', 'November', 'December'];
             const now = new Date();
-            const month = now.getMonth();
-            // For current FY, use abbreviated month; API quirk
+            let month = now.getMonth() - 1; // Previous month (API doesn't have current month data yet)
+            if (month < 0) month = 11; // December if we're in January
             return months[month].substring(0, 3);
         }
 
@@ -753,6 +803,17 @@
             return num.toFixed(1) + '%';
         }
 
+        function formatRupees(num) {
+            const lakhCr = 1000000000000; // 10^12
+            const thousandCr = 10000000000; // 10^10
+            if (num >= lakhCr) {
+                return '₹' + (num / lakhCr).toFixed(2) + ' Lakh Cr';
+            } else if (num >= thousandCr) {
+                return '₹' + (num / 10000000000).toFixed(0) + ',000 Cr';
+            }
+            return '₹' + formatCrores(num);
+        }
+
         // ==================== DATA EXTRACTION ====================
         function findTab(statistics, tabCaption) {
             return statistics.find(s => s.tabCaption === tabCaption);
@@ -774,8 +835,9 @@
                         highlights.filed = parseValue(value);
                     } else if (name.includes('e-ver') && name.includes('return')) {
                         highlights.verified = parseValue(value);
-                    } else if (name.includes('refund issued')) {
-                        highlights.refund = parseValue(value);
+                    } else if (name.includes('amount') && name.includes('refund')) {
+                        // Money: "Amount of Refund issued upto <date> during FY <year>"
+                        highlights.refundAmount = parseValue(value);
                     } else if (name.includes('processed') && table.tableCaption.toLowerCase().includes('cpc')) {
                         highlights.processed = parseValue(value);
                     }
@@ -870,6 +932,12 @@
                         <span class="module-badge">FY ${fyLabel}</span>
                     </div>
                     <div class="kpi-grid">
+                        ${h.refundAmount ? `
+                        <div class="kpi-card">
+                            <div class="kpi-value" style="color: #4ade80;">${formatRupees(h.refundAmount)}</div>
+                            <div class="kpi-label">Refunds Issued</div>
+                        </div>
+                        ` : ''}
                         <div class="kpi-card">
                             <div class="kpi-value">${formatPercent(verificationRate)}</div>
                             <div class="kpi-label">Verification Rate</div>
@@ -887,7 +955,7 @@
                         <canvas id="refundPulseChart"></canvas>
                     </div>
                     <div class="so-what">
-                        ${formatPercent(verificationRate)} of filed returns are e-verified;
+                        ${h.refundAmount ? formatRupees(h.refundAmount) + ' refunded. ' : ''}${formatPercent(verificationRate)} of filed returns are e-verified;
                         ${formatPercent(processingRate)} of verified returns are processed.
                     </div>
                 </div>
@@ -1275,10 +1343,11 @@
         }
 
         // ==================== SINGLE YEAR RENDER ====================
-        function renderSingleYear(data, fyLabel) {
+        function renderSingleYear(data, fyLabel, isCurrentYear = false) {
             globalData = data;
 
             let html = '';
+
             if (data.highlights) html += renderRefundPulse(data, fyLabel);
             if (data.filingCount) html += renderFilingByForm(data, fyLabel);
             if (data.categoryData) html += renderIncomeDistribution(data, fyLabel);
@@ -1300,11 +1369,21 @@
             container.innerHTML = AVAILABLE_FYS.map(fy => {
                 const isSelected = selectedYears.includes(fy.year);
                 const isDisabled = !isSelected && selectedYears.length >= 3;
-                return `<button class="year-chip ${isSelected ? 'selected' : ''} ${isDisabled ? 'disabled' : ''}"
+                const isCurrentYear = fy.year === CURRENT_YEAR;
+
+                const btn = `<button class="year-chip ${isSelected ? 'selected' : ''} ${isDisabled ? 'disabled' : ''}"
                          onclick="toggleYear(${fy.year})"
                          ${isDisabled ? 'disabled' : ''}>
                     FY ${fy.label}
                 </button>`;
+
+                if (isCurrentYear) {
+                    return `<div class="year-chip-wrapper">
+                        ${btn}
+                        <span class="chip-info-icon" data-tooltip="For current year, data updated till previous month at source">i</span>
+                    </div>`;
+                }
+                return btn;
             }).join('');
         }
 
@@ -1424,7 +1503,8 @@
                         categoryData: extractCategoryFiling(stats),
                         stateData: extractStateFiling(stats)
                     };
-                    renderSingleYear(data, results[0].label);
+                    const isCurrentYear = results[0].year === CURRENT_YEAR;
+                    renderSingleYear(data, results[0].label, isCurrentYear);
                 } else {
                     // Multi-year comparison mode
                     await renderMultiYearComparison(results);
@@ -1500,16 +1580,28 @@
 
         // Refund Pulse: Grouped bar chart for YoY
         function renderRefundPulseYoY(yearData) {
+            const yearsWithRefund = yearData.filter(yd => yd.highlights?.refundAmount);
+
             return `
                 <div class="module" id="refund-pulse">
                     <div class="module-header">
                         <h2 class="module-title">Refund Pulse</h2>
                         <span class="module-badge">YoY Comparison</span>
                     </div>
+                    ${yearsWithRefund.length > 0 ? `
+                    <div class="kpi-grid" style="margin-bottom: 1.5rem;">
+                        ${yearsWithRefund.map(yd => `
+                        <div class="kpi-card">
+                            <div class="kpi-label">Refunds Issued (FY ${yd.label})</div>
+                            <div class="kpi-value" style="color: var(--success)">${formatRupees(yd.highlights.refundAmount)}</div>
+                        </div>
+                        `).join('')}
+                    </div>
+                    ` : ''}
                     <div class="chart-container">
                         <canvas id="refundPulseChart"></canvas>
                     </div>
-                    <div class="so-what">Comparing filing, verification, and processing volumes across ${yearData.length} financial years.</div>
+                    <div class="so-what">Comparing refund amounts, filing, verification, and processing volumes across ${yearData.length} financial years.</div>
                 </div>
             `;
         }
