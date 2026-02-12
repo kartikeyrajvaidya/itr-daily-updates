@@ -220,13 +220,15 @@
 
         .pinned-badge {
             position: absolute;
-            top: 1rem;
-            right: 1rem;
-            font-size: 0.75rem;
+            top: 0.75rem;
+            right: 0.75rem;
             color: var(--text-muted);
-            display: flex;
-            align-items: center;
-            gap: 0.25rem;
+            opacity: 0.6;
+        }
+
+        .pinned-badge svg {
+            width: 16px;
+            height: 16px;
         }
 
         .blog-card:hover {
@@ -409,6 +411,16 @@
             .blog-card {
                 padding: 1.25rem;
             }
+
+            .pinned-badge {
+                top: 0.5rem;
+                right: 0.5rem;
+            }
+
+            .pinned-badge svg {
+                width: 14px;
+                height: 14px;
+            }
         }
     </style>
 </head>
@@ -438,7 +450,7 @@
 
         <div class="blog-list">
             <article class="blog-card">
-                <span class="pinned-badge">📌 Pinned</span>
+                <span class="pinned-badge" title="Pinned"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 12V4h1V2H7v2h1v8l-2 2v2h5.2v6h1.6v-6H18v-2l-2-2z"/></svg></span>
                 <h2><a href="./weekly-update.html">ITR Processing Weekly Update</a></h2>
                 <div class="meta">
                     <span>Updated: February 10, 2026</span>
@@ -450,7 +462,7 @@
             </article>
 
             <article class="blog-card">
-                <span class="pinned-badge">📌 Pinned</span>
+                <span class="pinned-badge" title="Pinned"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 12V4h1V2H7v2h1v8l-2 2v2h5.2v6h1.6v-6H18v-2l-2-2z"/></svg></span>
                 <h2><a href="./itr-refund-time.html">When Will You Get Your ITR Refund? What Data Tells Us</a></h2>
                 <div class="meta">
                     <span>February 10, 2026</span>
