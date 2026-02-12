@@ -68,9 +68,6 @@
             --border-color: #e2e8f0;
             --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
             --card-shadow-hover: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-            --disclaimer-bg: #fefcbf;
-            --disclaimer-border: #ecc94b;
-            --disclaimer-text: #744210;
         }
 
         [data-theme="dark"] {
@@ -86,9 +83,6 @@
             --border-color: #334155;
             --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
             --card-shadow-hover: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
-            --disclaimer-bg: #422006;
-            --disclaimer-border: #92400e;
-            --disclaimer-text: #fef3c7;
         }
 
         /* Theme transition */
@@ -421,18 +415,6 @@
             filter: brightness(1.08);
         }
 
-        /* Disclaimer */
-        .disclaimer {
-            background: var(--disclaimer-bg);
-            border: 1px solid var(--disclaimer-border);
-            border-radius: 12px;
-            padding: 1rem 1.25rem;
-            font-size: 0.85rem;
-            color: var(--disclaimer-text);
-            text-align: center;
-            margin-bottom: 1rem;
-        }
-
         /* Footer */
         footer {
             text-align: center;
@@ -450,6 +432,12 @@
 
         footer a:hover {
             text-decoration: underline;
+        }
+
+        .footer-disclaimer {
+            font-size: 0.75rem;
+            opacity: 0.7;
+            margin-top: 0.5rem;
         }
 
         /* Error state */
@@ -842,14 +830,10 @@
             </a>
         </section>
 
-        <div class="disclaimer">
-            <strong>Disclaimer:</strong> This is an unofficial dashboard and is not affiliated with the Income Tax Department of India.
-            Data is sourced from the public ITR portal API and may update irregularly.
-        </div>
-
         <footer>
             <p>© 2026 ITR Stats | <a href="/privacy-policy.html">Privacy Policy</a></p>
             <p>Data source: <a href="https://eportal.incometax.gov.in" target="_blank" rel="noopener">eportal.incometax.gov.in</a></p>
+            <p class="footer-disclaimer">Unofficial dashboard · Not affiliated with Income Tax Department · Data may update irregularly</p>
         </footer>
     </div>
 
