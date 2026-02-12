@@ -166,6 +166,26 @@
             color: var(--accent-blue);
         }
 
+        .new-badge {
+            display: inline-block;
+            margin-left: 0.35rem;
+            padding: 0.1rem 0.35rem;
+            border-radius: 999px;
+            background: #ef4444;
+            color: #ffffff;
+            font-size: 0.62rem;
+            font-weight: 700;
+            line-height: 1.2;
+            vertical-align: middle;
+            animation: blinkTag 1s steps(2, start) infinite;
+        }
+
+        @keyframes blinkTag {
+            50% {
+                opacity: 0.2;
+            }
+        }
+
         .theme-toggle {
             background: var(--bg-accent);
             border: none;
@@ -359,6 +379,48 @@
             height: 300px;
         }
 
+        /* Insights CTA */
+        .insights-cta {
+            background: linear-gradient(135deg, var(--bg-secondary), var(--bg-accent));
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            padding: 1rem 1.25rem;
+            margin-bottom: 1.25rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .insights-cta-copy h3 {
+            font-size: 1rem;
+            color: var(--text-primary);
+            margin-bottom: 0.2rem;
+        }
+
+        .insights-cta-copy p {
+            font-size: 0.84rem;
+            color: var(--text-secondary);
+        }
+
+        .insights-cta-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            text-decoration: none;
+            padding: 0.62rem 0.9rem;
+            border-radius: 10px;
+            background: var(--accent-blue);
+            color: #ffffff;
+            font-size: 0.85rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .insights-cta-link:hover {
+            filter: brightness(1.08);
+        }
+
         /* Disclaimer */
         .disclaimer {
             background: var(--disclaimer-bg);
@@ -427,6 +489,11 @@
 
             .chart-container {
                 height: 250px;
+            }
+
+            .insights-cta {
+                flex-direction: column;
+                align-items: flex-start;
             }
         }
 
@@ -742,6 +809,7 @@
             </div>
             <div class="header-right">
                 <a href="./" class="header-link active">Dashboard</a>
+                <a href="./insights/" class="header-link">Insights <span class="new-badge">NEW</span></a>
                 <a href="./blog/" class="header-link">Blog</a>
                 <a href="/calculator/" class="header-link">Calculator</a>
                 <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">
@@ -761,6 +829,17 @@
             <div class="chart-container">
                 <canvas id="trendChart"></canvas>
             </div>
+        </section>
+
+        <section class="insights-cta" aria-label="Explore deeper insights">
+            <div class="insights-cta-copy">
+                <h3>Want deeper analysis?</h3>
+                <p>Explore refund pulse, filing shifts, state concentration, and income mix in Insights.</p>
+            </div>
+            <a href="./insights/" class="insights-cta-link">
+                Explore Insights
+                <span aria-hidden="true">→</span>
+            </a>
         </section>
 
         <div class="disclaimer">

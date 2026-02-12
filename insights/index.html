@@ -1,0 +1,1617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Meta Tags -->
+    <title>ITR Insights - Filing Statistics & Analysis | ITR Stats</title>
+    <meta name="description" content="Deep insights into India's income tax filing statistics. Track refund processing, filing patterns by ITR form type, income distribution, and state-wise filing data.">
+    <meta name="keywords" content="ITR insights, income tax statistics India, ITR filing analysis, refund processing stats, state wise ITR filing, income distribution India">
+    <meta name="author" content="ITR Stats">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://itrstats.in/insights/">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://itrstats.in/insights/">
+    <meta property="og:title" content="ITR Insights - Filing Statistics & Analysis">
+    <meta property="og:description" content="Deep insights into India's income tax filing statistics. Track refund processing, filing patterns, and more.">
+    <meta property="og:image" content="https://itrstats.in/og-image.png">
+    <meta property="og:site_name" content="ITR Stats">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="ITR Insights - Filing Statistics & Analysis">
+    <meta name="twitter:description" content="Deep insights into India's income tax filing statistics.">
+    <meta name="twitter:image" content="https://itrstats.in/og-image.png">
+
+    <link rel="icon" type="image/png" href="../favicon.png">
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+
+    <style>
+        /* Light mode (default) */
+        :root {
+            --bg-primary: #f8fafc;
+            --bg-secondary: #ffffff;
+            --bg-accent: #f1f5f9;
+            --text-primary: #1e293b;
+            --text-secondary: #4a5568;
+            --text-muted: #718096;
+            --accent-blue: #3b82f6;
+            --accent-green: #22c55e;
+            --accent-red: #ef4444;
+            --accent-yellow: #f59e0b;
+            --accent-purple: #8b5cf6;
+            --border-color: #e2e8f0;
+            --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Dark mode */
+        [data-theme="dark"] {
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --bg-accent: #334155;
+            --text-primary: #f1f5f9;
+            --text-secondary: #cbd5e1;
+            --text-muted: #94a3b8;
+            --accent-blue: #60a5fa;
+            --accent-green: #4ade80;
+            --accent-red: #f87171;
+            --accent-yellow: #fbbf24;
+            --accent-purple: #a78bfa;
+            --border-color: #334155;
+            --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            padding: 1rem;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.5rem;
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            margin-bottom: 1rem;
+            box-shadow: var(--card-shadow);
+        }
+
+        .header-left h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .header-left p {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            margin-top: 0.25rem;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .header-link {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            padding: 0.5rem 0.75rem;
+            border-radius: 8px;
+            transition: color 0.2s ease, background 0.2s ease;
+        }
+
+        .header-link:hover {
+            color: var(--accent-blue);
+            background: var(--bg-accent);
+        }
+
+        .header-link.active {
+            color: var(--accent-blue);
+        }
+
+        .new-badge {
+            display: inline-block;
+            margin-left: 0.35rem;
+            padding: 0.1rem 0.35rem;
+            border-radius: 999px;
+            background: #ef4444;
+            color: #ffffff;
+            font-size: 0.62rem;
+            font-weight: 700;
+            line-height: 1.2;
+            vertical-align: middle;
+            animation: blinkTag 1s steps(2, start) infinite;
+        }
+
+        @keyframes blinkTag {
+            50% {
+                opacity: 0.2;
+            }
+        }
+
+        .theme-toggle {
+            background: var(--bg-accent);
+            border: none;
+            border-radius: 12px;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s ease;
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        /* Controls Bar */
+        .controls-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 1.25rem;
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .year-selector {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .year-selector-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-right: 0.5rem;
+        }
+
+        .year-chip {
+            padding: 0.5rem 1rem;
+            border: 2px solid var(--border-color);
+            border-radius: 20px;
+            background: transparent;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .year-chip:hover {
+            border-color: var(--accent-blue);
+            color: var(--accent-blue);
+        }
+
+        .year-chip.selected {
+            border-color: var(--accent-blue);
+            background: var(--accent-blue);
+            color: white;
+        }
+
+        .year-chip.disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        #year-chips {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .data-timestamp {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* Module Sections */
+        .module {
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--card-shadow);
+        }
+
+        .module-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .module-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .module-badge {
+            background: var(--bg-accent);
+            color: var(--text-muted);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        /* KPI Cards Grid */
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .kpi-card {
+            background: var(--bg-accent);
+            border-radius: 12px;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .kpi-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .kpi-value.positive { color: var(--accent-green); }
+        .kpi-value.negative { color: var(--accent-red); }
+
+        .kpi-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Chart Container */
+        .chart-container {
+            position: relative;
+            height: 300px;
+            margin-bottom: 1rem;
+        }
+
+        .chart-container.small {
+            height: 250px;
+        }
+
+        .charts-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .chart-box {
+            background: var(--bg-accent);
+            border-radius: 12px;
+            padding: 1rem;
+        }
+
+        .chart-box-title {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: 0.75rem;
+            text-align: center;
+        }
+
+        /* So What Line */
+        .so-what {
+            background: var(--bg-accent);
+            border-left: 4px solid var(--accent-blue);
+            padding: 1rem 1.25rem;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            border-radius: 0 8px 8px 0;
+            margin-top: 1rem;
+        }
+
+        /* Top N Controls */
+        .top-n-controls {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .top-n-btn {
+            padding: 0.25rem 0.75rem;
+            border: 1px solid var(--border-color);
+            background: transparent;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .top-n-btn.active {
+            background: var(--accent-blue);
+            color: white;
+            border-color: var(--accent-blue);
+        }
+
+        .top-n-btn:hover:not(.active) {
+            background: var(--bg-accent);
+        }
+
+        /* Loading State */
+        .loading {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-muted);
+        }
+
+        .loading-spinner {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            border: 3px solid var(--bg-accent);
+            border-top-color: var(--accent-blue);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 1rem;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Error State */
+        .error {
+            text-align: center;
+            padding: 2rem;
+            color: var(--accent-red);
+            background: var(--bg-secondary);
+            border-radius: 12px;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border-color);
+            margin-top: 2rem;
+        }
+
+        footer a {
+            color: var(--accent-blue);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            body {
+                padding: 0.75rem;
+            }
+
+            .header {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+
+            .controls-bar {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .charts-row {
+                grid-template-columns: 1fr;
+            }
+
+            .kpi-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .chart-container {
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-left">
+                <h1>ITR Insights</h1>
+                <p>Deep Dive Analytics</p>
+            </div>
+            <div class="header-right">
+                <a href="../" class="header-link">Dashboard</a>
+                <a href="./" class="header-link active">Insights <span class="new-badge">NEW</span></a>
+                <a href="../blog/" class="header-link">Blog</a>
+                <a href="../calculator/" class="header-link">Calculator</a>
+                <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">
+                    <span id="theme-icon"></span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Controls -->
+        <div class="controls-bar">
+            <div class="year-selector">
+                <span class="year-selector-label">Select FY (max 3):</span>
+                <div id="year-chips"></div>
+            </div>
+            <div class="data-timestamp" id="data-timestamp">Click years to compare YoY</div>
+        </div>
+
+        <!-- Content Area -->
+        <div id="content">
+            <div class="loading">
+                <div class="loading-spinner"></div>
+                <p>Loading data...</p>
+            </div>
+        </div>
+
+        <footer>
+            <p>&copy; 2026 ITR Stats | <a href="../privacy-policy.html">Privacy Policy</a></p>
+            <p>Data source: <a href="https://eportal.incometax.gov.in" target="_blank" rel="noopener">eportal.incometax.gov.in</a></p>
+        </footer>
+    </div>
+
+    <script>
+        // ==================== CHART.JS GLOBAL CONFIG ====================
+        // Make tooltips work on small bars by not requiring direct intersection
+        Chart.defaults.interaction.mode = 'index';
+        Chart.defaults.interaction.intersect = false;
+
+        // ==================== THEME ====================
+        function getThemePreference() {
+            const saved = localStorage.getItem('theme');
+            return saved || 'dark';
+        }
+
+        function setTheme(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+            document.getElementById('theme-icon').textContent = theme === 'dark' ? '☀️' : '🌙';
+        }
+
+        function toggleTheme() {
+            const current = document.documentElement.getAttribute('data-theme');
+            setTheme(current === 'dark' ? 'light' : 'dark');
+            // Redraw charts with new theme colors
+            loadData();
+        }
+
+        // ==================== CONSTANTS ====================
+        // Calculate current FY dynamically (FY starts in April)
+        // e.g., Jan 2026 = FY 2025-26 (year=2026), Apr 2026 = FY 2026-27 (year=2027)
+        function getCurrentFY() {
+            const now = new Date();
+            const year = now.getFullYear();
+            const month = now.getMonth(); // 0-indexed (0=Jan, 3=Apr)
+            return month >= 3 ? year + 1 : year; // If Apr or later, next FY
+        }
+
+        function getCurrentMonth() {
+            const months = ['January', 'February', 'March', 'April', 'May', 'June',
+                           'July', 'August', 'September', 'October', 'November', 'December'];
+            const now = new Date();
+            const month = now.getMonth();
+            // For current FY, use abbreviated month; API quirk
+            return months[month].substring(0, 3);
+        }
+
+        function generateAvailableFYs() {
+            const currentFY = getCurrentFY();
+            const currentMonth = getCurrentMonth();
+            const fys = [];
+
+            // Current FY (partial data)
+            fys.push({
+                year: currentFY,
+                label: `${currentFY - 1}-${String(currentFY).slice(2)}`,
+                month: currentMonth,
+                isHistorical: false
+            });
+
+            // Past 3 FYs (complete data - March)
+            for (let i = 1; i <= 3; i++) {
+                const fy = currentFY - i;
+                fys.push({
+                    year: fy,
+                    label: `${fy - 1}-${String(fy).slice(2)}`,
+                    month: 'March',
+                    isHistorical: false
+                });
+            }
+
+            return fys;
+        }
+
+        const CURRENT_YEAR = getCurrentFY();
+        const AVAILABLE_FYS = generateAvailableFYs();
+
+        // Common constants to avoid duplication
+        const EXCLUDED_FORMS = ['Others', 'ITR-A'];
+        const INCOME_RANGE_LABELS = ['≤5L', '5L-10L', '10L-50L', '50L-1Cr', '1Cr-5Cr', '5Cr-10Cr', '>10Cr'];
+
+        let selectedYears = [2026];  // Default to current FY
+
+        // ==================== NUMBER PARSING ====================
+        function parseValue(str) {
+            if (!str || str === '-' || str === 'NA') return 0;
+            str = String(str).trim();
+
+            if (str.toLowerCase().includes('cr')) {
+                const num = parseFloat(str.replace(/[^\d.-]/g, ''));
+                return Math.round(num * 10000000);
+            }
+
+            if (str.toLowerCase().includes('l')) {
+                const num = parseFloat(str.replace(/[^\d.-]/g, ''));
+                return Math.round(num * 100000);
+            }
+
+            if (str.includes('%')) {
+                return parseFloat(str.replace('%', ''));
+            }
+
+            return parseInt(str.replace(/,/g, ''), 10) || 0;
+        }
+
+        function formatNumber(num) {
+            return num.toLocaleString('en-IN');
+        }
+
+        function formatCrores(num) {
+            if (num >= 10000000) {
+                return (num / 10000000).toFixed(2) + ' Cr';
+            } else if (num >= 100000) {
+                return (num / 100000).toFixed(2) + ' L';
+            }
+            return formatNumber(num);
+        }
+
+        function formatPercent(num) {
+            return num.toFixed(1) + '%';
+        }
+
+        // ==================== DATA EXTRACTION ====================
+        function findTab(statistics, tabCaption) {
+            return statistics.find(s => s.tabCaption === tabCaption);
+        }
+
+        function extractHighlights(statistics) {
+            const tab = findTab(statistics, 'Highlights footer');
+            if (!tab) return null;
+
+            const highlights = {};
+
+            tab.tableData.forEach(table => {
+                table.forms.forEach(form => {
+                    const name = form.headerName.toLowerCase();
+                    const value = form.dataList[0];
+
+                    // Be specific: "number of returns filed" not "percentage of returns filed"
+                    if (name.includes('number of returns filed')) {
+                        highlights.filed = parseValue(value);
+                    } else if (name.includes('e-ver') && name.includes('return')) {
+                        highlights.verified = parseValue(value);
+                    } else if (name.includes('refund issued')) {
+                        highlights.refund = parseValue(value);
+                    } else if (name.includes('processed') && table.tableCaption.toLowerCase().includes('cpc')) {
+                        highlights.processed = parseValue(value);
+                    }
+                });
+            });
+
+            return highlights;
+        }
+
+        function extractFilingCount(statistics) {
+            const tab = findTab(statistics, 'Filing Count');
+            if (!tab || !tab.tableData[0]) return null;
+
+            const table = tab.tableData[0];
+            return {
+                cols: table.cols,
+                forms: table.forms,
+                grandTotal: table.grandTotal.map(parseValue)
+            };
+        }
+
+        function extractCategoryFiling(statistics) {
+            const tab = findTab(statistics, 'Category wise Filing');
+            if (!tab || !tab.tableData[0]) return null;
+
+            const table = tab.tableData[0];
+            return {
+                cols: table.cols,
+                colssub: table.colssub,
+                forms: table.forms,
+                grandTotal: table.grandTotal.map(parseValue)
+            };
+        }
+
+        function extractStateFiling(statistics) {
+            const tab = findTab(statistics, 'State wise filing count');
+            if (!tab || !tab.tableData[0]) return null;
+
+            const table = tab.tableData[0];
+            const states = table.forms.map(form => ({
+                name: form.headerName,
+                count: parseValue(form.dataList[0])
+            })).sort((a, b) => b.count - a.count);
+
+            return { states, grandTotal: parseValue(table.grandTotal[0]) };
+        }
+
+        // ==================== CHART INSTANCES ====================
+        let charts = {};
+
+        function destroyCharts() {
+            Object.keys(charts).forEach(key => {
+                if (charts[key]) {
+                    charts[key].destroy();
+                    charts[key] = null;
+                }
+            });
+        }
+
+        function getChartColors() {
+            const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+            return {
+                text: isDark ? '#cbd5e1' : '#4a5568',
+                grid: isDark ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.05)',
+                blue: isDark ? '#60a5fa' : '#3b82f6',
+                green: isDark ? '#4ade80' : '#22c55e',
+                red: isDark ? '#f87171' : '#ef4444',
+                purple: isDark ? '#a78bfa' : '#8b5cf6',
+                yellow: isDark ? '#fbbf24' : '#f59e0b',
+                cyan: isDark ? '#22d3ee' : '#06b6d4'
+            };
+        }
+
+        // Get bar color for YoY comparison charts (up to 3 years)
+        function getYoYBarColor(colors, index) {
+            const palette = [colors.blue, colors.green, colors.purple];
+            return palette[index % palette.length];
+        }
+
+        // ==================== MODULE 1: REFUND PULSE ====================
+        // Single year: Horizontal funnel bars | Multi-year: Grouped bar chart
+        function renderRefundPulse(data, fyLabel) {
+            const h = data.highlights;
+            const verificationRate = h.filed > 0 ? (h.verified / h.filed * 100) : 0;
+            const processingRate = h.verified > 0 ? (h.processed / h.verified * 100) : 0;
+            const backlog = Math.max(0, h.verified - h.processed);
+
+            return `
+                <div class="module" id="refund-pulse">
+                    <div class="module-header">
+                        <h2 class="module-title">Refund Pulse</h2>
+                        <span class="module-badge">FY ${fyLabel}</span>
+                    </div>
+                    <div class="kpi-grid">
+                        <div class="kpi-card">
+                            <div class="kpi-value">${formatPercent(verificationRate)}</div>
+                            <div class="kpi-label">Verification Rate</div>
+                        </div>
+                        <div class="kpi-card">
+                            <div class="kpi-value">${formatPercent(processingRate)}</div>
+                            <div class="kpi-label">Processing Rate</div>
+                        </div>
+                        <div class="kpi-card">
+                            <div class="kpi-value">${formatCrores(backlog)}</div>
+                            <div class="kpi-label">Backlog</div>
+                        </div>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="refundPulseChart"></canvas>
+                    </div>
+                    <div class="so-what">
+                        ${formatPercent(verificationRate)} of filed returns are e-verified;
+                        ${formatPercent(processingRate)} of verified returns are processed.
+                    </div>
+                </div>
+            `;
+        }
+
+        function initRefundPulseChart(data) {
+            const ctx = document.getElementById('refundPulseChart');
+            if (!ctx) return;
+
+            const colors = getChartColors();
+            const h = data.highlights;
+
+            // Horizontal funnel-style bar chart
+            charts.refundPulse = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Filed', 'E-Verified', 'Processed'],
+                    datasets: [{
+                        data: [h.filed, h.verified, h.processed],
+                        backgroundColor: [colors.blue, colors.green, colors.purple],
+                        borderRadius: 6
+                    }]
+                },
+                options: {
+                    indexAxis: 'y',
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: { callbacks: { label: (ctx) => formatCrores(ctx.raw) } }
+                    },
+                    scales: {
+                        x: { beginAtZero: true, grid: { color: colors.grid }, ticks: { color: colors.text, callback: (v) => formatCrores(v) } },
+                        y: { grid: { display: false }, ticks: { color: colors.text, font: { weight: 'bold' } } }
+                    }
+                }
+            });
+        }
+
+        // ==================== MODULE 2: FILING BY FORM ====================
+        // Single year: Donut chart | Multi-year: Grouped bar chart
+        function renderFilingByForm(data, fyLabel) {
+            const fc = data.filingCount;
+            if (!fc || !fc.forms || fc.forms.length === 0) return '';
+
+            const forms = fc.forms.filter(f => !EXCLUDED_FORMS.includes(f.headerName));
+            if (forms.length === 0) return '';
+
+            const colIdx = fc.cols.length - 1;
+            const total = fc.grandTotal[colIdx];
+
+            // Calculate shares
+            const formData = forms.map(f => ({
+                name: f.headerName,
+                count: parseValue(f.dataList[colIdx]),
+                share: total > 0 ? (parseValue(f.dataList[colIdx]) / total * 100) : 0
+            })).sort((a, b) => b.count - a.count);
+
+            const itr1Share = formData.find(f => f.name === 'ITR-1')?.share || 0;
+            const topForm = formData[0] || { name: 'N/A', share: 0 };
+
+            return `
+                <div class="module" id="filing-by-form">
+                    <div class="module-header">
+                        <h2 class="module-title">Filing by Form Type</h2>
+                        <span class="module-badge">FY ${fyLabel}</span>
+                    </div>
+                    <div class="kpi-grid">
+                        <div class="kpi-card">
+                            <div class="kpi-value">${topForm.name}</div>
+                            <div class="kpi-label">Top Form (${formatPercent(topForm.share)})</div>
+                        </div>
+                        <div class="kpi-card">
+                            <div class="kpi-value">${formatPercent(itr1Share)}</div>
+                            <div class="kpi-label">ITR-1 Share (Salaried)</div>
+                        </div>
+                        <div class="kpi-card">
+                            <div class="kpi-value">${formatCrores(total)}</div>
+                            <div class="kpi-label">Total Filings</div>
+                        </div>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="filingByFormChart"></canvas>
+                    </div>
+                    <div class="so-what">
+                        ${topForm.name} dominates with ${formatPercent(topForm.share)} of all filings. ITR-1 (salaried individuals) accounts for ${formatPercent(itr1Share)}.
+                    </div>
+                </div>
+            `;
+        }
+
+        function initFilingByFormChart(data) {
+            const ctx = document.getElementById('filingByFormChart');
+            if (!ctx) return;
+
+            const colors = getChartColors();
+            const formColors = [colors.blue, colors.green, colors.purple, colors.yellow, colors.cyan, colors.red, '#ec4899'];
+            const fc = data.filingCount;
+            const forms = fc.forms.filter(f => !EXCLUDED_FORMS.includes(f.headerName));
+            const colIdx = fc.cols.length - 1;
+
+            const formData = forms.map(f => ({
+                name: f.headerName,
+                count: parseValue(f.dataList[colIdx])
+            }));
+
+            // Donut chart for single year
+            charts.filingByForm = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: formData.map(f => f.name),
+                    datasets: [{
+                        data: formData.map(f => f.count),
+                        backgroundColor: formColors,
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    cutout: '50%',
+                    plugins: {
+                        legend: { position: 'right', labels: { color: colors.text, padding: 12, usePointStyle: true } },
+                        tooltip: {
+                            callbacks: {
+                                label: (ctx) => {
+                                    const total = ctx.dataset.data.reduce((a, b) => a + b, 0);
+                                    const share = total > 0 ? (ctx.raw / total * 100) : 0;
+                                    return `${ctx.label}: ${formatCrores(ctx.raw)} (${formatPercent(share)})`;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // ==================== MODULE 3: INCOME DISTRIBUTION ====================
+        // Single year: Horizontal bar chart | Multi-year: Grouped bar chart
+        function renderIncomeDistribution(data, fyLabel) {
+            if (!data.categoryData || !data.categoryData.grandTotal) return '';
+
+            const totals = data.categoryData.grandTotal;
+            const overall = totals.reduce((a, b) => a + b, 0);
+            if (overall === 0) return '';
+
+            const lowBand = totals[0] + totals[1];
+            const midBand = totals[2];
+            const highBand = totals.slice(3).reduce((a, b) => a + b, 0);
+
+            const lowShare = overall > 0 ? (lowBand / overall * 100) : 0;
+            const highShare = overall > 0 ? (highBand / overall * 100) : 0;
+
+            return `
+                <div class="module" id="income-distribution">
+                    <div class="module-header">
+                        <h2 class="module-title">Income Distribution</h2>
+                        <span class="module-badge">FY ${fyLabel}</span>
+                    </div>
+                    <div class="kpi-grid">
+                        <div class="kpi-card">
+                            <div class="kpi-value">${formatPercent(lowShare)}</div>
+                            <div class="kpi-label">Low Band (≤10L)</div>
+                        </div>
+                        <div class="kpi-card">
+                            <div class="kpi-value">${formatPercent(highShare)}</div>
+                            <div class="kpi-label">High Band (>50L)</div>
+                        </div>
+                        <div class="kpi-card">
+                            <div class="kpi-value">${formatCrores(overall)}</div>
+                            <div class="kpi-label">Total Filings</div>
+                        </div>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="incomeDistributionChart"></canvas>
+                    </div>
+                    <div class="so-what">
+                        ${formatPercent(lowShare)} of filings come from income ≤10L; high earners (>50L) contribute ${formatPercent(highShare)}.
+                    </div>
+                </div>
+            `;
+        }
+
+        function initIncomeDistributionChart(data) {
+            const ctx = document.getElementById('incomeDistributionChart');
+            if (!ctx) return;
+
+            const colors = getChartColors();
+            const totals = data.categoryData.grandTotal;
+            const overall = totals.reduce((a, b) => a + b, 0);
+
+            // Horizontal bar chart for single year (pyramid style)
+            charts.incomeDistribution = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: INCOME_RANGE_LABELS,
+                    datasets: [{
+                        data: totals,
+                        backgroundColor: [colors.blue, colors.blue, colors.yellow, colors.green, colors.green, colors.green, colors.green],
+                        borderRadius: 4
+                    }]
+                },
+                options: {
+                    indexAxis: 'y',
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: {
+                                label: (ctx) => {
+                                    const share = overall > 0 ? (ctx.raw / overall * 100) : 0;
+                                    return `${formatCrores(ctx.raw)} (${formatPercent(share)})`;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: { beginAtZero: true, grid: { color: colors.grid }, ticks: { color: colors.text, callback: (v) => formatCrores(v) } },
+                        y: { grid: { display: false }, ticks: { color: colors.text } }
+                    }
+                }
+            });
+        }
+
+        // ==================== MODULE 4: STATE CONCENTRATION ====================
+        // Always single year: Horizontal bar + Pareto line
+        let currentTopN = 10;
+        let globalData = null;
+
+        function renderStateConcentration(data, fyLabel) {
+            if (!data.stateData || !data.stateData.states || data.stateData.states.length === 0) return '';
+
+            const states = data.stateData.states;
+            const total = states.reduce((sum, s) => sum + s.count, 0);
+            if (total === 0) return '';
+
+            const top5Share = states.slice(0, 5).reduce((sum, s) => sum + s.count, 0) / total * 100;
+            const top10Share = states.slice(0, 10).reduce((sum, s) => sum + s.count, 0) / total * 100;
+
+            return `
+                <div class="module" id="state-concentration">
+                    <div class="module-header">
+                        <h2 class="module-title">State Concentration</h2>
+                        <div class="top-n-controls">
+                            <button class="top-n-btn ${currentTopN === 10 ? 'active' : ''}" onclick="updateTopN(10)">Top 10</button>
+                            <button class="top-n-btn ${currentTopN === 15 ? 'active' : ''}" onclick="updateTopN(15)">Top 15</button>
+                            <button class="top-n-btn ${currentTopN === 20 ? 'active' : ''}" onclick="updateTopN(20)">Top 20</button>
+                        </div>
+                    </div>
+                    <div class="kpi-grid">
+                        <div class="kpi-card">
+                            <div class="kpi-value">${formatPercent(top5Share)}</div>
+                            <div class="kpi-label">Top 5 Share</div>
+                        </div>
+                        <div class="kpi-card">
+                            <div class="kpi-value">${formatPercent(top10Share)}</div>
+                            <div class="kpi-label">Top 10 Share</div>
+                        </div>
+                        <div class="kpi-card">
+                            <div class="kpi-value">${states[0].name}</div>
+                            <div class="kpi-label">#1 State</div>
+                        </div>
+                    </div>
+                    <div class="charts-row">
+                        <div class="chart-box">
+                            <div class="chart-box-title">Top ${currentTopN} States</div>
+                            <div class="chart-container small"><canvas id="stateBarChart"></canvas></div>
+                        </div>
+                        <div class="chart-box">
+                            <div class="chart-box-title">Cumulative Share (Pareto)</div>
+                            <div class="chart-container small"><canvas id="stateParetoChart"></canvas></div>
+                        </div>
+                    </div>
+                    <div class="so-what">
+                        Top 10 states contribute ${formatPercent(top10Share)} of filings, showing high geographic concentration.
+                    </div>
+                </div>
+            `;
+        }
+
+        function initStateCharts(data) {
+            const colors = getChartColors();
+            const topStates = data.stateData.states.slice(0, currentTopN);
+            const total = data.stateData.states.reduce((sum, s) => sum + s.count, 0);
+
+            // Horizontal bar chart
+            const barCtx = document.getElementById('stateBarChart');
+            if (barCtx) {
+                charts.stateBar = new Chart(barCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: topStates.map(s => s.name.length > 12 ? s.name.substring(0, 10) + '...' : s.name),
+                        datasets: [{
+                            data: topStates.map(s => s.count),
+                            backgroundColor: colors.blue,
+                            borderRadius: 4
+                        }]
+                    },
+                    options: {
+                        indexAxis: 'y',
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: { display: false },
+                            tooltip: {
+                                callbacks: {
+                                    title: (ctx) => topStates[ctx[0].dataIndex].name,
+                                    label: (ctx) => {
+                                        const share = total > 0 ? (ctx.raw / total * 100) : 0;
+                                        return `${formatCrores(ctx.raw)} (${formatPercent(share)})`;
+                                    }
+                                }
+                            }
+                        },
+                        scales: {
+                            x: { grid: { color: colors.grid }, ticks: { color: colors.text, callback: (v) => formatCrores(v) } },
+                            y: { grid: { display: false }, ticks: { color: colors.text, font: { size: 9 } } }
+                        }
+                    }
+                });
+            }
+
+            // Pareto chart (bar + line)
+            const paretoCtx = document.getElementById('stateParetoChart');
+            if (paretoCtx) {
+                let cumulative = 0;
+                const cumulativeData = topStates.map(s => {
+                    cumulative += s.count;
+                    return total > 0 ? (cumulative / total * 100) : 0;
+                });
+
+                charts.statePareto = new Chart(paretoCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: topStates.map((s, i) => i + 1),
+                        datasets: [
+                            {
+                                type: 'bar',
+                                label: 'Count',
+                                data: topStates.map(s => s.count),
+                                backgroundColor: colors.blue + '80',
+                                borderRadius: 4,
+                                yAxisID: 'y'
+                            },
+                            {
+                                type: 'line',
+                                label: 'Cumulative %',
+                                data: cumulativeData,
+                                borderColor: colors.red,
+                                backgroundColor: colors.red,
+                                pointRadius: 3,
+                                tension: 0.3,
+                                yAxisID: 'y1'
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: { position: 'bottom', labels: { color: colors.text, boxWidth: 12, padding: 8 } }
+                        },
+                        scales: {
+                            x: { grid: { display: false }, ticks: { color: colors.text } },
+                            y: { position: 'left', grid: { color: colors.grid }, ticks: { color: colors.text, callback: (v) => formatCrores(v) } },
+                            y1: { position: 'right', max: 100, grid: { display: false }, ticks: { color: colors.text, callback: (v) => v + '%' } }
+                        }
+                    }
+                });
+            }
+        }
+
+        function updateTopN(n) {
+            currentTopN = n;
+            if (globalData) {
+                document.querySelectorAll('.top-n-btn').forEach(btn => btn.classList.toggle('active', btn.textContent.includes(n)));
+                const title = document.querySelector('#state-concentration .chart-box-title');
+                if (title) title.textContent = `Top ${n} States`;
+                if (charts.stateBar) charts.stateBar.destroy();
+                if (charts.statePareto) charts.statePareto.destroy();
+                initStateCharts(globalData);
+            }
+        }
+
+        // ==================== SINGLE YEAR RENDER ====================
+        function renderSingleYear(data, fyLabel) {
+            globalData = data;
+
+            let html = '';
+            if (data.highlights) html += renderRefundPulse(data, fyLabel);
+            if (data.filingCount) html += renderFilingByForm(data, fyLabel);
+            if (data.categoryData) html += renderIncomeDistribution(data, fyLabel);
+            if (data.stateData) html += renderStateConcentration(data, fyLabel);
+
+            document.getElementById('content').innerHTML = html;
+
+            setTimeout(() => {
+                if (data.highlights) initRefundPulseChart(data);
+                if (data.filingCount) initFilingByFormChart(data);
+                if (data.categoryData) initIncomeDistributionChart(data);
+                if (data.stateData) initStateCharts(data);
+            }, 50);
+        }
+
+        // ==================== YEAR CHIP LOGIC ====================
+        function renderYearChips() {
+            const container = document.getElementById('year-chips');
+            container.innerHTML = AVAILABLE_FYS.map(fy => {
+                const isSelected = selectedYears.includes(fy.year);
+                const isDisabled = !isSelected && selectedYears.length >= 3;
+                return `<button class="year-chip ${isSelected ? 'selected' : ''} ${isDisabled ? 'disabled' : ''}"
+                         onclick="toggleYear(${fy.year})"
+                         ${isDisabled ? 'disabled' : ''}>
+                    FY ${fy.label}
+                </button>`;
+            }).join('');
+        }
+
+        function toggleYear(year) {
+            const idx = selectedYears.indexOf(year);
+            if (idx > -1) {
+                // Deselect - but keep at least one selected
+                if (selectedYears.length > 1) {
+                    selectedYears.splice(idx, 1);
+                }
+            } else {
+                // Select - max 3
+                if (selectedYears.length < 3) {
+                    selectedYears.push(year);
+                    selectedYears.sort((a, b) => b - a); // Keep sorted descending
+                }
+            }
+            renderYearChips();
+            loadData();
+        }
+
+        // ==================== CSV DATA FOR CURRENT YEAR ====================
+        let cachedCSVData = null;
+
+        async function fetchCurrentYearCSV() {
+            // Cache CSV data to avoid multiple fetches
+            if (cachedCSVData) return cachedCSVData;
+
+            try {
+                const response = await fetch('../data/daily.csv');
+                if (!response.ok) return { verified: 0, processed: 0 };
+
+                const text = await response.text();
+                const lines = text.trim().split('\n');
+                if (lines.length < 2) return { verified: 0, processed: 0 };
+
+                const headers = lines[0].split(',');
+                const lastRow = lines[lines.length - 1].split(',');
+
+                const verifiedIdx = headers.indexOf('eVerifiedReturns');
+                const processedIdx = headers.indexOf('TotalProcessedRefund');
+
+                cachedCSVData = {
+                    verified: parseInt(lastRow[verifiedIdx]) || 0,
+                    processed: parseInt(lastRow[processedIdx]) || 0
+                };
+                return cachedCSVData;
+            } catch (e) {
+                console.error('Failed to fetch CSV:', e);
+                return { verified: 0, processed: 0 };
+            }
+        }
+
+        // Build highlights for current year from Filing Count + CSV
+        async function buildCurrentYearHighlights(statistics) {
+            const fc = extractFilingCount(statistics);
+            const filed = fc ? fc.grandTotal[fc.grandTotal.length - 1] : 0;
+            const csvData = await fetchCurrentYearCSV();
+            return {
+                filed: filed,
+                verified: csvData.verified,
+                processed: csvData.processed,
+                refund: 0
+            };
+        }
+
+        // ==================== API LOADING ====================
+        async function fetchYearData(fy) {
+            const url = `https://eportal.incometax.gov.in/iec/efilingstatisticsgenerator/getStatistics?year=${fy.year}&month=${fy.month}&isHistoryData=${fy.isHistorical}`;
+            const response = await fetch(url);
+
+            if (!response.ok) {
+                throw new Error(`HTTP ${response.status} for FY ${fy.label}`);
+            }
+
+            const json = await response.json();
+            if (!json.statistics || json.statistics.length === 0) {
+                throw new Error(`No data for FY ${fy.label}`);
+            }
+
+            return {
+                year: fy.year,
+                label: fy.label,
+                statistics: json.statistics
+            };
+        }
+
+        async function loadData() {
+            const content = document.getElementById('content');
+            content.innerHTML = '<div class="loading"><div class="loading-spinner"></div><p>Fetching data from IT Portal...</p></div>';
+
+            destroyCharts();
+
+            try {
+                // Fetch data for all selected years
+                const fyConfigs = selectedYears.map(year => AVAILABLE_FYS.find(fy => fy.year === year));
+                const results = await Promise.all(fyConfigs.map(fy => fetchYearData(fy)));
+
+                // Update timestamp
+                const labels = results.map(r => `FY ${r.label}`).join(', ');
+                document.getElementById('data-timestamp').textContent =
+                    results.length > 1 ? `Comparing: ${labels}` : `Showing: ${labels}`;
+
+                // For single year, use single year view
+                if (results.length === 1) {
+                    const stats = results[0].statistics;
+                    let highlights = extractHighlights(stats);
+
+                    // For current year, build highlights from Filing Count + CSV
+                    if (!highlights && results[0].year === CURRENT_YEAR) {
+                        highlights = await buildCurrentYearHighlights(stats);
+                    }
+
+                    const data = {
+                        highlights: highlights,
+                        filingCount: extractFilingCount(stats),
+                        categoryData: extractCategoryFiling(stats),
+                        stateData: extractStateFiling(stats)
+                    };
+                    renderSingleYear(data, results[0].label);
+                } else {
+                    // Multi-year comparison mode
+                    await renderMultiYearComparison(results);
+                }
+
+            } catch (error) {
+                console.error('Failed to load data:', error);
+                content.innerHTML = `
+                    <div class="error">
+                        <h3>Failed to load data</h3>
+                        <p>${error.message}</p>
+                        <p style="margin-top: 1rem; color: var(--text-muted);">The IT Portal API may be temporarily unavailable. Please try again later.</p>
+                    </div>
+                `;
+            }
+        }
+
+        // ==================== MULTI-YEAR COMPARISON ====================
+        async function renderMultiYearComparison(results) {
+            // Sort by year descending
+            results.sort((a, b) => b.year - a.year);
+
+            // Extract data for each year
+            const yearData = await Promise.all(results.map(async r => {
+                let highlights = extractHighlights(r.statistics);
+
+                // For current year, build highlights from Filing Count + CSV
+                if (!highlights && r.year === CURRENT_YEAR) {
+                    highlights = await buildCurrentYearHighlights(r.statistics);
+                }
+
+                return {
+                    label: r.label,
+                    year: r.year,
+                    highlights: highlights,
+                    filingCount: extractFilingCount(r.statistics),
+                    categoryData: extractCategoryFiling(r.statistics),
+                    stateData: extractStateFiling(r.statistics)
+                };
+            }));
+
+            globalData = yearData[0]; // Use latest year for state chart interactions
+
+            let html = '';
+
+            // Module 1: Refund Pulse (grouped bar)
+            if (yearData.some(yd => yd.highlights)) {
+                html += renderRefundPulseYoY(yearData.filter(yd => yd.highlights));
+            }
+
+            // Module 2: Filing by Form (grouped bar)
+            html += renderFilingByFormYoY(yearData);
+
+            // Module 3: Income Distribution (grouped bar)
+            html += renderIncomeDistributionYoY(yearData);
+
+            // Module 4: State Concentration (YoY comparison)
+            html += renderStateConcentrationYoY(yearData);
+
+            document.getElementById('content').innerHTML = html;
+
+            const yearsWithHighlights = yearData.filter(yd => yd.highlights);
+
+            setTimeout(() => {
+                if (yearsWithHighlights.length > 0) {
+                    initRefundPulseYoYChart(yearsWithHighlights);
+                }
+                initFilingByFormYoYChart(yearData);
+                initIncomeDistributionYoYChart(yearData);
+                initStateConcentrationYoYChart(yearData);
+            }, 50);
+        }
+
+        // Refund Pulse: Grouped bar chart for YoY
+        function renderRefundPulseYoY(yearData) {
+            return `
+                <div class="module" id="refund-pulse">
+                    <div class="module-header">
+                        <h2 class="module-title">Refund Pulse</h2>
+                        <span class="module-badge">YoY Comparison</span>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="refundPulseChart"></canvas>
+                    </div>
+                    <div class="so-what">Comparing filing, verification, and processing volumes across ${yearData.length} financial years.</div>
+                </div>
+            `;
+        }
+
+        function initRefundPulseYoYChart(yearData) {
+            const ctx = document.getElementById('refundPulseChart');
+            if (!ctx) return;
+
+            const colors = getChartColors();
+
+            const datasets = yearData.map((yd, i) => ({
+                label: `FY ${yd.label}`,
+                data: [yd.highlights.filed || 0, yd.highlights.verified || 0, yd.highlights.processed || 0],
+                backgroundColor: getYoYBarColor(colors, i),
+                borderRadius: 4
+            }));
+
+            charts.refundPulse = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Filed', 'E-Verified', 'Processed'],
+                    datasets
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'bottom', labels: { color: colors.text, padding: 12 } },
+                        tooltip: { callbacks: { label: (ctx) => `${ctx.dataset.label}: ${formatCrores(ctx.raw)}` } }
+                    },
+                    scales: {
+                        x: { grid: { display: false }, ticks: { color: colors.text } },
+                        y: { beginAtZero: true, grid: { color: colors.grid }, ticks: { color: colors.text, callback: (v) => formatCrores(v) } }
+                    }
+                }
+            });
+        }
+
+        // Filing by Form: Grouped bar chart for YoY
+        function renderFilingByFormYoY(yearData) {
+            return `
+                <div class="module" id="filing-by-form">
+                    <div class="module-header">
+                        <h2 class="module-title">Filing by Form Type</h2>
+                        <span class="module-badge">YoY Comparison</span>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="filingByFormChart"></canvas>
+                    </div>
+                    <div class="so-what">Comparing ITR form distribution across selected financial years.</div>
+                </div>
+            `;
+        }
+
+        function initFilingByFormYoYChart(yearData) {
+            const ctx = document.getElementById('filingByFormChart');
+            if (!ctx) return;
+            if (!yearData[0]?.filingCount?.forms) return;
+
+            const colors = getChartColors();
+
+            // Get form names (excluding Others and ITR-A)
+            const formNames = yearData[0].filingCount.forms
+                .filter(f => !EXCLUDED_FORMS.includes(f.headerName))
+                .map(f => f.headerName);
+            if (formNames.length === 0) return;
+
+            const datasets = yearData.map((yd, i) => {
+                const fc = yd.filingCount;
+                const forms = fc.forms.filter(f => !EXCLUDED_FORMS.includes(f.headerName));
+                const colIdx = fc.cols.length - 1;
+                const data = forms.map(f => parseValue(f.dataList[colIdx]));
+
+                return {
+                    label: `FY ${yd.label}`,
+                    data,
+                    backgroundColor: getYoYBarColor(colors, i),
+                    borderRadius: 4
+                };
+            });
+
+            charts.filingByForm = new Chart(ctx, {
+                type: 'bar',
+                data: { labels: formNames, datasets },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'bottom', labels: { color: colors.text, padding: 12 } },
+                        tooltip: { callbacks: { label: (ctx) => `${ctx.dataset.label}: ${formatCrores(ctx.raw)}` } }
+                    },
+                    scales: {
+                        x: { grid: { display: false }, ticks: { color: colors.text } },
+                        y: { beginAtZero: true, grid: { color: colors.grid }, ticks: { color: colors.text, callback: (v) => formatCrores(v) } }
+                    }
+                }
+            });
+        }
+
+        // Income Distribution: Grouped bar chart for YoY
+        function renderIncomeDistributionYoY(yearData) {
+            return `
+                <div class="module" id="income-distribution">
+                    <div class="module-header">
+                        <h2 class="module-title">Income Distribution</h2>
+                        <span class="module-badge">YoY Comparison</span>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="incomeDistributionChart"></canvas>
+                    </div>
+                    <div class="so-what">Comparing income band distribution across selected financial years.</div>
+                </div>
+            `;
+        }
+
+        function initIncomeDistributionYoYChart(yearData) {
+            const ctx = document.getElementById('incomeDistributionChart');
+            if (!ctx) return;
+
+            const colors = getChartColors();
+
+            const datasets = yearData.map((yd, i) => ({
+                label: `FY ${yd.label}`,
+                data: yd.categoryData.grandTotal,
+                backgroundColor: getYoYBarColor(colors, i),
+                borderRadius: 4
+            }));
+
+            charts.incomeDistribution = new Chart(ctx, {
+                type: 'bar',
+                data: { labels: INCOME_RANGE_LABELS, datasets },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'bottom', labels: { color: colors.text, padding: 12 } },
+                        tooltip: { callbacks: { label: (ctx) => `${ctx.dataset.label}: ${formatCrores(ctx.raw)}` } }
+                    },
+                    scales: {
+                        x: { grid: { display: false }, ticks: { color: colors.text } },
+                        y: { beginAtZero: true, grid: { color: colors.grid }, ticks: { color: colors.text, callback: (v) => formatCrores(v) } }
+                    }
+                }
+            });
+        }
+
+        // State Concentration: Grouped bar chart for YoY
+        function renderStateConcentrationYoY(yearData) {
+            // Use latest year for KPIs
+            const latest = yearData[0];
+            if (!latest.stateData || !latest.stateData.states || latest.stateData.states.length === 0) return '';
+
+            const states = latest.stateData.states;
+            const total = states.reduce((sum, s) => sum + s.count, 0);
+            if (total === 0) return '';
+
+            const top5Share = states.slice(0, 5).reduce((sum, s) => sum + s.count, 0) / total * 100;
+
+            return `
+                <div class="module" id="state-concentration">
+                    <div class="module-header">
+                        <h2 class="module-title">State Concentration</h2>
+                        <span class="module-badge">YoY Comparison</span>
+                    </div>
+                    <div class="kpi-grid">
+                        <div class="kpi-card">
+                            <div class="kpi-value">${formatPercent(top5Share)}</div>
+                            <div class="kpi-label">Top 5 Share (${latest.label})</div>
+                        </div>
+                        <div class="kpi-card">
+                            <div class="kpi-value">${states[0].name}</div>
+                            <div class="kpi-label">#1 State</div>
+                        </div>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="stateYoYChart"></canvas>
+                    </div>
+                    <div class="so-what">Comparing top 10 states filing counts across ${yearData.length} financial years.</div>
+                </div>
+            `;
+        }
+
+        function initStateConcentrationYoYChart(yearData) {
+            const ctx = document.getElementById('stateYoYChart');
+            if (!ctx) return;
+
+            const colors = getChartColors();
+
+            // Get top 10 states from latest year
+            const topStateNames = yearData[0].stateData.states.slice(0, 10).map(s => s.name);
+
+            // Build datasets for each year
+            const datasets = yearData.map((yd, i) => {
+                // Create a map of state -> count for this year
+                const stateMap = {};
+                yd.stateData.states.forEach(s => { stateMap[s.name] = s.count; });
+
+                // Get counts for top 10 states (in order of latest year ranking)
+                const data = topStateNames.map(name => stateMap[name] || 0);
+
+                return {
+                    label: `FY ${yd.label}`,
+                    data,
+                    backgroundColor: getYoYBarColor(colors, i),
+                    borderRadius: 4
+                };
+            });
+
+            // Shorten state names for display
+            const labels = topStateNames.map(name => name.length > 12 ? name.substring(0, 10) + '...' : name);
+
+            charts.stateYoY = new Chart(ctx, {
+                type: 'bar',
+                data: { labels, datasets },
+                options: {
+                    indexAxis: 'y',
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'bottom', labels: { color: colors.text, padding: 12 } },
+                        tooltip: {
+                            callbacks: {
+                                title: (ctx) => topStateNames[ctx[0].dataIndex],
+                                label: (ctx) => `${ctx.dataset.label}: ${formatCrores(ctx.raw)}`
+                            }
+                        }
+                    },
+                    scales: {
+                        x: { beginAtZero: true, grid: { color: colors.grid }, ticks: { color: colors.text, callback: (v) => formatCrores(v) } },
+                        y: { grid: { display: false }, ticks: { color: colors.text, font: { size: 10 } } }
+                    }
+                }
+            });
+        }
+
+        // ==================== INIT ====================
+        setTheme(getThemePreference());
+        renderYearChips();
+        loadData();
+    </script>
+
+    <!-- GoatCounter Analytics -->
+    <script data-goatcounter="https://itrstats.goatcounter.com/count"
+            async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

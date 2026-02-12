@@ -216,6 +216,26 @@
             color: var(--accent-blue);
         }
 
+        .new-badge {
+            display: inline-block;
+            margin-left: 0.35rem;
+            padding: 0.1rem 0.35rem;
+            border-radius: 999px;
+            background: #ef4444;
+            color: #ffffff;
+            font-size: 0.62rem;
+            font-weight: 700;
+            line-height: 1.2;
+            vertical-align: middle;
+            animation: blinkTag 1s steps(2, start) infinite;
+        }
+
+        @keyframes blinkTag {
+            50% {
+                opacity: 0.2;
+            }
+        }
+
         .theme-toggle {
             background: var(--bg-accent);
             border: none;
@@ -570,6 +590,7 @@
             </div>
             <div class="header-right">
                 <a href="/" class="header-link">Dashboard</a>
+                <a href="/insights/" class="header-link">Insights <span class="new-badge">NEW</span></a>
                 <a href="/blog/" class="header-link active">Blog</a>
                 <a href="/calculator/" class="header-link">Calculator</a>
                 <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">
