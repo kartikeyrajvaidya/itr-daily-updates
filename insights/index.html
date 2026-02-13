@@ -199,6 +199,29 @@
             transform: scale(1.1);
         }
 
+        /* Warning Banner */
+        .warning-banner {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.875rem 1.25rem;
+            background: rgba(245, 158, 11, 0.15);
+            border: 1px solid var(--accent-yellow);
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .warning-banner-icon {
+            font-size: 1.25rem;
+            flex-shrink: 0;
+        }
+
+        .warning-banner a {
+            color: var(--accent-blue);
+        }
+
         /* Controls Bar */
         .controls-bar {
             display: flex;
@@ -649,6 +672,12 @@
                 </button>
             </div>
         </header>
+
+        <!-- Warning Banner -->
+        <div class="warning-banner">
+            <span class="warning-banner-icon">⚠️</span>
+            <span>The Income Tax Portal API is currently unreachable. Data may not load. Check back later or view the <a href="../">Dashboard</a> for cached data.</span>
+        </div>
 
         <!-- Controls -->
         <div class="controls-bar">
