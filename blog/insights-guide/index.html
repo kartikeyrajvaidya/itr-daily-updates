@@ -18,16 +18,23 @@
     <meta property="og:title" content="ITR Insights Guide - Understanding India's Tax Filing Statistics">
     <meta property="og:description" content="Complete guide to understanding ITR filing statistics, refund processing, income distribution, and state-wise data.">
     <meta property="og:image" content="https://itrstats.in/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
     <meta property="og:site_name" content="ITR Stats">
+    <meta property="og:locale" content="en_IN">
     <meta property="article:published_time" content="2026-02-14">
-    <meta property="article:modified_time" content="2026-02-14">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="ITR Insights Guide - Understanding India's Tax Filing Statistics">
     <meta name="twitter:description" content="Complete guide to understanding ITR filing statistics and trends.">
+    <meta name="twitter:image" content="https://itrstats.in/og-image.png">
 
-    <link rel="icon" type="image/png" href="../../favicon.png">
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2843260079810330"
+        crossorigin="anonymous"></script>
 
     <!-- Structured Data - Article -->
     <script type="application/ld+json">
@@ -37,29 +44,35 @@
         "headline": "ITR Insights Guide - Understanding India's Tax Filing Statistics",
         "description": "Complete guide to ITR Stats Insights page. Understand refund processing rates, filing patterns, income distribution, and state-wise data.",
         "image": "https://itrstats.in/og-image.png",
+        "datePublished": "2026-02-14",
+        "dateModified": "2026-02-14",
         "author": {
-            "@type": "Person",
-            "name": "Kartikey"
+            "@type": "Organization",
+            "name": "ITR Stats"
         },
         "publisher": {
             "@type": "Organization",
             "name": "ITR Stats",
             "url": "https://itrstats.in"
-        },
-        "datePublished": "2026-02-14",
-        "dateModified": "2026-02-14",
-        "mainEntityOfPage": {
-            "@type": "WebPage",
-            "@id": "https://itrstats.in/blog/insights-guide/"
         }
     }
     </script>
 
-    <!-- Google AdSense -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2843260079810330"
-        crossorigin="anonymous"></script>
+    <!-- Structured Data - Breadcrumb -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://itrstats.in/"},
+            {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://itrstats.in/blog/"},
+            {"@type": "ListItem", "position": 3, "name": "ITR Insights Guide", "item": "https://itrstats.in/blog/insights-guide/"}
+        ]
+    }
+    </script>
 
     <style>
+        /* Light mode (default) */
         :root {
             --bg-primary: #f8fafc;
             --bg-secondary: #ffffff;
@@ -72,9 +85,9 @@
             --accent-red: #ef4444;
             --accent-yellow: #f59e0b;
             --border-color: #e2e8f0;
-            --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
         }
 
+        /* Dark mode */
         [data-theme="dark"] {
             --bg-primary: #0f172a;
             --bg-secondary: #1e293b;
@@ -87,7 +100,6 @@
             --accent-red: #f87171;
             --accent-yellow: #fbbf24;
             --border-color: #334155;
-            --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
         }
 
         * {
@@ -102,11 +114,11 @@
             color: var(--text-primary);
             min-height: 100vh;
             padding: 1rem;
-            line-height: 1.7;
+            line-height: 1.8;
         }
 
         .container {
-            max-width: 800px;
+            max-width: 1000px;
             margin: 0 auto;
         }
 
@@ -124,6 +136,8 @@
         .header-left h1 {
             font-size: 1.5rem;
             font-weight: 700;
+            color: var(--text-primary);
+            margin: 0;
         }
 
         .header-left p {
@@ -193,67 +207,58 @@
             transform: scale(1.1);
         }
 
-        /* Article Styles */
+        .content {
+            padding: 0;
+        }
+
         article {
             background: var(--bg-secondary);
             border-radius: 16px;
             padding: 2rem;
-            box-shadow: var(--card-shadow);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
-        .article-header {
-            margin-bottom: 2rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .tag {
-            display: inline-block;
-            background: var(--accent-blue);
-            color: white;
-            padding: 0.25rem 0.75rem;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 1rem;
-        }
-
-        .article-header h1 {
-            font-size: 2rem;
+        h1 {
+            font-size: 2.25rem;
             line-height: 1.3;
             margin-bottom: 1rem;
+            color: var(--text-primary);
         }
 
         .meta {
             display: flex;
-            gap: 1.5rem;
+            gap: 1rem;
+            flex-wrap: wrap;
             color: var(--text-muted);
             font-size: 0.9rem;
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border-color);
         }
 
         h2 {
             font-size: 1.5rem;
-            margin: 2rem 0 1rem;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
             color: var(--text-primary);
         }
 
         h3 {
-            font-size: 1.2rem;
-            margin: 1.5rem 0 0.75rem;
+            font-size: 1.25rem;
+            margin-top: 2rem;
+            margin-bottom: 0.75rem;
             color: var(--text-primary);
         }
 
         p {
             color: var(--text-secondary);
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
         }
 
         ul, ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1.5rem;
             color: var(--text-secondary);
-            margin: 1rem 0;
-            padding-left: 1.5rem;
         }
 
         li {
@@ -271,166 +276,127 @@
 
         .highlight-box {
             background: var(--bg-accent);
-            border-radius: 12px;
-            padding: 1.25rem;
-            margin: 1.5rem 0;
-        }
-
-        .highlight-box.blue {
             border-left: 4px solid var(--accent-blue);
-        }
-
-        .highlight-box.green {
-            border-left: 4px solid var(--accent-green);
+            padding: 1.25rem 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 8px 8px 0;
         }
 
         .highlight-box p {
-            margin: 0;
-        }
-
-        .highlight-box p + p {
-            margin-top: 0.75rem;
-        }
-
-        .feature-card {
-            background: var(--bg-accent);
-            border-radius: 12px;
-            padding: 1.25rem;
-            margin: 1rem 0;
-        }
-
-        .feature-card h4 {
-            color: var(--accent-blue);
-            font-size: 1rem;
             margin-bottom: 0.5rem;
         }
 
-        .feature-card p {
-            margin: 0;
-            font-size: 0.95rem;
+        .highlight-box p:last-child {
+            margin-bottom: 0;
         }
 
-        table {
+        .highlight-box.green {
+            border-left-color: var(--accent-green);
+        }
+
+        .comparison-table {
             width: 100%;
             border-collapse: collapse;
             margin: 1.5rem 0;
             font-size: 0.9rem;
         }
 
-        th, td {
-            padding: 0.75rem 1rem;
+        .comparison-table th,
+        .comparison-table td {
+            padding: 0.875rem 1rem;
             text-align: left;
             border-bottom: 1px solid var(--border-color);
         }
 
-        th {
+        .comparison-table th {
             background: var(--bg-accent);
             font-weight: 600;
             color: var(--text-primary);
         }
 
-        td {
+        .comparison-table td {
             color: var(--text-secondary);
         }
 
-        .cta-box {
-            background: linear-gradient(135deg, var(--accent-blue), #8b5cf6);
-            border-radius: 12px;
-            padding: 1.5rem;
-            text-align: center;
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
             margin: 2rem 0;
         }
 
+        .stat-box {
+            background: var(--bg-accent);
+            border-radius: 12px;
+            padding: 1.25rem;
+            text-align: center;
+        }
+
+        .stat-box .number {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--accent-blue);
+        }
+
+        .stat-box .label {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-top: 0.25rem;
+        }
+
+        .cta-box {
+            background: linear-gradient(135deg, var(--bg-secondary), var(--bg-accent));
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2.5rem 0;
+            text-align: center;
+        }
+
         .cta-box h3 {
-            color: white;
-            margin: 0 0 0.5rem;
+            margin-top: 0;
+            color: var(--text-primary);
         }
 
         .cta-box p {
-            color: rgba(255, 255, 255, 0.9);
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
         }
 
         .cta-button {
             display: inline-block;
-            background: white;
-            color: var(--accent-blue);
-            padding: 0.75rem 1.5rem;
+            background: var(--accent-blue);
+            color: #ffffff;
+            padding: 0.875rem 2rem;
             border-radius: 8px;
             font-weight: 600;
             text-decoration: none;
-            transition: transform 0.2s ease;
+            transition: filter 0.2s ease;
         }
 
         .cta-button:hover {
-            transform: scale(1.05);
+            filter: brightness(1.1);
             text-decoration: none;
         }
 
-        .module-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1rem;
-            margin: 1.5rem 0;
-        }
-
-        .module-item {
-            background: var(--bg-accent);
-            border-radius: 10px;
-            padding: 1rem;
-        }
-
-        .module-item h4 {
-            font-size: 0.9rem;
-            color: var(--text-primary);
-            margin-bottom: 0.25rem;
-        }
-
-        .module-item p {
-            font-size: 0.85rem;
-            margin: 0;
-            color: var(--text-muted);
-        }
-
-        /* Footer */
         footer {
             text-align: center;
             padding: 2rem;
+            color: var(--text-muted);
             font-size: 0.85rem;
-            color: var(--text-muted);
             border-top: 1px solid var(--border-color);
-            margin-top: 2rem;
+            margin-top: 3rem;
         }
 
-        .footer-creator {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            margin-bottom: 0.25rem;
-        }
-
-        .footer-creator a {
-            color: var(--text-muted);
-            display: inline-flex;
-            transition: color 0.2s ease;
-        }
-
-        .footer-creator a:hover {
+        footer a {
             color: var(--accent-blue);
         }
 
-        .footer-feedback {
-            font-size: 0.8rem;
-            margin-bottom: 0.75rem;
-        }
-
-        .footer-legal {
-            font-size: 0.8rem;
-        }
-
-        .footer-legal a {
-            color: var(--text-muted);
+        footer a:hover {
+            text-decoration: underline;
         }
 
         .info-icon {
@@ -484,8 +450,46 @@
 
         .info-icon:hover .info-tooltip { opacity: 1; visibility: visible; }
 
+        .footer-creator {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .footer-creator a {
+            color: var(--text-muted);
+            display: inline-flex;
+            transition: color 0.2s ease;
+        }
+
+        .footer-creator a:hover {
+            color: var(--accent-blue);
+        }
+
+        .footer-feedback {
+            font-size: 0.8rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-legal {
+            font-size: 0.8rem;
+        }
+
+        .footer-legal a {
+            color: var(--text-muted);
+            text-decoration: none;
+        }
+
+        .footer-legal a:hover {
+            color: var(--accent-blue);
+        }
+
         @media (max-width: 768px) {
-            body { padding: 0.75rem; }
+            body {
+                padding: 0.75rem;
+            }
 
             .header {
                 flex-direction: column;
@@ -504,21 +508,17 @@
                 padding: 0.4rem 0.6rem;
             }
 
-            article {
-                padding: 1.25rem;
+            h1 {
+                font-size: 1.75rem;
             }
 
-            .article-header h1 {
-                font-size: 1.5rem;
+            .comparison-table {
+                font-size: 0.8rem;
             }
 
-            .meta {
-                flex-direction: column;
-                gap: 0.5rem;
-            }
-
-            .module-grid {
-                grid-template-columns: 1fr;
+            .comparison-table th,
+            .comparison-table td {
+                padding: 0.625rem 0.5rem;
             }
         }
     </style>
@@ -528,59 +528,59 @@
         <header class="header">
             <div class="header-left">
                 <h1>ITR Stats</h1>
-                <p>Blog</p>
+                <p>Blog Article</p>
             </div>
             <div class="header-right">
-                <a href="../../" class="header-link">Dashboard</a>
-                <a href="../../insights/" class="header-link">Insights <span class="new-badge">NEW</span></a>
-                <a href="../" class="header-link active">Blog</a>
-                <a href="../../calculator/" class="header-link">Calculator</a>
+                <a href="/" class="header-link">Dashboard</a>
+                <a href="/insights/" class="header-link">Insights <span class="new-badge">NEW</span></a>
+                <a href="/blog/" class="header-link active">Blog</a>
+                <a href="/calculator/" class="header-link">Calculator</a>
                 <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">
                     <span id="theme-icon"></span>
                 </button>
             </div>
         </header>
 
+        <main class="content">
+
         <article>
-            <div class="article-header">
-                <span class="tag">Guide</span>
-                <h1>ITR Insights: A Deep Dive into India's Tax Filing Statistics</h1>
-                <div class="meta">
-                    <span>February 14, 2026</span>
-                    <span>8 min read</span>
-                </div>
+            <h1>ITR Insights: A Deep Dive into India's Tax Filing Statistics</h1>
+
+            <div class="meta">
+                <span>Published: February 14, 2026</span>
+                <span>8 min read</span>
             </div>
 
-            <p>We've built something new - the <a href="../../insights/">ITR Insights</a> page. It's a comprehensive analytics dashboard that pulls real-time data directly from the Income Tax e-Filing portal and presents it in an easy-to-understand format.</p>
+            <p>We've built something new - the <a href="/insights/">ITR Insights</a> page. It's a comprehensive analytics dashboard that pulls real-time data directly from the Income Tax e-Filing portal and presents it in an easy-to-understand format.</p>
 
             <p>This guide explains what data is available, how to interpret it, and what insights you can draw from India's tax filing statistics.</p>
 
             <div class="cta-box">
                 <h3>Explore ITR Insights</h3>
                 <p>See live filing statistics, refund processing rates, and year-over-year comparisons</p>
-                <a href="../../insights/" class="cta-button">Open Insights Dashboard</a>
+                <a href="/insights/" class="cta-button">Open Insights Dashboard</a>
             </div>
 
             <h2>What is ITR Insights?</h2>
 
-            <p>ITR Insights is a real-time analytics dashboard that visualizes data from the official Income Tax e-Filing portal. It covers:</p>
+            <p>ITR Insights is a real-time analytics dashboard that visualizes data from the official Income Tax e-Filing portal. It covers four key areas:</p>
 
-            <div class="module-grid">
-                <div class="module-item">
-                    <h4>Refund Pulse</h4>
-                    <p>Filing, verification, and processing rates with backlog tracking</p>
+            <div class="stat-grid">
+                <div class="stat-box">
+                    <div class="number">Refund Pulse</div>
+                    <div class="label">Filing, verification, processing rates</div>
                 </div>
-                <div class="module-item">
-                    <h4>Filing by Form Type</h4>
-                    <p>Distribution across ITR-1 to ITR-7 forms</p>
+                <div class="stat-box">
+                    <div class="number">Form Types</div>
+                    <div class="label">ITR-1 to ITR-7 distribution</div>
                 </div>
-                <div class="module-item">
-                    <h4>Income Distribution</h4>
-                    <p>Taxpayer breakdown by income brackets</p>
+                <div class="stat-box">
+                    <div class="number">Income Bands</div>
+                    <div class="label">Taxpayer income distribution</div>
                 </div>
-                <div class="module-item">
-                    <h4>State Concentration</h4>
-                    <p>Geographic distribution of tax filings</p>
+                <div class="stat-box">
+                    <div class="number">State Data</div>
+                    <div class="label">Geographic filing patterns</div>
                 </div>
             </div>
 
@@ -597,15 +597,13 @@
                 <li>Refund processing efficiency trends</li>
             </ul>
 
-            <div class="highlight-box blue">
+            <div class="highlight-box">
                 <p><strong>Pro Tip:</strong> Compare FY 2024-25 with FY 2023-24 to see how much the tax base has expanded year-over-year.</p>
             </div>
 
             <h3>2. Real-Time Data</h3>
 
-            <p>For the current financial year, data is updated monthly by the IT department. For previous years, you get complete annual statistics.</p>
-
-            <p>The dashboard automatically detects the current FY and shows partial data with a helpful indicator.</p>
+            <p>For the current financial year, data is updated monthly by the IT department. For previous years, you get complete annual statistics. The dashboard automatically detects the current FY and shows partial data with a helpful indicator.</p>
 
             <h2>Understanding Each Module</h2>
 
@@ -613,7 +611,7 @@
 
             <p>This module tracks the entire ITR processing pipeline:</p>
 
-            <table>
+            <table class="comparison-table">
                 <thead>
                     <tr>
                         <th>Metric</th>
@@ -656,7 +654,7 @@
 
             <p>This shows the distribution of ITR filings across different form types:</p>
 
-            <table>
+            <table class="comparison-table">
                 <thead>
                     <tr>
                         <th>Form</th>
@@ -710,7 +708,7 @@
                 <li><strong>>5Cr:</strong> Ultra high net worth individuals</li>
             </ul>
 
-            <div class="highlight-box blue">
+            <div class="highlight-box">
                 <p><strong>Interesting Pattern:</strong> A significant percentage of filings come from the ≤5L bracket. Many of these are people filing for TDS refunds, loan applications, or to establish financial history.</p>
             </div>
 
@@ -762,37 +760,38 @@
                 <li>Breakdown by form type, income bracket, and state</li>
             </ul>
 
-            <div class="highlight-box blue">
+            <div class="highlight-box">
                 <p><strong>Note:</strong> Current year data is partial (updated till previous month). For accurate year-end comparisons, use completed financial years.</p>
             </div>
 
-            <h2>What's Next</h2>
-
-            <p>We're continuously improving the Insights page. Planned features include:</p>
+            <h2>Key Takeaways</h2>
 
             <ul>
-                <li>Monthly trend charts within a financial year</li>
-                <li>Download data as CSV/Excel</li>
-                <li>More granular income bracket analysis</li>
-                <li>Tax collection data (when available)</li>
+                <li><strong>ITR Insights</strong> provides real-time analytics from the official IT portal</li>
+                <li><strong>Compare up to 3 years</strong> to understand trends and patterns</li>
+                <li><strong>Refund Pulse</strong> helps you track processing efficiency and backlog</li>
+                <li><strong>Form distribution</strong> shows ITR-1 dominates (80%+ salaried filers)</li>
+                <li><strong>Income distribution</strong> reveals taxpayer pyramid structure</li>
+                <li><strong>State data</strong> shows high geographic concentration in top 5-10 states</li>
             </ul>
 
             <div class="cta-box">
                 <h3>Start Exploring</h3>
                 <p>Dive into the data and discover patterns in India's tax filing landscape</p>
-                <a href="../../insights/" class="cta-button">Open ITR Insights</a>
+                <a href="/insights/" class="cta-button">Open ITR Insights</a>
             </div>
 
             <h2>Related Resources</h2>
 
             <ul>
-                <li><a href="../../">ITR Stats Dashboard</a> - Daily filing and refund processing tracker</li>
-                <li><a href="../itr-refund-time.html">When Will I Get My Refund?</a> - Refund timeline analysis</li>
-                <li><a href="../weekly-update.html">Weekly Update</a> - Latest filing statistics summary</li>
-                <li><a href="../../calculator/">Tax Calculators</a> - Income tax, HRA, and more</li>
+                <li><a href="/">ITR Stats Dashboard</a> - Daily filing and refund processing tracker</li>
+                <li><a href="/blog/itr-refund-time.html">When Will I Get My Refund?</a> - Refund timeline analysis</li>
+                <li><a href="/blog/weekly-update.html">Weekly Update</a> - Latest filing statistics summary</li>
+                <li><a href="/calculator/">Tax Calculators</a> - Income tax, HRA, and more</li>
             </ul>
 
         </article>
+        </main>
     </div>
 
     <footer>
@@ -806,19 +805,16 @@
             </a>
         </p>
         <p class="footer-feedback">Open to feedback!</p>
-        <p class="footer-legal">© 2026 ITR Stats · <a href="../../privacy-policy.html">Privacy</a> · <a href="https://eportal.incometax.gov.in" target="_blank" rel="noopener">Data Source</a>
+        <p class="footer-legal">© 2026 ITR Stats · <a href="/privacy-policy.html">Privacy</a> · <a href="https://eportal.incometax.gov.in" target="_blank" rel="noopener">Data Source</a>
             <span class="info-icon">i<span class="info-tooltip">Unofficial dashboard · Not affiliated with Income Tax Department</span></span>
         </p>
     </footer>
 
-    <!-- GoatCounter Analytics -->
-    <script data-goatcounter="https://itrstats.goatcounter.com/count"
-            async src="//gc.zgo.at/count.js"></script>
-
     <script>
         function getThemePreference() {
             const saved = localStorage.getItem('theme');
-            return saved || 'dark';
+            if (saved) return saved;
+            return 'dark';
         }
 
         function setTheme(theme) {
@@ -834,5 +830,9 @@
 
         setTheme(getThemePreference());
     </script>
+
+    <!-- GoatCounter Analytics -->
+    <script data-goatcounter="https://itrstats.goatcounter.com/count"
+            async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>
