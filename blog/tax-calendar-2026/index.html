@@ -184,7 +184,7 @@
             margin-bottom: 1rem;
         }
 
-        .header-left h1 { font-size: 1.5rem; font-weight: 700; margin: 0; }
+        .header-left .header-title { font-size: 1.5rem; font-weight: 700; margin: 0; }
         .header-left p { font-size: 0.875rem; color: var(--text-muted); margin-top: 0.25rem; }
         .header-right { display: flex; align-items: center; gap: 1rem; }
 
@@ -522,13 +522,54 @@
             .deadline-item { flex-direction: column; gap: 0.5rem; }
             .deadline-date { align-self: flex-start; }
         }
+
+        /* Internal Links Section */
+        .related-content {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .related-content h2 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .related-card {
+            background: var(--bg-accent);
+            border-radius: 12px;
+            padding: 1.25rem;
+            text-decoration: none;
+            color: inherit;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .related-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .related-card .card-icon { font-size: 1.5rem; }
+        .related-card .card-title { font-weight: 600; color: var(--text-primary); font-size: 0.95rem; }
+        .related-card .card-desc { font-size: 0.85rem; color: var(--text-muted); line-height: 1.4; }
+        .related-card .card-tag { font-size: 0.7rem; color: var(--accent-blue); font-weight: 600; text-transform: uppercase; }
     </style>
 </head>
 <body>
     <div class="container">
         <header class="header">
             <div class="header-left">
-                <h1>ITR Stats</h1>
+                <div class="header-title">ITR Stats</div>
                 <p>Blog Article</p>
             </div>
             <div class="header-right">
@@ -1216,6 +1257,36 @@
 
             <p>Set calendar reminders. Missing these dates costs money.</p>
 
+            <section class="related-content">
+                <h2>Explore More</h2>
+                <div class="related-grid">
+                    <a href="/blog/last-minute-tax-saving/" class="related-card">
+                        <span class="card-icon">💰</span>
+                        <span class="card-title">Last-Minute Tax Saving</span>
+                        <span class="card-desc">Complete guide to save tax before March 31 deadline</span>
+                        <span class="card-tag">Blog</span>
+                    </a>
+                    <a href="/calculator/income-tax/" class="related-card">
+                        <span class="card-icon">🧮</span>
+                        <span class="card-title">Income Tax Calculator</span>
+                        <span class="card-desc">Compare old vs new tax regime for FY 2025-26</span>
+                        <span class="card-tag">Calculator</span>
+                    </a>
+                    <a href="/" class="related-card">
+                        <span class="card-icon">📈</span>
+                        <span class="card-title">ITR Stats Dashboard</span>
+                        <span class="card-desc">Live ITR filing statistics and daily updates</span>
+                        <span class="card-tag">Dashboard</span>
+                    </a>
+                    <a href="/insights/" class="related-card">
+                        <span class="card-icon">📊</span>
+                        <span class="card-title">Filing Insights</span>
+                        <span class="card-desc">Trends, processing times, and refund data</span>
+                        <span class="card-tag">Dashboard</span>
+                    </a>
+                </div>
+            </section>
+
         </article>
         </main>
     </div>
@@ -1259,6 +1330,6 @@
 
     <!-- GoatCounter Analytics -->
     <script data-goatcounter="https://itrstats.goatcounter.com/count"
-            async src="//gc.zgo.at/count.js"></script>
+            async src="https://gc.zgo.at/count.js"></script>
 </body>
 </html>
