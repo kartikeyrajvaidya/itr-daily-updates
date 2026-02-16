@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Meta Tags -->
+    <title>Income Percentile Calculator India 2026 - Where Do You Stand? | ITR Stats</title>
+    <meta name="description" content="Find out where you stand among Indian taxpayers. Enter your income and see what percentage of ITR filers earn less than you. Based on official Income Tax data.">
+    <meta name="keywords" content="income percentile calculator, income comparison India, top earners India, salary percentile, income tax filers India">
+    <meta name="author" content="ITR Stats">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://itrstats.in/calculator/income-percentile/">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://itrstats.in/calculator/income-percentile/">
+    <meta property="og:title" content="Income Percentile Calculator - Where Do You Stand Among Indian Taxpayers?">
+    <meta property="og:description" content="Enter your income and see what percentage of ITR filers earn less than you.">
+    <meta property="og:image" content="https://itrstats.in/og-image.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="ITR Stats">
+    <meta property="og:locale" content="en_IN">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Income Percentile Calculator - Where Do You Stand?">
+    <meta name="twitter:description" content="See where you rank among Indian taxpayers.">
+    <meta name="twitter:image" content="https://itrstats.in/og-image.png">
+
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <!-- html2canvas for share image -->
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2843260079810330"
+        crossorigin="anonymous"></script>
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Income Percentile Calculator",
+        "description": "Find out where you stand among Indian taxpayers based on your income.",
+        "url": "https://itrstats.in/calculator/income-percentile/",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "Any",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "INR"
+        }
+    }
+    </script>
+
+    <style>
+        :root {
+            --bg-primary: #f8fafc;
+            --bg-secondary: #ffffff;
+            --bg-accent: #f1f5f9;
+            --text-primary: #1e293b;
+            --text-secondary: #4a5568;
+            --text-muted: #718096;
+            --accent-blue: #3b82f6;
+            --accent-green: #22c55e;
+            --accent-orange: #f59e0b;
+            --accent-purple: #8b5cf6;
+            --border-color: #e2e8f0;
+        }
+
+        [data-theme="dark"] {
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --bg-accent: #334155;
+            --text-primary: #f1f5f9;
+            --text-secondary: #cbd5e1;
+            --text-muted: #94a3b8;
+            --accent-blue: #60a5fa;
+            --accent-green: #4ade80;
+            --accent-orange: #fbbf24;
+            --accent-purple: #a78bfa;
+            --border-color: #334155;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            padding: 1rem;
+            line-height: 1.6;
+        }
+
+        .wrapper {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.5rem;
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-left h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin: 0;
+        }
+
+        .header-left p {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            margin-top: 0.25rem;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .header-link {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            padding: 0.5rem 0.75rem;
+            border-radius: 8px;
+            transition: color 0.2s ease, background 0.2s ease;
+        }
+
+        .header-link:hover {
+            color: var(--accent-blue);
+            background: var(--bg-accent);
+        }
+
+        .header-link.active {
+            color: var(--accent-blue);
+        }
+
+        .new-badge {
+            display: inline-block;
+            margin-left: 0.35rem;
+            padding: 0.1rem 0.35rem;
+            border-radius: 999px;
+            background: #ef4444;
+            color: #ffffff;
+            font-size: 0.62rem;
+            font-weight: 700;
+            line-height: 1.2;
+            vertical-align: middle;
+            animation: blinkTag 1s steps(2, start) infinite;
+        }
+
+        @keyframes blinkTag {
+            50% { opacity: 0.2; }
+        }
+
+        .theme-toggle {
+            background: var(--bg-accent);
+            border: none;
+            border-radius: 12px;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s ease;
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .calculator-card {
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .info-column {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .calculator-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+
+        .calculator-subtitle {
+            color: var(--text-muted);
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 0.95rem;
+        }
+
+        .input-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .input-label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .input-hint {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 0.25rem;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 1rem;
+            font-size: 1.25rem;
+            font-weight: 600;
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            text-align: center;
+            transition: border-color 0.2s ease;
+        }
+
+        .input-field:focus {
+            outline: none;
+            border-color: var(--accent-blue);
+        }
+
+        .input-field::placeholder {
+            color: var(--text-muted);
+            font-weight: 400;
+        }
+
+        /* Result Section */
+        .result-section {
+            display: none;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .result-section.visible {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .percentile-display {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .percentile-label {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+        }
+
+        .percentile-value {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--accent-blue);
+            line-height: 1;
+        }
+
+        .percentile-suffix {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        .result-message {
+            text-align: center;
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+        }
+
+        .result-message strong {
+            color: var(--accent-green);
+        }
+
+        /* Visual Bar */
+        .percentile-bar {
+            background: var(--bg-accent);
+            border-radius: 12px;
+            height: 40px;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 1rem;
+        }
+
+        .percentile-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-green), var(--accent-blue), var(--accent-purple));
+            border-radius: 12px;
+            transition: width 0.5s ease;
+            position: relative;
+        }
+
+        .percentile-marker {
+            position: absolute;
+            right: -2px;
+            top: -8px;
+            bottom: -8px;
+            width: 4px;
+            background: var(--text-primary);
+            border-radius: 2px;
+        }
+
+        .percentile-marker::after {
+            content: 'You';
+            position: absolute;
+            top: -24px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            white-space: nowrap;
+        }
+
+        .bar-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .stat-card {
+            background: var(--bg-accent);
+            padding: 1rem;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 0.25rem;
+        }
+
+        /* Share Button */
+        .share-btn {
+            display: block;
+            width: 100%;
+            padding: 1rem;
+            margin-top: 1.5rem;
+            background: var(--accent-blue);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+        }
+
+        .share-btn:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+
+        /* Disclaimer */
+        .disclaimer {
+            background: var(--bg-accent);
+            padding: 1rem;
+            border-radius: 12px;
+            margin-top: 1.5rem;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .disclaimer strong {
+            color: var(--text-secondary);
+        }
+
+        /* Info Section */
+        .info-section {
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .info-section h2 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .info-section p {
+            color: var(--text-secondary);
+            margin-bottom: 0.75rem;
+            font-size: 0.95rem;
+        }
+
+        .info-section ul {
+            margin-left: 1.25rem;
+            color: var(--text-secondary);
+        }
+
+        .info-section li {
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        /* Loading State */
+        .loading {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-muted);
+        }
+
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid var(--bg-accent);
+            border-top-color: var(--accent-blue);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .error-msg {
+            background: #fef2f2;
+            color: #991b1b;
+            padding: 1rem;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        [data-theme="dark"] .error-msg {
+            background: #450a0a;
+            color: #fca5a5;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        footer a {
+            color: var(--accent-blue);
+            text-decoration: none;
+        }
+
+        .footer-creator {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .footer-creator a {
+            color: var(--text-muted);
+            display: inline-flex;
+            transition: color 0.2s ease;
+        }
+
+        .footer-creator a:hover {
+            color: var(--accent-blue);
+        }
+
+        /* Share Card (hidden, for image generation) */
+        .share-card-container {
+            position: fixed;
+            left: -9999px;
+            top: 0;
+        }
+
+        .share-card {
+            width: 600px;
+            padding: 40px;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            border-radius: 24px;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            color: #f1f5f9;
+        }
+
+        .share-card-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .share-card-label {
+            font-size: 18px;
+            color: #94a3b8;
+            margin-bottom: 8px;
+        }
+
+        .share-card-percentile {
+            font-size: 28px;
+            font-weight: 600;
+            color: #94a3b8;
+            line-height: 1;
+        }
+
+        .share-card-percentile span {
+            font-size: 72px;
+            font-weight: 800;
+            color: #60a5fa;
+        }
+
+        .share-card-percent-sign {
+            font-size: 36px;
+            color: #94a3b8;
+        }
+
+        .share-card-message {
+            font-size: 20px;
+            color: #cbd5e1;
+            margin-top: 16px;
+        }
+
+        .share-card-message strong {
+            color: #4ade80;
+        }
+
+        .share-card-bar {
+            background: #334155;
+            border-radius: 12px;
+            height: 32px;
+            margin: 30px 0 12px;
+            overflow: hidden;
+        }
+
+        .share-card-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #22c55e, #3b82f6, #8b5cf6);
+            border-radius: 12px;
+        }
+
+        .share-card-bar-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            color: #64748b;
+            margin-bottom: 30px;
+        }
+
+        .share-card-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-bottom: 30px;
+        }
+
+        .share-card-stat {
+            background: #334155;
+            padding: 16px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .share-card-stat-value {
+            font-size: 24px;
+            font-weight: 700;
+            color: #f1f5f9;
+        }
+
+        .share-card-stat-label {
+            font-size: 12px;
+            color: #94a3b8;
+            margin-top: 4px;
+        }
+
+        .share-card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 20px;
+            border-top: 1px solid #334155;
+        }
+
+        .share-card-brand {
+            font-size: 20px;
+            font-weight: 700;
+            color: #f1f5f9;
+        }
+
+        .share-card-url {
+            font-size: 14px;
+            color: #64748b;
+        }
+
+        @media (max-width: 768px) {
+            body { padding: 0.75rem; }
+            .header { flex-direction: column; gap: 0.75rem; text-align: center; }
+            .header-right { flex-wrap: wrap; justify-content: center; gap: 0.5rem; }
+            .header-link { font-size: 0.8rem; padding: 0.4rem 0.6rem; }
+            .main-content { grid-template-columns: 1fr; }
+            .calculator-card { padding: 1.5rem; }
+            .percentile-value { font-size: 2.5rem; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <header class="header">
+            <div class="header-left">
+                <h1>Income Percentile</h1>
+                <p>Where do you stand?</p>
+            </div>
+            <div class="header-right">
+                <a href="/" class="header-link">Dashboard</a>
+                <a href="/insights/" class="header-link">Insights <span class="new-badge">NEW</span></a>
+                <a href="/blog/" class="header-link">Blog</a>
+                <a href="/calculator/" class="header-link active">Calculator</a>
+                <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">
+                    <span id="theme-icon"></span>
+                </button>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="calculator-card">
+                <h2 class="calculator-title">Income Percentile Calculator</h2>
+                <p class="calculator-subtitle">See where you rank among Indian taxpayers</p>
+
+                <div class="input-group">
+                    <label class="input-label" for="income">Your Annual Income (Gross)</label>
+                    <input type="text" id="income" class="input-field" placeholder="e.g. 12,00,000" inputmode="numeric">
+                    <p class="input-hint">Enter your total annual income before deductions</p>
+                </div>
+
+                <div id="loading" class="loading" style="display: none;">
+                    <div class="loading-spinner"></div>
+                    <p>Fetching latest data...</p>
+                </div>
+
+                <div id="error" class="error-msg" style="display: none;"></div>
+
+                <div id="result" class="result-section">
+                    <div class="percentile-display">
+                        <div class="percentile-label">You're in the</div>
+                        <div class="percentile-value">TOP <span id="percentile">0</span><span class="percentile-suffix">%</span></div>
+                    </div>
+
+                    <p class="result-message" id="resultMessage"></p>
+
+                    <div class="percentile-bar">
+                        <div class="percentile-bar-fill" id="barFill" style="width: 0%">
+                            <div class="percentile-marker"></div>
+                        </div>
+                    </div>
+                    <div class="bar-labels">
+                        <span>Lower Income</span>
+                        <span>Higher Income</span>
+                    </div>
+
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-value" id="earnLess">0%</div>
+                            <div class="stat-label">earn less than you</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value" id="bracket">-</div>
+                            <div class="stat-label">your income bracket</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value" id="bracketCount">-</div>
+                            <div class="stat-label">people in your bracket</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value" id="totalFilers">-</div>
+                            <div class="stat-label">total ITR filers</div>
+                        </div>
+                    </div>
+
+                    <button class="share-btn" onclick="shareResult()">
+                        Share Your Result
+                    </button>
+
+                    <div class="disclaimer">
+                        <strong>Note:</strong> This comparison is among people who file Income Tax Returns in India (~9 crore), not the entire population. Data source: Income Tax e-Filing Portal.
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-column">
+                <div class="info-section">
+                    <h2>How This Works</h2>
+                    <p>We use official data from the Income Tax Department to calculate your position among all ITR filers in India.</p>
+                    <ul>
+                        <li><strong>Data Source:</strong> Income Tax e-Filing Portal statistics</li>
+                        <li><strong>Income Brackets:</strong> ≤5L, 5-10L, 10-50L, 50L-1Cr, 1-5Cr, 5-10Cr, >10Cr</li>
+                        <li><strong>Updated:</strong> Based on latest available FY data</li>
+                    </ul>
+                </div>
+
+                <div class="info-section">
+                    <h2>Understanding Your Percentile</h2>
+                    <p>If you're in the <strong>Top 10%</strong>, it means 90% of ITR filers earn less than you.</p>
+                    <p>Remember: Only about 7% of Indians file ITR. If you're filing taxes, you're already in a higher income group compared to the general population.</p>
+                </div>
+
+                <div class="info-section">
+                    <h2>Quick Facts</h2>
+                    <ul>
+                        <li><strong>~9 crore</strong> Indians file ITR annually</li>
+                        <li><strong>~65%</strong> of filers earn ≤5 lakh</li>
+                        <li><strong>~2%</strong> of filers earn above 50 lakh</li>
+                        <li><strong>Top 1%</strong> starts around 75 lakh income</li>
+                    </ul>
+                </div>
+            </div>
+        </main>
+
+        <!-- Hidden Share Card for Image Generation -->
+        <div class="share-card-container">
+            <div class="share-card" id="shareCard">
+                <div class="share-card-header">
+                    <div class="share-card-label">I'm in the</div>
+                    <div class="share-card-percentile">TOP <span id="sharePercentile">0</span><span class="share-card-percent-sign">%</span></div>
+                    <div class="share-card-message" id="shareMessage"></div>
+                </div>
+                <div class="share-card-bar">
+                    <div class="share-card-bar-fill" id="shareBarFill" style="width: 0%"></div>
+                </div>
+                <div class="share-card-bar-labels">
+                    <span>Lower Income</span>
+                    <span>Higher Income</span>
+                </div>
+                <div class="share-card-stats">
+                    <div class="share-card-stat">
+                        <div class="share-card-stat-value" id="shareEarnLess">0%</div>
+                        <div class="share-card-stat-label">earn less than me</div>
+                    </div>
+                    <div class="share-card-stat">
+                        <div class="share-card-stat-value" id="shareBracket">-</div>
+                        <div class="share-card-stat-label">my income bracket</div>
+                    </div>
+                    <div class="share-card-stat">
+                        <div class="share-card-stat-value" id="shareBracketCount">-</div>
+                        <div class="share-card-stat-label">people in my bracket</div>
+                    </div>
+                    <div class="share-card-stat">
+                        <div class="share-card-stat-value" id="shareTotalFilers">-</div>
+                        <div class="share-card-stat-label">total ITR filers</div>
+                    </div>
+                </div>
+                <div class="share-card-footer">
+                    <div class="share-card-brand">ITR Stats</div>
+                    <div class="share-card-url">itrstats.in/calculator/income-percentile</div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p class="footer-creator">
+                <strong>Built by Kartikey</strong>
+                <a href="https://x.com/kartikey_19" target="_blank" rel="noopener" aria-label="Twitter">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                </a>
+                <a href="https://www.linkedin.com/in/kartikeyrajvaidya/" target="_blank" rel="noopener" aria-label="LinkedIn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                </a>
+            </p>
+            <p>© 2026 ITR Stats · <a href="/privacy-policy.html">Privacy</a></p>
+        </footer>
+    </div>
+
+    <!-- GoatCounter Analytics -->
+    <script data-goatcounter="https://itrstats.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+
+    <script>
+        // Theme handling
+        function getThemePreference() {
+            const saved = localStorage.getItem('theme');
+            if (saved) return saved;
+            return 'dark';
+        }
+
+        function setTheme(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+            document.getElementById('theme-icon').textContent = theme === 'dark' ? '☀️' : '🌙';
+        }
+
+        function toggleTheme() {
+            const current = document.documentElement.getAttribute('data-theme');
+            setTheme(current === 'dark' ? 'light' : 'dark');
+        }
+
+        setTheme(getThemePreference());
+
+        // Income bracket data
+        const INCOME_BRACKETS = [
+            { label: '≤5L', min: 0, max: 500000 },
+            { label: '5L-10L', min: 500001, max: 1000000 },
+            { label: '10L-50L', min: 1000001, max: 5000000 },
+            { label: '50L-1Cr', min: 5000001, max: 10000000 },
+            { label: '1Cr-5Cr', min: 10000001, max: 50000000 },
+            { label: '5Cr-10Cr', min: 50000001, max: 100000000 },
+            { label: '>10Cr', min: 100000001, max: Infinity }
+        ];
+
+        let incomeData = null;
+
+        // Format numbers
+        function formatNumber(num) {
+            if (num >= 10000000) return (num / 10000000).toFixed(2) + ' Cr';
+            if (num >= 100000) return (num / 100000).toFixed(2) + ' L';
+            return num.toLocaleString('en-IN');
+        }
+
+        function formatCount(num) {
+            if (num >= 10000000) return (num / 10000000).toFixed(1) + ' Cr';
+            if (num >= 100000) return (num / 100000).toFixed(1) + ' L';
+            return num.toLocaleString('en-IN');
+        }
+
+        // Parse income input
+        function parseIncome(value) {
+            // Remove commas, spaces, and convert L/Lakh/Cr/Crore
+            let cleaned = value.replace(/,/g, '').replace(/\s/g, '').toLowerCase();
+
+            if (cleaned.includes('cr') || cleaned.includes('crore')) {
+                return parseFloat(cleaned.replace(/cr.*/, '')) * 10000000;
+            }
+            if (cleaned.includes('l') || cleaned.includes('lakh')) {
+                return parseFloat(cleaned.replace(/l.*/, '')) * 100000;
+            }
+            return parseFloat(cleaned) || 0;
+        }
+
+        // Fetch income distribution data
+        async function fetchIncomeData() {
+            const now = new Date();
+            const currentMonth = now.getMonth() + 1;
+            const currentYear = now.getFullYear();
+
+            // Determine FY - if before April, use previous FY
+            let fyYear, fyMonth;
+            if (currentMonth < 4) {
+                fyYear = currentYear - 1;
+                fyMonth = currentMonth + 9; // Map Jan=10, Feb=11, Mar=12
+            } else {
+                fyYear = currentYear;
+                fyMonth = currentMonth - 3; // Map Apr=1, May=2, etc.
+            }
+
+            const url = `https://eportal.incometax.gov.in/iec/efilingstatisticsgenerator/getStatistics?year=${fyYear}&month=${fyMonth}&isHistoryData=false`;
+
+            try {
+                const response = await fetch(url);
+                if (!response.ok) throw new Error('Failed to fetch data');
+
+                const json = await response.json();
+                if (!json.statistics || json.statistics.length === 0) {
+                    throw new Error('No data available');
+                }
+
+                // Find Category wise Filing tab
+                const categoryTab = json.statistics.find(tab =>
+                    tab.tabName === 'Category wise Filing'
+                );
+
+                if (!categoryTab || !categoryTab.tableData || !categoryTab.tableData[0]) {
+                    throw new Error('Income data not found');
+                }
+
+                const table = categoryTab.tableData[0];
+                const grandTotal = table.grandTotal.map(val =>
+                    parseInt(val.replace(/,/g, '')) || 0
+                );
+
+                return grandTotal;
+            } catch (error) {
+                console.error('API Error:', error);
+                // Fallback to approximate data (based on typical distribution)
+                return [57000000, 18000000, 11000000, 1500000, 400000, 50000, 20000];
+            }
+        }
+
+        // Calculate percentile
+        function calculatePercentile(income, data) {
+            const total = data.reduce((a, b) => a + b, 0);
+            let cumulative = 0;
+            let bracketIndex = 0;
+
+            for (let i = 0; i < INCOME_BRACKETS.length; i++) {
+                if (income >= INCOME_BRACKETS[i].min && income <= INCOME_BRACKETS[i].max) {
+                    bracketIndex = i;
+                    // Estimate position within bracket (linear interpolation)
+                    const bracketRange = INCOME_BRACKETS[i].max - INCOME_BRACKETS[i].min;
+                    const positionInBracket = (income - INCOME_BRACKETS[i].min) / bracketRange;
+                    cumulative += data[i] * positionInBracket;
+                    break;
+                }
+                cumulative += data[i];
+            }
+
+            const percentileFromBottom = (cumulative / total) * 100;
+            const topPercentile = 100 - percentileFromBottom;
+
+            return {
+                topPercent: Math.max(0.01, topPercentile).toFixed(1),
+                earnLessPercent: Math.min(99.99, percentileFromBottom).toFixed(1),
+                bracket: INCOME_BRACKETS[bracketIndex].label,
+                bracketCount: data[bracketIndex],
+                totalFilers: total
+            };
+        }
+
+        // Update UI with result
+        function showResult(result) {
+            document.getElementById('percentile').textContent = result.topPercent;
+            document.getElementById('earnLess').textContent = result.earnLessPercent + '%';
+            document.getElementById('bracket').textContent = result.bracket;
+            document.getElementById('bracketCount').textContent = formatCount(result.bracketCount);
+            document.getElementById('totalFilers').textContent = formatCount(result.totalFilers);
+
+            // Update bar
+            const barWidth = 100 - parseFloat(result.topPercent);
+            document.getElementById('barFill').style.width = barWidth + '%';
+
+            // Update message
+            let messageText = '';
+            const msg = document.getElementById('resultMessage');
+            if (parseFloat(result.topPercent) <= 1) {
+                messageText = '<strong>Exceptional!</strong> You\'re among the highest earners in India.';
+            } else if (parseFloat(result.topPercent) <= 5) {
+                messageText = '<strong>Outstanding!</strong> Very few Indians earn as much as you.';
+            } else if (parseFloat(result.topPercent) <= 15) {
+                messageText = '<strong>Well done!</strong> You\'re among the top earners in India.';
+            } else if (parseFloat(result.topPercent) <= 35) {
+                messageText = 'You\'re earning <strong>more than most</strong> Indian taxpayers.';
+            } else {
+                messageText = '<strong>' + result.earnLessPercent + '%</strong> of ITR filers earn less than you.';
+            }
+            msg.innerHTML = messageText;
+
+            // Also update share card
+            document.getElementById('sharePercentile').textContent = result.topPercent;
+            document.getElementById('shareEarnLess').textContent = result.earnLessPercent + '%';
+            document.getElementById('shareBracket').textContent = result.bracket;
+            document.getElementById('shareBracketCount').textContent = formatCount(result.bracketCount);
+            document.getElementById('shareTotalFilers').textContent = formatCount(result.totalFilers);
+            document.getElementById('shareBarFill').style.width = barWidth + '%';
+            document.getElementById('shareMessage').innerHTML = messageText;
+
+            document.getElementById('result').classList.add('visible');
+        }
+
+        // Share result as image
+        let isSharing = false;
+
+        async function shareResult() {
+            if (isSharing) return;
+            isSharing = true;
+
+            const shareBtn = document.querySelector('.share-btn');
+            const originalText = shareBtn.textContent;
+            shareBtn.textContent = 'Generating...';
+            shareBtn.disabled = true;
+
+            try {
+                const shareCard = document.getElementById('shareCard');
+
+                const canvas = await html2canvas(shareCard, {
+                    scale: 2,
+                    backgroundColor: null,
+                    logging: false
+                });
+
+                const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
+                const file = new File([blob], 'income-percentile.png', { type: 'image/png' });
+
+                // Try native share with image only
+                if (navigator.canShare && navigator.canShare({ files: [file] })) {
+                    try {
+                        await navigator.share({ files: [file] });
+                    } catch (e) {
+                        // User cancelled - do nothing
+                        if (e.name !== 'AbortError') {
+                            downloadImage(canvas);
+                        }
+                    }
+                } else {
+                    // Download the image
+                    downloadImage(canvas);
+                }
+            } catch (error) {
+                console.error('Share error:', error);
+                alert('Could not generate image. Please try again.');
+            } finally {
+                shareBtn.textContent = originalText;
+                shareBtn.disabled = false;
+                isSharing = false;
+            }
+        }
+
+        function downloadImage(canvas) {
+            const link = document.createElement('a');
+            link.download = 'my-income-percentile.png';
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        }
+
+        // Main calculation
+        async function calculate() {
+            const incomeInput = document.getElementById('income').value;
+            const income = parseIncome(incomeInput);
+
+            if (!income || income < 0) {
+                document.getElementById('result').classList.remove('visible');
+                return;
+            }
+
+            const loading = document.getElementById('loading');
+            const error = document.getElementById('error');
+            const result = document.getElementById('result');
+
+            error.style.display = 'none';
+
+            if (!incomeData) {
+                loading.style.display = 'block';
+                result.classList.remove('visible');
+
+                try {
+                    incomeData = await fetchIncomeData();
+                } catch (e) {
+                    error.textContent = 'Failed to load data. Please try again.';
+                    error.style.display = 'block';
+                    loading.style.display = 'none';
+                    return;
+                }
+
+                loading.style.display = 'none';
+            }
+
+            const percentileResult = calculatePercentile(income, incomeData);
+            showResult(percentileResult);
+        }
+
+        // Format input with commas
+        function formatInput(input) {
+            let value = input.value.replace(/[^\d]/g, '');
+            if (value) {
+                value = parseInt(value).toLocaleString('en-IN');
+            }
+            input.value = value;
+        }
+
+        // Event listeners
+        const incomeInput = document.getElementById('income');
+
+        incomeInput.addEventListener('input', function() {
+            formatInput(this);
+            calculate();
+        });
+
+        incomeInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                calculate();
+            }
+        });
+
+        // Pre-fetch data on page load
+        fetchIncomeData().then(data => {
+            incomeData = data;
+        });
+    </script>
+</body>
+</html>
