@@ -475,6 +475,24 @@
             color: var(--accent-red);
         }
 
+        /* SEO static content - visually hidden but accessible to crawlers */
+        .seo-static-content {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        /* When JavaScript hides it completely after successful load */
+        .seo-static-content.hidden {
+            display: none;
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             body {
@@ -870,14 +888,30 @@
         <div id="meta" class="meta">Live ITR Statistics from Income Tax e-Filing Portal</div>
 
         <div id="cards-container">
-            <!-- Static fallback content for SEO - replaced by JavaScript when data loads -->
-            <div class="seo-fallback" id="seo-fallback">
-                <p style="text-align: center; padding: 2rem; color: var(--text-muted);">
-                    <strong>ITR Stats Dashboard</strong> - Track daily Income Tax Return filing statistics for India.
-                    View registered users, returns filed, e-verified returns, processed refunds, and pending ITRs.
-                    Data sourced from the official Income Tax e-Filing Portal.
-                </p>
+            <!-- Cards will be rendered here by JavaScript -->
+        </div>
+
+        <!-- Static SEO content - always present for crawlers, hidden visually when JS loads -->
+        <noscript>
+            <div class="seo-content" style="background: var(--bg-secondary); border-radius: 16px; padding: 2rem; margin-bottom: 1.5rem;">
+                <h2 style="font-size: 1.25rem; margin-bottom: 1rem; color: var(--text-primary);">Track India's Income Tax Filing Statistics Daily</h2>
+                <p style="color: var(--text-secondary); margin-bottom: 1rem;">ITR Stats provides a comprehensive dashboard tracking daily statistics from India's Income Tax e-Filing Portal. Monitor key metrics including:</p>
+                <ul style="color: var(--text-secondary); padding-left: 1.5rem; margin-bottom: 1rem;">
+                    <li><strong>Registered Users</strong> - Total individual taxpayers registered on the portal</li>
+                    <li><strong>Returns Filed</strong> - Income tax returns submitted each day</li>
+                    <li><strong>Returns Verified</strong> - E-verified ITRs ready for processing</li>
+                    <li><strong>ITRs Processed</strong> - Returns processed by the Income Tax Department</li>
+                    <li><strong>Pending Processing</strong> - Returns awaiting processing and refunds</li>
+                </ul>
+                <p style="color: var(--text-secondary);">Data is sourced directly from the official Income Tax e-Filing Portal (eportal.incometax.gov.in) and updated daily with trend charts showing filing patterns over time.</p>
             </div>
+        </noscript>
+
+        <!-- Crawler-accessible content (visually hidden when present but readable by search engines) -->
+        <div id="seo-static-content" class="seo-static-content" aria-hidden="false">
+            <h2>India Income Tax Return Filing Statistics</h2>
+            <p>ITR Stats is a daily statistics dashboard tracking Income Tax Return filing data from India's official e-Filing Portal. We monitor registered users, returns filed, e-verified returns, processed ITRs, and pending refunds with daily growth trends.</p>
+            <p>Track the progress of ITR processing, see how many returns are filed each day, and monitor the refund processing backlog. Data is updated daily from the Income Tax Department's official portal.</p>
         </div>
 
         <section class="chart-section">
@@ -1247,6 +1281,10 @@
             // Render cards and chart
             renderCards(latest);
             renderChart(rows, currentRange);
+
+            // Hide SEO static content after successful load
+            const seoContent = document.getElementById('seo-static-content');
+            if (seoContent) seoContent.classList.add('hidden');
         }
 
 
@@ -1265,8 +1303,16 @@
                 renderDashboard(rows);
             } catch (err) {
                 console.error('Failed to load data:', err);
-                cardsContainer.innerHTML = '<div class="error">Failed to load data. Please try again later.</div>';
-                metaEl.textContent = 'Error loading data';
+                cardsContainer.innerHTML = `
+                    <div style="text-align: center; padding: 2rem; background: var(--bg-secondary); border-radius: 16px;">
+                        <p style="color: var(--accent-red); margin-bottom: 1rem;">Live data temporarily unavailable. Please refresh.</p>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem;">
+                            ITR Stats tracks daily Income Tax Return filing statistics from India's e-Filing Portal,
+                            including registered users, returns filed, e-verified returns, and processing status.
+                        </p>
+                    </div>
+                `;
+                metaEl.textContent = 'ITR Statistics Dashboard - Data loading...';
             }
         }
 
