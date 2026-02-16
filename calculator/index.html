@@ -264,6 +264,16 @@
             background: var(--text-muted);
         }
 
+        .calculator-card .tag.trending {
+            background: #ef4444;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
         footer {
             text-align: center;
             padding: 2rem;
@@ -423,6 +433,13 @@
                 <p>Compare old vs new tax regime for FY 2025-26. Calculate tax with 80C, 80D, HRA, NPS deductions.</p>
             </a>
 
+            <a href="/calculator/income-percentile/" class="calculator-card">
+                <div class="icon">📊</div>
+                <h2>Income Percentile Calculator</h2>
+                <p>Find out where you stand among Indian taxpayers. See what % earn less than you.</p>
+                <span class="tag trending">Trending</span>
+            </a>
+
             <a href="/calculator/gratuity/" class="calculator-card">
                 <div class="icon">💼</div>
                 <h2>Gratuity Calculator</h2>
@@ -433,12 +450,6 @@
                 <div class="icon">🏠</div>
                 <h2>HRA Calculator</h2>
                 <p>Calculate your HRA exemption based on rent paid, salary, and city of residence.</p>
-            </a>
-
-            <a href="/calculator/income-percentile/" class="calculator-card">
-                <div class="icon">📊</div>
-                <h2>Income Percentile Calculator</h2>
-                <p>Find out where you stand among Indian taxpayers. See what % earn less than you.</p>
             </a>
         </main>
     </div>
