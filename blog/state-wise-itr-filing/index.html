@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Meta Tags -->
+    <title>Which States File the Most ITRs? State-wise Tax Filing Data 2025 | ITR Stats</title>
+    <meta name="description" content="Maharashtra leads with 1.12 crore ITR filings (15.1%), followed by UP and Gujarat. Telangana grows 141% YoY. Complete state-wise breakdown of 7.4 crore filings.">
+    <meta name="keywords" content="state wise ITR filing, which state files most tax returns, Maharashtra tax filing, ITR statistics by state, tax compliance by state India">
+    <meta name="author" content="ITR Stats">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://itrstats.in/blog/state-wise-itr-filing/">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://itrstats.in/blog/state-wise-itr-filing/">
+    <meta property="og:title" content="Which States File the Most ITRs? State-wise Tax Filing Data 2025">
+    <meta property="og:description" content="Maharashtra leads with 1.12 Cr filings. Telangana grows 141% YoY. Complete state-wise breakdown.">
+    <meta property="og:image" content="https://itrstats.in/og-image.png">
+    <meta property="og:site_name" content="ITR Stats">
+    <meta property="og:locale" content="en_IN">
+    <meta property="article:published_time" content="2026-02-18">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Which States File the Most ITRs? State-wise Tax Filing Data 2025">
+    <meta name="twitter:description" content="Maharashtra leads with 1.12 Cr filings. Telangana grows 141% YoY.">
+    <meta name="twitter:image" content="https://itrstats.in/og-image.png">
+
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2843260079810330"
+        crossorigin="anonymous"></script>
+
+    <!-- Structured Data - Article -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Which States File the Most ITRs? State-wise Tax Filing Data 2025",
+        "description": "Maharashtra leads with 1.12 crore ITR filings (15.1%), followed by UP and Gujarat. Complete state-wise breakdown of 7.4 crore filings.",
+        "image": "https://itrstats.in/og-image.png",
+        "datePublished": "2026-02-18",
+        "dateModified": "2026-02-18",
+        "author": { "@type": "Organization", "name": "ITR Stats" },
+        "publisher": { "@type": "Organization", "name": "ITR Stats", "url": "https://itrstats.in" }
+    }
+    </script>
+
+    <!-- Structured Data - FAQ -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "Which state files the most income tax returns in India?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Maharashtra files the most income tax returns in India with 1.12 crore (11.2 million) ITR filings in FY 2024-25, accounting for 15.1% of all filings. This is followed by Uttar Pradesh (7.42 lakh) and Gujarat (7.13 lakh)."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Which state has the highest ITR filing growth?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Telangana has the highest ITR filing growth at 141% year-on-year (FY 2024-25 vs FY 2023-24). Filings increased from 10.2 lakh to 24.6 lakh. This is primarily due to improved data consolidation after the state bifurcation from Andhra Pradesh."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Which region of India files the most taxes?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Western India leads with 37.7% of all ITR filings (2.79 crore), followed by North India at 27.1% (2 crore) and South India at 21.3% (1.58 crore). East India contributes 12.5% and Northeast just 1.4%."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How many ITRs are filed from Delhi?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Delhi (NCT) filed 36.6 lakh income tax returns in FY 2024-25, making it the 8th highest filing state/UT. Delhi accounts for 4.9% of all ITR filings in India."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Which state has the lowest ITR filings?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Among states, Mizoram has the lowest ITR filings at just 8,635. Among UTs, Ladakh has the lowest at 431 filings. Lakshadweep filed 4,808 returns in FY 2024-25."
+                }
+            }
+        ]
+    }
+    </script>
+
+    <style>
+        :root {
+            --bg-primary: #f8fafc;
+            --bg-secondary: #ffffff;
+            --bg-accent: #f1f5f9;
+            --text-primary: #1e293b;
+            --text-secondary: #475569;
+            --text-muted: #64748b;
+            --accent-blue: #3b82f6;
+            --accent-green: #22c55e;
+            --accent-red: #ef4444;
+            --accent-yellow: #f59e0b;
+            --accent-purple: #8b5cf6;
+            --accent-orange: #f97316;
+            --border-color: #e2e8f0;
+        }
+
+        [data-theme="dark"] {
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --bg-accent: #334155;
+            --text-primary: #f1f5f9;
+            --text-secondary: #cbd5e1;
+            --text-muted: #94a3b8;
+            --accent-blue: #60a5fa;
+            --accent-green: #4ade80;
+            --accent-red: #f87171;
+            --accent-yellow: #fbbf24;
+            --accent-purple: #a78bfa;
+            --accent-orange: #fb923c;
+            --border-color: #334155;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            padding: 1rem;
+            line-height: 1.8;
+        }
+
+        .container { max-width: 1000px; margin: 0 auto; }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.5rem;
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            margin-bottom: 2rem;
+        }
+
+        .header-left h1 { font-size: 1.5rem; font-weight: 700; }
+        .header-left p { font-size: 0.875rem; color: var(--text-muted); margin-top: 0.25rem; }
+        .header-right { display: flex; align-items: center; gap: 1rem; }
+
+        .header-link {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            padding: 0.5rem 0.75rem;
+            border-radius: 8px;
+            transition: color 0.2s ease, background 0.2s ease;
+        }
+
+        .header-link:hover { color: var(--accent-blue); background: var(--bg-accent); }
+        .header-link.active { color: var(--accent-blue); }
+
+        .theme-toggle {
+            background: var(--bg-accent);
+            border: none;
+            border-radius: 12px;
+            padding: 0.75rem;
+            cursor: pointer;
+            font-size: 1.25rem;
+        }
+
+        .breadcrumb {
+            display: flex;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        .breadcrumb a { color: var(--accent-blue); text-decoration: none; }
+
+        article {
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        article h1 { font-size: 2rem; line-height: 1.3; margin-bottom: 1rem; }
+
+        .article-meta {
+            display: flex;
+            gap: 1.5rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .hook {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            padding: 1.25rem;
+            background: var(--bg-accent);
+            border-radius: 12px;
+            border-left: 4px solid var(--accent-blue);
+        }
+
+        article h2 {
+            font-size: 1.5rem;
+            margin: 2.5rem 0 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        article h3 { font-size: 1.2rem; margin: 1.5rem 0 0.75rem; color: var(--text-primary); }
+
+        article p { margin-bottom: 1.25rem; color: var(--text-secondary); }
+        article strong { color: var(--text-primary); }
+
+        article ul, article ol { margin: 1rem 0 1.5rem 1.5rem; color: var(--text-secondary); }
+        article li { margin-bottom: 0.5rem; }
+
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .stat-card {
+            background: var(--bg-accent);
+            border-radius: 12px;
+            padding: 1.25rem;
+            text-align: center;
+        }
+
+        .stat-card .number { font-size: 1.75rem; font-weight: 700; color: var(--accent-blue); }
+        .stat-card .label { font-size: 0.8rem; color: var(--text-muted); margin-top: 0.25rem; }
+        .stat-card.green .number { color: var(--accent-green); }
+        .stat-card.purple .number { color: var(--accent-purple); }
+        .stat-card.yellow .number { color: var(--accent-yellow); }
+        .stat-card.orange .number { color: var(--accent-orange); }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.95rem;
+        }
+
+        th, td {
+            padding: 0.875rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        th { background: var(--bg-accent); font-weight: 600; color: var(--text-primary); }
+        td { color: var(--text-secondary); }
+        .highlight-row { background: var(--bg-accent); }
+
+        .growth-positive { color: var(--accent-green); font-weight: 600; }
+        .growth-negative { color: var(--accent-red); font-weight: 600; }
+
+        .bar-container { margin: 1.5rem 0; }
+
+        .bar-item { margin-bottom: 1rem; }
+
+        .bar-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.25rem;
+            font-size: 0.9rem;
+        }
+
+        .bar-track {
+            height: 32px;
+            background: var(--bg-accent);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .bar-fill {
+            height: 100%;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            padding-left: 0.75rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #ffffff;
+        }
+
+        .bar-fill.blue { background: var(--accent-blue); }
+        .bar-fill.yellow { background: var(--accent-yellow); }
+        .bar-fill.purple { background: var(--accent-purple); }
+        .bar-fill.green { background: var(--accent-green); }
+        .bar-fill.orange { background: var(--accent-orange); }
+        .bar-fill.gray { background: var(--text-muted); }
+
+        .region-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .region-card {
+            background: var(--bg-accent);
+            border-radius: 12px;
+            padding: 1.25rem;
+            text-align: center;
+            border-top: 4px solid var(--accent-blue);
+        }
+
+        .region-card.west { border-top-color: var(--accent-blue); }
+        .region-card.north { border-top-color: var(--accent-green); }
+        .region-card.south { border-top-color: var(--accent-purple); }
+        .region-card.east { border-top-color: var(--accent-yellow); }
+        .region-card.northeast { border-top-color: var(--accent-orange); }
+
+        .region-card h4 { font-size: 1rem; margin-bottom: 0.5rem; }
+        .region-card .number { font-size: 1.5rem; font-weight: 700; color: var(--text-primary); }
+        .region-card .pct { font-size: 0.9rem; color: var(--text-muted); }
+
+        .insight-box {
+            background: var(--bg-accent);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--accent-blue);
+        }
+
+        .insight-box.warning { border-left-color: var(--accent-yellow); }
+        .insight-box.success { border-left-color: var(--accent-green); }
+
+        .state-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 0.75rem;
+            margin: 1rem 0;
+        }
+
+        .state-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0.75rem;
+            background: var(--bg-accent);
+            border-radius: 6px;
+            font-size: 0.9rem;
+        }
+
+        .state-item .name { color: var(--text-secondary); }
+        .state-item .count { font-weight: 600; color: var(--text-primary); }
+
+        .faq-section { margin-top: 2rem; }
+
+        .faq-item {
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem 0;
+        }
+
+        .faq-item:last-child { border-bottom: none; }
+
+        .faq-question {
+            font-weight: 600;
+            color: var(--text-primary);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-question::after { content: '+'; font-size: 1.25rem; color: var(--text-muted); }
+        .faq-item.open .faq-question::after { content: '-'; }
+
+        .faq-answer {
+            color: var(--text-secondary);
+            margin-top: 0.75rem;
+            display: none;
+            font-size: 0.95rem;
+        }
+
+        .faq-item.open .faq-answer { display: block; }
+
+        .disclaimer {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-style: italic;
+            padding: 1rem;
+            border: 1px dashed var(--border-color);
+            border-radius: 8px;
+            margin-top: 2rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--border-color);
+            margin-top: 2rem;
+        }
+
+        footer a { color: var(--text-muted); text-decoration: none; }
+
+        @media (max-width: 768px) {
+            .header { flex-direction: column; gap: 1rem; text-align: center; }
+            .header-right { flex-wrap: wrap; justify-content: center; }
+            article { padding: 1.5rem; }
+            article h1 { font-size: 1.5rem; }
+            .article-meta { flex-wrap: wrap; gap: 0.75rem; }
+            .stat-grid { grid-template-columns: repeat(2, 1fr); }
+            table { font-size: 0.85rem; }
+            th, td { padding: 0.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-left">
+                <a href="/" style="text-decoration: none; color: inherit;">
+                    <h1>ITR Stats</h1>
+                </a>
+                <p>Income Tax Return Statistics & Insights</p>
+            </div>
+            <div class="header-right">
+                <a href="/" class="header-link">Dashboard</a>
+                <a href="/blog/" class="header-link active">Blog</a>
+                <a href="/calculator/" class="header-link">Calculator</a>
+                <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">
+                    <span id="theme-icon">&#127769;</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Breadcrumb -->
+        <nav class="breadcrumb">
+            <a href="/">Home</a>
+            <span>/</span>
+            <a href="/blog/">Blog</a>
+            <span>/</span>
+            <span>State-wise ITR Filing</span>
+        </nav>
+
+        <!-- Article -->
+        <article>
+            <h1>Which States File the Most ITRs? Complete State-wise Breakdown</h1>
+
+            <div class="article-meta">
+                <span>February 18, 2026</span>
+                <span>8 min read</span>
+                <span>Source: Income Tax e-Filing Portal</span>
+            </div>
+
+            <div class="hook">
+                <strong>Maharashtra alone files more ITRs than the entire Northeast combined.</strong> With 1.12 crore filings, it accounts for 15.1% of India's 7.4 crore returns. Meanwhile, Telangana saw a staggering 141% growth in filings year-on-year.
+            </div>
+
+            <!-- Key Stats -->
+            <div class="stat-grid">
+                <div class="stat-card">
+                    <div class="number">7.4 Cr</div>
+                    <div class="label">Total ITRs Filed</div>
+                </div>
+                <div class="stat-card green">
+                    <div class="number">37</div>
+                    <div class="label">States & UTs</div>
+                </div>
+                <div class="stat-card purple">
+                    <div class="number">141%</div>
+                    <div class="label">Highest Growth (Telangana)</div>
+                </div>
+                <div class="stat-card yellow">
+                    <div class="number">15.1%</div>
+                    <div class="label">Maharashtra's Share</div>
+                </div>
+            </div>
+
+            <h2>Top 10 States by ITR Filings</h2>
+
+            <p>These ten states account for <strong>73% of all income tax returns</strong> filed in India. Maharashtra, Uttar Pradesh, and Gujarat together contribute over a third of the nation's filings.</p>
+
+            <div class="bar-container">
+                <div class="bar-item">
+                    <div class="bar-label">
+                        <span><strong>1. Maharashtra</strong></span>
+                        <span>1.12 Cr (15.1%)</span>
+                    </div>
+                    <div class="bar-track">
+                        <div class="bar-fill blue" style="width: 100%;">1,12,01,371</div>
+                    </div>
+                </div>
+                <div class="bar-item">
+                    <div class="bar-label">
+                        <span><strong>2. Uttar Pradesh</strong></span>
+                        <span>74.2 L (10.0%)</span>
+                    </div>
+                    <div class="bar-track">
+                        <div class="bar-fill green" style="width: 66%;">74,24,842</div>
+                    </div>
+                </div>
+                <div class="bar-item">
+                    <div class="bar-label">
+                        <span><strong>3. Gujarat</strong></span>
+                        <span>71.3 L (9.6%)</span>
+                    </div>
+                    <div class="bar-track">
+                        <div class="bar-fill purple" style="width: 64%;">71,34,401</div>
+                    </div>
+                </div>
+                <div class="bar-item">
+                    <div class="bar-label">
+                        <span><strong>4. Rajasthan</strong></span>
+                        <span>50.5 L (6.8%)</span>
+                    </div>
+                    <div class="bar-track">
+                        <div class="bar-fill yellow" style="width: 45%;">50,49,625</div>
+                    </div>
+                </div>
+                <div class="bar-item">
+                    <div class="bar-label">
+                        <span><strong>5. Tamil Nadu</strong></span>
+                        <span>44.2 L (6.0%)</span>
+                    </div>
+                    <div class="bar-track">
+                        <div class="bar-fill orange" style="width: 39%;">44,16,937</div>
+                    </div>
+                </div>
+                <div class="bar-item">
+                    <div class="bar-label">
+                        <span><strong>6. West Bengal</strong></span>
+                        <span>44.0 L (5.9%)</span>
+                    </div>
+                    <div class="bar-track">
+                        <div class="bar-fill blue" style="width: 39%;">43,95,297</div>
+                    </div>
+                </div>
+                <div class="bar-item">
+                    <div class="bar-label">
+                        <span><strong>7. Karnataka</strong></span>
+                        <span>42.7 L (5.8%)</span>
+                    </div>
+                    <div class="bar-track">
+                        <div class="bar-fill green" style="width: 38%;">42,66,302</div>
+                    </div>
+                </div>
+                <div class="bar-item">
+                    <div class="bar-label">
+                        <span><strong>8. Delhi (NCT)</strong></span>
+                        <span>36.6 L (4.9%)</span>
+                    </div>
+                    <div class="bar-track">
+                        <div class="bar-fill purple" style="width: 33%;">36,63,107</div>
+                    </div>
+                </div>
+                <div class="bar-item">
+                    <div class="bar-label">
+                        <span><strong>9. Punjab</strong></span>
+                        <span>36.2 L (4.9%)</span>
+                    </div>
+                    <div class="bar-track">
+                        <div class="bar-fill yellow" style="width: 32%;">36,15,111</div>
+                    </div>
+                </div>
+                <div class="bar-item">
+                    <div class="bar-label">
+                        <span><strong>10. Madhya Pradesh</strong></span>
+                        <span>30.7 L (4.1%)</span>
+                    </div>
+                    <div class="bar-track">
+                        <div class="bar-fill gray" style="width: 27%;">30,65,140</div>
+                    </div>
+                </div>
+            </div>
+
+            <h2>Fastest Growing States (YoY)</h2>
+
+            <p>Year-on-year growth reveals interesting patterns about expanding tax base and formalization of the economy.</p>
+
+            <div class="insight-box success">
+                <strong>Telangana's 141% surge</strong> is primarily due to improved data consolidation after the state bifurcation from Andhra Pradesh. As systems matured, more taxpayers were correctly attributed to Telangana.
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>State</th>
+                        <th>FY 2023-24</th>
+                        <th>FY 2024-25</th>
+                        <th>Growth</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="highlight-row">
+                        <td>1</td>
+                        <td><strong>Telangana</strong></td>
+                        <td>10.2 L</td>
+                        <td>24.6 L</td>
+                        <td class="growth-positive">+141.1%</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Manipur</td>
+                        <td>52,000</td>
+                        <td>66,664</td>
+                        <td class="growth-positive">+28.3%</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Sikkim</td>
+                        <td>14,188</td>
+                        <td>17,974</td>
+                        <td class="growth-positive">+26.7%</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Jammu & Kashmir</td>
+                        <td>5.0 L</td>
+                        <td>5.8 L</td>
+                        <td class="growth-positive">+15.3%</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Uttarakhand</td>
+                        <td>7.9 L</td>
+                        <td>9.1 L</td>
+                        <td class="growth-positive">+15.1%</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>Karnataka</td>
+                        <td>37.5 L</td>
+                        <td>42.7 L</td>
+                        <td class="growth-positive">+13.8%</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>Chhattisgarh</td>
+                        <td>10.5 L</td>
+                        <td>11.7 L</td>
+                        <td class="growth-positive">+11.7%</td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td>Himachal Pradesh</td>
+                        <td>5.9 L</td>
+                        <td>6.5 L</td>
+                        <td class="growth-positive">+11.5%</td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td>Kerala</td>
+                        <td>18.8 L</td>
+                        <td>20.7 L</td>
+                        <td class="growth-positive">+10.4%</td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td>Jharkhand</td>
+                        <td>11.3 L</td>
+                        <td>12.4 L</td>
+                        <td class="growth-positive">+9.9%</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="insight-box warning">
+                <strong>Note on Andhra Pradesh:</strong> Filings dropped from 35.4 L to 24.8 L (-30%), which corresponds to Telangana's rise. This reflects data correction rather than actual decline in tax compliance.
+            </div>
+
+            <h2>Regional Breakdown</h2>
+
+            <p>India's tax filing landscape shows significant regional disparities. <strong>Western India dominates</strong> with over a third of all filings, while the Northeast contributes just 1.4%.</p>
+
+            <div class="region-grid">
+                <div class="region-card west">
+                    <h4>West India</h4>
+                    <div class="number">2.79 Cr</div>
+                    <div class="pct">37.7% of all filings</div>
+                </div>
+                <div class="region-card north">
+                    <h4>North India</h4>
+                    <div class="number">2.00 Cr</div>
+                    <div class="pct">27.1% of all filings</div>
+                </div>
+                <div class="region-card south">
+                    <h4>South India</h4>
+                    <div class="number">1.58 Cr</div>
+                    <div class="pct">21.3% of all filings</div>
+                </div>
+                <div class="region-card east">
+                    <h4>East India</h4>
+                    <div class="number">92.4 L</div>
+                    <div class="pct">12.5% of all filings</div>
+                </div>
+                <div class="region-card northeast">
+                    <h4>Northeast</h4>
+                    <div class="number">10.1 L</div>
+                    <div class="pct">1.4% of all filings</div>
+                </div>
+            </div>
+
+            <h3>What's Included in Each Region</h3>
+            <ul>
+                <li><strong>West:</strong> Maharashtra, Gujarat, Rajasthan, MP, Chhattisgarh, Goa, Dadra & Nagar Haveli, Daman & Diu</li>
+                <li><strong>North:</strong> Delhi, UP, Punjab, Haryana, Uttarakhand, HP, J&K, Chandigarh, Ladakh</li>
+                <li><strong>South:</strong> Tamil Nadu, Karnataka, Kerala, Telangana, Andhra Pradesh, Puducherry, Lakshadweep</li>
+                <li><strong>East:</strong> West Bengal, Bihar, Odisha, Jharkhand, Sikkim</li>
+                <li><strong>Northeast:</strong> Assam, Arunachal Pradesh, Manipur, Meghalaya, Mizoram, Nagaland, Tripura</li>
+            </ul>
+
+            <h2>Complete State-wise Data</h2>
+
+            <p>Below is the complete list of all 37 states and union territories with their ITR filing counts for FY 2024-25 (till July 2024).</p>
+
+            <h3>Major States</h3>
+            <div class="state-list">
+                <div class="state-item"><span class="name">Maharashtra</span><span class="count">1.12 Cr</span></div>
+                <div class="state-item"><span class="name">Uttar Pradesh</span><span class="count">74.2 L</span></div>
+                <div class="state-item"><span class="name">Gujarat</span><span class="count">71.3 L</span></div>
+                <div class="state-item"><span class="name">Rajasthan</span><span class="count">50.5 L</span></div>
+                <div class="state-item"><span class="name">Tamil Nadu</span><span class="count">44.2 L</span></div>
+                <div class="state-item"><span class="name">West Bengal</span><span class="count">44.0 L</span></div>
+                <div class="state-item"><span class="name">Karnataka</span><span class="count">42.7 L</span></div>
+                <div class="state-item"><span class="name">Punjab</span><span class="count">36.2 L</span></div>
+                <div class="state-item"><span class="name">Madhya Pradesh</span><span class="count">30.7 L</span></div>
+                <div class="state-item"><span class="name">Haryana</span><span class="count">28.9 L</span></div>
+                <div class="state-item"><span class="name">Andhra Pradesh</span><span class="count">24.8 L</span></div>
+                <div class="state-item"><span class="name">Telangana</span><span class="count">24.6 L</span></div>
+                <div class="state-item"><span class="name">Bihar</span><span class="count">22.6 L</span></div>
+                <div class="state-item"><span class="name">Kerala</span><span class="count">20.7 L</span></div>
+                <div class="state-item"><span class="name">Odisha</span><span class="count">13.3 L</span></div>
+                <div class="state-item"><span class="name">Jharkhand</span><span class="count">12.4 L</span></div>
+                <div class="state-item"><span class="name">Chhattisgarh</span><span class="count">11.7 L</span></div>
+                <div class="state-item"><span class="name">Uttarakhand</span><span class="count">9.1 L</span></div>
+                <div class="state-item"><span class="name">Assam</span><span class="count">7.6 L</span></div>
+                <div class="state-item"><span class="name">Himachal Pradesh</span><span class="count">6.5 L</span></div>
+                <div class="state-item"><span class="name">Jammu & Kashmir</span><span class="count">5.8 L</span></div>
+                <div class="state-item"><span class="name">Goa</span><span class="count">2.3 L</span></div>
+            </div>
+
+            <h3>Northeast States</h3>
+            <div class="state-list">
+                <div class="state-item"><span class="name">Assam</span><span class="count">7,56,613</span></div>
+                <div class="state-item"><span class="name">Tripura</span><span class="count">90,088</span></div>
+                <div class="state-item"><span class="name">Manipur</span><span class="count">66,664</span></div>
+                <div class="state-item"><span class="name">Meghalaya</span><span class="count">40,502</span></div>
+                <div class="state-item"><span class="name">Nagaland</span><span class="count">25,916</span></div>
+                <div class="state-item"><span class="name">Arunachal Pradesh</span><span class="count">24,303</span></div>
+                <div class="state-item"><span class="name">Mizoram</span><span class="count">8,635</span></div>
+            </div>
+
+            <h3>Union Territories</h3>
+            <div class="state-list">
+                <div class="state-item"><span class="name">Delhi (NCT)</span><span class="count">36.6 L</span></div>
+                <div class="state-item"><span class="name">Chandigarh</span><span class="count">2,99,025</span></div>
+                <div class="state-item"><span class="name">Puducherry</span><span class="count">99,739</span></div>
+                <div class="state-item"><span class="name">Andaman & Nicobar</span><span class="count">37,604</span></div>
+                <div class="state-item"><span class="name">Dadra & Nagar Haveli</span><span class="count">27,058</span></div>
+                <div class="state-item"><span class="name">Daman & Diu</span><span class="count">20,054</span></div>
+                <div class="state-item"><span class="name">Lakshadweep</span><span class="count">4,808</span></div>
+                <div class="state-item"><span class="name">Ladakh</span><span class="count">431</span></div>
+            </div>
+
+            <h2>Key Insights</h2>
+
+            <div class="insight-box">
+                <h4>Why Maharashtra Leads</h4>
+                <p>Maharashtra is home to Mumbai, India's financial capital, with the highest concentration of corporate headquarters, banks, and the stock exchange. The state also has a large industrial base in Pune, Nagpur, and other cities.</p>
+            </div>
+
+            <div class="insight-box success">
+                <h4>Gujarat's Strong Position</h4>
+                <p>Despite having less than half of UP's population, Gujarat files almost as many returns. This reflects its strong business culture, industrial activity, and higher per-capita income.</p>
+            </div>
+
+            <div class="insight-box warning">
+                <h4>Northeast's Low Filings</h4>
+                <p>The entire Northeast (7 states) files only 10.1 lakh returns - less than Chhattisgarh alone. This is due to lower urbanization, prevalence of agriculture (exempt income), and special tax exemptions under Section 10(26) for certain tribal areas.</p>
+            </div>
+
+            <h2>Frequently Asked Questions</h2>
+
+            <div class="faq-section">
+                <div class="faq-item">
+                    <div class="faq-question">Which state files the most income tax returns in India?</div>
+                    <div class="faq-answer">Maharashtra files the most income tax returns with 1.12 crore (11.2 million) filings in FY 2024-25, accounting for 15.1% of all filings. This is followed by Uttar Pradesh (74.2 lakh) and Gujarat (71.3 lakh).</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Which state has the highest ITR filing growth?</div>
+                    <div class="faq-answer">Telangana has the highest growth at 141% year-on-year. Filings increased from 10.2 lakh to 24.6 lakh. This is primarily due to improved data consolidation after the state bifurcation from Andhra Pradesh.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Which region of India files the most taxes?</div>
+                    <div class="faq-answer">Western India leads with 37.7% of all filings (2.79 crore), followed by North India at 27.1% (2 crore) and South India at 21.3% (1.58 crore). East India contributes 12.5% and Northeast just 1.4%.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">How many ITRs are filed from Delhi?</div>
+                    <div class="faq-answer">Delhi (NCT) filed 36.6 lakh income tax returns in FY 2024-25, making it the 8th highest filing state/UT. Delhi accounts for 4.9% of all ITR filings in India.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Which state has the lowest ITR filings?</div>
+                    <div class="faq-answer">Among states, Mizoram has the lowest filings at just 8,635. Among UTs, Ladakh has the lowest at 431 filings. Lakshadweep filed 4,808 returns in FY 2024-25.</div>
+                </div>
+            </div>
+
+            <div class="disclaimer">
+                <strong>Data Source:</strong> Income Tax e-Filing Portal Statistics (as of July 31, 2024). FY 2024-25 data represents filings till July 2024. Year-on-year comparisons use same-period data from FY 2023-24. Regional classifications are approximate and used for analytical purposes.
+            </div>
+        </article>
+
+        <!-- Footer -->
+        <footer>
+            <a href="https://itrstats.in">ITR Stats</a> &copy; 2026 | Data from Income Tax e-Filing Portal
+        </footer>
+    </div>
+
+    <script>
+        // Theme toggle
+        function toggleTheme() {
+            const body = document.body;
+            const icon = document.getElementById('theme-icon');
+            if (body.getAttribute('data-theme') === 'dark') {
+                body.removeAttribute('data-theme');
+                icon.innerHTML = '&#127769;';
+                localStorage.setItem('theme', 'light');
+            } else {
+                body.setAttribute('data-theme', 'dark');
+                icon.innerHTML = '&#9728;';
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        // Load saved theme
+        (function() {
+            const savedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+                document.body.setAttribute('data-theme', 'dark');
+                document.getElementById('theme-icon').innerHTML = '&#9728;';
+            }
+        })();
+
+        // FAQ toggle
+        document.querySelectorAll('.faq-question').forEach(q => {
+            q.addEventListener('click', () => {
+                q.parentElement.classList.toggle('open');
+            });
+        });
+    </script>
+
+    <!-- GoatCounter Analytics -->
+    <script data-goatcounter="https://itrstats.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
