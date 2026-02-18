@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Meta Tags -->
+    <title>India's Income Distribution: What 8.5 Crore Tax Returns Reveal (2025 Data) | ITR Stats</title>
+    <meta name="description" content="Analysis of India's income distribution based on 8.5 crore ITR filings. Only 1.1% earn above Rs 50 lakh. See where you stand among Indian taxpayers with real data.">
+    <meta name="keywords" content="India income distribution, income tax statistics India, how many Indians earn above 1 crore, Indian salary distribution, ITR data analysis, income percentile India">
+    <meta name="author" content="ITR Stats">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://itrstats.in/blog/income-distribution-india/">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://itrstats.in/blog/income-distribution-india/">
+    <meta property="og:title" content="India's Income Distribution: What 8.5 Crore Tax Returns Reveal">
+    <meta property="og:description" content="Only 1.1% of Indian taxpayers earn above Rs 50 lakh. Analysis of 8.5 crore ITR filings.">
+    <meta property="og:image" content="https://itrstats.in/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="ITR Stats">
+    <meta property="og:locale" content="en_IN">
+    <meta property="article:published_time" content="2026-02-18">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="India's Income Distribution: What 8.5 Crore Tax Returns Reveal">
+    <meta name="twitter:description" content="Only 1.1% of Indian taxpayers earn above Rs 50 lakh. Real data from ITR filings.">
+    <meta name="twitter:image" content="https://itrstats.in/og-image.png">
+
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2843260079810330"
+        crossorigin="anonymous"></script>
+
+    <!-- Structured Data - Article -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "India's Income Distribution: What 8.5 Crore Tax Returns Reveal (2025 Data)",
+        "description": "Analysis of India's income distribution based on 8.5 crore ITR filings for FY 2024-25.",
+        "image": "https://itrstats.in/og-image.png",
+        "datePublished": "2026-02-18",
+        "dateModified": "2026-02-18",
+        "author": {
+            "@type": "Organization",
+            "name": "ITR Stats"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "ITR Stats",
+            "url": "https://itrstats.in"
+        }
+    }
+    </script>
+
+    <!-- Structured Data - FAQ -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "How many Indians earn above Rs 1 crore?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "According to ITR data for FY 2024-25, only 3.24 lakh individuals (0.38% of taxpayers) reported income above Rs 1 crore. This includes 10,184 individuals earning above Rs 10 crore."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What percentage of Indians earn above Rs 50 lakh?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Only 1.13% of individual taxpayers (about 9.6 lakh people) reported income above Rs 50 lakh in FY 2024-25, according to Income Tax Department data."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What is the average income in India according to tax data?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Based on ITR filings, 83.7% of individual taxpayers earn below Rs 10 lakh per year. Only 15.1% fall in the Rs 10-50 lakh bracket, making the Rs 10+ lakh earners a relatively small minority."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How many people file income tax returns in India?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "In FY 2024-25, approximately 8.57 crore individuals filed income tax returns in India, according to the Income Tax e-Filing portal data."
+                }
+            }
+        ]
+    }
+    </script>
+
+    <style>
+        :root {
+            --bg-primary: #f8fafc;
+            --bg-secondary: #ffffff;
+            --bg-accent: #f1f5f9;
+            --text-primary: #1e293b;
+            --text-secondary: #475569;
+            --text-muted: #64748b;
+            --accent-blue: #3b82f6;
+            --accent-green: #22c55e;
+            --accent-red: #ef4444;
+            --accent-yellow: #f59e0b;
+            --border-color: #e2e8f0;
+        }
+
+        [data-theme="dark"] {
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --bg-accent: #334155;
+            --text-primary: #f1f5f9;
+            --text-secondary: #cbd5e1;
+            --text-muted: #94a3b8;
+            --accent-blue: #60a5fa;
+            --accent-green: #4ade80;
+            --accent-red: #f87171;
+            --accent-yellow: #fbbf24;
+            --border-color: #334155;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            padding: 1rem;
+            line-height: 1.8;
+        }
+
+        .container { max-width: 800px; margin: 0 auto; }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.5rem;
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            margin-bottom: 2rem;
+        }
+
+        .header-left h1 { font-size: 1.5rem; font-weight: 700; }
+        .header-left p { font-size: 0.875rem; color: var(--text-muted); margin-top: 0.25rem; }
+
+        .header-right { display: flex; align-items: center; gap: 1rem; }
+
+        .header-link {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            padding: 0.5rem 0.75rem;
+            border-radius: 8px;
+            transition: color 0.2s ease, background 0.2s ease;
+        }
+
+        .header-link:hover { color: var(--accent-blue); background: var(--bg-accent); }
+        .header-link.active { color: var(--accent-blue); }
+
+        .theme-toggle {
+            background: var(--bg-accent);
+            border: none;
+            border-radius: 12px;
+            padding: 0.75rem;
+            cursor: pointer;
+            font-size: 1.25rem;
+        }
+
+        .breadcrumb {
+            display: flex;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        .breadcrumb a { color: var(--accent-blue); text-decoration: none; }
+
+        article {
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        article h1 { font-size: 2rem; line-height: 1.3; margin-bottom: 1rem; }
+
+        .article-meta {
+            display: flex;
+            gap: 1.5rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .hook {
+            font-size: 1.2rem;
+            color: var(--text-primary);
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, #3b82f6 0%, #6366f1 100%);
+            border-radius: 12px;
+            color: #ffffff;
+        }
+
+        article h2 {
+            font-size: 1.5rem;
+            margin: 2.5rem 0 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        article h3 {
+            font-size: 1.2rem;
+            margin: 1.5rem 0 0.75rem;
+            color: var(--text-primary);
+        }
+
+        article p {
+            margin-bottom: 1.25rem;
+            color: var(--text-secondary);
+        }
+
+        article strong { color: var(--text-primary); }
+
+        article ul, article ol {
+            margin: 1rem 0 1.5rem 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        article li { margin-bottom: 0.5rem; }
+
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .stat-card {
+            background: var(--bg-accent);
+            border-radius: 12px;
+            padding: 1.25rem;
+            text-align: center;
+        }
+
+        .stat-card .number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent-blue);
+        }
+
+        .stat-card .label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 0.25rem;
+        }
+
+        .stat-card.highlight { background: linear-gradient(135deg, #3b82f6 0%, #6366f1 100%); }
+        .stat-card.highlight .number { color: #ffffff; }
+        .stat-card.highlight .label { color: rgba(255,255,255,0.8); }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.95rem;
+        }
+
+        th, td {
+            padding: 0.875rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        th { background: var(--bg-accent); font-weight: 600; color: var(--text-primary); }
+        td { color: var(--text-secondary); }
+
+        .highlight-row { background: var(--bg-accent); }
+
+        .bar-container {
+            margin: 1.5rem 0;
+        }
+
+        .bar-item {
+            margin-bottom: 1rem;
+        }
+
+        .bar-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.25rem;
+            font-size: 0.9rem;
+        }
+
+        .bar-track {
+            height: 24px;
+            background: var(--bg-accent);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .bar-fill {
+            height: 100%;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            padding-left: 0.75rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #ffffff;
+            min-width: fit-content;
+        }
+
+        .bar-fill.blue { background: var(--accent-blue); }
+        .bar-fill.green { background: var(--accent-green); }
+        .bar-fill.yellow { background: var(--accent-yellow); }
+        .bar-fill.red { background: var(--accent-red); }
+
+        .insight-box {
+            background: var(--bg-accent);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--accent-blue);
+        }
+
+        .insight-box.warning { border-left-color: var(--accent-yellow); }
+        .insight-box.success { border-left-color: var(--accent-green); }
+
+        .comparison-box {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .comparison-card {
+            background: var(--bg-accent);
+            border-radius: 12px;
+            padding: 1.25rem;
+            text-align: center;
+        }
+
+        .comparison-card h4 {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+        }
+
+        .comparison-card .value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .cta-box {
+            background: linear-gradient(135deg, #3b82f6 0%, #6366f1 100%);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            text-align: center;
+            color: #ffffff;
+        }
+
+        .cta-box h3 { color: #ffffff; margin-bottom: 0.5rem; }
+        .cta-box p { color: rgba(255,255,255,0.9); margin-bottom: 1rem; }
+
+        .cta-box a {
+            display: inline-block;
+            background: #ffffff;
+            color: #4f46e5;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .disclaimer {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-style: italic;
+            padding: 1rem;
+            border: 1px dashed var(--border-color);
+            border-radius: 8px;
+            margin-top: 2rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--border-color);
+            margin-top: 2rem;
+        }
+
+        footer a { color: var(--text-muted); text-decoration: none; }
+
+        @media (max-width: 768px) {
+            .header { flex-direction: column; gap: 1rem; text-align: center; }
+            .header-right { flex-wrap: wrap; justify-content: center; }
+            article { padding: 1.5rem; }
+            article h1 { font-size: 1.5rem; }
+            .stat-grid { grid-template-columns: 1fr 1fr; }
+            .comparison-box { grid-template-columns: 1fr; }
+            table { font-size: 0.85rem; }
+            th, td { padding: 0.625rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-left">
+                <h1>ITR Stats</h1>
+                <p>Data-Driven Insights</p>
+            </div>
+            <div class="header-right">
+                <a href="/" class="header-link">Dashboard</a>
+                <a href="/insights/" class="header-link">Insights</a>
+                <a href="/blog/" class="header-link active">Blog</a>
+                <a href="/calculator/" class="header-link">Calculator</a>
+                <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+                    <span id="theme-icon"></span>
+                </button>
+            </div>
+        </header>
+
+        <nav class="breadcrumb">
+            <a href="/">Home</a> /
+            <a href="/blog/">Blog</a> /
+            <span>Income Distribution</span>
+        </nav>
+
+        <article>
+            <h1>India's Income Distribution: What 8.5 Crore Tax Returns Reveal</h1>
+            <div class="article-meta">
+                <span>February 18, 2026</span>
+                <span>8 min read</span>
+                <span style="color: #fbbf24;">Data Analysis</span>
+            </div>
+
+            <div class="hook">
+                <strong>Think you're middle class?</strong> If your annual income is above Rs 10 lakh, you're already in the top 16.3% of all individual taxpayers in India. Above Rs 50 lakh? You're in the top 1.1%.
+            </div>
+
+            <p>We analyzed data from <strong>8.57 crore individual income tax returns</strong> filed in FY 2024-25 to understand how India's income is really distributed. The results might surprise you.</p>
+
+            <h2>The Big Picture</h2>
+
+            <div class="stat-grid">
+                <div class="stat-card highlight">
+                    <div class="number">8.57 Cr</div>
+                    <div class="label">Individual ITRs Filed</div>
+                </div>
+                <div class="stat-card">
+                    <div class="number">83.7%</div>
+                    <div class="label">Earn Below Rs 10 Lakh</div>
+                </div>
+                <div class="stat-card">
+                    <div class="number">1.13%</div>
+                    <div class="label">Earn Above Rs 50 Lakh</div>
+                </div>
+                <div class="stat-card">
+                    <div class="number">10,184</div>
+                    <div class="label">Earn Above Rs 10 Crore</div>
+                </div>
+            </div>
+
+            <h2>Income Distribution Breakdown</h2>
+
+            <p>Here's how India's individual taxpayers are distributed across income brackets:</p>
+
+            <div class="bar-container">
+                <div class="bar-item">
+                    <div class="bar-label">
+                        <span><strong>Up to Rs 5 Lakh</strong></span>
+                        <span>3.81 Cr (44.5%)</span>
+                    </div>
+                    <div class="bar-track">
+                        <div class="bar-fill blue" style="width: 44.5%;">44.5%</div>
+                    </div>
+                </div>
+                <div class="bar-item">
+                    <div class="bar-label">
+                        <span><strong>Rs 5 - 10 Lakh</strong></span>
+                        <span>3.37 Cr (39.3%)</span>
+                    </div>
+                    <div class="bar-track">
+                        <div class="bar-fill blue" style="width: 39.3%;">39.3%</div>
+                    </div>
+                </div>
+                <div class="bar-item">
+                    <div class="bar-label">
+                        <span><strong>Rs 10 - 50 Lakh</strong></span>
+                        <span>1.30 Cr (15.1%)</span>
+                    </div>
+                    <div class="bar-track">
+                        <div class="bar-fill green" style="width: 15.1%;">15.1%</div>
+                    </div>
+                </div>
+                <div class="bar-item">
+                    <div class="bar-label">
+                        <span><strong>Rs 50 Lakh - 1 Crore</strong></span>
+                        <span>6.41 Lakh (0.75%)</span>
+                    </div>
+                    <div class="bar-track">
+                        <div class="bar-fill yellow" style="width: 3%;">0.75%</div>
+                    </div>
+                </div>
+                <div class="bar-item">
+                    <div class="bar-label">
+                        <span><strong>Above Rs 1 Crore</strong></span>
+                        <span>3.24 Lakh (0.38%)</span>
+                    </div>
+                    <div class="bar-track">
+                        <div class="bar-fill red" style="width: 2%;">0.38%</div>
+                    </div>
+                </div>
+            </div>
+
+            <h2>The Complete Data</h2>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Income Bracket</th>
+                        <th>Taxpayers</th>
+                        <th>Share</th>
+                        <th>Percentile</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Up to Rs 5 Lakh</td>
+                        <td>3,81,01,868</td>
+                        <td>44.46%</td>
+                        <td>Bottom 44.5%</td>
+                    </tr>
+                    <tr>
+                        <td>Rs 5 - 10 Lakh</td>
+                        <td>3,36,65,123</td>
+                        <td>39.28%</td>
+                        <td>44.5% - 83.7%</td>
+                    </tr>
+                    <tr class="highlight-row">
+                        <td><strong>Rs 10 - 50 Lakh</strong></td>
+                        <td><strong>1,29,68,359</strong></td>
+                        <td><strong>15.13%</strong></td>
+                        <td><strong>Top 16.3%</strong></td>
+                    </tr>
+                    <tr>
+                        <td>Rs 50 Lakh - 1 Crore</td>
+                        <td>6,40,659</td>
+                        <td>0.75%</td>
+                        <td>Top 1.13%</td>
+                    </tr>
+                    <tr>
+                        <td>Rs 1 - 5 Crore</td>
+                        <td>2,97,086</td>
+                        <td>0.35%</td>
+                        <td>Top 0.38%</td>
+                    </tr>
+                    <tr>
+                        <td>Rs 5 - 10 Crore</td>
+                        <td>16,797</td>
+                        <td>0.02%</td>
+                        <td>Top 0.03%</td>
+                    </tr>
+                    <tr>
+                        <td>Above Rs 10 Crore</td>
+                        <td>10,184</td>
+                        <td>0.01%</td>
+                        <td>Top 0.01%</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2>Key Insights</h2>
+
+            <div class="insight-box">
+                <h3>The "10 Lakh Club" is Smaller Than You Think</h3>
+                <p>If you earn more than Rs 10 lakh annually, you're in the <strong>top 16.3%</strong> of all individual taxpayers. That's roughly 1.4 crore people out of 8.57 crore.</p>
+            </div>
+
+            <div class="insight-box success">
+                <h3>The Crorepati Count</h3>
+                <p>Only <strong>3,24,067 individuals</strong> reported income above Rs 1 crore. That's just 0.38% of taxpayers — less than 4 in every 1,000 people who file returns.</p>
+            </div>
+
+            <div class="insight-box warning">
+                <h3>The Ultra-High Earners</h3>
+                <p>Just <strong>10,184 individuals</strong> in India reported income above Rs 10 crore. If you're one of them, you're literally one in a million (0.01%).</p>
+            </div>
+
+            <h2>Where Do You Stand?</h2>
+
+            <p>Here's a quick reference to understand your position:</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>If Your Income Is...</th>
+                        <th>You're In The...</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Below Rs 5 Lakh</td>
+                        <td>Bottom 44.5%</td>
+                    </tr>
+                    <tr>
+                        <td>Rs 5 - 10 Lakh</td>
+                        <td>Middle 44.5% - 83.7%</td>
+                    </tr>
+                    <tr>
+                        <td>Rs 10 - 25 Lakh</td>
+                        <td>Top 16.3% - 5%</td>
+                    </tr>
+                    <tr>
+                        <td>Rs 25 - 50 Lakh</td>
+                        <td>Top 5% - 1.1%</td>
+                    </tr>
+                    <tr>
+                        <td>Rs 50 Lakh - 1 Crore</td>
+                        <td>Top 1.1% - 0.38%</td>
+                    </tr>
+                    <tr>
+                        <td>Above Rs 1 Crore</td>
+                        <td>Top 0.38%</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="cta-box">
+                <h3>Want to know your exact percentile?</h3>
+                <p>Use our Income Percentile Calculator to see where you stand among Indian taxpayers.</p>
+                <a href="/calculator/income-percentile/">Calculate Now</a>
+            </div>
+
+            <h2>High Earners: A Closer Look</h2>
+
+            <p>Let's zoom into the top 1.13% — those earning above Rs 50 lakh:</p>
+
+            <div class="stat-grid">
+                <div class="stat-card">
+                    <div class="number">6.41L</div>
+                    <div class="label">Rs 50L - 1 Crore</div>
+                </div>
+                <div class="stat-card">
+                    <div class="number">2.97L</div>
+                    <div class="label">Rs 1 - 5 Crore</div>
+                </div>
+                <div class="stat-card">
+                    <div class="number">16,797</div>
+                    <div class="label">Rs 5 - 10 Crore</div>
+                </div>
+                <div class="stat-card">
+                    <div class="number">10,184</div>
+                    <div class="label">Above Rs 10 Crore</div>
+                </div>
+            </div>
+
+            <p><strong>Total high earners (above Rs 50 lakh):</strong> 9,64,726 individuals</p>
+            <p>That's less than 10 lakh people in a country of 140+ crore.</p>
+
+            <h2>What This Data Doesn't Capture</h2>
+
+            <p>Important caveats to keep in mind:</p>
+
+            <ul>
+                <li><strong>Only taxpayers</strong> — This data covers only those who file ITR. Many Indians don't file returns (agricultural income, below threshold, informal sector).</li>
+                <li><strong>Reported income</strong> — This is declared income, which may differ from actual income.</li>
+                <li><strong>Individual filers only</strong> — Doesn't include HUFs, companies, or firms.</li>
+                <li><strong>Not household income</strong> — A household with two earners of Rs 8L each has Rs 16L combined, but both individuals fall in the "below 10L" bracket.</li>
+            </ul>
+
+            <h2>The Bottom Line</h2>
+
+            <div class="insight-box">
+                <p>Income inequality in India is stark. While social media might make everyone seem wealthy, the data tells a different story:</p>
+                <ul style="margin-top: 1rem;">
+                    <li><strong>83.7%</strong> of taxpayers earn below Rs 10 lakh</li>
+                    <li>Only <strong>1 in 88</strong> taxpayers earns above Rs 50 lakh</li>
+                    <li>Only <strong>1 in 264</strong> taxpayers earns above Rs 1 crore</li>
+                    <li>Only <strong>1 in 84,000</strong> taxpayers earns above Rs 10 crore</li>
+                </ul>
+                <p style="margin-top: 1rem;">If you're earning above Rs 10 lakh, you're doing better than 84% of taxpayers. Above Rs 50 lakh? You're in elite territory. Above Rs 1 crore? You're in the top 0.4%.</p>
+            </div>
+
+            <p><strong>Data Source:</strong> Income Tax e-Filing Portal statistics for FY 2024-25 (Assessment Year 2025-26), accessed February 2026.</p>
+
+            <div class="disclaimer">
+                <strong>Disclaimer:</strong> This analysis is based on officially published ITR filing statistics from the Income Tax e-Filing portal. Data represents only individual taxpayers who filed returns and should not be considered representative of India's entire population or workforce. This is for informational purposes only.
+            </div>
+        </article>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 ITR Stats &bull; <a href="/">Dashboard</a> &bull; <a href="/blog/">Blog</a> &bull; <a href="/privacy-policy.html">Privacy</a></p>
+    </footer>
+
+    <script>
+        function getThemePreference() {
+            const saved = localStorage.getItem('theme');
+            if (saved) return saved;
+            return 'dark';
+        }
+
+        function setTheme(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+            document.getElementById('theme-icon').textContent = theme === 'dark' ? '☀️' : '🌙';
+        }
+
+        function toggleTheme() {
+            const current = document.documentElement.getAttribute('data-theme');
+            setTheme(current === 'dark' ? 'light' : 'dark');
+        }
+
+        setTheme(getThemePreference());
+    </script>
+
+    <!-- GoatCounter Analytics -->
+    <script data-goatcounter="https://itrstats.goatcounter.com/count"
+            async src="https://gc.zgo.at/count.js"></script>
+</body>
+</html>
