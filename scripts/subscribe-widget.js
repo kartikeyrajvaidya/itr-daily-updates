@@ -256,9 +256,9 @@
 
         <div id="sub-modal-body">
           <ul id="sub-benefits">
-            <li>${checkIcon} Daily ITR filing trends &amp; milestones</li>
-            <li>${checkIcon} New blog posts &amp; deep analysis</li>
-            <li>${checkIcon} Refund &amp; processing stats — weekly</li>
+            <li>${checkIcon} Key milestones &amp; ITR filing trends</li>
+            <li>${checkIcon} New blogs &amp; data-backed analysis</li>
+            <li>${checkIcon} Refund &amp; processing stats</li>
           </ul>
 
           <form id="sub-form" novalidate>
@@ -341,7 +341,7 @@
         body: formData
       })
         .then(function () {
-          showFeedback('success', "You're in! Check your inbox to confirm.");
+          showFeedback('success', 'Subscribed. Check your inbox for a confirmation email.');
           form.reset();
           submitBtn.textContent = 'Subscribed!';
         })
