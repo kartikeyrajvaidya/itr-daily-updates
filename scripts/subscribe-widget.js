@@ -30,9 +30,7 @@
       transform: scale(1.06);
       box-shadow: 0 6px 20px rgba(0,0,0,0.35);
     }
-    #sub-fab svg {
-      flex-shrink: 0;
-    }
+    #sub-fab svg { flex-shrink: 0; }
     @media (max-width: 480px) {
       #sub-fab {
         padding: 0;
@@ -40,16 +38,14 @@
         justify-content: center;
         border-radius: 50%;
       }
-      #sub-fab .sub-fab-label {
-        display: none;
-      }
+      #sub-fab .sub-fab-label { display: none; }
     }
 
-    /* Subscribe Modal Overlay */
+    /* Overlay */
     #sub-modal-overlay {
       position: fixed;
       inset: 0;
-      background: rgba(0,0,0,0.6);
+      background: rgba(0,0,0,0.65);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -64,54 +60,100 @@
       visibility: visible;
     }
 
-    /* Subscribe Modal Box */
+    /* Modal box */
     #sub-modal {
-      background: var(--bg-secondary, #fff);
+      background: var(--bg-secondary, #ffffff);
       border: 1px solid var(--border-color, #e2e8f0);
-      border-radius: 16px;
-      padding: 2rem;
+      border-radius: 20px;
       width: 100%;
-      max-width: 400px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-      transform: translateY(12px);
-      transition: transform 0.25s ease;
-      position: relative;
+      max-width: 420px;
+      box-shadow: 0 24px 48px rgba(0,0,0,0.25);
+      transform: translateY(16px) scale(0.98);
+      transition: transform 0.28s ease;
+      overflow: hidden;
     }
     #sub-modal-overlay.sub-active #sub-modal {
-      transform: translateY(0);
+      transform: translateY(0) scale(1);
     }
 
-    /* Modal close button */
+    /* Header band */
+    #sub-modal-header {
+      background: linear-gradient(135deg, var(--accent-blue, #3182ce) 0%, #5a67d8 100%);
+      padding: 1.75rem 1.5rem 1.5rem;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 6px;
+    }
     #sub-modal-close {
       position: absolute;
-      top: 14px;
-      right: 14px;
-      background: none;
+      top: 12px;
+      right: 12px;
+      background: rgba(255,255,255,0.15);
       border: none;
       cursor: pointer;
-      color: var(--text-muted, #718096);
-      font-size: 1.4rem;
+      color: #fff;
+      font-size: 1.1rem;
       line-height: 1;
-      padding: 4px 8px;
-      border-radius: 6px;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       transition: background 0.15s;
     }
-    #sub-modal-close:hover {
-      background: var(--bg-accent, #e2e8f0);
+    #sub-modal-close:hover { background: rgba(255,255,255,0.28); }
+
+    #sub-modal-header-icon {
+      width: 40px;
+      height: 40px;
+      background: rgba(255,255,255,0.18);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 4px;
+    }
+    #sub-modal h3 {
+      margin: 0;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: -0.01em;
+    }
+    #sub-modal-tagline {
+      margin: 0;
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.8);
+      line-height: 1.4;
     }
 
-    /* Modal content */
-    #sub-modal h3 {
-      margin: 0 0 4px;
-      font-size: 1.2rem;
-      font-weight: 700;
-      color: var(--text-primary, #1a202c);
+    /* Body */
+    #sub-modal-body {
+      padding: 1.4rem 1.5rem 1.5rem;
     }
-    #sub-modal-subtitle {
-      margin: 0 0 1rem;
-      font-size: 0.875rem;
-      color: var(--text-muted, #718096);
-      line-height: 1.5;
+
+    /* Benefit bullets */
+    #sub-benefits {
+      list-style: none;
+      margin: 0 0 1.25rem;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    #sub-benefits li {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      font-size: 0.85rem;
+      color: var(--text-secondary, #4a5568);
+    }
+    #sub-benefits li svg {
+      flex-shrink: 0;
+      color: var(--accent-blue, #3182ce);
     }
 
     /* Form */
@@ -122,9 +164,9 @@
     }
     #sub-email {
       width: 100%;
-      padding: 10px 14px;
+      padding: 11px 14px;
       border: 1.5px solid var(--border-color, #e2e8f0);
-      border-radius: 8px;
+      border-radius: 10px;
       background: var(--bg-primary, #f0f4f8);
       color: var(--text-primary, #1a202c);
       font-size: 0.9rem;
@@ -133,34 +175,32 @@
       transition: border-color 0.2s;
       outline: none;
     }
-    #sub-email:focus {
-      border-color: var(--accent-blue, #3182ce);
-    }
-    #sub-email::placeholder {
-      color: var(--text-muted, #718096);
-    }
+    #sub-email:focus { border-color: var(--accent-blue, #3182ce); }
+    #sub-email::placeholder { color: var(--text-muted, #718096); }
+
     #sub-submit {
       width: 100%;
-      padding: 11px;
+      padding: 12px;
       border: none;
-      border-radius: 8px;
+      border-radius: 10px;
       background: var(--accent-blue, #3182ce);
       color: #fff;
-      font-size: 0.9rem;
+      font-size: 0.92rem;
       font-weight: 600;
       font-family: inherit;
       cursor: pointer;
-      transition: opacity 0.2s;
+      transition: opacity 0.2s, transform 0.15s;
+      letter-spacing: 0.01em;
     }
-    #sub-submit:hover { opacity: 0.88; }
-    #sub-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+    #sub-submit:hover { opacity: 0.9; transform: translateY(-1px); }
+    #sub-submit:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
 
     /* Feedback */
     #sub-feedback {
       display: none;
-      font-size: 0.85rem;
-      padding: 8px 12px;
-      border-radius: 6px;
+      font-size: 0.84rem;
+      padding: 9px 12px;
+      border-radius: 8px;
     }
     #sub-feedback.sub-success {
       display: block;
@@ -175,9 +215,9 @@
 
     /* Powered by */
     #sub-powered {
-      margin: 10px 0 0;
+      margin: 12px 0 0;
       text-align: center;
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       color: var(--text-muted, #718096);
     }
     #sub-powered a {
@@ -187,6 +227,8 @@
   `;
 
   // ── HTML ──────────────────────────────────────────────────────────────────
+  var checkIcon = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>`;
+
   var fabHTML = `
     <button id="sub-fab" aria-label="Get Updates">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
@@ -200,41 +242,58 @@
   var modalHTML = `
     <div id="sub-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="sub-modal-title">
       <div id="sub-modal">
-        <button id="sub-modal-close" aria-label="Close">&times;</button>
-        <h3 id="sub-modal-title">Stay Updated</h3>
-        <p id="sub-modal-subtitle">Get notified on new blogs and ITR stats.</p>
-        <form id="sub-form" novalidate>
-          <input
-            id="sub-email"
-            type="email"
-            name="email"
-            placeholder="your@email.com"
-            required
-            autocomplete="email"
-          />
-          <button id="sub-submit" type="submit">Subscribe</button>
-          <div id="sub-feedback"></div>
-        </form>
-        <p id="sub-powered">
-          Powered by <a href="https://buttondown.com/refer/itrstats" target="_blank" rel="noopener">Buttondown</a>
-        </p>
+
+        <div id="sub-modal-header">
+          <button id="sub-modal-close" aria-label="Close">&times;</button>
+          <div id="sub-modal-header-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+            </svg>
+          </div>
+          <h3 id="sub-modal-title">ITR Stats Updates</h3>
+          <p id="sub-modal-tagline">India's tax filing data, straight to your inbox.</p>
+        </div>
+
+        <div id="sub-modal-body">
+          <ul id="sub-benefits">
+            <li>${checkIcon} Daily ITR filing trends &amp; milestones</li>
+            <li>${checkIcon} New blog posts &amp; deep analysis</li>
+            <li>${checkIcon} Refund &amp; processing stats — weekly</li>
+          </ul>
+
+          <form id="sub-form" novalidate>
+            <input
+              id="sub-email"
+              type="email"
+              name="email"
+              placeholder="your@email.com"
+              required
+              autocomplete="email"
+            />
+            <button id="sub-submit" type="submit">Get Updates — It's Free</button>
+            <div id="sub-feedback"></div>
+          </form>
+
+          <p id="sub-powered">
+            No spam, unsubscribe anytime &nbsp;·&nbsp;
+            Powered by <a href="https://buttondown.com/refer/itrstats" target="_blank" rel="noopener">Buttondown</a>
+          </p>
+        </div>
+
       </div>
     </div>
   `;
 
   // ── Init ──────────────────────────────────────────────────────────────────
   function init() {
-    // Inject styles
     var styleEl = document.createElement('style');
     styleEl.textContent = css;
     document.head.appendChild(styleEl);
 
-    // Inject HTML
     var wrapper = document.createElement('div');
     wrapper.innerHTML = fabHTML + modalHTML;
     document.body.appendChild(wrapper);
 
-    // Elements
     var fab        = document.getElementById('sub-fab');
     var overlay    = document.getElementById('sub-modal-overlay');
     var closeBtn   = document.getElementById('sub-modal-close');
@@ -243,18 +302,14 @@
     var submitBtn  = document.getElementById('sub-submit');
     var feedback   = document.getElementById('sub-feedback');
 
-    // Open modal
     function openModal() {
       overlay.classList.add('sub-active');
       setTimeout(function () { emailInput.focus(); }, 50);
     }
-
-    // Close modal
     function closeModal() {
       overlay.classList.remove('sub-active');
     }
 
-    // Events
     fab.addEventListener('click', openModal);
     closeBtn.addEventListener('click', closeModal);
     overlay.addEventListener('click', function (e) {
@@ -264,7 +319,6 @@
       if (e.key === 'Escape') closeModal();
     });
 
-    // Form submit — no-cors mode bypasses CORS restrictions entirely
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       var email = emailInput.value.trim();
@@ -287,13 +341,13 @@
         body: formData
       })
         .then(function () {
-          showFeedback('success', 'You\'re in! Check your inbox to confirm.');
+          showFeedback('success', "You're in! Check your inbox to confirm.");
           form.reset();
           submitBtn.textContent = 'Subscribed!';
         })
         .catch(function () {
           showFeedback('error', 'Something went wrong. Please try again.');
-          submitBtn.textContent = 'Subscribe';
+          submitBtn.textContent = 'Get Updates — It\'s Free';
           submitBtn.disabled = false;
         });
     });
@@ -308,7 +362,6 @@
     }
   }
 
-  // Run after DOM is ready
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
   } else {
