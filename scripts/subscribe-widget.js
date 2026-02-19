@@ -274,10 +274,7 @@
             <div id="sub-feedback"></div>
           </form>
 
-          <p id="sub-powered">
-            No spam, unsubscribe anytime &nbsp;·&nbsp;
-            Powered by <a href="https://buttondown.com/refer/itrstats" target="_blank" rel="noopener">Buttondown</a>
-          </p>
+          <p id="sub-powered">No spam · Unsubscribe anytime</p>
         </div>
 
       </div>
