@@ -338,7 +338,7 @@
         body: formData
       })
         .then(function () {
-          showFeedback('success', 'Subscribed. Check your inbox for a confirmation email.');
+          showFeedback('success', 'One more step — check your inbox and click the confirmation link to complete your subscription.');
           form.reset();
           submitBtn.textContent = 'Subscribed!';
         })
