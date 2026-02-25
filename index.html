@@ -57,6 +57,54 @@
         }
     }
     </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "Why is my ITR still showing as pending even after e-verification?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "E-verification confirms your intent to file — but processing happens separately. The Income Tax Department works through a queue of all verified returns. During peak periods (August–October after the July deadline), the backlog can be several crore returns. Most returns are processed within 15–45 days of verification, though complex cases or those with refund claims may take longer."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How often is this ITR statistics data updated?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "ITR Stats fetches data twice daily. However, the Income Tax Department typically publishes updated figures once a day, late at night. The numbers you see usually reflect the previous night's official update. The 'Fetched' and 'Portal last updated' timestamps on the dashboard tell you exactly when each reading was taken."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How many ITRs get processed per day?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "During active processing periods, the department typically processes 2–7 lakh returns per day. On peak days, this can cross 6–7 lakh. The daily growth chart shows the processing rate day by day — weekends and holidays appear as flat or near-zero days, while weekdays show higher throughput."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What is the difference between a filed ITR and a verified ITR?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Filing an ITR means submitting the return form with your income details. E-verification can be done instantly via Aadhaar OTP, net banking, or Demat account. Alternatively, you can send a signed physical ITR-V to CPC Bengaluru within 30 days. Without verification, the ITR is invalid and will not be processed."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What does it mean when the pending backlog goes up instead of down?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "The pending backlog rises when new e-verified returns are added faster than the department can process them. This typically happens in the weeks right after a filing deadline — millions of taxpayers verify their ITRs in a short window, overwhelming the processing queue temporarily. Over the following months, the department steadily clears the backlog."
+                }
+            }
+        ]
+    }
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" integrity="sha384-9nhczxUqK87bcKHh20fSQcTGD4qq5GhayNYSYWqwBkINBhOfQLg/P5HG5lF1urn4" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
     <style>
@@ -491,22 +539,89 @@
             color: var(--accent-red);
         }
 
-        /* SEO static content - visually hidden but accessible to crawlers */
-        .seo-static-content {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            white-space: nowrap;
-            border: 0;
+        /* Dashboard intro */
+        .dashboard-intro {
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            padding: 1rem 1.5rem;
+            margin-bottom: 1.5rem;
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            border-left: 3px solid var(--accent-blue);
         }
 
-        /* When JavaScript hides it completely after successful load */
-        .seo-static-content.hidden {
-            display: none;
+        .dashboard-intro strong {
+            color: var(--text-primary);
+        }
+
+        /* Metrics explainer */
+        .content-section {
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            padding: 1.5rem;
+            box-shadow: var(--card-shadow);
+            margin-bottom: 1.5rem;
+        }
+
+        .content-section h2 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1.25rem;
+        }
+
+        .metric-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .metric-entry {
+            display: flex;
+            gap: 0.75rem;
+            align-items: flex-start;
+        }
+
+        .metric-entry-icon {
+            font-size: 1.25rem;
+            flex-shrink: 0;
+            margin-top: 0.1rem;
+        }
+
+        .metric-entry strong {
+            display: block;
+            font-size: 0.9rem;
+            color: var(--text-primary);
+            margin-bottom: 0.2rem;
+        }
+
+        .metric-entry p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        /* FAQ */
+        .faq-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .faq-item h3 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.35rem;
+        }
+
+        .faq-item p {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin: 0;
         }
 
         /* Responsive */
@@ -557,6 +672,10 @@
 
             .chart-container {
                 height: 250px;
+            }
+
+            .metric-grid {
+                grid-template-columns: 1fr;
             }
 
             .insights-cta {
@@ -914,31 +1033,12 @@
 
         <div id="meta" class="meta">Live ITR Statistics from Income Tax e-Filing Portal</div>
 
-        <div id="cards-container">
-            <!-- Cards will be rendered here by JavaScript -->
+        <div class="dashboard-intro">
+            <strong>What is this?</strong> ITR Stats tracks daily statistics published by India's Income Tax e-Filing Portal — giving you a live pulse on ITR filing, verification, and processing activity across the country. Data is fetched twice daily directly from <a href="https://eportal.incometax.gov.in" target="_blank" rel="noopener" style="color: var(--accent-blue);">eportal.incometax.gov.in</a> and reflects cumulative figures since the portal went live. The delta (▲/▼) next to each number shows how much changed since the previous day's reading.
         </div>
 
-        <!-- Static SEO content - always present for crawlers, hidden visually when JS loads -->
-        <noscript>
-            <div class="seo-content" style="background: var(--bg-secondary); border-radius: 16px; padding: 2rem; margin-bottom: 1.5rem;">
-                <h2 style="font-size: 1.25rem; margin-bottom: 1rem; color: var(--text-primary);">Track India's Income Tax Filing Statistics Daily</h2>
-                <p style="color: var(--text-secondary); margin-bottom: 1rem;">ITR Stats provides a comprehensive dashboard tracking daily statistics from India's Income Tax e-Filing Portal. Monitor key metrics including:</p>
-                <ul style="color: var(--text-secondary); padding-left: 1.5rem; margin-bottom: 1rem;">
-                    <li><strong>Registered Users</strong> - Total individual taxpayers registered on the portal</li>
-                    <li><strong>Returns Filed</strong> - Income tax returns submitted each day</li>
-                    <li><strong>Returns Verified</strong> - E-verified ITRs ready for processing</li>
-                    <li><strong>ITRs Processed</strong> - Returns processed by the Income Tax Department</li>
-                    <li><strong>Pending Processing</strong> - Returns awaiting processing and refunds</li>
-                </ul>
-                <p style="color: var(--text-secondary);">Data is sourced directly from the official Income Tax e-Filing Portal (eportal.incometax.gov.in) and updated daily with trend charts showing filing patterns over time.</p>
-            </div>
-        </noscript>
-
-        <!-- Crawler-accessible content (visually hidden when present but readable by search engines) -->
-        <div id="seo-static-content" class="seo-static-content" aria-hidden="false">
-            <h2>India Income Tax Return Filing Statistics</h2>
-            <p>ITR Stats is a daily statistics dashboard tracking Income Tax Return filing data from India's official e-Filing Portal. We monitor registered users, returns filed, e-verified returns, processed ITRs, and pending refunds with daily growth trends.</p>
-            <p>Track the progress of ITR processing, see how many returns are filed each day, and monitor the refund processing backlog. Data is updated daily from the Income Tax Department's official portal.</p>
+        <div id="cards-container">
+            <!-- Cards will be rendered here by JavaScript -->
         </div>
 
         <section class="chart-section">
@@ -958,6 +1058,73 @@
             <a href="./insights/" class="insights-cta-link">
                 Insights →
             </a>
+        </section>
+
+        <section class="content-section" aria-label="Understanding the metrics">
+            <h2>Understanding the Numbers</h2>
+            <div class="metric-grid">
+                <div class="metric-entry">
+                    <span class="metric-entry-icon">👤</span>
+                    <div>
+                        <strong>Registered Users</strong>
+                        <p>Total individual taxpayers who have created an account on the Income Tax e-Filing portal. This number grows every day as new users register to file their ITR or access tax services.</p>
+                    </div>
+                </div>
+                <div class="metric-entry">
+                    <span class="metric-entry-icon">📄</span>
+                    <div>
+                        <strong>Returns Filed</strong>
+                        <p>Total Income Tax Returns submitted on the portal since it went live. This is a cumulative count — every ITR-1, ITR-2, ITR-3, or ITR-4 filed online adds to this number.</p>
+                    </div>
+                </div>
+                <div class="metric-entry">
+                    <span class="metric-entry-icon">✓</span>
+                    <div>
+                        <strong>Returns Verified</strong>
+                        <p>ITRs that have been e-verified by the taxpayer — via Aadhaar OTP, net banking, or physical ITR-V. Only verified returns can be taken up for processing. Unverified ITRs are treated as not filed.</p>
+                    </div>
+                </div>
+                <div class="metric-entry">
+                    <span class="metric-entry-icon">✅</span>
+                    <div>
+                        <strong>ITRs Processed</strong>
+                        <p>Returns where the Income Tax Department has completed assessment — either issuing a refund, raising a demand, or confirming no tax due. A processed ITR means your filing cycle is complete.</p>
+                    </div>
+                </div>
+                <div class="metric-entry">
+                    <span class="metric-entry-icon">⏳</span>
+                    <div>
+                        <strong>Pending Processing</strong>
+                        <p>The difference between Returns Verified and ITRs Processed. This is the active backlog — verified returns still awaiting assessment. A falling number means the department is clearing the queue faster than new returns are coming in.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section" aria-label="Frequently asked questions">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <h3>Why is my ITR still showing as pending even after e-verification?</h3>
+                    <p>E-verification confirms your intent to file — but processing happens separately. The Income Tax Department works through a queue of all verified returns. During peak periods (August–October after the July deadline), the backlog can be several crore returns. Most returns are processed within 15–45 days of verification, though complex cases or those with refund claims may take longer.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>How often is this data updated?</h3>
+                    <p>ITR Stats fetches data twice daily — once in the morning and once in the evening. However, the Income Tax Department typically publishes updated figures once a day, late at night. So the numbers you see usually reflect the previous night's official update. The "Fetched" and "Portal last updated" timestamps on the dashboard tell you exactly when each reading was taken.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>What's a normal processing rate? How many ITRs get processed per day?</h3>
+                    <p>During active processing periods, the department typically processes 2–7 lakh returns per day. On peak days, this can cross 6–7 lakh. The daily growth chart on this dashboard shows the processing rate day by day — you can see weekends and holidays clearly as flat or near-zero days, while weekdays show higher throughput.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>What is the difference between a filed ITR and a verified ITR?</h3>
+                    <p>Filing an ITR means submitting the return form with your income details. But the process isn't complete until you verify it. E-verification can be done instantly via Aadhaar OTP, net banking, or Demat account. Alternatively, you can send a signed physical ITR-V to CPC Bengaluru within 30 days. Without verification, the ITR is invalid and will not be processed.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>What does it mean when the pending backlog goes up instead of down?</h3>
+                    <p>The pending backlog (verified minus processed) rises when new e-verified returns are added faster than the department can process them. This typically happens in the weeks right after a filing deadline — millions of taxpayers verify their ITRs in a short window, overwhelming the processing queue temporarily. Over the following months, the department steadily clears the backlog.</p>
+                </div>
+            </div>
         </section>
     </div>
 
@@ -1309,9 +1476,6 @@
             renderCards(latest);
             renderChart(rows, currentRange);
 
-            // Hide SEO static content after successful load
-            const seoContent = document.getElementById('seo-static-content');
-            if (seoContent) seoContent.classList.add('hidden');
         }
 
 
