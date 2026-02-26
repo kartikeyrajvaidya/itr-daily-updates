@@ -34,9 +34,9 @@
 
     <link rel="icon" type="image/png" href="./favicon.png">
 
-    <!-- Google AdSense -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2843260079810330"
-        crossorigin="anonymous"></script>
+    <!-- Preconnect to CDN for faster resource loading -->
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin>
 
     <!-- Structured Data (JSON-LD) -->
     <script type="application/ld+json">
@@ -105,8 +105,7 @@
         ]
     }
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" integrity="sha384-9nhczxUqK87bcKHh20fSQcTGD4qq5GhayNYSYWqwBkINBhOfQLg/P5HG5lF1urn4" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" integrity="sha384-9nhczxUqK87bcKHh20fSQcTGD4qq5GhayNYSYWqwBkINBhOfQLg/P5HG5lF1urn4" crossorigin="anonymous"></script>
     <style>
         /* CSS Variables for theming */
         :root {
@@ -139,9 +138,9 @@
             --card-shadow-hover: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
         }
 
-        /* Theme transition */
-        *, *::before, *::after {
-            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        /* Theme transition - only applied during theme change to avoid CLS */
+        .theme-transitioning, .theme-transitioning *, .theme-transitioning *::before, .theme-transitioning *::after {
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease !important;
         }
 
         /* Reset */
@@ -358,27 +357,11 @@
             padding: 1.25rem;
             box-shadow: var(--card-shadow);
             text-align: center;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 0.5s ease forwards;
         }
-
-        .card:nth-child(1) { animation-delay: 0.1s; }
-        .card:nth-child(2) { animation-delay: 0.2s; }
-        .card:nth-child(3) { animation-delay: 0.3s; }
-        .card:nth-child(4) { animation-delay: 0.4s; }
-        .card:nth-child(5) { animation-delay: 0.5s; }
 
         .card:hover {
             transform: translateY(-4px);
             box-shadow: var(--card-shadow-hover);
-        }
-
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
         }
 
         .card-icon {
@@ -1013,7 +996,7 @@
     <div class="container">
         <header class="header">
             <div class="header-left">
-                <a href="/" class="header-logo-link"><img src="/logo.png" alt="ITR Stats" class="header-logo"></a>
+                <a href="/" class="header-logo-link"><img src="/logo.png" alt="ITR Stats" class="header-logo" width="46" height="46" fetchpriority="high"></a>
                 <div>
                     <h1>ITR Portal Stats</h1>
                     <p>Daily Statistics Dashboard</p>
@@ -1235,7 +1218,9 @@
 
         function toggleTheme() {
             const current = document.documentElement.getAttribute('data-theme');
+            document.documentElement.classList.add('theme-transitioning');
             setTheme(current === 'dark' ? 'light' : 'dark');
+            setTimeout(() => document.documentElement.classList.remove('theme-transitioning'), 350);
         }
 
         function updateChartTheme(theme) {
@@ -1588,15 +1573,28 @@
             return true;
         }
 
-        // Capture share card and return blob (reusable)
+        let html2canvasLoaded = null;
+        function loadHtml2Canvas() {
+            if (html2canvasLoaded) return html2canvasLoaded;
+            html2canvasLoaded = new Promise((resolve, reject) => {
+                const script = document.createElement('script');
+                script.src = 'https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js';
+                script.onload = resolve;
+                script.onerror = reject;
+                document.head.appendChild(script);
+            });
+            return html2canvasLoaded;
+        }
+
         async function generateShareImage() {
             if (!populateShareCard()) {
                 throw new Error('No data available');
             }
 
+            await loadHtml2Canvas();
+
             const shareCard = document.getElementById('share-card');
             
-            // Position card for capture (invisible to user)
             shareCard.style.cssText = 'left:0;top:0;position:fixed;opacity:0;pointer-events:none;';
 
             await new Promise(resolve => setTimeout(resolve, 50));
@@ -1729,11 +1727,20 @@
 
         // ==================== END SHARE FUNCTIONALITY ====================
 
-        // Initialize
+        // Initialize theme immediately (no dependencies)
         setTheme(getThemePreference());
-        loadData();
+
+        // Load data after Chart.js is ready (deferred script)
+        if (typeof Chart !== 'undefined') {
+            loadData();
+        } else {
+            document.querySelector('script[src*="chart.js"]').addEventListener('load', loadData);
+        }
     </script>
 
+    <!-- Google AdSense (loaded after content) -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2843260079810330"
+        crossorigin="anonymous"></script>
     <!-- GoatCounter Analytics (privacy-friendly, no cookie consent needed) -->
     <script data-goatcounter="https://itrstats.goatcounter.com/count"
             async src="https://gc.zgo.at/count.js"></script>
