@@ -276,6 +276,7 @@
             margin-bottom: 1.5rem;
             font-size: 0.9rem;
             color: var(--text-secondary);
+            min-height: 44px;
         }
 
         .meta strong {
@@ -336,6 +337,11 @@
         .info-icon:hover .info-tooltip {
             opacity: 1;
             visibility: visible;
+        }
+
+        /* Cards container reserves space to prevent CLS */
+        #cards-container {
+            min-height: 232px;
         }
 
         /* Cards grid */
@@ -641,6 +647,10 @@
                 padding: 0.4rem 0.6rem;
             }
 
+            #cards-container {
+                min-height: 370px;
+            }
+
             .cards-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
@@ -680,6 +690,10 @@
         }
 
         @media (max-width: 480px) {
+            #cards-container {
+                min-height: 430px;
+            }
+
             .cards-grid {
                 grid-template-columns: 1fr;
             }
