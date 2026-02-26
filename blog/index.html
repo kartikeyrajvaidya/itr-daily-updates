@@ -59,7 +59,6 @@
         crossorigin="anonymous"></script>
 
     <style>
-        /* Light mode (default) */
         :root {
             --bg-primary: #f8fafc;
             --bg-secondary: #ffffff;
@@ -68,10 +67,15 @@
             --text-secondary: #4a5568;
             --text-muted: #718096;
             --accent-blue: #3b82f6;
+            --accent-green: #22c55e;
+            --accent-red: #ef4444;
+            --accent-yellow: #f59e0b;
+            --accent-purple: #8b5cf6;
             --border-color: #e2e8f0;
+            --card-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.06);
+            --card-shadow-hover: 0 10px 25px rgba(0,0,0,0.08), 0 4px 10px rgba(0,0,0,0.04);
         }
 
-        /* Dark mode */
         [data-theme="dark"] {
             --bg-primary: #0f172a;
             --bg-secondary: #1e293b;
@@ -80,14 +84,16 @@
             --text-secondary: #cbd5e1;
             --text-muted: #94a3b8;
             --accent-blue: #60a5fa;
+            --accent-green: #4ade80;
+            --accent-red: #f87171;
+            --accent-yellow: #fbbf24;
+            --accent-purple: #a78bfa;
             --border-color: #334155;
+            --card-shadow: 0 1px 3px rgba(0,0,0,0.2);
+            --card-shadow-hover: 0 10px 25px rgba(0,0,0,0.3);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -95,338 +101,311 @@
             color: var(--text-primary);
             min-height: 100vh;
             padding: 1rem;
-            line-height: 1.8;
+            line-height: 1.7;
         }
 
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-        }
+        .container { max-width: 1080px; margin: 0 auto; }
 
+        /* ── Header ── */
         .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 1.5rem;
-            background: var(--bg-secondary);
-            border-radius: 16px;
-            margin-bottom: 1.5rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            line-height: 1.6;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 1rem 1.5rem; background: var(--bg-secondary);
+            border-radius: 16px; margin-bottom: 1.5rem;
+            box-shadow: var(--card-shadow); line-height: 1.6;
         }
-
-        
-        .header-left {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
+        .header-left { display: flex; align-items: center; gap: 0.75rem; }
         .header-logo-link { display: flex; }
+        .header-logo { width: 46px; height: 46px; object-fit: cover; border-radius: 50%; flex-shrink: 0; }
+        .header-left h1 { font-size: 1.5rem; font-weight: 700; color: var(--text-primary); margin: 0; }
+        .header-left p { font-size: 0.875rem; color: var(--text-muted); margin-top: 0.25rem; margin-bottom: 0; }
+        .header-right { display: flex; align-items: center; gap: 1rem; }
+        .header-link { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; padding: 0.5rem 0.75rem; border-radius: 8px; transition: color 0.2s ease, background 0.2s ease; }
+        .header-link:hover { color: var(--accent-blue); background: var(--bg-accent); }
+        .header-link.active { color: var(--accent-blue); }
+        .new-badge { display: inline-block; margin-left: 0.35rem; padding: 0.1rem 0.35rem; border-radius: 999px; background: #ef4444; color: #fff; font-size: 0.62rem; font-weight: 700; line-height: 1.2; vertical-align: middle; animation: blinkTag 1s steps(2,start) infinite; }
+        @keyframes blinkTag { 50% { opacity: 0.2; } }
+        .theme-toggle { background: var(--bg-accent); border: none; border-radius: 12px; width: 46px; height: 46px; cursor: pointer; font-size: 1.2rem; display: flex; align-items: center; justify-content: center; transition: transform 0.2s ease; }
+        .theme-toggle:hover { transform: scale(1.1); }
 
-        .header-logo {
-            width: 46px;
-            height: 46px;
-            object-fit: cover;
-            border-radius: 50%;
-            flex-shrink: 0;
+        /* ── Hero / Stats bar ── */
+        .stats-bar {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
         }
-
-        .header-left h1 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            margin: 0;
+        .stat-card {
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            padding: 1rem 1.25rem;
+            text-align: center;
+            box-shadow: var(--card-shadow);
         }
+        .stat-number { font-size: 1.5rem; font-weight: 800; color: var(--text-primary); line-height: 1.2; }
+        .stat-number.purple { color: var(--accent-purple); }
+        .stat-number.blue { color: var(--accent-blue); }
+        .stat-number.yellow { color: var(--accent-yellow); }
+        .stat-number.green { color: var(--accent-green); }
+        .stat-label { font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600; margin-top: 0.25rem; }
 
-        .header-left p {
-            font-size: 0.875rem;
-            color: var(--text-muted);
-            margin-top: 0.25rem;
-            margin-bottom: 0;
-        }
-
-        .header-right {
+        /* ── Filter tabs ── */
+        .filter-bar {
             display: flex;
+            gap: 0.375rem;
+            margin-bottom: 1.5rem;
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            padding: 0.375rem;
+            box-shadow: var(--card-shadow);
+        }
+
+        .filter-btn {
+            flex: 1;
+            background: transparent;
+            border: none;
+            border-radius: 9px;
+            padding: 0.6rem 0.75rem;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.25s ease;
+            font-family: inherit;
+            position: relative;
+            white-space: nowrap;
+        }
+
+        .filter-btn:hover {
+            color: var(--text-primary);
+            background: var(--bg-accent);
+        }
+
+        .filter-btn.active {
+            background: var(--accent-blue);
+            color: #fff;
+            box-shadow: 0 2px 8px rgba(59,130,246,0.3);
+        }
+
+        [data-theme="dark"] .filter-btn.active {
+            box-shadow: 0 2px 8px rgba(96,165,250,0.25);
+        }
+
+        .filter-btn .count {
+            display: inline-flex;
             align-items: center;
+            justify-content: center;
+            min-width: 1.25rem;
+            height: 1.25rem;
+            background: rgba(255,255,255,0.25);
+            border-radius: 6px;
+            font-size: 0.65rem;
+            margin-left: 0.4rem;
+            font-weight: 700;
+            vertical-align: middle;
+        }
+
+        .filter-btn:not(.active) .count {
+            background: var(--bg-accent);
+            color: var(--text-muted);
+        }
+
+        /* ── Blog grid ── */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
             gap: 1rem;
         }
 
-        .header-link {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 500;
-            padding: 0.5rem 0.75rem;
-            border-radius: 8px;
-            transition: color 0.2s ease, background 0.2s ease;
-        }
-
-        .header-link:hover {
-            color: var(--accent-blue);
-            background: var(--bg-accent);
-        }
-
-        .header-link.active {
-            color: var(--accent-blue);
-        }
-
-        .new-badge {
-            display: inline-block;
-            margin-left: 0.35rem;
-            padding: 0.1rem 0.35rem;
-            border-radius: 999px;
-            background: #ef4444;
-            color: #ffffff;
-            font-size: 0.62rem;
-            font-weight: 700;
-            line-height: 1.2;
-            vertical-align: middle;
-            animation: blinkTag 1s steps(2, start) infinite;
-        }
-
-        @keyframes blinkTag {
-            50% {
-                opacity: 0.2;
-            }
-        }
-
-        .theme-toggle {
-            background: var(--bg-accent);
-            border: none;
-            border-radius: 12px;
-            width: 46px;
-            height: 46px;
-            cursor: pointer;
-            font-size: 1.2rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: transform 0.2s ease;
-        }
-
-        .theme-toggle:hover {
-            transform: scale(1.1);
-        }
-
-        .content {
-            padding: 0;
-        }
-
-        .description-bar {
-            background: var(--bg-accent);
-            border-radius: 12px;
-            padding: 0.875rem 1.25rem;
-            text-align: center;
-            margin-bottom: 1rem;
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-        }
-
-        .blog-list {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
+        /* Featured card spans full width */
+        .blog-card.featured {
+            grid-column: 1 / -1;
         }
 
         .blog-card {
             background: var(--bg-secondary);
-            border-radius: 12px;
-            padding: 1.75rem;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            border-radius: 14px;
+            padding: 1.5rem;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.2s ease, box-shadow 0.25s ease;
             position: relative;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid transparent;
+            overflow: hidden;
         }
 
-        .trending-tag {
-            color: #f97316;
-            font-weight: 500;
+        .blog-card::before {
+            display: none;
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 100%;
+            border-radius: 3px 0 0 3px;
         }
+
+        .blog-card[data-category="comparison"]::before { background: var(--accent-purple); }
+        .blog-card[data-category="data"]::before { background: var(--accent-blue); }
+        .blog-card[data-category="guide"]::before { background: var(--accent-yellow); }
+        .blog-card[data-category="update"]::before { background: var(--accent-green); }
+
+        .blog-card.hidden { display: none; }
 
         .blog-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            transform: translateY(-3px);
+            box-shadow: var(--card-shadow-hover);
+            border-color: var(--border-color);
+        }
+
+        .card-top {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .category-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+        .category-dot.comparison { background: var(--accent-purple); }
+        .category-dot.data { background: var(--accent-blue); }
+        .category-dot.guide { background: var(--accent-yellow); }
+        .category-dot.update { background: var(--accent-green); }
+
+        .category-label {
+            font-size: 0.68rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .category-label.comparison { color: var(--accent-purple); }
+        .category-label.data { color: var(--accent-blue); }
+        .category-label.guide { color: var(--accent-yellow); }
+        .category-label.update { color: var(--accent-green); }
+
+        .card-meta {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-left: auto;
         }
 
         .blog-card h2 {
-            font-size: 1.35rem;
-            margin-bottom: 0.75rem;
+            font-size: 1.05rem;
+            line-height: 1.35;
+            margin-bottom: 0.6rem;
+            font-weight: 700;
+        }
+
+        .blog-card.featured h2 {
+            font-size: 1.3rem;
         }
 
         .blog-card h2 a {
             color: var(--text-primary);
             text-decoration: none;
+            transition: color 0.15s ease;
         }
 
         .blog-card h2 a:hover {
             color: var(--accent-blue);
         }
 
-        .blog-card .meta {
-            display: flex;
-            gap: 1rem;
-            color: var(--text-muted);
-            font-size: 0.85rem;
-            margin-bottom: 1rem;
-        }
-
         .blog-card .excerpt {
             color: var(--text-secondary);
-            font-size: 0.95rem;
-            line-height: 1.6;
+            font-size: 0.88rem;
+            line-height: 1.55;
+            flex: 1;
+        }
+
+        .blog-card.featured .excerpt {
+            font-size: 0.92rem;
+        }
+
+        .card-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 1rem;
+            padding-top: 0.75rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .read-time {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-weight: 500;
         }
 
         .read-more {
-            display: inline-block;
-            margin-top: 1rem;
+            font-size: 0.8rem;
             color: var(--accent-blue);
             text-decoration: none;
-            font-weight: 500;
-            font-size: 0.9rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            transition: gap 0.2s ease;
         }
 
         .read-more:hover {
-            text-decoration: underline;
-        }
-
-        footer {
-            text-align: center;
-            padding: 2rem;
-            color: var(--text-muted);
-            font-size: 0.85rem;
-            border-top: 1px solid var(--border-color);
-            margin-top: 3rem;
-        }
-
-        footer a {
-            color: var(--accent-blue);
-            text-decoration: none;
-        }
-
-        footer a:hover {
-            text-decoration: underline;
-        }
-
-        .info-icon {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 12px;
-            height: 12px;
-            background: var(--text-muted);
-            color: var(--bg-secondary);
-            font-size: 0.5rem;
-            font-weight: 700;
-            cursor: pointer;
-            margin-left: 0.25rem;
-            vertical-align: middle;
-            position: relative;
-        }
-
-        .info-icon:hover { background: var(--accent-blue); }
-
-        .info-tooltip {
-            position: absolute;
-            bottom: calc(100% + 8px);
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--text-primary);
-            color: var(--bg-primary);
-            padding: 0.6rem 0.8rem;
-            border-radius: 6px;
-            font-size: 0.75rem;
-            font-weight: 400;
-            width: 200px;
-            text-align: left;
-            line-height: 1.4;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.2s ease;
-            z-index: 100;
-        }
-
-        .info-tooltip::after {
-            content: '';
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            transform: translateX(-50%);
-            border: 5px solid transparent;
-            border-top-color: var(--text-primary);
-        }
-
-        .info-icon:hover .info-tooltip { opacity: 1; visibility: visible; }
-
-        .footer-creator {
-            display: flex;
-            align-items: center;
-            justify-content: center;
             gap: 0.5rem;
-            margin-bottom: 0.25rem;
         }
 
-        .footer-creator a {
+        .read-more svg {
+            width: 14px;
+            height: 14px;
+            transition: transform 0.2s ease;
+        }
+
+        .read-more:hover svg {
+            transform: translateX(2px);
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 3rem 1rem;
             color: var(--text-muted);
-            display: inline-flex;
-            transition: color 0.2s ease;
+            font-size: 0.95rem;
+            display: none;
+            grid-column: 1 / -1;
         }
 
-        .footer-creator a:hover {
-            color: var(--accent-blue);
-        }
+        /* ── Footer ── */
+        footer { text-align: center; padding: 2rem; color: var(--text-muted); font-size: 0.85rem; border-top: 1px solid var(--border-color); margin-top: 3rem; }
+        footer a { color: var(--accent-blue); text-decoration: none; }
+        footer a:hover { text-decoration: underline; }
+        .info-icon { display: inline-flex; align-items: center; justify-content: center; width: 12px; height: 12px; border-radius: 50%; background: var(--text-muted); color: var(--bg-secondary); font-size: 0.5rem; font-weight: 700; cursor: pointer; margin-left: 0.25rem; vertical-align: middle; position: relative; }
+        .info-icon:hover { background: var(--accent-blue); }
+        .info-tooltip { position: absolute; bottom: calc(100% + 8px); left: 50%; transform: translateX(-50%); background: var(--text-primary); color: var(--bg-primary); padding: 0.6rem 0.8rem; border-radius: 6px; font-size: 0.75rem; font-weight: 400; width: 200px; text-align: left; line-height: 1.4; opacity: 0; visibility: hidden; transition: opacity 0.2s ease; z-index: 100; }
+        .info-tooltip::after { content: ''; position: absolute; top: 100%; left: 50%; transform: translateX(-50%); border: 5px solid transparent; border-top-color: var(--text-primary); }
+        .info-icon:hover .info-tooltip { opacity: 1; visibility: visible; }
+        .footer-creator { display: flex; align-items: center; justify-content: center; gap: 0.5rem; margin-bottom: 0.25rem; }
+        .footer-creator a { color: var(--text-muted); display: inline-flex; transition: color 0.2s ease; }
+        .footer-creator a:hover { color: var(--accent-blue); }
+        .footer-feedback { font-size: 0.8rem; margin-bottom: 0.75rem; }
+        .footer-legal { font-size: 0.8rem; }
+        .footer-legal a { color: var(--text-muted); text-decoration: none; }
+        .footer-legal a:hover { color: var(--accent-blue); }
 
-        .footer-feedback {
-            font-size: 0.8rem;
-            margin-bottom: 0.75rem;
-        }
-
-        .footer-legal {
-            font-size: 0.8rem;
-        }
-
-        .footer-legal a {
-            color: var(--text-muted);
-            text-decoration: none;
-        }
-
-        .footer-legal a:hover {
-            color: var(--accent-blue);
-        }
-
+        /* ── Responsive ── */
         @media (max-width: 768px) {
-            body {
-                padding: 0.75rem;
-            }
-
-            .header {
-                flex-direction: column;
-                gap: 0.75rem;
-                text-align: center;
-            }
-
-            .header-left {
-                flex-direction: column;
-                align-items: center;
-                width: 100%;
-            }
-
-            .header-right {
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 0.5rem;
-            }
-
-            .header-link {
-                font-size: 0.8rem;
-                padding: 0.4rem 0.6rem;
-            }
-
-            h1 {
-                font-size: 1.5rem;
-            }
-
-            .blog-card {
-                padding: 1.25rem;
-            }
+            body { padding: 0.75rem; }
+            .header { flex-direction: column; gap: 0.75rem; text-align: center; }
+            .header-left { flex-direction: column; align-items: center; width: 100%; }
+            .header-right { flex-wrap: wrap; justify-content: center; gap: 0.5rem; }
+            .header-link { font-size: 0.8rem; padding: 0.4rem 0.6rem; }
+            h1 { font-size: 1.5rem; }
+            .stats-bar { grid-template-columns: repeat(2, 1fr); }
+            .filter-bar { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+            .filter-btn { flex: none; padding: 0.5rem 0.75rem; font-size: 0.78rem; }
+            .blog-grid { grid-template-columns: 1fr; }
+            .blog-card { padding: 1.25rem; }
+            .blog-card h2 { font-size: 1rem; }
+            .blog-card.featured h2 { font-size: 1.1rem; }
         }
     </style>
 </head>
@@ -452,162 +431,310 @@
             </div>
         </header>
 
-        <div class="description-bar">
-            Insights and analysis on ITR processing, refund timelines, and income tax statistics in India.
+        <div class="stats-bar">
+            <div class="stat-card">
+                <div class="stat-number">19</div>
+                <div class="stat-label">Articles</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number green">4</div>
+                <div class="stat-label">Updates</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number blue">4</div>
+                <div class="stat-label">Data Analysis</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number yellow">4</div>
+                <div class="stat-label">Guides</div>
+            </div>
         </div>
 
-        <main class="content">
+        <main>
 
-        <div class="blog-list">
-            <article class="blog-card">
-                <h2><a href="./best-income-tax-calculators/">7 Best Income Tax Calculators Online for FY 2025-26 (Compared)</a></h2>
-                <div class="meta">
-                    <span class="trending-tag">New</span>
-                    <span>February 26, 2026</span>
-                    <span>8 min read</span>
-                    <span style="color: #a78bfa;">Tool Comparison</span>
-                </div>
-                <p class="excerpt">We tested every major income tax calculator in India — ClearTax, Groww, the official IT portal, Tax2Win and more. Here's which ones get the numbers right, which ones waste your time, and our honest ranking.</p>
-                <a href="./best-income-tax-calculators/" class="read-more">Read more →</a>
-            </article>
+        <div class="filter-bar">
+            <button class="filter-btn active" data-filter="all">All <span class="count">19</span></button>
+            <button class="filter-btn" data-filter="update">Updates <span class="count">4</span></button>
+            <button class="filter-btn" data-filter="data">Data <span class="count">4</span></button>
+            <button class="filter-btn" data-filter="guide">Guides <span class="count">4</span></button>
+            <button class="filter-btn" data-filter="comparison">Comparisons <span class="count">7</span></button>
+        </div>
 
-            <article class="blog-card">
-                <h2><a href="./india-income-percentile/">Earning ₹25,000/Month? You're in India's Top 10%. Here's the Full Picture.</a></h2>
-                <div class="meta">
-                    <span class="trending-tag">New</span>
-                    <span>February 26, 2026</span>
-                    <span>8 min read</span>
-                    <span style="color: #60a5fa;">Data Analysis</span>
-                </div>
-                <p class="excerpt">What salary puts you in India's top 1%, 5%, or 10%? The answer depends on which India you're comparing to. We break down CBDT data, state-wise thresholds, and why the "top 1% illusion" feels so real in Mumbai.</p>
-                <a href="./india-income-percentile/" class="read-more">Read more →</a>
-            </article>
+        <div class="blog-grid">
 
-            <article class="blog-card">
-                <h2><a href="./budget-2026-itr-deadlines/">Budget 2026 Changed Your ITR Deadlines — Here's What's Different</a></h2>
-                <div class="meta">
-                    <span class="trending-tag">New</span>
-                    <span>February 25, 2026</span>
-                    <span>6 min read</span>
-                    <span style="color: var(--accent-blue);">Budget 2026</span>
+            <!-- ── Updates (4) ── -->
+            <article class="blog-card featured" data-category="update">
+                <div class="card-top">
+                    <span class="category-dot update"></span>
+                    <span class="category-label update">Budget 2026</span>
+                    <span class="card-meta">Feb 25, 2026</span>
                 </div>
+                <h2><a href="./budget-2026-itr-deadlines/">Budget 2026 Changed Your ITR Deadlines</a></h2>
                 <p class="excerpt">Freelancers and small business owners now get August 31. Revised return extended to March 31. Full breakdown of what changed, what didn't, and which deadline applies to you.</p>
-                <a href="./budget-2026-itr-deadlines/" class="read-more">Read more →</a>
+                <div class="card-footer">
+                    <span class="read-time">6 min read</span>
+                    <a href="./budget-2026-itr-deadlines/" class="read-more">Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                </div>
             </article>
 
-            <article class="blog-card">
+            <article class="blog-card" data-category="update">
+                <div class="card-top">
+                    <span class="category-dot update"></span>
+                    <span class="category-label update">Weekly Update</span>
+                    <span class="card-meta">Feb 19</span>
+                </div>
                 <h2><a href="./weekly-update.html">ITR Processing Weekly Update</a></h2>
-                <div class="meta">
-                    <span class="trending-tag">Updated</span>
-                    <span>February 19, 2026</span>
-                    <span>4 min read</span>
-                    <span style="color: #4ade80;">Weekly Update</span>
+                <p class="excerpt">Feb 14 set a new all-time record — 6.97 lakh returns processed in a single day! Backlog now at 28.7 lakh, down from 37.8L last week.</p>
+                <div class="card-footer">
+                    <span class="read-time">4 min read</span>
+                    <a href="./weekly-update.html" class="read-more">Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
                 </div>
-                <p class="excerpt">Feb 14 set a new all-time record — 6.97 lakh returns processed in a single day! ~10 lakh cleared this week (Feb 14–19). Backlog now at 28.7 lakh, down from 37.8L last week.</p>
-                <a href="./weekly-update.html" class="read-more">Read more →</a>
             </article>
 
-            <article class="blog-card">
-                <h2><a href="./state-wise-itr-filing/">Which States File the Most ITRs? Complete State-wise Breakdown</a></h2>
-                <div class="meta">
-                    <span class="trending-tag">New</span>
-                    <span>February 18, 2026</span>
-                    <span>8 min read</span>
-                    <span style="color: #60a5fa;">Data Analysis</span>
+            <article class="blog-card" data-category="update">
+                <div class="card-top">
+                    <span class="category-dot update"></span>
+                    <span class="category-label update">Reference</span>
+                    <span class="card-meta">Feb 15</span>
                 </div>
+                <h2><a href="./tax-calendar-2026/">Tax Calendar 2026: All Important Dates</a></h2>
+                <p class="excerpt">ITR filing deadlines, advance tax dates, TDS returns, Form 16, tax audit — all important dates in one place. Never miss a deadline.</p>
+                <div class="card-footer">
+                    <span class="read-time">10 min read</span>
+                    <a href="./tax-calendar-2026/" class="read-more">Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                </div>
+            </article>
+
+            <article class="blog-card" data-category="update">
+                <div class="card-top">
+                    <span class="category-dot update"></span>
+                    <span class="category-label update">Reference</span>
+                    <span class="card-meta">Feb 10</span>
+                </div>
+                <h2><a href="./itr-refund-time.html">When Will You Get Your ITR Refund?</a></h2>
+                <p class="excerpt">We analyzed real-time data from the Income Tax portal to give you a clear picture of current processing times and what affects your refund timeline.</p>
+                <div class="card-footer">
+                    <span class="read-time">5 min read</span>
+                    <a href="./itr-refund-time.html" class="read-more">Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                </div>
+            </article>
+
+            <!-- ── Data Analysis (4) ── -->
+            <article class="blog-card" data-category="data">
+                <div class="card-top">
+                    <span class="category-dot data"></span>
+                    <span class="category-label data">Data Analysis</span>
+                    <span class="card-meta">Feb 26</span>
+                </div>
+                <h2><a href="./india-income-percentile/">Earning ₹25,000/Month? You're in India's Top 10%.</a></h2>
+                <p class="excerpt">What salary puts you in India's top 1%, 5%, or 10%? We break down CBDT data, state-wise thresholds, and why the "top 1% illusion" feels so real in Mumbai.</p>
+                <div class="card-footer">
+                    <span class="read-time">8 min read</span>
+                    <a href="./india-income-percentile/" class="read-more">Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                </div>
+            </article>
+
+            <article class="blog-card" data-category="data">
+                <div class="card-top">
+                    <span class="category-dot data"></span>
+                    <span class="category-label data">Data Analysis</span>
+                    <span class="card-meta">Feb 18</span>
+                </div>
+                <h2><a href="./state-wise-itr-filing/">Which States File the Most ITRs?</a></h2>
                 <p class="excerpt">Maharashtra leads with 1.12 crore filings (15.1%), followed by UP and Gujarat. Telangana grew 141% YoY. Complete state-wise breakdown of 7.4 crore ITR filings.</p>
-                <a href="./state-wise-itr-filing/" class="read-more">Read more →</a>
-            </article>
-
-            <article class="blog-card">
-                <h2><a href="./itr-form-comparison/">The Rise of India's Salaried Investors: ITR-2 Grows Fastest at 27%</a></h2>
-                <div class="meta">
-                    <span class="trending-tag">New</span>
-                    <span>February 18, 2026</span>
-                    <span>7 min read</span>
-                    <span style="color: #60a5fa;">Data Analysis</span>
+                <div class="card-footer">
+                    <span class="read-time">8 min read</span>
+                    <a href="./state-wise-itr-filing/" class="read-more">Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
                 </div>
-                <p class="excerpt">ITR-1 leads at 42%, but ITR-2 is growing fastest at 27% YoY. We analyzed 7.78 crore filings to show which forms Indians actually use and help you pick the right one.</p>
-                <a href="./itr-form-comparison/" class="read-more">Read more →</a>
             </article>
 
-            <article class="blog-card">
+            <article class="blog-card" data-category="data">
+                <div class="card-top">
+                    <span class="category-dot data"></span>
+                    <span class="category-label data">Data Analysis</span>
+                    <span class="card-meta">Feb 18</span>
+                </div>
+                <h2><a href="./itr-form-comparison/">The Rise of India's Salaried Investors: ITR-2 Grows 27%</a></h2>
+                <p class="excerpt">ITR-1 leads at 42%, but ITR-2 is growing fastest at 27% YoY. We analyzed 7.78 crore filings to show which forms Indians actually use.</p>
+                <div class="card-footer">
+                    <span class="read-time">7 min read</span>
+                    <a href="./itr-form-comparison/" class="read-more">Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                </div>
+            </article>
+
+            <article class="blog-card" data-category="data">
+                <div class="card-top">
+                    <span class="category-dot data"></span>
+                    <span class="category-label data">Data Analysis</span>
+                    <span class="card-meta">Feb 18</span>
+                </div>
                 <h2><a href="./income-distribution-india/">India's Income Distribution: What 8.5 Crore Tax Returns Reveal</a></h2>
-                <div class="meta">
-                    <span class="trending-tag">New</span>
-                    <span>February 18, 2026</span>
-                    <span>8 min read</span>
-                    <span style="color: #60a5fa;">Data Analysis</span>
+                <p class="excerpt">Only 1.13% of taxpayers earn above Rs 50 lakh. Only 10,184 people earn above Rs 10 crore. We analyzed 8.57 crore ITR filings to reveal the real picture.</p>
+                <div class="card-footer">
+                    <span class="read-time">8 min read</span>
+                    <a href="./income-distribution-india/" class="read-more">Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
                 </div>
-                <p class="excerpt">Only 1.13% of taxpayers earn above Rs 50 lakh. Only 10,184 people earn above Rs 10 crore. We analyzed 8.57 crore ITR filings to reveal India's true income distribution.</p>
-                <a href="./income-distribution-india/" class="read-more">Read more →</a>
             </article>
 
-            <article class="blog-card">
-                <h2><a href="./sip-taxation/">SIP Taxation in India 2026: LTCG, STCG & The FIFO Trap</a></h2>
-                <div class="meta">
-                    <span>February 17, 2026</span>
-                    <span>10 min read</span>
-                    <span style="color: #fbbf24;">Tax Guide</span>
+            <!-- ── Guides (4) ── -->
+            <article class="blog-card" data-category="guide">
+                <div class="card-top">
+                    <span class="category-dot guide"></span>
+                    <span class="category-label guide">Tax Guide</span>
+                    <span class="card-meta">Feb 17</span>
                 </div>
-                <p class="excerpt">Each SIP installment is taxed separately. An 18-month SIP doesn't mean all gains are long-term. Learn how FIFO works, why timing matters, and how to minimize tax on your mutual fund redemptions.</p>
-                <a href="./sip-taxation/" class="read-more">Read more →</a>
+                <h2><a href="./sip-taxation/">SIP Taxation 2026: LTCG, STCG & The FIFO Trap</a></h2>
+                <p class="excerpt">Each SIP installment is taxed separately. An 18-month SIP doesn't mean all gains are long-term. Learn how FIFO works and how to minimize tax.</p>
+                <div class="card-footer">
+                    <span class="read-time">10 min read</span>
+                    <a href="./sip-taxation/" class="read-more">Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                </div>
             </article>
 
-            <article class="blog-card">
-                <h2><a href="./last-minute-tax-saving/">Last-Minute Tax Saving Before March 31: Complete Guide</a></h2>
-                <div class="meta">
-                    <span>February 15, 2026</span>
-                    <span>15 min read</span>
-                    <span style="color: #fbbf24;">Tax Guide</span>
+            <article class="blog-card" data-category="guide">
+                <div class="card-top">
+                    <span class="category-dot guide"></span>
+                    <span class="category-label guide">Tax Guide</span>
+                    <span class="card-meta">Feb 15</span>
                 </div>
-                <p class="excerpt">Complete guide to save tax before March 31 deadline. Section 80C, 80D, 80G, NPS, ELSS vs PPF - all deductions explained with limits, eligibility, and recommendations by age.</p>
-                <a href="./last-minute-tax-saving/" class="read-more">Read more →</a>
+                <h2><a href="./last-minute-tax-saving/">Last-Minute Tax Saving Before March 31</a></h2>
+                <p class="excerpt">Section 80C, 80D, 80G, NPS, ELSS vs PPF — all deductions explained with limits, eligibility, and recommendations by age group.</p>
+                <div class="card-footer">
+                    <span class="read-time">15 min read</span>
+                    <a href="./last-minute-tax-saving/" class="read-more">Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                </div>
             </article>
 
-            <article class="blog-card">
-                <h2><a href="./itr-refund-time.html">When Will You Get Your ITR Refund? What Data Tells Us</a></h2>
-                <div class="meta">
-                    <span>February 10, 2026</span>
-                    <span>5 min read</span>
+            <article class="blog-card" data-category="guide">
+                <div class="card-top">
+                    <span class="category-dot guide"></span>
+                    <span class="category-label guide">Guide</span>
+                    <span class="card-meta">Feb 14</span>
                 </div>
-                <p class="excerpt">Wondering when your ITR refund will arrive? We analyzed real-time data from the Income Tax portal to give you a clear picture of current processing times, the factors that affect your refund timeline, and what to expect.</p>
-                <a href="./itr-refund-time.html" class="read-more">Read more →</a>
+                <h2><a href="./insights-guide/">ITR Insights: Deep Dive into Tax Filing Stats</a></h2>
+                <p class="excerpt">Understand refund processing rates, filing patterns by ITR form type, income distribution across brackets, and state-wise filing data.</p>
+                <div class="card-footer">
+                    <span class="read-time">8 min read</span>
+                    <a href="./insights-guide/" class="read-more">Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                </div>
             </article>
 
-            <article class="blog-card">
-                <h2><a href="./tax-calendar-2026/">Tax Calendar 2026: All Important Income Tax Dates</a></h2>
-                <div class="meta">
-                    <span>February 15, 2026</span>
-                    <span>10 min read</span>
-                    <span style="color: #8b5cf6;">Reference Guide</span>
+            <article class="blog-card" data-category="guide">
+                <div class="card-top">
+                    <span class="category-dot guide"></span>
+                    <span class="category-label guide">Tax Guide</span>
+                    <span class="card-meta">Feb 11</span>
                 </div>
-                <p class="excerpt">Complete tax calendar for FY 2025-26. ITR filing deadlines, advance tax dates, TDS returns, Form 16, tax audit - all important dates in one place. Never miss a deadline.</p>
-                <a href="./tax-calendar-2026/" class="read-more">Read more →</a>
+                <h2><a href="./sgb-tax-changes/">SGB Tax Changes 2026: End of Tax-Free Gold?</a></h2>
+                <p class="excerpt">Budget 2026 fundamentally changed SGB taxation. Secondary market buyers lose tax exemption entirely. Complete breakdown of old vs new rules.</p>
+                <div class="card-footer">
+                    <span class="read-time">8 min read</span>
+                    <a href="./sgb-tax-changes/" class="read-more">Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                </div>
             </article>
 
-            <article class="blog-card">
-                <h2><a href="./insights-guide/">ITR Insights: A Deep Dive into India's Tax Filing Statistics</a></h2>
-                <div class="meta">
-                    <span>February 14, 2026</span>
-                    <span>8 min read</span>
-                    <span style="color: #60a5fa;">Guide</span>
+            <!-- ── Comparisons (7) ── -->
+            <article class="blog-card" data-category="comparison">
+                <div class="card-top">
+                    <span class="category-dot comparison"></span>
+                    <span class="category-label comparison">Tool Comparison</span>
+                    <span class="card-meta">Feb 26</span>
                 </div>
-                <p class="excerpt">Complete guide to the ITR Insights page. Understand refund processing rates, filing patterns by ITR form type, income distribution across brackets, and state-wise filing data with year-over-year comparisons.</p>
-                <a href="./insights-guide/" class="read-more">Read more →</a>
+                <h2><a href="./best-income-tax-calculators/">7 Best Income Tax Calculators Online for FY 2025-26</a></h2>
+                <p class="excerpt">We tested every major income tax calculator in India — ClearTax, Groww, the official IT portal, Tax2Win and more. Here's our honest ranking.</p>
+                <div class="card-footer">
+                    <span class="read-time">8 min read</span>
+                    <a href="./best-income-tax-calculators/" class="read-more">Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                </div>
             </article>
 
-            <article class="blog-card">
-                <h2><a href="./sgb-tax-changes/">SGB Tax Changes 2026: The End of Tax-Free Gold Investing?</a></h2>
-                <div class="meta">
-                    <span>February 11, 2026</span>
-                    <span>8 min read</span>
-                    <span style="color: #fbbf24;">Tax Guide</span>
+            <article class="blog-card" data-category="comparison">
+                <div class="card-top">
+                    <span class="category-dot comparison"></span>
+                    <span class="category-label comparison">Tool Comparison</span>
+                    <span class="card-meta">Feb 26</span>
                 </div>
-                <p class="excerpt">Budget 2026 fundamentally changed SGB taxation. Secondary market buyers lose tax exemption entirely. Original subscribers using 5-year exit now face 12.5% LTCG. Complete breakdown of old vs new rules.</p>
-                <a href="./sgb-tax-changes/" class="read-more">Read more →</a>
+                <h2><a href="./best-sip-calculators/">7 Best SIP Calculators Online for 2026</a></h2>
+                <p class="excerpt">We tested every popular SIP calculator for accuracy, step-up SIP support, and chart quality. The correct answer for ₹10K/month at 12% for 20 years is ₹99,91,479.</p>
+                <div class="card-footer">
+                    <span class="read-time">9 min read</span>
+                    <a href="./best-sip-calculators/" class="read-more">Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                </div>
             </article>
+
+            <article class="blog-card" data-category="comparison">
+                <div class="card-top">
+                    <span class="category-dot comparison"></span>
+                    <span class="category-label comparison">Tool Comparison</span>
+                    <span class="card-meta">Feb 26</span>
+                </div>
+                <h2><a href="./best-ppf-calculators/">7 Best PPF Calculators Online for 2026</a></h2>
+                <p class="excerpt">We tested every major PPF calculator for accuracy, yearly breakdown, and EEE tax info. For ₹1.5L/year at 7.1% for 15 years, the correct maturity is ₹40,68,209.</p>
+                <div class="card-footer">
+                    <span class="read-time">8 min read</span>
+                    <a href="./best-ppf-calculators/" class="read-more">Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                </div>
+            </article>
+
+            <article class="blog-card" data-category="comparison">
+                <div class="card-top">
+                    <span class="category-dot comparison"></span>
+                    <span class="category-label comparison">Tool Comparison</span>
+                    <span class="card-meta">Feb 26</span>
+                </div>
+                <h2><a href="./best-fd-calculators/">7 Best FD Calculators Online for 2026</a></h2>
+                <p class="excerpt">We tested the top fixed deposit calculators for compounding options, TDS info, and effective yield. Most only support one compounding frequency.</p>
+                <div class="card-footer">
+                    <span class="read-time">8 min read</span>
+                    <a href="./best-fd-calculators/" class="read-more">Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                </div>
+            </article>
+
+            <article class="blog-card" data-category="comparison">
+                <div class="card-top">
+                    <span class="category-dot comparison"></span>
+                    <span class="category-label comparison">Tool Comparison</span>
+                    <span class="card-meta">Feb 26</span>
+                </div>
+                <h2><a href="./best-emi-calculators/">7 Best EMI Calculators Online for 2026</a></h2>
+                <p class="excerpt">We tested every major EMI calculator for amortization schedules, prepayment modelling, and formula accuracy. A ₹50L home loan costs ₹54.14L in interest.</p>
+                <div class="card-footer">
+                    <span class="read-time">9 min read</span>
+                    <a href="./best-emi-calculators/" class="read-more">Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                </div>
+            </article>
+
+            <article class="blog-card" data-category="comparison">
+                <div class="card-top">
+                    <span class="category-dot comparison"></span>
+                    <span class="category-label comparison">Tool Comparison</span>
+                    <span class="card-meta">Feb 26</span>
+                </div>
+                <h2><a href="./best-nps-calculators/">7 Best NPS Calculators Online for 2026</a></h2>
+                <p class="excerpt">We tested the top NPS calculators for corpus accuracy, 60/40 split, pension estimates, and tax benefit info. ₹5K/month from age 25 to 60 builds ₹1.14 crore.</p>
+                <div class="card-footer">
+                    <span class="read-time">9 min read</span>
+                    <a href="./best-nps-calculators/" class="read-more">Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                </div>
+            </article>
+
+            <article class="blog-card" data-category="comparison">
+                <div class="card-top">
+                    <span class="category-dot comparison"></span>
+                    <span class="category-label comparison">Tool Comparison</span>
+                    <span class="card-meta">Feb 26</span>
+                </div>
+                <h2><a href="./best-lumpsum-calculators/">7 Best Lumpsum Calculators Online for 2026</a></h2>
+                <p class="excerpt">We tested every popular lumpsum calculator for growth multiplier, charts, and year-by-year breakdown. ₹1L at 12% for 10 years gives 3.11x.</p>
+                <div class="card-footer">
+                    <span class="read-time">8 min read</span>
+                    <a href="./best-lumpsum-calculators/" class="read-more">Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                </div>
+            </article>
+
+            <p class="no-results" id="no-results">No posts in this category yet.</p>
         </div>
+
         </main>
     </div>
 
@@ -622,8 +749,8 @@
             </a>
         </p>
         <p class="footer-feedback">Open to feedback!</p>
-        <p class="footer-legal">© 2026 ITR Stats · <a href="/privacy-policy.html">Privacy</a> · <a href="/about.html">About</a> · <a href="https://eportal.incometax.gov.in" target="_blank" rel="noopener">Data Source</a>
-            <span class="info-icon">i<span class="info-tooltip">Unofficial dashboard · Not affiliated with Income Tax Department</span></span>
+        <p class="footer-legal">&copy; 2026 ITR Stats &middot; <a href="/privacy-policy.html">Privacy</a> &middot; <a href="/about.html">About</a> &middot; <a href="https://eportal.incometax.gov.in" target="_blank" rel="noopener">Data Source</a>
+            <span class="info-icon">i<span class="info-tooltip">Unofficial dashboard &middot; Not affiliated with Income Tax Department</span></span>
         </p>
     </footer>
 
@@ -646,6 +773,25 @@
         }
 
         setTheme(getThemePreference());
+
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const filter = btn.dataset.filter;
+                const cards = document.querySelectorAll('.blog-card');
+                let visible = 0;
+                cards.forEach(card => {
+                    if (filter === 'all' || card.dataset.category === filter) {
+                        card.classList.remove('hidden');
+                        visible++;
+                    } else {
+                        card.classList.add('hidden');
+                    }
+                });
+                document.getElementById('no-results').style.display = visible === 0 ? 'block' : 'none';
+            });
+        });
     </script>
 
     <!-- GoatCounter Analytics -->
