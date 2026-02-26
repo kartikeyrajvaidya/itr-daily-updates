@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-F4VVXZQZGH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-F4VVXZQZGH');
+</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -29,7 +37,7 @@
     <meta name="twitter:description" content="Compare old vs new tax regime and find which saves you more tax.">
     <meta name="twitter:image" content="https://itrstats.in/og-image.png">
 
-    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2843260079810330"
@@ -137,6 +145,7 @@
     }
     </script>
 
+    <link rel="stylesheet" href="/styles/layout.css">
     <style>
         /* Light mode (default) */
         :root {
@@ -177,7 +186,7 @@
             background: var(--bg-primary);
             color: var(--text-primary);
             min-height: 100vh;
-            padding: 1rem;
+            
             line-height: 1.6;
         }
 
@@ -185,112 +194,7 @@
             max-width: 1000px;
             margin: 0 auto;
         }
-
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 1.5rem;
-            background: var(--bg-secondary);
-            border-radius: 16px;
-            margin-bottom: 1.5rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        
-        .header-left {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        .header-logo-link { display: flex; }
-
-        .header-logo {
-            width: 46px;
-            height: 46px;
-            object-fit: cover;
-            border-radius: 50%;
-            flex-shrink: 0;
-        }
-
-        .header-left h1 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            margin: 0;
-        }
-
-        .header-left p {
-            font-size: 0.875rem;
-            color: var(--text-muted);
-            margin-top: 0.25rem;
-        }
-
-        .header-right {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .header-link {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 500;
-            padding: 0.5rem 0.75rem;
-            border-radius: 8px;
-            transition: color 0.2s ease, background 0.2s ease;
-        }
-
-        .header-link:hover {
-            color: var(--accent-blue);
-            background: var(--bg-accent);
-        }
-
-        .header-link.active {
-            color: var(--accent-blue);
-        }
-
-        .new-badge {
-            display: inline-block;
-            margin-left: 0.35rem;
-            padding: 0.1rem 0.35rem;
-            border-radius: 999px;
-            background: #ef4444;
-            color: #ffffff;
-            font-size: 0.62rem;
-            font-weight: 700;
-            line-height: 1.2;
-            vertical-align: middle;
-            animation: blinkTag 1s steps(2, start) infinite;
-        }
-
-        @keyframes blinkTag {
-            50% {
-                opacity: 0.2;
-            }
-        }
-
-        .theme-toggle {
-            background: var(--bg-accent);
-            border: none;
-            border-radius: 12px;
-            width: 46px;
-            height: 46px;
-            cursor: pointer;
-            font-size: 1.2rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: transform 0.2s ease;
-        }
-
-        .theme-toggle:hover {
-            transform: scale(1.1);
-        }
-
-        .container {
+.container {
             padding: 0;
         }
 
@@ -475,8 +379,9 @@
         }
 
         .savings-box .icon {
-            font-size: 1.5rem;
             margin-bottom: 0.25rem;
+            display: flex;
+            justify-content: center;
         }
 
         .savings-box .text {
@@ -809,34 +714,11 @@
         /* Responsive */
         @media (max-width: 768px) {
             body {
-                padding: 0.75rem;
+                
             }
 
             .calculator-grid {
                 grid-template-columns: 1fr;
-            }
-
-            .header {
-                flex-direction: column;
-                gap: 0.75rem;
-                text-align: center;
-            }
-
-            .header-left {
-                flex-direction: column;
-                align-items: center;
-                width: 100%;
-            }
-
-            .header-right {
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 0.5rem;
-            }
-
-            .header-link {
-                font-size: 0.8rem;
-                padding: 0.4rem 0.6rem;
             }
 
             .regime-card .tax-amount {
@@ -857,31 +739,13 @@
     </style>
 </head>
 <body>
-    <div class="wrapper">
-        <header class="header">
-            <div class="header-left">
-                <a href="/" class="header-logo-link"><img src="/logo.png" alt="ITR Stats" class="header-logo"></a>
-                <div>
-                    <h1>Income Tax Calculator</h1>
-                    <p>FY 2025-26</p>
-                </div>
-            </div>
-            <div class="header-right">
-                <a href="/" class="header-link">Dashboard</a>
-                <a href="/insights/" class="header-link">Insights <span class="new-badge">NEW</span></a>
-                <a href="/blog/" class="header-link">Blog</a>
-                <a href="/calculator/" class="header-link active">Calculator</a>
-                <a href="/about.html" class="header-link">About</a>
-                <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">
-                    <span id="theme-icon"></span>
-                </button>
-            </div>
-        </header>
-
-        <main class="container">
+    <script src="/scripts/sidebar.js"></script>
+    <div class="main-content">
+        <div class="main-inner">
+<main class="container">
             <div class="calculator-grid">
             <div class="input-section">
-                <h2>📝 Your Income & Deductions</h2>
+                <h2><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:0.4rem"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>Your Income & Deductions</h2>
 
                 <div class="input-group">
                     <label for="age">Age Group</label>
@@ -958,7 +822,7 @@
             </div>
 
             <div class="result-section">
-                <h2>💰 Your Tax Comparison</h2>
+                <h2><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg> Your Tax Comparison</h2>
 
                 <div class="regime-comparison">
                     <div class="regime-card" id="old-regime-card">
@@ -974,7 +838,7 @@
                 </div>
 
                 <div class="savings-box" id="savings-box">
-                    <div class="icon">✓</div>
+                    <div class="icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
                     <div class="text">Enter your income to see comparison</div>
                 </div>
 
@@ -1015,7 +879,7 @@
                 </div>
 
                 <p style="font-size: 0.75rem; color: var(--text-muted); text-align: center; margin-top: 1.5rem; padding: 0.75rem; background: var(--bg-accent); border-radius: 8px;">
-                    ⚠️ This calculator is for estimation purposes only. Please consult a tax professional for accurate advice.
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:0.3rem"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> This calculator is for estimation purposes only. Please consult a tax professional for accurate advice.
                 </p>
             </div>
         </div>
@@ -1142,27 +1006,8 @@
 
     <script>
         // Theme functions
-        function getThemePreference() {
-            const saved = localStorage.getItem('theme');
-            if (saved) return saved;
-            return 'dark';
-        }
-
-        function setTheme(theme) {
-            document.documentElement.setAttribute('data-theme', theme);
-            localStorage.setItem('theme', theme);
-            document.getElementById('theme-icon').textContent = theme === 'dark' ? '☀️' : '🌙';
-        }
-
-        function toggleTheme() {
-            const current = document.documentElement.getAttribute('data-theme');
-            setTheme(current === 'dark' ? 'light' : 'dark');
-        }
-
-        // Initialize theme
-        setTheme(getThemePreference());
-
-        // Tax slabs FY 2025-26 - Old Regime (varies by age)
+// Initialize theme
+// Tax slabs FY 2025-26 - Old Regime (varies by age)
         const OLD_SLABS_GENERAL = [
             { limit: 250000, rate: 0 },      // 0-2.5L: 0%
             { limit: 500000, rate: 0.05 },   // 2.5-5L: 5%
@@ -1544,14 +1389,14 @@
 
             if (income === 0) {
                 savingsBox.innerHTML = `
-                    <div class="icon">💡</div>
+                    <div class="icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg></div>
                     <div class="text">Enter your income to see comparison</div>
                 `;
             } else if (oldResult.totalTax < newResult.totalTax) {
                 oldCard.classList.add('winner');
                 const savings = newResult.totalTax - oldResult.totalTax;
                 savingsBox.innerHTML = `
-                    <div class="icon">✓</div>
+                    <div class="icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
                     <div class="text">OLD REGIME saves you</div>
                     <div class="amount">${formatCurrency(savings)}</div>
                 `;
@@ -1559,13 +1404,13 @@
                 newCard.classList.add('winner');
                 const savings = oldResult.totalTax - newResult.totalTax;
                 savingsBox.innerHTML = `
-                    <div class="icon">✓</div>
+                    <div class="icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
                     <div class="text">NEW REGIME saves you</div>
                     <div class="amount">${formatCurrency(savings)}</div>
                 `;
             } else {
                 savingsBox.innerHTML = `
-                    <div class="icon">⚖️</div>
+                    <div class="icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M5 7l7-4 7 4"/><path d="M2 14l3-7 3 7a4 4 0 0 1-6 0zM16 14l3-7 3 7a4 4 0 0 1-6 0z"/></svg></div>
                     <div class="text">Both regimes result in same tax</div>
                     <div class="amount">${formatCurrency(oldResult.totalTax)}</div>
                 `;
@@ -1619,5 +1464,7 @@
         // Initialize
         updateResults();
     </script>
+    <script defer src="/scripts/subscribe-widget.js"></script>
+</div>
 </body>
 </html>

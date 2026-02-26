@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-F4VVXZQZGH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-F4VVXZQZGH');
+</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -29,7 +37,7 @@
     <meta name="twitter:description" content="Calculate your gratuity amount instantly using the standard formula.">
     <meta name="twitter:image" content="https://itrstats.in/og-image.png">
 
-    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2843260079810330"
@@ -121,6 +129,7 @@
     }
     </script>
 
+    <link rel="stylesheet" href="/styles/layout.css">
     <style>
         /* Light mode (default) */
         :root {
@@ -161,7 +170,7 @@
             background: var(--bg-primary);
             color: var(--text-primary);
             min-height: 100vh;
-            padding: 1rem;
+            
             line-height: 1.6;
         }
 
@@ -169,112 +178,7 @@
             max-width: 1000px;
             margin: 0 auto;
         }
-
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 1.5rem;
-            background: var(--bg-secondary);
-            border-radius: 16px;
-            margin-bottom: 1.5rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        
-        .header-left {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        .header-logo-link { display: flex; }
-
-        .header-logo {
-            width: 46px;
-            height: 46px;
-            object-fit: cover;
-            border-radius: 50%;
-            flex-shrink: 0;
-        }
-
-        .header-left h1 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            margin: 0;
-        }
-
-        .header-left p {
-            font-size: 0.875rem;
-            color: var(--text-muted);
-            margin-top: 0.25rem;
-        }
-
-        .header-right {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .header-link {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 500;
-            padding: 0.5rem 0.75rem;
-            border-radius: 8px;
-            transition: color 0.2s ease, background 0.2s ease;
-        }
-
-        .header-link:hover {
-            color: var(--accent-blue);
-            background: var(--bg-accent);
-        }
-
-        .header-link.active {
-            color: var(--accent-blue);
-        }
-
-        .new-badge {
-            display: inline-block;
-            margin-left: 0.35rem;
-            padding: 0.1rem 0.35rem;
-            border-radius: 999px;
-            background: #ef4444;
-            color: #ffffff;
-            font-size: 0.62rem;
-            font-weight: 700;
-            line-height: 1.2;
-            vertical-align: middle;
-            animation: blinkTag 1s steps(2, start) infinite;
-        }
-
-        @keyframes blinkTag {
-            50% {
-                opacity: 0.2;
-            }
-        }
-
-        .theme-toggle {
-            background: var(--bg-accent);
-            border: none;
-            border-radius: 12px;
-            width: 46px;
-            height: 46px;
-            cursor: pointer;
-            font-size: 1.2rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: transform 0.2s ease;
-        }
-
-        .theme-toggle:hover {
-            transform: scale(1.1);
-        }
-
-        .description-bar {
+.description-bar {
             background: var(--bg-accent);
             border-radius: 12px;
             padding: 0.875rem 1.25rem;
@@ -631,30 +535,7 @@
         /* Responsive */
         @media (max-width: 768px) {
             body {
-                padding: 0.75rem;
-            }
-
-            .header {
-                flex-direction: column;
-                gap: 0.75rem;
-                text-align: center;
-            }
-
-            .header-left {
-                flex-direction: column;
-                align-items: center;
-                width: 100%;
-            }
-
-            .header-right {
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 0.5rem;
-            }
-
-            .header-link {
-                font-size: 0.8rem;
-                padding: 0.4rem 0.6rem;
+                
             }
 
             .calculator-section,
@@ -670,28 +551,10 @@
     </style>
 </head>
 <body>
-    <div class="wrapper">
-        <header class="header">
-            <div class="header-left">
-                <a href="/" class="header-logo-link"><img src="/logo.png" alt="ITR Stats" class="header-logo"></a>
-                <div>
-                    <h1>Gratuity Calculator</h1>
-                    <p>Payment of Gratuity Act, 1972</p>
-                </div>
-            </div>
-            <div class="header-right">
-                <a href="/" class="header-link">Dashboard</a>
-                <a href="/insights/" class="header-link">Insights <span class="new-badge">NEW</span></a>
-                <a href="/blog/" class="header-link">Blog</a>
-                <a href="/calculator/" class="header-link active">Calculator</a>
-                <a href="/about.html" class="header-link">About</a>
-                <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">
-                    <span id="theme-icon"></span>
-                </button>
-            </div>
-        </header>
-
-        <div class="description-bar">
+    <script src="/scripts/sidebar.js"></script>
+    <div class="main-content">
+        <div class="main-inner">
+<div class="description-bar">
             Calculate your gratuity amount instantly based on the standard formula under the Payment of Gratuity Act.
         </div>
 
@@ -820,27 +683,8 @@
 
     <script>
         // Theme functions
-        function getThemePreference() {
-            const saved = localStorage.getItem('theme');
-            if (saved) return saved;
-            return 'dark';
-        }
-
-        function setTheme(theme) {
-            document.documentElement.setAttribute('data-theme', theme);
-            localStorage.setItem('theme', theme);
-            document.getElementById('theme-icon').textContent = theme === 'dark' ? '☀️' : '🌙';
-        }
-
-        function toggleTheme() {
-            const current = document.documentElement.getAttribute('data-theme');
-            setTheme(current === 'dark' ? 'light' : 'dark');
-        }
-
-        // Initialize theme
-        setTheme(getThemePreference());
-
-        // Format currency in Indian format
+// Initialize theme
+// Format currency in Indian format
         function formatCurrency(amount) {
             return '₹' + Math.round(amount).toLocaleString('en-IN');
         }
@@ -886,5 +730,7 @@
         // Initialize
         calculateGratuity();
     </script>
+    <script defer src="/scripts/subscribe-widget.js"></script>
+</div>
 </body>
 </html>

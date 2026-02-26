@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-F4VVXZQZGH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-F4VVXZQZGH');
+</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -32,7 +40,7 @@
     <meta property="og:image:height" content="630">
     <meta property="og:locale" content="en_IN">
 
-    <link rel="icon" type="image/png" href="./favicon.png">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 
     <!-- Preconnect to CDN for faster resource loading -->
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
@@ -61,48 +69,13 @@
     {
         "@context": "https://schema.org",
         "@graph": [
-            {
-                "@type": "SiteNavigationElement",
-                "name": "Dashboard",
-                "description": "Live ITR filing statistics and daily updates from India's Income Tax portal",
-                "url": "https://itrstats.in/"
-            },
-            {
-                "@type": "SiteNavigationElement",
-                "name": "Blog",
-                "description": "Data-driven articles on ITR filing trends, refund timelines, and tax-saving strategies",
-                "url": "https://itrstats.in/blog/"
-            },
-            {
-                "@type": "SiteNavigationElement",
-                "name": "Calculators",
-                "description": "Free online calculators for income tax, SIP, HRA, gratuity, EMI, PPF, NPS and more",
-                "url": "https://itrstats.in/calculator/"
-            },
-            {
-                "@type": "SiteNavigationElement",
-                "name": "Insights",
-                "description": "AI-powered analysis of ITR filing trends and refund processing patterns",
-                "url": "https://itrstats.in/insights/"
-            },
-            {
-                "@type": "SiteNavigationElement",
-                "name": "SIP Calculator",
-                "description": "Estimate mutual fund SIP returns with year-by-year growth chart",
-                "url": "https://itrstats.in/calculator/sip/"
-            },
-            {
-                "@type": "SiteNavigationElement",
-                "name": "Income Tax Calculator",
-                "description": "Compare old vs new tax regime for FY 2025-26 with all deductions",
-                "url": "https://itrstats.in/calculator/income-tax/"
-            },
-            {
-                "@type": "SiteNavigationElement",
-                "name": "About",
-                "description": "About ITR Stats — India's independent daily income tax dashboard",
-                "url": "https://itrstats.in/about.html"
-            }
+            { "@type": "SiteNavigationElement", "name": "Dashboard", "description": "Live ITR filing statistics and daily updates from India's Income Tax portal", "url": "https://itrstats.in/" },
+            { "@type": "SiteNavigationElement", "name": "Blog", "description": "Data-driven articles on ITR filing trends, refund timelines, and tax-saving strategies", "url": "https://itrstats.in/blog/" },
+            { "@type": "SiteNavigationElement", "name": "Calculators", "description": "Free online calculators for income tax, SIP, HRA, gratuity, EMI, PPF, NPS and more", "url": "https://itrstats.in/calculator/" },
+            { "@type": "SiteNavigationElement", "name": "Insights", "description": "AI-powered analysis of ITR filing trends and refund processing patterns", "url": "https://itrstats.in/insights/" },
+            { "@type": "SiteNavigationElement", "name": "SIP Calculator", "description": "Estimate mutual fund SIP returns with year-by-year growth chart", "url": "https://itrstats.in/calculator/sip/" },
+            { "@type": "SiteNavigationElement", "name": "Income Tax Calculator", "description": "Compare old vs new tax regime for FY 2025-26 with all deductions", "url": "https://itrstats.in/calculator/income-tax/" },
+            { "@type": "SiteNavigationElement", "name": "About", "description": "About ITR Stats — India's independent daily income tax dashboard", "url": "https://itrstats.in/about.html" }
         ]
     }
     </script>
@@ -112,246 +85,142 @@
         "@type": "FAQPage",
         "mainEntity": [
             {
-                "@type": "Question",
-                "name": "Why is my ITR still showing as pending even after e-verification?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "E-verification confirms your intent to file — but processing happens separately. The Income Tax Department works through a queue of all verified returns. During peak periods (August–October after the July deadline), the backlog can be several crore returns. Most returns are processed within 15–45 days of verification, though complex cases or those with refund claims may take longer."
-                }
+                "@type": "Question", "name": "Why is my ITR still showing as pending even after e-verification?",
+                "acceptedAnswer": { "@type": "Answer", "text": "E-verification confirms your intent to file — but processing happens separately. The Income Tax Department works through a queue of all verified returns. During peak periods (August–October after the July deadline), the backlog can be several crore returns. Most returns are processed within 15–45 days of verification, though complex cases or those with refund claims may take longer." }
             },
             {
-                "@type": "Question",
-                "name": "How often is this ITR statistics data updated?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "ITR Stats fetches data twice daily. However, the Income Tax Department typically publishes updated figures once a day, late at night. The numbers you see usually reflect the previous night's official update. The 'Fetched' and 'Portal last updated' timestamps on the dashboard tell you exactly when each reading was taken."
-                }
+                "@type": "Question", "name": "How often is this ITR statistics data updated?",
+                "acceptedAnswer": { "@type": "Answer", "text": "ITR Stats fetches data twice daily. However, the Income Tax Department typically publishes updated figures once a day, late at night. The numbers you see usually reflect the previous night's official update. The 'Fetched' and 'Portal last updated' timestamps on the dashboard tell you exactly when each reading was taken." }
             },
             {
-                "@type": "Question",
-                "name": "How many ITRs get processed per day?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "During active processing periods, the department typically processes 2–7 lakh returns per day. On peak days, this can cross 6–7 lakh. The daily growth chart shows the processing rate day by day — weekends and holidays appear as flat or near-zero days, while weekdays show higher throughput."
-                }
+                "@type": "Question", "name": "How many ITRs get processed per day?",
+                "acceptedAnswer": { "@type": "Answer", "text": "During active processing periods, the department typically processes 2–7 lakh returns per day. On peak days, this can cross 6–7 lakh. The daily growth chart shows the processing rate day by day — weekends and holidays appear as flat or near-zero days, while weekdays show higher throughput." }
             },
             {
-                "@type": "Question",
-                "name": "What is the difference between a filed ITR and a verified ITR?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Filing an ITR means submitting the return form with your income details. E-verification can be done instantly via Aadhaar OTP, net banking, or Demat account. Alternatively, you can send a signed physical ITR-V to CPC Bengaluru within 30 days. Without verification, the ITR is invalid and will not be processed."
-                }
+                "@type": "Question", "name": "What is the difference between a filed ITR and a verified ITR?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Filing an ITR means submitting the return form with your income details. E-verification can be done instantly via Aadhaar OTP, net banking, or Demat account. Alternatively, you can send a signed physical ITR-V to CPC Bengaluru within 30 days. Without verification, the ITR is invalid and will not be processed." }
             },
             {
-                "@type": "Question",
-                "name": "What does it mean when the pending backlog goes up instead of down?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "The pending backlog rises when new e-verified returns are added faster than the department can process them. This typically happens in the weeks right after a filing deadline — millions of taxpayers verify their ITRs in a short window, overwhelming the processing queue temporarily. Over the following months, the department steadily clears the backlog."
-                }
+                "@type": "Question", "name": "What does it mean when the pending backlog goes up instead of down?",
+                "acceptedAnswer": { "@type": "Answer", "text": "The pending backlog rises when new e-verified returns are added faster than the department can process them. This typically happens in the weeks right after a filing deadline — millions of taxpayers verify their ITRs in a short window, overwhelming the processing queue temporarily. Over the following months, the department steadily clears the backlog." }
             }
         ]
     }
     </script>
     <script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" integrity="sha384-9nhczxUqK87bcKHh20fSQcTGD4qq5GhayNYSYWqwBkINBhOfQLg/P5HG5lF1urn4" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/styles/layout.css">
     <style>
-        /* CSS Variables for theming */
         :root {
-            --bg-primary: #f0f4f8;
-            --bg-secondary: #ffffff;
-            --bg-accent: #e2e8f0;
-            --text-primary: #1a202c;
-            --text-secondary: #4a5568;
-            --text-muted: #718096;
-            --accent-blue: #3182ce;
-            --accent-green: #38a169;
-            --accent-red: #e53e3e;
+            --bg-body: #f1f5f9;
+            --bg-card: #ffffff;
+            --text-primary: #1e293b;
+            --text-secondary: #475569;
+            --text-muted: #64748b;
+            --accent-teal: #0d9488;
+            --accent-blue: #3b82f6;
+            --accent-green: #22c55e;
+            --accent-red: #ef4444;
             --border-color: #e2e8f0;
-            --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            --card-shadow-hover: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --card-shadow: 0 1px 3px rgba(0,0,0,0.08);
         }
 
         [data-theme="dark"] {
-            --bg-primary: #0f172a;
-            --bg-secondary: #1e293b;
-            --bg-accent: #334155;
+            --bg-body: #0a0f1a;
+            --bg-card: #141d2f;
             --text-primary: #f1f5f9;
-            --text-secondary: #cbd5e1;
-            --text-muted: #94a3b8;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --accent-teal: #2dd4bf;
             --accent-blue: #60a5fa;
             --accent-green: #4ade80;
             --accent-red: #f87171;
-            --border-color: #334155;
-            --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
-            --card-shadow-hover: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+            --border-color: #1e293b;
+            --card-shadow: 0 1px 3px rgba(0,0,0,0.3);
         }
 
-        /* Theme transition - only applied during theme change to avoid CLS */
-        .theme-transitioning, .theme-transitioning *, .theme-transitioning *::before, .theme-transitioning *::after {
-            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease !important;
-        }
-
-        /* Reset */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            background: var(--bg-primary);
+            background: var(--bg-body);
             color: var(--text-primary);
             min-height: 100vh;
-            padding: 1rem;
             line-height: 1.6;
         }
 
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-        }
+        /* Main content styles handled by layout.css */
 
-        /* Header */
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 1.5rem;
-            background: var(--bg-secondary);
-            border-radius: 16px;
-            margin-bottom: 1rem;
-            box-shadow: var(--card-shadow);
-        }
+        /* ===== HERO ===== */
+        .hero { margin-bottom: 1.5rem; }
 
-        
-        .header-left {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        .header-logo-link { display: flex; }
-
-        .header-logo {
-            width: 46px;
-            height: 46px;
-            object-fit: cover;
-            border-radius: 50%;
-            flex-shrink: 0;
-        }
-
-        .header-left h1 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--text-primary);
-        }
-
-        .header-left p {
-            font-size: 0.875rem;
-            color: var(--text-muted);
-            margin-top: 0.25rem;
-        }
-
-        .header-right {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .header-link {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 500;
-            padding: 0.5rem 0.75rem;
-            border-radius: 8px;
-            transition: color 0.2s ease, background 0.2s ease;
-        }
-
-        .header-link:hover {
-            color: var(--accent-blue);
-            background: var(--bg-accent);
-        }
-
-        .header-link.active {
-            color: var(--accent-blue);
-        }
-
-        .new-badge {
-            display: inline-block;
-            margin-left: 0.35rem;
-            padding: 0.1rem 0.35rem;
-            border-radius: 999px;
-            background: #ef4444;
-            color: #ffffff;
-            font-size: 0.62rem;
-            font-weight: 700;
+        .hero-title {
+            font-size: 1.75rem;
+            font-weight: 800;
             line-height: 1.2;
-            vertical-align: middle;
-            animation: blinkTag 1s steps(2, start) infinite;
+            margin-bottom: 0.75rem;
         }
 
-        @keyframes blinkTag {
-            50% {
-                opacity: 0.2;
-            }
+        .hero-subtitle {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            line-height: 1.7;
         }
 
-        .theme-toggle {
-            background: var(--bg-accent);
-            border: none;
-            border-radius: 12px;
-            padding: 0.75rem;
-            cursor: pointer;
-            font-size: 1.25rem;
+
+        /* ===== STATUS BAR ===== */
+        .status-bar {
             display: flex;
             align-items: center;
-            justify-content: center;
-            transition: transform 0.2s ease;
-        }
-
-        .theme-toggle:hover {
-            transform: scale(1.1);
-        }
-
-        /* Meta bar */
-        .meta {
-            background: var(--bg-accent);
+            gap: 1.5rem;
+            padding: 0.75rem 1.25rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
             border-radius: 12px;
-            padding: 0.875rem 1.25rem;
-            text-align: center;
-            margin-bottom: 1.5rem;
-            font-size: 0.9rem;
+            margin-bottom: 1.25rem;
+            font-size: 0.85rem;
             color: var(--text-secondary);
-            min-height: 44px;
+            flex-wrap: wrap;
         }
 
-        .meta strong {
-            color: var(--text-primary);
+        .status-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
+
+        .live-dot {
+            width: 8px; height: 8px;
+            border-radius: 50%;
+            background: var(--accent-green);
+            animation: pulse-dot 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+
+        .status-bar strong { color: var(--text-primary); }
 
         .info-icon {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 12px;
-            height: 12px;
+            width: 14px; height: 14px;
             background: var(--text-muted);
-            color: var(--bg-secondary);
+            color: var(--bg-card);
             font-size: 0.5rem;
             font-weight: 700;
             font-style: normal;
+            border-radius: 50%;
             cursor: pointer;
             margin-left: 0.25rem;
             vertical-align: middle;
             position: relative;
         }
 
-        .info-icon:hover {
-            background: var(--accent-blue);
-        }
+        .info-icon:hover { background: var(--accent-blue); }
 
         .info-tooltip {
             position: absolute;
@@ -359,17 +228,17 @@
             left: 50%;
             transform: translateX(-50%);
             background: var(--text-primary);
-            color: var(--bg-primary);
+            color: var(--bg-body);
             padding: 0.75rem 1rem;
             border-radius: 8px;
             font-size: 0.8rem;
             font-weight: 400;
-            width: 260px;
+            width: 280px;
             text-align: left;
             line-height: 1.4;
             opacity: 0;
             visibility: hidden;
-            transition: opacity 0.2s ease, visibility 0.2s ease;
+            transition: opacity 0.2s, visibility 0.2s;
             z-index: 100;
         }
 
@@ -383,69 +252,62 @@
             border-top-color: var(--text-primary);
         }
 
-        .info-icon:hover .info-tooltip {
-            opacity: 1;
-            visibility: visible;
-        }
+        .info-icon:hover .info-tooltip { opacity: 1; visibility: visible; }
 
-        /* Cards container reserves space to prevent CLS */
-        #cards-container {
-            min-height: 232px;
-        }
+        /* ===== STAT CARDS ===== */
+        #cards-container { min-height: 120px; }
 
-        /* Cards grid */
         .cards-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(5, 1fr);
             gap: 1rem;
             margin-bottom: 1.5rem;
         }
 
-        /* Center the 5th card */
-        .card:nth-child(5) {
-            grid-column: 2 / 4;
-        }
-
         .card {
-            background: var(--bg-secondary);
-            border-radius: 16px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
             padding: 1.25rem;
-            box-shadow: var(--card-shadow);
-            text-align: center;
+            transition: transform 0.2s, box-shadow 0.2s;
         }
 
         .card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--card-shadow-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
         }
 
-        .card-icon {
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
+        [data-theme="dark"] .card:hover {
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
         }
 
-        .card-title {
-            font-size: 0.7rem;
-            color: var(--text-muted);
+        .card-label {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.68rem;
+            font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
+            color: var(--text-muted);
+            margin-bottom: 0.75rem;
         }
 
+        .card-icon { display: flex; color: var(--accent-blue); }
+
         .card-value {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             font-weight: 700;
             color: var(--text-primary);
-            margin-bottom: 0.25rem;
+            margin-bottom: 0.35rem;
+            line-height: 1.2;
         }
 
         .card-delta {
-            font-size: 0.85rem;
+            font-size: 0.82rem;
             font-weight: 600;
             display: flex;
             align-items: center;
-            justify-content: center;
             gap: 0.25rem;
         }
 
@@ -453,159 +315,85 @@
         .delta-negative { color: var(--accent-red); }
         .delta-neutral { color: var(--text-muted); }
 
-        /* Chart section */
+        /* ===== CHART SECTION ===== */
         .chart-section {
-            background: var(--bg-secondary);
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
             border-radius: 16px;
             padding: 1.5rem;
-            box-shadow: var(--card-shadow);
             margin-bottom: 1.5rem;
         }
 
-        .chart-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1rem;
-        }
+        .chart-header { margin-bottom: 1rem; }
 
         .chart-title {
-            font-size: 1rem;
-            font-weight: 600;
+            font-size: 1.15rem;
+            font-weight: 700;
             color: var(--text-primary);
+        }
+
+        .chart-subtitle {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 0.25rem;
         }
 
         .chart-container {
             position: relative;
-            height: 300px;
+            height: 320px;
         }
 
-        /* Insights CTA - Subtle gradient */
+        /* ===== INSIGHTS CTA ===== */
         .insights-cta {
             background: linear-gradient(135deg, #3b82f6 0%, #6366f1 100%);
-            border-radius: 12px;
-            padding: 1rem 1.25rem;
-            margin: 0 auto 1.25rem;
-            max-width: 600px;
+            border-radius: 14px;
+            padding: 1.25rem 1.5rem;
+            margin-bottom: 1.5rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
             gap: 1rem;
         }
 
-        .insights-cta-copy h3 {
-            font-size: 0.95rem;
-            color: #ffffff;
-            margin-bottom: 0.15rem;
-            font-weight: 600;
-        }
-
-        .insights-cta-copy p {
-            font-size: 0.8rem;
-            color: rgba(255, 255, 255, 0.85);
-        }
+        .insights-cta-copy h3 { font-size: 1rem; color: #fff; font-weight: 600; margin-bottom: 0.15rem; }
+        .insights-cta-copy p { font-size: 0.85rem; color: rgba(255,255,255,0.85); }
 
         .insights-cta-link {
             display: inline-flex;
             align-items: center;
             gap: 0.3rem;
             text-decoration: none;
-            padding: 0.5rem 0.9rem;
-            border-radius: 8px;
-            background: rgba(255, 255, 255, 0.95);
+            padding: 0.6rem 1.1rem;
+            border-radius: 10px;
+            background: rgba(255,255,255,0.95);
             color: #4f46e5;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             font-weight: 600;
             white-space: nowrap;
-            transition: background 0.2s ease;
+            transition: background 0.2s;
         }
 
-        .insights-cta-link:hover {
-            background: #ffffff;
-        }
+        .insights-cta-link:hover { background: #fff; }
 
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 1.5rem;
-            margin-top: 2rem;
-            border-top: 1px solid var(--border-color);
-            font-size: 0.85rem;
-            color: var(--text-muted);
-        }
-
-        .footer-creator {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            margin-bottom: 0.25rem;
-        }
-
-        .footer-creator a {
-            color: var(--text-muted);
-            display: inline-flex;
-            transition: color 0.2s ease;
-        }
-
-        .footer-creator a:hover {
-            color: var(--accent-blue);
-        }
-
-        .footer-feedback {
-            font-size: 0.8rem;
-            margin-bottom: 0.75rem;
-        }
-
-        .footer-legal {
-            font-size: 0.8rem;
-        }
-
-        .footer-legal a {
-            color: var(--text-muted);
-            text-decoration: none;
-        }
-
-        .footer-legal a:hover {
-            color: var(--accent-blue);
-        }
-
-        /* Error state */
-        .error {
-            text-align: center;
-            padding: 3rem;
-            color: var(--accent-red);
-        }
-
-        /* Dashboard intro */
-        .dashboard-intro {
-            background: var(--bg-secondary);
-            border-radius: 12px;
-            padding: 1rem 1.5rem;
-            margin-bottom: 1.5rem;
-            font-size: 0.92rem;
-            color: var(--text-secondary);
-            line-height: 1.7;
-            border-left: 3px solid var(--accent-blue);
-        }
-
-        .dashboard-intro strong {
-            color: var(--text-primary);
-        }
-
-        /* Metrics explainer */
+        /* ===== CONTENT SECTIONS ===== */
         .content-section {
-            background: var(--bg-secondary);
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
             border-radius: 16px;
             padding: 1.5rem;
-            box-shadow: var(--card-shadow);
             margin-bottom: 1.5rem;
         }
 
         .content-section h2 {
-            font-size: 1.1rem;
+            font-size: 1.25rem;
             font-weight: 700;
             color: var(--text-primary);
+            margin-bottom: 0.35rem;
+        }
+
+        .section-subtitle {
+            font-size: 0.88rem;
+            color: var(--text-muted);
             margin-bottom: 1.25rem;
         }
 
@@ -615,641 +403,274 @@
             gap: 1rem;
         }
 
-        .metric-entry {
+        .metric-entry { display: flex; gap: 0.75rem; align-items: flex-start; }
+        .metric-entry-icon { flex-shrink: 0; margin-top: 0.2rem; color: var(--accent-blue); display: flex; }
+        .metric-entry strong { display: block; font-size: 0.9rem; color: var(--text-primary); margin-bottom: 0.2rem; }
+        .metric-entry p { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; margin: 0; }
+
+        /* FAQ Accordion */
+        .faq-list { display: flex; flex-direction: column; gap: 0.75rem; }
+
+        .faq-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .faq-question {
             display: flex;
-            gap: 0.75rem;
-            align-items: flex-start;
-        }
-
-        .metric-entry-icon {
-            font-size: 1.25rem;
-            flex-shrink: 0;
-            margin-top: 0.1rem;
-        }
-
-        .metric-entry strong {
-            display: block;
-            font-size: 0.9rem;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding: 1rem 1.25rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            text-align: left;
+            font-size: 0.92rem;
+            font-weight: 600;
             color: var(--text-primary);
-            margin-bottom: 0.2rem;
-        }
-
-        .metric-entry p {
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-            line-height: 1.5;
-            margin: 0;
-        }
-
-        /* FAQ */
-        .faq-list {
-            display: flex;
-            flex-direction: column;
+            font-family: inherit;
             gap: 1rem;
         }
 
-        .faq-item h3 {
-            font-size: 0.95rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-bottom: 0.35rem;
+        .faq-question:hover { background: var(--bg-body); }
+
+        .faq-chevron {
+            flex-shrink: 0;
+            transition: transform 0.3s;
+            color: var(--text-muted);
         }
 
-        .faq-item p {
+        .faq-item.open .faq-chevron { transform: rotate(180deg); }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .faq-answer-inner {
+            padding: 0 1.25rem 1rem;
             font-size: 0.875rem;
             color: var(--text-secondary);
-            line-height: 1.6;
-            margin: 0;
+            line-height: 1.7;
         }
 
-        /* Responsive */
+
+        /* ===== FOOTER ===== */
+        footer { text-align: center; padding: 2rem; color: var(--text-muted); font-size: 0.85rem; border-top: 1px solid var(--border-color); margin-top: 3rem; }
+        footer a { color: var(--accent-blue); text-decoration: none; }
+        footer a:hover { text-decoration: underline; }
+        .info-icon { display: inline-flex; align-items: center; justify-content: center; width: 12px; height: 12px; border-radius: 50%; background: var(--text-muted); color: var(--bg-secondary); font-size: 0.5rem; font-weight: 700; cursor: pointer; margin-left: 0.25rem; vertical-align: middle; position: relative; }
+        .info-icon:hover { background: var(--accent-blue); }
+        .info-tooltip { position: absolute; bottom: calc(100% + 8px); left: 50%; transform: translateX(-50%); background: var(--text-primary); color: var(--bg-primary); padding: 0.6rem 0.8rem; border-radius: 6px; font-size: 0.75rem; font-weight: 400; width: 200px; text-align: left; line-height: 1.4; opacity: 0; visibility: hidden; transition: opacity 0.2s ease; z-index: 100; }
+        .info-tooltip::after { content: ''; position: absolute; top: 100%; left: 50%; transform: translateX(-50%); border: 5px solid transparent; border-top-color: var(--text-primary); }
+        .info-icon:hover .info-tooltip { opacity: 1; visibility: visible; }
+        .footer-creator { display: flex; align-items: center; justify-content: center; gap: 0.5rem; margin-bottom: 0.25rem; }
+        .footer-creator a { color: var(--text-muted); display: inline-flex; transition: color 0.2s ease; }
+        .footer-creator a:hover { color: var(--accent-blue); }
+        .footer-feedback { font-size: 0.8rem; margin-bottom: 0.75rem; }
+        .footer-legal { font-size: 0.8rem; }
+        .footer-legal a { color: var(--text-muted); text-decoration: none; }
+        .footer-legal a:hover { color: var(--accent-blue); }
+
+        /* ===== ERROR ===== */
+        .error { text-align: center; padding: 3rem; color: var(--accent-red); }
+
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+            .cards-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+
         @media (max-width: 768px) {
-            body {
-                padding: 0.75rem;
-            }
+            .hero-title { font-size: 1.5rem; }
 
-            .header {
-                flex-direction: column;
-                gap: 0.75rem;
-                text-align: center;
-            }
+            .cards-grid { grid-template-columns: repeat(2, 1fr); }
 
-            .header-left {
-                flex-direction: column;
-                align-items: center;
-                width: 100%;
-            }
+            .card-value { font-size: 1.3rem; }
 
+            .chart-container { height: 260px; }
 
-            .header-left h1 {
-                font-size: 1.25rem;
-            }
+            .metric-grid { grid-template-columns: 1fr; }
 
-            .header-right {
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 0.5rem;
-            }
+            .insights-cta { flex-direction: column; text-align: center; }
 
-            .header-link {
-                font-size: 0.8rem;
-                padding: 0.4rem 0.6rem;
-            }
-
-            #cards-container {
-                min-height: 370px;
-            }
-
-            .cards-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .card:nth-child(5) {
-                grid-column: 1 / -1;
-            }
-
-            .card-value {
-                font-size: 1.25rem;
-            }
-
-            .chart-container {
-                height: 250px;
-            }
-
-            .metric-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .insights-cta {
-                padding: 0.75rem 1rem;
-            }
-
-            .insights-cta-copy h3 {
-                font-size: 0.85rem;
-            }
-
-            .insights-cta-copy p {
-                font-size: 0.7rem;
-            }
-
-            .insights-cta-link {
-                padding: 0.4rem 0.7rem;
-                font-size: 0.75rem;
-            }
         }
 
         @media (max-width: 480px) {
-            #cards-container {
-                min-height: 430px;
-            }
+            .cards-grid { grid-template-columns: 1fr 1fr; }
 
-            .cards-grid {
-                grid-template-columns: 1fr;
-            }
+            .card { padding: 1rem; }
+            .card-value { font-size: 1.15rem; }
+            .card-label { font-size: 0.6rem; }
 
-            .card:nth-child(5) {
-                grid-column: auto;
-            }
-
-            .card {
-                display: flex;
-                align-items: center;
-                text-align: left;
-                gap: 1rem;
-                padding: 1rem;
-            }
-
-            .card-icon {
-                font-size: 2rem;
-                margin-bottom: 0;
-            }
-
-            .card-content {
-                flex: 1;
-            }
-
-            .card-delta {
-                justify-content: flex-start;
-            }
-
-            .insights-cta {
-                padding: 0.6rem 0.85rem;
-                border-radius: 10px;
-                gap: 0.5rem;
-            }
-
-            .insights-cta-copy p {
-                display: none;
-            }
-        }
-
-        /* Floating Share Button */
-        .share-fab {
-            position: fixed;
-            bottom: 24px;
-            left: 24px;
-            width: 56px;
-            height: 56px;
-            border-radius: 16px;
-            background: var(--accent-blue);
-            color: #ffffff;
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            z-index: 1000;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        .share-fab:hover {
-            transform: scale(1.1);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
-        }
-
-        /* Share Modal */
-        .share-modal-overlay {
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.7);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 2000;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s ease, visibility 0.3s ease;
-            padding: 1rem;
-        }
-
-        .share-modal-overlay.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .share-modal {
-            background: var(--bg-secondary);
-            border-radius: 16px;
-            max-width: 400px;
-            width: 100%;
-            max-height: 90vh;
-            overflow-y: auto;
-            transform: scale(0.9);
-            transition: transform 0.3s ease;
-        }
-
-        .share-modal-overlay.active .share-modal {
-            transform: scale(1);
-        }
-
-        .share-modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 1.25rem;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .share-modal-header h3 {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--text-primary);
-        }
-
-        .share-modal-close {
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--text-muted);
-            padding: 0.25rem;
-            line-height: 1;
-        }
-
-        .share-modal-close:hover {
-            color: var(--text-primary);
-        }
-
-        .share-modal-body {
-            padding: 1.25rem;
-        }
-
-        .share-preview {
-            background: var(--bg-primary);
-            border-radius: 12px;
-            padding: 0.5rem;
-            margin-bottom: 1rem;
-            text-align: center;
-            min-height: 200px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .share-preview img {
-            max-width: 100%;
-            max-height: 350px;
-            border-radius: 8px;
-        }
-
-        .share-preview-loading {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-        }
-
-        .share-actions {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 0.75rem;
-        }
-
-        .share-action-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            padding: 0.875rem 1rem;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            font-size: 0.9rem;
-            font-weight: 600;
-            transition: all 0.2s ease;
-        }
-
-        .share-action-btn.primary {
-            background: var(--accent-blue);
-            color: #ffffff;
-        }
-
-        .share-action-btn.primary:hover {
-            filter: brightness(1.1);
-        }
-
-        .share-action-btn.secondary {
-            background: var(--bg-accent);
-            color: var(--text-primary);
-        }
-
-        .share-action-btn.secondary:hover {
-            background: var(--border-color);
-        }
-
-        .share-action-btn:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-
-        .share-toast {
-            position: fixed;
-            bottom: 100px;
-            left: 50%;
-            transform: translateX(-50%) translateY(20px);
-            background: var(--text-primary);
-            color: var(--bg-primary);
-            padding: 0.75rem 1.5rem;
-            border-radius: 8px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-            z-index: 3000;
-        }
-
-        .share-toast.active {
-            opacity: 1;
-            visibility: visible;
-            transform: translateX(-50%) translateY(0);
-        }
-
-        /* Hidden Share Card (for capture) */
-        .share-card {
-            position: absolute;
-            left: -9999px;
-            top: -9999px;
-            width: 540px;
-            height: 540px;
-            padding: 40px;
-            background: var(--bg-secondary);
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .share-card-header {
-            text-align: center;
-            margin-bottom: 24px;
-        }
-
-        .share-card-title {
-            font-size: 28px;
-            font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: 8px;
-        }
-
-        .share-card-date {
-            font-size: 18px;
-            color: var(--text-muted);
-        }
-
-        .share-card-stats {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            gap: 12px;
-        }
-
-        .share-card-stat {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            font-size: 20px;
-            color: var(--text-primary);
-            padding: 12px 0;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .share-card-stat:last-child {
-            border-bottom: none;
-        }
-
-        .share-card-stat-label {
-            color: var(--text-secondary);
-        }
-
-        .share-card-stat-value {
-            font-weight: 700;
-            text-align: right;
-        }
-
-        .share-card-stat-value.positive {
-            color: var(--accent-green);
-        }
-
-        .share-card-stat-value.negative {
-            color: var(--accent-red);
-        }
-
-        .share-card-footer {
-            text-align: center;
-            font-size: 16px;
-            font-weight: 600;
-            color: var(--text-muted);
-            padding-top: 16px;
-            border-top: 1px solid var(--border-color);
-        }
-
-        @media (max-width: 480px) {
-            .share-fab {
-                bottom: 16px;
-                right: 16px;
-                width: 50px;
-                height: 50px;
-                font-size: 1.25rem;
-            }
+            .status-bar { flex-direction: column; gap: 0.5rem; align-items: flex-start; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header class="header">
-            <div class="header-left">
-                <a href="/" class="header-logo-link"><img src="/logo.png" alt="ITR Stats" class="header-logo" width="46" height="46" fetchpriority="high"></a>
-                <div>
-                    <h1>ITR Portal Stats</h1>
-                    <p>Daily Statistics Dashboard</p>
+    <script src="/scripts/sidebar.js"></script>
+    <div class="main-content">
+        <div class="main-inner">
+            <section class="hero">
+                <h1 class="hero-title">India's Tax Pulse</h1>
+                <p class="hero-subtitle">Real-time statistics from the Income Tax Department's e-Filing Portal. Track daily filing trends, verification progress, and processing metrics across India.</p>
+            </section>
+
+            <div class="status-bar" id="meta">
+                <div class="status-item"><span class="live-dot"></span> Live Data</div>
+            </div>
+
+            <div id="cards-container"></div>
+
+            <section class="chart-section">
+                <div class="chart-header">
+                    <h2 class="chart-title">Daily Growth Trend</h2>
+                    <p class="chart-subtitle">Track the daily growth across all key metrics</p>
                 </div>
-            </div>
-            <div class="header-right">
-                <a href="./" class="header-link active">Dashboard</a>
-                <a href="./insights/" class="header-link">Insights <span class="new-badge">NEW</span></a>
-                <a href="./blog/" class="header-link">Blog</a>
-                <a href="/calculator/" class="header-link">Calculator</a>
-                <a href="/about.html" class="header-link">About</a>
-                <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">
-                    <span id="theme-icon"></span>
-                </button>
-            </div>
-        </header>
+                <div class="chart-container">
+                    <canvas id="trendChart"></canvas>
+                </div>
+            </section>
 
-        <div id="meta" class="meta">Live ITR Statistics from Income Tax e-Filing Portal</div>
+            <section class="insights-cta" aria-label="Explore deeper insights">
+                <div class="insights-cta-copy">
+                    <h3>Want deeper analysis?</h3>
+                    <p>Refund pulse, filing trends, state-wise data & more</p>
+                </div>
+                <a href="./insights/" class="insights-cta-link">Insights →</a>
+            </section>
 
-        <div class="dashboard-intro">
-            <strong>What is this?</strong> ITR Stats tracks daily statistics published by India's Income Tax e-Filing Portal — giving you a live pulse on ITR filing, verification, and processing activity across the country. Data is fetched twice daily directly from <a href="https://eportal.incometax.gov.in" target="_blank" rel="noopener" style="color: var(--accent-blue);">eportal.incometax.gov.in</a> and reflects cumulative figures since the portal went live. The delta (▲/▼) next to each number shows how much changed since the previous day's reading.
+            <section class="content-section" aria-label="Understanding the metrics">
+                <h2>Understanding the Numbers</h2>
+                <p class="section-subtitle">What each metric means and why it matters</p>
+                <div class="metric-grid">
+                    <div class="metric-entry">
+                        <span class="metric-entry-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span>
+                        <div>
+                            <strong>Registered Users</strong>
+                            <p>Total individual taxpayers who have created an account on the Income Tax e-Filing portal. This number grows every day as new users register to file their ITR or access tax services.</p>
+                        </div>
+                    </div>
+                    <div class="metric-entry">
+                        <span class="metric-entry-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></span>
+                        <div>
+                            <strong>Returns Filed</strong>
+                            <p>Total Income Tax Returns submitted on the portal since it went live. This is a cumulative count — every ITR-1, ITR-2, ITR-3, or ITR-4 filed online adds to this number.</p>
+                        </div>
+                    </div>
+                    <div class="metric-entry">
+                        <span class="metric-entry-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+                        <div>
+                            <strong>Returns Verified</strong>
+                            <p>ITRs that have been e-verified by the taxpayer — via Aadhaar OTP, net banking, or physical ITR-V. Only verified returns can be taken up for processing. Unverified ITRs are treated as not filed.</p>
+                        </div>
+                    </div>
+                    <div class="metric-entry">
+                        <span class="metric-entry-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></span>
+                        <div>
+                            <strong>ITRs Processed</strong>
+                            <p>Returns where the Income Tax Department has completed assessment — either issuing a refund, raising a demand, or confirming no tax due. A processed ITR means your filing cycle is complete.</p>
+                        </div>
+                    </div>
+                    <div class="metric-entry">
+                        <span class="metric-entry-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 22h14M5 2h14M12 17a5 5 0 0 0 5-5c0-3-5-8-5-8s-5 5-5 8a5 5 0 0 0 5 5z"/></svg></span>
+                        <div>
+                            <strong>Pending Processing</strong>
+                            <p>The difference between Returns Verified and ITRs Processed. This is the active backlog — verified returns still awaiting assessment. A falling number means the department is clearing the queue faster than new returns are coming in.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="content-section" style="background:none;border:none;padding:0;" aria-label="Frequently asked questions">
+                <h2>Frequently Asked Questions</h2>
+                <p class="section-subtitle">Answers to common questions about ITR filing and processing</p>
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <button class="faq-question" onclick="toggleFaq(this)">
+                            Why is my ITR still showing as pending even after e-verification?
+                            <svg class="faq-chevron" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-inner">E-verification confirms your intent to file — but processing happens separately. The Income Tax Department works through a queue of all verified returns. During peak periods (August–October after the July deadline), the backlog can be several crore returns. Most returns are processed within 15–45 days of verification, though complex cases or those with refund claims may take longer.</div>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" onclick="toggleFaq(this)">
+                            How often is this data updated?
+                            <svg class="faq-chevron" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-inner">ITR Stats fetches data twice daily — once in the morning and once in the evening. However, the Income Tax Department typically publishes updated figures once a day, late at night. So the numbers you see usually reflect the previous night's official update. The "Fetched" and "Portal last updated" timestamps on the dashboard tell you exactly when each reading was taken.</div>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" onclick="toggleFaq(this)">
+                            What's a normal processing rate? How many ITRs get processed per day?
+                            <svg class="faq-chevron" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-inner">During active processing periods, the department typically processes 2–7 lakh returns per day. On peak days, this can cross 6–7 lakh. The daily growth chart on this dashboard shows the processing rate day by day — you can see weekends and holidays clearly as flat or near-zero days, while weekdays show higher throughput.</div>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" onclick="toggleFaq(this)">
+                            What is the difference between a filed ITR and a verified ITR?
+                            <svg class="faq-chevron" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-inner">Filing an ITR means submitting the return form with your income details. But the process isn't complete until you verify it. E-verification can be done instantly via Aadhaar OTP, net banking, or Demat account. Alternatively, you can send a signed physical ITR-V to CPC Bengaluru within 30 days. Without verification, the ITR is invalid and will not be processed.</div>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" onclick="toggleFaq(this)">
+                            What does it mean when the pending backlog goes up instead of down?
+                            <svg class="faq-chevron" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-inner">The pending backlog (verified minus processed) rises when new e-verified returns are added faster than the department can process them. This typically happens in the weeks right after a filing deadline — millions of taxpayers verify their ITRs in a short window, overwhelming the processing queue temporarily. Over the following months, the department steadily clears the backlog.</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <footer>
+                <p class="footer-creator">
+                    <strong>Built by Kartikey</strong>
+                    <a href="https://x.com/kartikey_19" target="_blank" rel="noopener" aria-label="Twitter">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/kartikeyrajvaidya/" target="_blank" rel="noopener" aria-label="LinkedIn">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                    </a>
+                </p>
+                <p class="footer-feedback">Open to feedback!</p>
+                <p class="footer-legal">&copy; 2026 ITR Stats &middot; <a href="/privacy-policy.html">Privacy</a> &middot; <a href="/about.html">About</a> &middot; <a href="https://eportal.incometax.gov.in" target="_blank" rel="noopener">Data Source</a>
+                    <span class="info-icon">i<span class="info-tooltip">Unofficial dashboard &middot; Not affiliated with Income Tax Department</span></span>
+                </p>
+            </footer>
+
         </div>
 
-        <div id="cards-container">
-            <!-- Cards will be rendered here by JavaScript -->
-        </div>
-
-        <section class="chart-section">
-            <div class="chart-header">
-                <h2 class="chart-title">Daily Growth Trend</h2>
-            </div>
-            <div class="chart-container">
-                <canvas id="trendChart"></canvas>
-            </div>
-        </section>
-
-        <section class="insights-cta" aria-label="Explore deeper insights">
-            <div class="insights-cta-copy">
-                <h3>Want deeper analysis?</h3>
-                <p>Refund pulse, filing trends, state-wise data & more</p>
-            </div>
-            <a href="./insights/" class="insights-cta-link">
-                Insights →
-            </a>
-        </section>
-
-        <section class="content-section" aria-label="Understanding the metrics">
-            <h2>Understanding the Numbers</h2>
-            <div class="metric-grid">
-                <div class="metric-entry">
-                    <span class="metric-entry-icon">👤</span>
-                    <div>
-                        <strong>Registered Users</strong>
-                        <p>Total individual taxpayers who have created an account on the Income Tax e-Filing portal. This number grows every day as new users register to file their ITR or access tax services.</p>
-                    </div>
-                </div>
-                <div class="metric-entry">
-                    <span class="metric-entry-icon">📄</span>
-                    <div>
-                        <strong>Returns Filed</strong>
-                        <p>Total Income Tax Returns submitted on the portal since it went live. This is a cumulative count — every ITR-1, ITR-2, ITR-3, or ITR-4 filed online adds to this number.</p>
-                    </div>
-                </div>
-                <div class="metric-entry">
-                    <span class="metric-entry-icon">✓</span>
-                    <div>
-                        <strong>Returns Verified</strong>
-                        <p>ITRs that have been e-verified by the taxpayer — via Aadhaar OTP, net banking, or physical ITR-V. Only verified returns can be taken up for processing. Unverified ITRs are treated as not filed.</p>
-                    </div>
-                </div>
-                <div class="metric-entry">
-                    <span class="metric-entry-icon">✅</span>
-                    <div>
-                        <strong>ITRs Processed</strong>
-                        <p>Returns where the Income Tax Department has completed assessment — either issuing a refund, raising a demand, or confirming no tax due. A processed ITR means your filing cycle is complete.</p>
-                    </div>
-                </div>
-                <div class="metric-entry">
-                    <span class="metric-entry-icon">⏳</span>
-                    <div>
-                        <strong>Pending Processing</strong>
-                        <p>The difference between Returns Verified and ITRs Processed. This is the active backlog — verified returns still awaiting assessment. A falling number means the department is clearing the queue faster than new returns are coming in.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="content-section" aria-label="Frequently asked questions">
-            <h2>Frequently Asked Questions</h2>
-            <div class="faq-list">
-                <div class="faq-item">
-                    <h3>Why is my ITR still showing as pending even after e-verification?</h3>
-                    <p>E-verification confirms your intent to file — but processing happens separately. The Income Tax Department works through a queue of all verified returns. During peak periods (August–October after the July deadline), the backlog can be several crore returns. Most returns are processed within 15–45 days of verification, though complex cases or those with refund claims may take longer.</p>
-                </div>
-                <div class="faq-item">
-                    <h3>How often is this data updated?</h3>
-                    <p>ITR Stats fetches data twice daily — once in the morning and once in the evening. However, the Income Tax Department typically publishes updated figures once a day, late at night. So the numbers you see usually reflect the previous night's official update. The "Fetched" and "Portal last updated" timestamps on the dashboard tell you exactly when each reading was taken.</p>
-                </div>
-                <div class="faq-item">
-                    <h3>What's a normal processing rate? How many ITRs get processed per day?</h3>
-                    <p>During active processing periods, the department typically processes 2–7 lakh returns per day. On peak days, this can cross 6–7 lakh. The daily growth chart on this dashboard shows the processing rate day by day — you can see weekends and holidays clearly as flat or near-zero days, while weekdays show higher throughput.</p>
-                </div>
-                <div class="faq-item">
-                    <h3>What is the difference between a filed ITR and a verified ITR?</h3>
-                    <p>Filing an ITR means submitting the return form with your income details. But the process isn't complete until you verify it. E-verification can be done instantly via Aadhaar OTP, net banking, or Demat account. Alternatively, you can send a signed physical ITR-V to CPC Bengaluru within 30 days. Without verification, the ITR is invalid and will not be processed.</p>
-                </div>
-                <div class="faq-item">
-                    <h3>What does it mean when the pending backlog goes up instead of down?</h3>
-                    <p>The pending backlog (verified minus processed) rises when new e-verified returns are added faster than the department can process them. This typically happens in the weeks right after a filing deadline — millions of taxpayers verify their ITRs in a short window, overwhelming the processing queue temporarily. Over the following months, the department steadily clears the backlog.</p>
-                </div>
-            </div>
-        </section>
     </div>
 
-    <footer>
-        <p class="footer-creator">
-            <strong>Built by Kartikey</strong>
-            <a href="https://x.com/kartikey_19" target="_blank" rel="noopener" aria-label="Twitter">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-            </a>
-            <a href="https://www.linkedin.com/in/kartikeyrajvaidya/" target="_blank" rel="noopener" aria-label="LinkedIn">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-            </a>
-        </p>
-        <p class="footer-feedback">Open to feedback!</p>
-        <p class="footer-legal">© 2026 ITR Stats · <a href="/privacy-policy.html">Privacy</a> · <a href="/about.html">About</a> · <a href="https://eportal.incometax.gov.in" target="_blank" rel="noopener">Data Source</a>
-            <span class="info-icon">i<span class="info-tooltip">Unofficial dashboard · Not affiliated with Income Tax Department</span></span>
-        </p>
-    </footer>
-
-    <!-- Floating Share Button -->
-    <button class="share-fab" id="share-fab" onclick="openShareModal()" aria-label="Share statistics">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="18" cy="5" r="3"></circle>
-            <circle cx="6" cy="12" r="3"></circle>
-            <circle cx="18" cy="19" r="3"></circle>
-            <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
-            <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
-        </svg>
-    </button>
-
-    <!-- Share Modal -->
-    <div class="share-modal-overlay" id="share-modal-overlay" onclick="closeShareModalOnOverlay(event)">
-        <div class="share-modal">
-            <div class="share-modal-header">
-                <h3>Share Today's Stats</h3>
-                <button class="share-modal-close" onclick="closeShareModal()" aria-label="Close">&times;</button>
-            </div>
-            <div class="share-modal-body">
-                <div class="share-preview" id="share-preview">
-                    <span class="share-preview-loading">Generating...</span>
-                </div>
-                <div class="share-actions">
-                    <button class="share-action-btn primary" id="download-btn" onclick="downloadImage()" disabled>
-                        Download
-                    </button>
-                    <button class="share-action-btn secondary" id="copy-btn" onclick="copyToClipboard()" disabled>
-                        Copy
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Hidden Share Card Template (for capture) -->
-    <div id="share-card" class="share-card">
-        <div class="share-card-header">
-            <div class="share-card-title">ITR Portal Stats</div>
-            <div class="share-card-date" id="share-card-date"></div>
-        </div>
-        <div class="share-card-stats" id="share-card-stats"></div>
-        <div class="share-card-footer">itrstats.in</div>
-    </div>
-
-    <!-- Toast notification -->
-    <div class="share-toast" id="share-toast"></div>
 
     <script>
-        // Constants
         const CSV_URL = './data/daily.csv';
 
         const METRICS = [
-            { key: 'IndvRegUsers', deltaKey: 'delta_IndvRegUsers', label: 'Registered Users', icon: '👤', color: '#3182ce' },
-            { key: 'TotalAadharLinkedPAN', deltaKey: 'delta_TotalAadharLinkedPAN', label: 'Returns Filed', icon: '📄', color: '#805ad5' },
-            { key: 'eVerifiedReturns', deltaKey: 'delta_eVerifiedReturns', label: 'Returns Verified', icon: '✓', color: '#38a169' },
-            { key: 'TotalProcessedRefund', deltaKey: 'delta_TotalProcessedRefund', label: 'ITRs Processed', icon: '✅', color: '#dd6b20' },
+            { key: 'IndvRegUsers', deltaKey: 'delta_IndvRegUsers', label: 'Registered Users', icon: '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>', color: '#3182ce' },
+            { key: 'TotalAadharLinkedPAN', deltaKey: 'delta_TotalAadharLinkedPAN', label: 'Returns Filed', icon: '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>', color: '#805ad5' },
+            { key: 'eVerifiedReturns', deltaKey: 'delta_eVerifiedReturns', label: 'Returns Verified', icon: '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>', color: '#38a169' },
+            { key: 'TotalProcessedRefund', deltaKey: 'delta_TotalProcessedRefund', label: 'ITRs Processed', icon: '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>', color: '#dd6b20' },
             {
                 key: 'PendingProcessing',
                 label: 'Pending Processing',
-                icon: '⏳',
+                icon: '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>',
                 color: '#e53e3e',
                 computed: true,
                 invertDelta: true,
@@ -1262,35 +683,15 @@
         let allRows = [];
         let currentRange = 'all';
 
-        // Theme functions
-        function getThemePreference() {
-            const saved = localStorage.getItem('theme');
-            if (saved) return saved;
-            // Default to dark mode
-            return 'dark';
-        }
-
-        function setTheme(theme) {
-            document.documentElement.setAttribute('data-theme', theme);
-            localStorage.setItem('theme', theme);
-            document.getElementById('theme-icon').textContent = theme === 'dark' ? '☀️' : '🌙';
-            if (trendChart) {
-                updateChartTheme(theme);
-            }
-        }
-
-        function toggleTheme() {
-            const current = document.documentElement.getAttribute('data-theme');
-            document.documentElement.classList.add('theme-transitioning');
-            setTheme(current === 'dark' ? 'light' : 'dark');
-            setTimeout(() => document.documentElement.classList.remove('theme-transitioning'), 350);
-        }
+        // Theme
+        window.onThemeChange = function(theme) {
+            if (trendChart) updateChartTheme(theme);
+        };
 
         function updateChartTheme(theme) {
             const isDark = theme === 'dark';
-            const textColor = isDark ? '#cbd5e1' : '#4a5568';
-            const gridColor = isDark ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.05)';
-
+            const textColor = isDark ? '#94a3b8' : '#475569';
+            const gridColor = isDark ? 'rgba(255,255,255,0.06)' : 'rgba(0,0,0,0.05)';
             trendChart.options.scales.x.ticks.color = textColor;
             trendChart.options.scales.y.ticks.color = textColor;
             trendChart.options.scales.y.grid.color = gridColor;
@@ -1298,22 +699,14 @@
             trendChart.update('none');
         }
 
-        // Parse integer safely
-        function safeInt(value) {
-            return parseInt(value, 10) || 0;
-        }
+        // Utils
+        function safeInt(value) { return parseInt(value, 10) || 0; }
 
-        // Number formatting
-        function formatNumber(num) {
-            return num.toLocaleString('en-IN');
-        }
+        function formatNumber(num) { return num.toLocaleString('en-IN'); }
 
         function formatCrores(num) {
-            if (num >= 10000000) {
-                return (num / 10000000).toFixed(2) + ' Cr';
-            } else if (num >= 100000) {
-                return (num / 100000).toFixed(2) + ' L';
-            }
+            if (num >= 10000000) return (num / 10000000).toFixed(2) + ' Cr';
+            if (num >= 100000) return (num / 100000).toFixed(2) + ' L';
             return formatNumber(num);
         }
 
@@ -1328,100 +721,68 @@
                 return { text: '—', class: 'delta-neutral', arrow: '' };
             }
             const sign = delta >= 0 ? '+' : '';
-            const arrow = delta > 0 ? '▲' : (delta < 0 ? '▼' : '');
-            
-            // For inverted metrics (like PendingRefunds), negative is good, positive is bad
+            const arrow = delta > 0 ? '↗' : (delta < 0 ? '↘' : '');
             let cls;
-            if (delta === 0) {
-                cls = 'delta-neutral';
-            } else if (invertColors) {
-                cls = delta < 0 ? 'delta-positive' : 'delta-negative';
-            } else {
-                cls = delta > 0 ? 'delta-positive' : 'delta-negative';
-            }
-            
-            return { text: sign + formatNumber(delta), class: cls, arrow: arrow };
+            if (delta === 0) cls = 'delta-neutral';
+            else if (invertColors) cls = delta < 0 ? 'delta-positive' : 'delta-negative';
+            else cls = delta > 0 ? 'delta-positive' : 'delta-negative';
+            return { text: sign + formatNumber(delta), class: cls, arrow };
         }
 
-        // CSV parsing
         function parseCSV(text) {
             const lines = text.trim().split('\n');
             if (lines.length < 2) return [];
-
             const headers = lines[0].split(',');
             const rows = [];
-
             for (let i = 1; i < lines.length; i++) {
                 const values = lines[i].split(',');
                 const row = {};
-                headers.forEach((h, idx) => {
-                    row[h.trim()] = values[idx] ? values[idx].trim() : '';
-                });
+                headers.forEach((h, idx) => { row[h.trim()] = values[idx] ? values[idx].trim() : ''; });
                 rows.push(row);
             }
-
             return rows;
         }
 
-        // Sanitize string for HTML
-        function sanitize(str) {
-            return String(str).replace(/[<>&"']/g, '');
-        }
+        function sanitize(str) { return String(str).replace(/[<>&"']/g, ''); }
 
-        // Render cards
+        // Render cards (new layout: icon + label inline)
         function renderCards(latest) {
             const container = document.getElementById('cards-container');
-
             let html = '<div class="cards-grid">';
-
             METRICS.forEach(metric => {
                 const value = metric.computed ? metric.getValue(latest) : safeInt(latest[metric.key]);
                 const delta = metric.computed ? metric.getDelta(latest) : safeInt(latest[metric.deltaKey]);
                 const deltaInfo = formatDelta(delta, metric.invertDelta);
-
                 html += `
                     <div class="card">
-                        <div class="card-icon">${metric.icon}</div>
-                        <div class="card-content">
-                            <div class="card-title">${metric.label}</div>
-                            <div class="card-value">${formatCrores(value)}</div>
-                            <div class="card-delta ${deltaInfo.class}">
-                                ${deltaInfo.arrow} ${deltaInfo.text}
-                            </div>
-                        </div>
-                    </div>
-                `;
+                        <div class="card-label"><span class="card-icon">${metric.icon}</span> ${metric.label.toUpperCase()}</div>
+                        <div class="card-value">${formatCrores(value)}</div>
+                        <div class="card-delta ${deltaInfo.class}">${deltaInfo.arrow} ${deltaInfo.text}</div>
+                    </div>`;
             });
-
             html += '</div>';
             container.innerHTML = html;
         }
 
-        // Filter rows by range
         function filterRowsByRange(rows, range) {
-            if (range === 'all' || rows.length <= range) {
-                return rows;
-            }
+            if (range === 'all' || rows.length <= range) return rows;
             return rows.slice(-range);
         }
 
-        // Render chart
         function renderChart(rows, range = currentRange) {
             const filteredRows = filterRowsByRange(rows, range);
             const ctx = document.getElementById('trendChart').getContext('2d');
             const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-            const textColor = isDark ? '#cbd5e1' : '#4a5568';
-            const gridColor = isDark ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.05)';
+            const textColor = isDark ? '#94a3b8' : '#475569';
+            const gridColor = isDark ? 'rgba(255,255,255,0.06)' : 'rgba(0,0,0,0.05)';
 
-            // Prepare data
             const labels = filteredRows.map(row => {
                 const date = new Date(row.fetch_date);
                 return date.toLocaleDateString('en-IN', { day: 'numeric', month: 'short' });
             });
 
-            // Exclude computed metrics (like Pending Refunds) from chart - they don't fit with growth metrics
             const chartMetrics = METRICS.filter(m => !m.computed);
-
+            const defaultVisible = ['ITRs Processed'];
             const datasets = chartMetrics.map(metric => ({
                 label: metric.label,
                 data: filteredRows.map(row => safeInt(row[metric.deltaKey])),
@@ -1431,12 +792,11 @@
                 tension: 0.4,
                 pointRadius: 4,
                 pointHoverRadius: 6,
-                borderWidth: 2
+                borderWidth: 2,
+                hidden: !defaultVisible.includes(metric.label)
             }));
 
-            if (trendChart) {
-                trendChart.destroy();
-            }
+            if (trendChart) trendChart.destroy();
 
             trendChart = new Chart(ctx, {
                 type: 'line',
@@ -1444,12 +804,8 @@
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
-                    interaction: {
-                        intersect: false,
-                        mode: 'index'
-                    },
+                    interaction: { intersect: false, mode: 'index' },
                     onClick: (event, elements) => {
-                        // Hide tooltip when clicking on empty area (mobile fix)
                         if (elements.length === 0) {
                             trendChart.tooltip.setActiveElements([], { x: 0, y: 0 });
                             trendChart.update('none');
@@ -1458,19 +814,12 @@
                     plugins: {
                         legend: {
                             position: 'bottom',
-                            labels: {
-                                usePointStyle: true,
-                                padding: 20,
-                                color: textColor,
-                                font: { size: 12 }
-                            }
+                            labels: { usePointStyle: true, padding: 20, color: textColor, font: { size: 12 } }
                         },
                         tooltip: {
-                            backgroundColor: 'rgba(0, 0, 0, 0.8)',
-                            titleColor: '#fff',
-                            bodyColor: '#fff',
-                            padding: 12,
-                            displayColors: true,
+                            backgroundColor: 'rgba(0,0,0,0.8)',
+                            titleColor: '#fff', bodyColor: '#fff',
+                            padding: 12, displayColors: true,
                             callbacks: {
                                 label: (context) => {
                                     const val = context.raw;
@@ -1481,26 +830,19 @@
                         }
                     },
                     scales: {
-                        x: {
-                            grid: { display: false },
-                            ticks: { color: textColor }
-                        },
+                        x: { grid: { display: false }, ticks: { color: textColor } },
                         y: {
                             beginAtZero: true,
                             grid: { color: gridColor },
-                            ticks: {
-                                color: textColor,
-                                callback: (value) => formatCompact(value)
-                            }
+                            ticks: { color: textColor, callback: (value) => formatCompact(value) }
                         }
                     }
                 }
             });
         }
 
-        // Render dashboard
         function renderDashboard(rows) {
-            allRows = rows; // Store globally for range switching
+            allRows = rows;
             const metaEl = document.getElementById('meta');
 
             if (rows.length === 0) {
@@ -1510,290 +852,70 @@
             }
 
             const latest = rows[rows.length - 1];
-
-            // Update meta
             const fetchDate = sanitize(latest.fetch_date);
             const lastUpdated = sanitize(latest.last_updated || '—');
+
             metaEl.innerHTML = `
-                Fetched: <strong>${fetchDate}</strong> (IST) &bull;
-                Portal last updated: <strong>${lastUpdated}</strong>
-                <span class="info-icon">i<span class="info-tooltip">This tracker reflects officially published cumulative numbers from the Income Tax portal. Updates typically appear late at night and are captured the following morning.</span></span>
+                <div class="status-item"><span class="live-dot"></span> Live Data</div>
+                <div class="status-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg> Fetched: <strong>${fetchDate}</strong></div>
+                <div class="status-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> Portal last updated: <strong>${lastUpdated}</strong></div>
             `;
 
-            // Render cards and chart
             renderCards(latest);
             renderChart(rows, currentRange);
-
         }
 
-
-        // Load data
         async function loadData() {
             const metaEl = document.getElementById('meta');
             const cardsContainer = document.getElementById('cards-container');
-
             try {
                 const response = await fetch(CSV_URL);
-                if (!response.ok) {
-                    throw new Error(`HTTP ${response.status}`);
-                }
+                if (!response.ok) throw new Error(`HTTP ${response.status}`);
                 const text = await response.text();
                 const rows = parseCSV(text);
                 renderDashboard(rows);
             } catch (err) {
                 console.error('Failed to load data:', err);
                 cardsContainer.innerHTML = `
-                    <div style="text-align: center; padding: 2rem; background: var(--bg-secondary); border-radius: 16px;">
-                        <p style="color: var(--accent-red); margin-bottom: 1rem;">Live data temporarily unavailable. Please refresh.</p>
-                        <p style="color: var(--text-secondary); font-size: 0.9rem;">
-                            ITR Stats tracks daily Income Tax Return filing statistics from India's e-Filing Portal,
-                            including registered users, returns filed, e-verified returns, and processing status.
-                        </p>
-                    </div>
-                `;
-                metaEl.textContent = 'ITR Statistics Dashboard - Data loading...';
+                    <div style="text-align:center;padding:2rem;background:var(--bg-card);border-radius:16px;border:1px solid var(--border-color);">
+                        <p style="color:var(--accent-red);margin-bottom:1rem;">Live data temporarily unavailable. Please refresh.</p>
+                        <p style="color:var(--text-secondary);font-size:0.9rem;">ITR Stats tracks daily Income Tax Return filing statistics from India's e-Filing Portal.</p>
+                    </div>`;
+                metaEl.innerHTML = '<div class="status-item">Data loading...</div>';
             }
         }
 
-        // Hide chart tooltip when clicking outside the chart (mobile fix)
         document.addEventListener('click', (event) => {
-            if (trendChart && !event.target.closest('.chart-section') && !event.target.closest('.share-modal-overlay')) {
+            if (trendChart && !event.target.closest('.chart-section')) {
                 trendChart.tooltip.setActiveElements([], { x: 0, y: 0 });
                 trendChart.update('none');
             }
         });
 
-        // ==================== SHARE FUNCTIONALITY ====================
-        
-        let capturedImageBlob = null;
-        let capturedImageUrl = null;
+        // FAQ accordion
+        function toggleFaq(btn) {
+            const item = btn.parentElement;
+            const answer = item.querySelector('.faq-answer');
+            const isOpen = item.classList.contains('open');
 
-        // Get latest data for sharing
-        function getLatestData() {
-            if (allRows.length === 0) return null;
-            return allRows[allRows.length - 1];
-        }
-
-        // Format date from CSV (YYYY-MM-DD) to display format (D MMM YYYY)
-        function formatDateForShare(dateStr) {
-            const date = new Date(dateStr);
-            return date.toLocaleDateString('en-IN', { 
-                day: 'numeric', 
-                month: 'short', 
-                year: 'numeric' 
+            // Close all others
+            document.querySelectorAll('.faq-item.open').forEach(el => {
+                if (el !== item) {
+                    el.classList.remove('open');
+                    el.querySelector('.faq-answer').style.maxHeight = '0';
+                }
             });
-        }
 
-        // Get filename based on portal's last_updated date
-        function getFilename() {
-            const data = getLatestData();
-            const dateStr = data?.last_updated || new Date().toISOString().split('T')[0];
-            return `itrstats-${dateStr}.jpg`;
-        }
-
-        // Show toast notification
-        let toastTimeout = null;
-        function showToast(message) {
-            const toast = document.getElementById('share-toast');
-            toast.textContent = message;
-            toast.classList.add('active');
-            if (toastTimeout) clearTimeout(toastTimeout);
-            toastTimeout = setTimeout(() => toast.classList.remove('active'), 3000);
-        }
-
-        // Populate the share card with current data
-        function populateShareCard() {
-            const data = getLatestData();
-            if (!data) return false;
-
-            const pending = safeInt(data.eVerifiedReturns) - safeInt(data.TotalProcessedRefund);
-            const pendingDelta = safeInt(data.delta_eVerifiedReturns) - safeInt(data.delta_TotalProcessedRefund);
-            const isBacklogReduced = pendingDelta < 0;
-
-            document.getElementById('share-card-date').textContent = formatDateForShare(data.last_updated);
-            document.getElementById('share-card-stats').innerHTML = `
-                <div class="share-card-stat">
-                    <span class="share-card-stat-label">New Users Added</span>
-                    <span class="share-card-stat-value positive">+${formatNumber(safeInt(data.delta_IndvRegUsers))}</span>
-                </div>
-                <div class="share-card-stat">
-                    <span class="share-card-stat-label">Returns Verified</span>
-                    <span class="share-card-stat-value positive">+${formatNumber(safeInt(data.delta_eVerifiedReturns))}</span>
-                </div>
-                <div class="share-card-stat">
-                    <span class="share-card-stat-label">Returns Processed</span>
-                    <span class="share-card-stat-value positive">+${formatNumber(safeInt(data.delta_TotalProcessedRefund))}</span>
-                </div>
-                <div class="share-card-stat">
-                    <span class="share-card-stat-label">Pending Returns</span>
-                    <span class="share-card-stat-value">${formatCrores(pending)}</span>
-                </div>
-                <div class="share-card-stat">
-                    <span class="share-card-stat-label">${isBacklogReduced ? 'Backlog Reduced By' : 'Backlog Grew By'}</span>
-                    <span class="share-card-stat-value ${isBacklogReduced ? 'positive' : 'negative'}">${formatNumber(Math.abs(pendingDelta))}</span>
-                </div>
-            `;
-            return true;
-        }
-
-        let html2canvasLoaded = null;
-        function loadHtml2Canvas() {
-            if (html2canvasLoaded) return html2canvasLoaded;
-            html2canvasLoaded = new Promise((resolve, reject) => {
-                const script = document.createElement('script');
-                script.src = 'https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js';
-                script.onload = resolve;
-                script.onerror = reject;
-                document.head.appendChild(script);
-            });
-            return html2canvasLoaded;
-        }
-
-        async function generateShareImage() {
-            if (!populateShareCard()) {
-                throw new Error('No data available');
-            }
-
-            await loadHtml2Canvas();
-
-            const shareCard = document.getElementById('share-card');
-            
-            shareCard.style.cssText = 'left:0;top:0;position:fixed;opacity:0;pointer-events:none;';
-
-            await new Promise(resolve => setTimeout(resolve, 50));
-
-            try {
-                const canvas = await html2canvas(shareCard, {
-                    width: 540,
-                    height: 540,
-                    scale: 2,
-                    useCORS: true,
-                    logging: false,
-                    backgroundColor: null,
-                    onclone: (clonedDoc) => {
-                        const clonedCard = clonedDoc.getElementById('share-card');
-                        if (clonedCard) clonedCard.style.opacity = '1';
-                    }
-                });
-
-                return await new Promise(resolve => canvas.toBlob(resolve, 'image/jpeg', 0.92));
-            } finally {
-                // Always reset card position
-                shareCard.style.cssText = 'left:-9999px;top:-9999px;position:absolute;';
+            if (isOpen) {
+                item.classList.remove('open');
+                answer.style.maxHeight = '0';
+            } else {
+                item.classList.add('open');
+                answer.style.maxHeight = answer.scrollHeight + 'px';
             }
         }
 
-        // Capture for modal preview (desktop)
-        async function captureShareCard() {
-            const preview = document.getElementById('share-preview');
-            const downloadBtn = document.getElementById('download-btn');
-            const copyBtn = document.getElementById('copy-btn');
-
-            preview.innerHTML = '<span class="share-preview-loading">Generating...</span>';
-            downloadBtn.disabled = true;
-            copyBtn.disabled = true;
-
-            // Clean up previous capture
-            if (capturedImageUrl) {
-                URL.revokeObjectURL(capturedImageUrl);
-                capturedImageUrl = null;
-            }
-            capturedImageBlob = null;
-
-            try {
-                capturedImageBlob = await generateShareImage();
-                capturedImageUrl = URL.createObjectURL(capturedImageBlob);
-
-                preview.innerHTML = `<img src="${capturedImageUrl}" alt="Share card preview">`;
-                downloadBtn.disabled = false;
-                copyBtn.disabled = false;
-            } catch (error) {
-                console.error('Capture failed:', error);
-                preview.innerHTML = '<span class="share-preview-loading" style="color: var(--accent-red);">Failed to generate. Try again.</span>';
-            }
-        }
-
-        // Handle share button click
-        function openShareModal() {
-            if (allRows.length === 0) {
-                showToast('Data not loaded yet');
-                return;
-            }
-
-            document.getElementById('share-modal-overlay').classList.add('active');
-            document.body.style.overflow = 'hidden';
-            captureShareCard();
-        }
-
-        // Close share modal
-        function closeShareModal() {
-            document.getElementById('share-modal-overlay').classList.remove('active');
-            document.body.style.overflow = '';
-            if (capturedImageUrl) {
-                URL.revokeObjectURL(capturedImageUrl);
-                capturedImageUrl = null;
-            }
-            capturedImageBlob = null;
-        }
-
-        function closeShareModalOnOverlay(event) {
-            if (event.target === event.currentTarget) {
-                closeShareModal();
-            }
-        }
-
-        // Download image
-        function downloadImage() {
-            if (!capturedImageUrl) return;
-            
-            const link = document.createElement('a');
-            link.href = capturedImageUrl;
-            link.download = getFilename();
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-            
-            showToast('Image downloaded!');
-        }
-
-        // Copy image to clipboard (desktop only, needs PNG)
-        async function copyToClipboard() {
-            if (!capturedImageBlob) return;
-
-            try {
-                // Convert JPEG to PNG for clipboard API
-                const canvas = document.createElement('canvas');
-                const img = new Image();
-                img.src = capturedImageUrl;
-                await new Promise(resolve => { img.onload = resolve; });
-                canvas.width = img.width;
-                canvas.height = img.height;
-                canvas.getContext('2d').drawImage(img, 0, 0);
-                
-                const pngBlob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
-                await navigator.clipboard.write([
-                    new ClipboardItem({ 'image/png': pngBlob })
-                ]);
-                showToast('Copied to clipboard!');
-            } catch (error) {
-                console.error('Copy failed:', error);
-                showToast('Copy failed. Try downloading instead.');
-            }
-        }
-
-        // Close modal on Escape key
-        document.addEventListener('keydown', (event) => {
-            if (event.key === 'Escape') {
-                closeShareModal();
-            }
-        });
-
-        // ==================== END SHARE FUNCTIONALITY ====================
-
-        // Initialize theme immediately (no dependencies)
-        setTheme(getThemePreference());
-
-        // Load data after Chart.js is ready (deferred script)
+        // Initialize
         if (typeof Chart !== 'undefined') {
             loadData();
         } else {
@@ -1801,12 +923,8 @@
         }
     </script>
 
-    <!-- Google AdSense (loaded after content) -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2843260079810330"
-        crossorigin="anonymous"></script>
-    <!-- GoatCounter Analytics (privacy-friendly, no cookie consent needed) -->
-    <script data-goatcounter="https://itrstats.goatcounter.com/count"
-            async src="https://gc.zgo.at/count.js"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2843260079810330" crossorigin="anonymous"></script>
+    <script data-goatcounter="https://itrstats.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
     <script defer src="/scripts/subscribe-widget.js"></script>
 </body>
 </html>

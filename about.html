@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-F4VVXZQZGH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-F4VVXZQZGH');
+</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -27,7 +35,7 @@
     <meta name="twitter:description" content="A free, independent dashboard tracking daily ITR filing statistics from India's official e-Filing portal.">
     <meta name="twitter:image" content="https://itrstats.in/og-image.png">
 
-    <link rel="icon" type="image/png" href="./favicon.png">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2843260079810330"
@@ -56,6 +64,7 @@
     }
     </script>
 
+    <link rel="stylesheet" href="/styles/layout.css">
     <style>
         :root {
             --bg-primary: #f8fafc;
@@ -88,127 +97,38 @@
             background: var(--bg-primary);
             color: var(--text-primary);
             min-height: 100vh;
-            padding: 1rem;
+            
             line-height: 1.8;
         }
 
-        .container { max-width: 1000px; margin: 0 auto; }
-
-        .header {
+        .page-title {
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            padding: 1rem 1.5rem;
-            background: var(--bg-secondary);
-            border-radius: 16px;
+            align-items: flex-start;
+            gap: 1rem;
             margin-bottom: 1.5rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            line-height: 1.6;
         }
-
-        .header-left {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        .header-logo-link { display: flex; }
-
-        .header-logo {
-            width: 46px;
-            height: 46px;
-            object-fit: cover;
-            border-radius: 50%;
-            flex-shrink: 0;
-        }
-
-        .header-left .header-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            margin: 0;
-        }
-
-        .header-left p {
-            font-size: 0.875rem;
-            color: var(--text-muted);
-            margin-top: 0.25rem;
+        .page-title h1 {
+            font-size: 1.75rem;
+            font-weight: 800;
             margin-bottom: 0;
         }
-
-        .header-right {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .header-link {
-            color: var(--text-muted);
-            text-decoration: none;
+        .page-title .subtitle {
             font-size: 0.9rem;
-            font-weight: 500;
-            padding: 0.5rem 0.75rem;
-            border-radius: 8px;
-            transition: color 0.2s ease, background 0.2s ease;
+            color: var(--text-secondary);
+            margin-top: 0.35rem;
+            margin-bottom: 0;
+            line-height: 1.5;
         }
-
-        .header-link:hover { color: var(--accent-blue); background: var(--bg-accent); }
-        .header-link.active { color: var(--accent-blue); }
-
-        .new-badge {
-            display: inline-block;
-            margin-left: 0.35rem;
-            padding: 0.1rem 0.35rem;
-            border-radius: 999px;
-            background: #ef4444;
-            color: #ffffff;
-            font-size: 0.62rem;
-            font-weight: 700;
-            line-height: 1.2;
-            vertical-align: middle;
-            animation: blinkTag 1s steps(2, start) infinite;
-        }
-
-        @keyframes blinkTag { 50% { opacity: 0.2; } }
-
-        .theme-toggle {
-            background: var(--bg-accent);
-            border: none;
-            border-radius: 12px;
-            width: 46px;
-            height: 46px;
-            cursor: pointer;
-            font-size: 1.2rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: transform 0.2s ease;
-        }
-
-        .theme-toggle:hover { transform: scale(1.1); }
-
-        article {
+article {
             background: var(--bg-secondary);
             border-radius: 16px;
             padding: 2rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.06);
         }
 
-        h1 {
-            font-size: 2.25rem;
-            line-height: 1.3;
-            margin-bottom: 1rem;
-            color: var(--text-primary);
-        }
-
-        .meta {
-            display: flex;
-            gap: 1rem;
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            margin-bottom: 2rem;
-            padding-bottom: 2rem;
-            border-bottom: 1px solid var(--border-color);
+        [data-theme="dark"] article {
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2);
         }
 
         h2 {
@@ -404,63 +324,26 @@
         .footer-legal a:hover { color: var(--accent-blue); }
 
         @media (max-width: 768px) {
-            body { padding: 0.75rem; }
-
-            .header {
-                flex-direction: column;
-                gap: 0.75rem;
-                text-align: center;
-            }
-
-            .header-left {
-                flex-direction: column;
-                align-items: center;
-                width: 100%;
-            }
-
-            .header-right {
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 0.5rem;
-            }
-
-            .header-link { font-size: 0.8rem; padding: 0.4rem 0.6rem; }
-            h1 { font-size: 1.75rem; }
-
+            .page-title h1 { font-size: 1.5rem; }
+            h2 { font-size: 1.25rem; }
+            article { padding: 1.5rem; }
             .stats-row { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header class="header">
-            <div class="header-left">
-                <a href="/" class="header-logo-link"><img src="/logo.png" alt="ITR Stats" class="header-logo"></a>
+    <script src="/scripts/sidebar.js"></script>
+    <div class="main-content">
+        <div class="main-inner">
+            <div class="page-title">
                 <div>
-                    <div class="header-title">About</div>
-                    <p>ITR Stats · Independent Dashboard</p>
+                    <h1>About ITR Stats</h1>
+                    <p class="subtitle">Free, open-source, and independent — India's daily income tax dashboard</p>
                 </div>
-            </div>
-            <div class="header-right">
-                <a href="./" class="header-link">Dashboard</a>
-                <a href="./insights/" class="header-link">Insights <span class="new-badge">NEW</span></a>
-                <a href="./blog/" class="header-link">Blog</a>
-                <a href="/calculator/" class="header-link">Calculator</a>
-                <a href="/about.html" class="header-link active">About</a>
-                <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">
-                    <span id="theme-icon"></span>
-                </button>
-            </div>
-        </header>
+</div>
 
-        <main>
+<main>
         <article>
-            <h1>About ITR Stats</h1>
-
-            <div class="meta">
-                <span>Free · Open Data · Independent</span>
-            </div>
-
             <p>ITR Stats is a free, independent dashboard that tracks <strong>daily Income Tax Return filing statistics</strong> directly from India's official e-Filing portal. We make it easy to follow the numbers that matter — how many returns are being processed, how fast the refund backlog is clearing, and what trends are emerging across filings.</p>
 
             <p>No logins. No fees. No affiliation with the government. Just clean data, updated every day.</p>
@@ -591,31 +474,10 @@
             <span class="info-icon">i<span class="info-tooltip">Unofficial dashboard · Not affiliated with Income Tax Department</span></span>
         </p>
     </footer>
-
-    <script>
-        function getThemePreference() {
-            const saved = localStorage.getItem('theme');
-            if (saved) return saved;
-            return 'dark';
-        }
-
-        function setTheme(theme) {
-            document.documentElement.setAttribute('data-theme', theme);
-            localStorage.setItem('theme', theme);
-            document.getElementById('theme-icon').textContent = theme === 'dark' ? '☀️' : '🌙';
-        }
-
-        function toggleTheme() {
-            const current = document.documentElement.getAttribute('data-theme');
-            setTheme(current === 'dark' ? 'light' : 'dark');
-        }
-
-        setTheme(getThemePreference());
-    </script>
-
-    <!-- GoatCounter Analytics -->
+<!-- GoatCounter Analytics -->
     <script data-goatcounter="https://itrstats.goatcounter.com/count"
             async src="https://gc.zgo.at/count.js"></script>
     <script defer src="/scripts/subscribe-widget.js"></script>
+</div>
 </body>
 </html>

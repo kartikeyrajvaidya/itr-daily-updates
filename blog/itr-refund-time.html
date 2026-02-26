@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-F4VVXZQZGH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-F4VVXZQZGH');
+</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -30,7 +38,7 @@
     <meta name="twitter:description" content="We analyze real-time data from the Income Tax portal to help you understand ITR processing times.">
     <meta name="twitter:image" content="https://itrstats.in/og-image.png">
 
-    <link rel="icon" type="image/png" href="../favicon.png">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2843260079810330"
@@ -121,6 +129,7 @@
     }
     </script>
 
+    <link rel="stylesheet" href="/styles/layout.css">
     <style>
         /* Light mode (default) */
         :root {
@@ -161,7 +170,7 @@
             background: var(--bg-primary);
             color: var(--text-primary);
             min-height: 100vh;
-            padding: 1rem;
+            
             line-height: 1.8;
         }
 
@@ -169,114 +178,7 @@
             max-width: 1000px;
             margin: 0 auto;
         }
-
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 1.5rem;
-            background: var(--bg-secondary);
-            border-radius: 16px;
-            margin-bottom: 1.5rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            line-height: 1.6;
-        }
-
-        
-        .header-left {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        .header-logo-link { display: flex; }
-
-        .header-logo {
-            width: 46px;
-            height: 46px;
-            object-fit: cover;
-            border-radius: 50%;
-            flex-shrink: 0;
-        }
-
-        .header-left .header-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            margin: 0;
-        }
-
-        .header-left p {
-            font-size: 0.875rem;
-            color: var(--text-muted);
-            margin-top: 0.25rem;
-            margin-bottom: 0;
-        }
-
-        .header-right {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .header-link {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 500;
-            padding: 0.5rem 0.75rem;
-            border-radius: 8px;
-            transition: color 0.2s ease, background 0.2s ease;
-        }
-
-        .header-link:hover {
-            color: var(--accent-blue);
-            background: var(--bg-accent);
-        }
-
-        .header-link.active {
-            color: var(--accent-blue);
-        }
-
-        .new-badge {
-            display: inline-block;
-            margin-left: 0.35rem;
-            padding: 0.1rem 0.35rem;
-            border-radius: 999px;
-            background: #ef4444;
-            color: #ffffff;
-            font-size: 0.62rem;
-            font-weight: 700;
-            line-height: 1.2;
-            vertical-align: middle;
-            animation: blinkTag 1s steps(2, start) infinite;
-        }
-
-        @keyframes blinkTag {
-            50% {
-                opacity: 0.2;
-            }
-        }
-
-        .theme-toggle {
-            background: var(--bg-accent);
-            border: none;
-            border-radius: 12px;
-            width: 46px;
-            height: 46px;
-            cursor: pointer;
-            font-size: 1.2rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: transform 0.2s ease;
-        }
-
-        .theme-toggle:hover {
-            transform: scale(1.1);
-        }
-
-        .content {
+.content {
             padding: 0;
         }
 
@@ -521,30 +423,7 @@
 
         @media (max-width: 768px) {
             body {
-                padding: 0.75rem;
-            }
-
-            .header {
-                flex-direction: column;
-                gap: 0.75rem;
-                text-align: center;
-            }
-
-            .header-left {
-                flex-direction: column;
-                align-items: center;
-                width: 100%;
-            }
-
-            .header-right {
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 0.5rem;
-            }
-
-            .header-link {
-                font-size: 0.8rem;
-                padding: 0.4rem 0.6rem;
+                
             }
 
             h1 {
@@ -588,35 +467,17 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
 
-        .related-card .card-icon { font-size: 1.5rem; }
+        .related-card .card-icon { display: flex; color: var(--accent-blue); }
         .related-card .card-title { font-weight: 600; color: var(--text-primary); font-size: 0.95rem; }
         .related-card .card-desc { font-size: 0.85rem; color: var(--text-muted); line-height: 1.4; }
         .related-card .card-tag { font-size: 0.7rem; color: var(--accent-blue); font-weight: 600; text-transform: uppercase; }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header class="header">
-            <div class="header-left">
-                <a href="/" class="header-logo-link"><img src="/logo.png" alt="ITR Stats" class="header-logo"></a>
-                <div>
-                    <div class="header-title">ITR Stats</div>
-                    <p>Blog Article</p>
-                </div>
-            </div>
-            <div class="header-right">
-                <a href="../" class="header-link">Dashboard</a>
-                <a href="../insights/" class="header-link">Insights <span class="new-badge">NEW</span></a>
-                <a href="./" class="header-link active">Blog</a>
-                <a href="/calculator/" class="header-link">Calculator</a>
-                <a href="/about.html" class="header-link">About</a>
-                <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">
-                    <span id="theme-icon"></span>
-                </button>
-            </div>
-        </header>
-
-        <main class="content">
+    <script src="/scripts/sidebar.js"></script>
+    <div class="main-content">
+        <div class="main-inner">
+<main class="content">
 
         <article>
             <h1>When Will You Get Your ITR Refund? What Data Tells Us</h1>
@@ -762,25 +623,25 @@
                 <h2>Explore More</h2>
                 <div class="related-grid">
                     <a href="/" class="related-card">
-                        <span class="card-icon">📈</span>
+                        <span class="card-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></span>
                         <span class="card-title">ITR Stats Dashboard</span>
                         <span class="card-desc">Live filing and refund processing stats</span>
                         <span class="card-tag">Dashboard</span>
                     </a>
                     <a href="/blog/weekly-update.html" class="related-card">
-                        <span class="card-icon">📰</span>
+                        <span class="card-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2zm0 0a2 2 0 0 1-2-2v-9h4"/><line x1="10" y1="6" x2="18" y2="6"/><line x1="10" y1="10" x2="18" y2="10"/><line x1="10" y1="14" x2="14" y2="14"/></svg></span>
                         <span class="card-title">Weekly Update</span>
                         <span class="card-desc">Latest filing statistics summary</span>
                         <span class="card-tag">Blog</span>
                     </a>
                     <a href="/blog/last-minute-tax-saving/" class="related-card">
-                        <span class="card-icon">💰</span>
+                        <span class="card-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span>
                         <span class="card-title">Last-Minute Tax Saving</span>
                         <span class="card-desc">Save tax before March 31 deadline</span>
                         <span class="card-tag">Blog</span>
                     </a>
                     <a href="/calculator/income-tax/" class="related-card">
-                        <span class="card-icon">🧮</span>
+                        <span class="card-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="12" y2="14"/></svg></span>
                         <span class="card-title">Income Tax Calculator</span>
                         <span class="card-desc">Compare old vs new tax regime</span>
                         <span class="card-tag">Calculator</span>
@@ -807,31 +668,10 @@
             <span class="info-icon">i<span class="info-tooltip">Unofficial dashboard · Not affiliated with Income Tax Department</span></span>
         </p>
     </footer>
-
-    <script>
-        function getThemePreference() {
-            const saved = localStorage.getItem('theme');
-            if (saved) return saved;
-            return 'dark';
-        }
-
-        function setTheme(theme) {
-            document.documentElement.setAttribute('data-theme', theme);
-            localStorage.setItem('theme', theme);
-            document.getElementById('theme-icon').textContent = theme === 'dark' ? '☀️' : '🌙';
-        }
-
-        function toggleTheme() {
-            const current = document.documentElement.getAttribute('data-theme');
-            setTheme(current === 'dark' ? 'light' : 'dark');
-        }
-
-        setTheme(getThemePreference());
-    </script>
-
-    <!-- GoatCounter Analytics -->
+<!-- GoatCounter Analytics -->
     <script data-goatcounter="https://itrstats.goatcounter.com/count"
             async src="https://gc.zgo.at/count.js"></script>
     <script defer src="/scripts/subscribe-widget.js"></script>
+</div>
 </body>
 </html>

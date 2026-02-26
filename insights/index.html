@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-F4VVXZQZGH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-F4VVXZQZGH');
+</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -29,7 +37,7 @@
     <meta name="twitter:description" content="Deep insights into India's income tax filing statistics.">
     <meta name="twitter:image" content="https://itrstats.in/og-image.png">
 
-    <link rel="icon" type="image/png" href="../favicon.png">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 
     <!-- Structured Data -->
     <script type="application/ld+json">
@@ -57,6 +65,7 @@
     <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 
+    <link rel="stylesheet" href="/styles/layout.css">
     <style>
         /* Light mode (default) */
         :root {
@@ -103,7 +112,7 @@
             background: var(--bg-primary);
             color: var(--text-primary);
             min-height: 100vh;
-            padding: 1rem;
+            
             line-height: 1.6;
         }
 
@@ -112,108 +121,21 @@
             margin: 0 auto;
         }
 
-        /* Header */
-        .header {
+        /* Page Title */
+        .page-title {
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            padding: 1rem 1.5rem;
-            background: var(--bg-secondary);
-            border-radius: 16px;
-            margin-bottom: 1rem;
-            box-shadow: var(--card-shadow);
-        }
-
-        
-        .header-left {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        .header-logo-link { display: flex; }
-
-        .header-logo {
-            width: 46px;
-            height: 46px;
-            object-fit: cover;
-            border-radius: 50%;
-            flex-shrink: 0;
-        }
-
-        .header-left h1 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--text-primary);
-        }
-
-        .header-left p {
-            font-size: 0.875rem;
-            color: var(--text-muted);
-            margin-top: 0.25rem;
-        }
-
-        .header-right {
-            display: flex;
-            align-items: center;
+            align-items: flex-start;
             gap: 1rem;
+            margin-bottom: 1.5rem;
         }
-
-        .header-link {
+        .page-title h1 { font-size: 1.75rem; font-weight: 800; }
+        .page-title .subtitle { font-size: 0.9rem; color: var(--text-secondary); margin-top: 0.35rem; line-height: 1.5; }
+/* Module Subtitle */
+        .module-subtitle {
+            font-size: 0.88rem;
             color: var(--text-muted);
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 500;
-            padding: 0.5rem 0.75rem;
-            border-radius: 8px;
-            transition: color 0.2s ease, background 0.2s ease;
-        }
-
-        .header-link:hover {
-            color: var(--accent-blue);
-            background: var(--bg-accent);
-        }
-
-        .header-link.active {
-            color: var(--accent-blue);
-        }
-
-        .new-badge {
-            display: inline-block;
-            margin-left: 0.35rem;
-            padding: 0.1rem 0.35rem;
-            border-radius: 999px;
-            background: #ef4444;
-            color: #ffffff;
-            font-size: 0.62rem;
-            font-weight: 700;
-            line-height: 1.2;
-            vertical-align: middle;
-            animation: blinkTag 1s steps(2, start) infinite;
-        }
-
-        @keyframes blinkTag {
-            50% {
-                opacity: 0.2;
-            }
-        }
-
-        .theme-toggle {
-            background: var(--bg-accent);
-            border: none;
-            border-radius: 12px;
-            width: 46px;
-            height: 46px;
-            cursor: pointer;
-            font-size: 1.2rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: transform 0.2s ease;
-        }
-
-        .theme-toggle:hover {
-            transform: scale(1.1);
+            margin-top: 0.15rem;
         }
 
         /* Controls Bar */
@@ -340,25 +262,13 @@
         }
 
         .module-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1rem;
+            margin-bottom: 1.25rem;
         }
 
         .module-title {
-            font-size: 1.2rem;
+            font-size: 1.25rem;
             font-weight: 700;
             color: var(--text-primary);
-        }
-
-        .module-badge {
-            background: var(--bg-accent);
-            color: var(--text-muted);
-            padding: 0.25rem 0.75rem;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 600;
         }
 
         /* KPI Cards Grid */
@@ -606,32 +516,7 @@
 
         /* Responsive */
         @media (max-width: 768px) {
-            body {
-                padding: 0.75rem;
-            }
-
-            .header {
-                flex-direction: column;
-                gap: 0.75rem;
-                text-align: center;
-            }
-
-            .header-left {
-                flex-direction: column;
-                align-items: center;
-                width: 100%;
-            }
-
-            .header-right {
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 0.5rem;
-            }
-
-            .header-link {
-                font-size: 0.8rem;
-                padding: 0.4rem 0.6rem;
-            }
+            .page-title h1 { font-size: 1.5rem; }
 
             .controls-bar {
                 flex-direction: column;
@@ -653,28 +538,17 @@
     </style>
 </head>
 <body>
-    <div class="container">
-        <header class="header">
-            <div class="header-left">
-                <a href="/" class="header-logo-link"><img src="/logo.png" alt="ITR Stats" class="header-logo"></a>
+    <script src="/scripts/sidebar.js"></script>
+    <div class="main-content">
+        <div class="main-inner">
+            <div class="page-title">
                 <div>
-                    <h1>ITR Insights</h1>
-                    <p>Deep Dive Analytics</p>
+                    <h1>Deep Insights</h1>
+                    <p class="subtitle">Advanced analytics on ITR filing patterns, demographics, and trends</p>
                 </div>
-            </div>
-            <div class="header-right">
-                <a href="../" class="header-link">Dashboard</a>
-                <a href="./" class="header-link active">Insights <span class="new-badge">NEW</span></a>
-                <a href="../blog/" class="header-link">Blog</a>
-                <a href="../calculator/" class="header-link">Calculator</a>
-                <a href="/about.html" class="header-link">About</a>
-                <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">
-                    <span id="theme-icon"></span>
-                </button>
-            </div>
-        </header>
+</div>
 
-        <!-- Controls -->
+<!-- Controls -->
         <div class="controls-bar">
             <div class="year-selector">
                 <span class="year-selector-label">Select FY (max 3):</span>
@@ -715,25 +589,7 @@
         Chart.defaults.interaction.intersect = false;
 
         // ==================== THEME ====================
-        function getThemePreference() {
-            const saved = localStorage.getItem('theme');
-            return saved || 'dark';
-        }
-
-        function setTheme(theme) {
-            document.documentElement.setAttribute('data-theme', theme);
-            localStorage.setItem('theme', theme);
-            document.getElementById('theme-icon').textContent = theme === 'dark' ? '☀️' : '🌙';
-        }
-
-        function toggleTheme() {
-            const current = document.documentElement.getAttribute('data-theme');
-            setTheme(current === 'dark' ? 'light' : 'dark');
-            // Redraw charts with new theme colors
-            loadData();
-        }
-
-        // ==================== CONSTANTS ====================
+// ==================== CONSTANTS ====================
         // Calculate current FY dynamically (FY starts in April)
         // e.g., Jan 2026 = FY 2025-26 (year=2026), Apr 2026 = FY 2026-27 (year=2027)
         function getCurrentFY() {
@@ -952,8 +808,10 @@
             return `
                 <div class="module" id="refund-pulse">
                     <div class="module-header">
-                        <h2 class="module-title">Refund Pulse</h2>
-                        <span class="module-badge">FY ${fyLabel}</span>
+                        <div>
+                            <h2 class="module-title">Refund Pulse</h2>
+                            <p class="module-subtitle">Track refund processing metrics across fiscal years</p>
+                        </div>
                     </div>
                     <div class="kpi-grid">
                         ${h.refundAmount ? `
@@ -1045,8 +903,10 @@
             return `
                 <div class="module" id="filing-by-form">
                     <div class="module-header">
-                        <h2 class="module-title">Filing by Form Type</h2>
-                        <span class="module-badge">FY ${fyLabel}</span>
+                        <div>
+                            <h2 class="module-title">Filing by Form Type</h2>
+                            <p class="module-subtitle">Which ITR forms do taxpayers use?</p>
+                        </div>
                     </div>
                     <div class="kpi-grid">
                         <div class="kpi-card">
@@ -1137,8 +997,10 @@
             return `
                 <div class="module" id="income-distribution">
                     <div class="module-header">
-                        <h2 class="module-title">Income Distribution</h2>
-                        <span class="module-badge">FY ${fyLabel}</span>
+                        <div>
+                            <h2 class="module-title">Income Distribution</h2>
+                            <p class="module-subtitle">Where do taxpayers fall on the income spectrum?</p>
+                        </div>
                     </div>
                     <div class="kpi-grid">
                         <div class="kpi-card">
@@ -1224,12 +1086,16 @@
             return `
                 <div class="module" id="state-concentration">
                     <div class="module-header">
-                        <h2 class="module-title">State Concentration</h2>
-                        <div class="top-n-controls">
-                            <button class="top-n-btn ${currentTopN === 10 ? 'active' : ''}" onclick="updateTopN(10)">Top 10</button>
-                            <button class="top-n-btn ${currentTopN === 15 ? 'active' : ''}" onclick="updateTopN(15)">Top 15</button>
-                            <button class="top-n-btn ${currentTopN === 20 ? 'active' : ''}" onclick="updateTopN(20)">Top 20</button>
+                        <div>
+                            <h2 class="module-title">State Concentration</h2>
+                            <p class="module-subtitle">Geographic distribution of ITR filings</p>
                         </div>
+                    </div>
+                    <div class="top-n-controls" style="margin-bottom:1rem;">
+                        <button class="top-n-btn ${currentTopN === 5 ? 'active' : ''}" onclick="updateTopN(5)">Top 5</button>
+                        <button class="top-n-btn ${currentTopN === 10 ? 'active' : ''}" onclick="updateTopN(10)">Top 10</button>
+                        <button class="top-n-btn ${currentTopN === 15 ? 'active' : ''}" onclick="updateTopN(15)">Top 15</button>
+                        <button class="top-n-btn ${currentTopN === 20 ? 'active' : ''}" onclick="updateTopN(20)">Top 20</button>
                     </div>
                     <div class="kpi-grid">
                         <div class="kpi-card">
@@ -1609,8 +1475,10 @@
             return `
                 <div class="module" id="refund-pulse">
                     <div class="module-header">
-                        <h2 class="module-title">Refund Pulse</h2>
-                        <span class="module-badge">YoY Comparison</span>
+                        <div>
+                            <h2 class="module-title">Refund Pulse</h2>
+                            <p class="module-subtitle">Track refund processing metrics across fiscal years</p>
+                        </div>
                     </div>
                     ${yearsWithRefund.length > 0 ? `
                     <div class="kpi-grid" style="margin-bottom: 1.5rem;">
@@ -1669,8 +1537,10 @@
             return `
                 <div class="module" id="filing-by-form">
                     <div class="module-header">
-                        <h2 class="module-title">Filing by Form Type</h2>
-                        <span class="module-badge">YoY Comparison</span>
+                        <div>
+                            <h2 class="module-title">Filing by Form Type</h2>
+                            <p class="module-subtitle">Which ITR forms do taxpayers use?</p>
+                        </div>
                     </div>
                     <div class="chart-container">
                         <canvas id="filingByFormChart"></canvas>
@@ -1730,8 +1600,10 @@
             return `
                 <div class="module" id="income-distribution">
                     <div class="module-header">
-                        <h2 class="module-title">Income Distribution</h2>
-                        <span class="module-badge">YoY Comparison</span>
+                        <div>
+                            <h2 class="module-title">Income Distribution</h2>
+                            <p class="module-subtitle">Where do taxpayers fall on the income spectrum?</p>
+                        </div>
                     </div>
                     <div class="chart-container">
                         <canvas id="incomeDistributionChart"></canvas>
@@ -1787,8 +1659,10 @@
             return `
                 <div class="module" id="state-concentration">
                     <div class="module-header">
-                        <h2 class="module-title">State Concentration</h2>
-                        <span class="module-badge">YoY Comparison</span>
+                        <div>
+                            <h2 class="module-title">State Concentration</h2>
+                            <p class="module-subtitle">Geographic distribution of ITR filings</p>
+                        </div>
                     </div>
                     <div class="kpi-grid">
                         <div class="kpi-card">
@@ -1862,13 +1736,14 @@
         }
 
         // ==================== INIT ====================
-        setTheme(getThemePreference());
-        renderYearChips();
+renderYearChips();
         loadData();
     </script>
 
     <!-- GoatCounter Analytics -->
     <script data-goatcounter="https://itrstats.goatcounter.com/count"
             async src="https://gc.zgo.at/count.js"></script>
+    <script defer src="/scripts/subscribe-widget.js"></script>
+</div>
 </body>
 </html>

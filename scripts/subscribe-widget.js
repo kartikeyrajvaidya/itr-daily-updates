@@ -220,10 +220,6 @@
       font-size: 0.72rem;
       color: var(--text-muted, #718096);
     }
-    #sub-powered a {
-      color: var(--text-muted, #718096);
-      text-decoration: underline;
-    }
   `;
 
   // ── HTML ──────────────────────────────────────────────────────────────────
@@ -287,9 +283,11 @@
     styleEl.textContent = css;
     document.head.appendChild(styleEl);
 
-    var wrapper = document.createElement('div');
-    wrapper.innerHTML = fabHTML + modalHTML;
-    document.body.appendChild(wrapper);
+    var temp = document.createElement('div');
+    temp.innerHTML = fabHTML + modalHTML;
+    while (temp.firstChild) {
+      document.body.appendChild(temp.firstChild);
+    }
 
     var fab        = document.getElementById('sub-fab');
     var overlay    = document.getElementById('sub-modal-overlay');

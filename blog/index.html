@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-F4VVXZQZGH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-F4VVXZQZGH');
+</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -29,7 +37,7 @@
     <meta name="twitter:description" content="Stay informed with the latest insights on ITR processing and refund timelines.">
     <meta name="twitter:image" content="https://itrstats.in/og-image.png">
 
-    <link rel="icon" type="image/png" href="../favicon.png">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 
     <!-- Structured Data -->
     <script type="application/ld+json">
@@ -58,6 +66,7 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2843260079810330"
         crossorigin="anonymous"></script>
 
+    <link rel="stylesheet" href="/styles/layout.css">
     <style>
         :root {
             --bg-primary: #f8fafc;
@@ -100,34 +109,14 @@
             background: var(--bg-primary);
             color: var(--text-primary);
             min-height: 100vh;
-            padding: 1rem;
+            
             line-height: 1.7;
         }
 
         .container { max-width: 1080px; margin: 0 auto; }
 
         /* ── Header ── */
-        .header {
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 1rem 1.5rem; background: var(--bg-secondary);
-            border-radius: 16px; margin-bottom: 1.5rem;
-            box-shadow: var(--card-shadow); line-height: 1.6;
-        }
-        .header-left { display: flex; align-items: center; gap: 0.75rem; }
-        .header-logo-link { display: flex; }
-        .header-logo { width: 46px; height: 46px; object-fit: cover; border-radius: 50%; flex-shrink: 0; }
-        .header-left h1 { font-size: 1.5rem; font-weight: 700; color: var(--text-primary); margin: 0; }
-        .header-left p { font-size: 0.875rem; color: var(--text-muted); margin-top: 0.25rem; margin-bottom: 0; }
-        .header-right { display: flex; align-items: center; gap: 1rem; }
-        .header-link { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; padding: 0.5rem 0.75rem; border-radius: 8px; transition: color 0.2s ease, background 0.2s ease; }
-        .header-link:hover { color: var(--accent-blue); background: var(--bg-accent); }
-        .header-link.active { color: var(--accent-blue); }
-        .new-badge { display: inline-block; margin-left: 0.35rem; padding: 0.1rem 0.35rem; border-radius: 999px; background: #ef4444; color: #fff; font-size: 0.62rem; font-weight: 700; line-height: 1.2; vertical-align: middle; animation: blinkTag 1s steps(2,start) infinite; }
-        @keyframes blinkTag { 50% { opacity: 0.2; } }
-        .theme-toggle { background: var(--bg-accent); border: none; border-radius: 12px; width: 46px; height: 46px; cursor: pointer; font-size: 1.2rem; display: flex; align-items: center; justify-content: center; transition: transform 0.2s ease; }
-        .theme-toggle:hover { transform: scale(1.1); }
-
-        /* ── Hero / Stats bar ── */
+/* ── Hero / Stats bar ── */
         .stats-bar {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -181,13 +170,13 @@
         }
 
         .filter-btn.active {
-            background: var(--accent-blue);
+            background: var(--accent-green);
             color: #fff;
-            box-shadow: 0 2px 8px rgba(59,130,246,0.3);
+            box-shadow: 0 2px 8px rgba(34,197,94,0.3);
         }
 
         [data-theme="dark"] .filter-btn.active {
-            box-shadow: 0 2px 8px rgba(96,165,250,0.25);
+            box-shadow: 0 2px 8px rgba(74,222,128,0.25);
         }
 
         .filter-btn .count {
@@ -216,7 +205,6 @@
             gap: 1rem;
         }
 
-        /* Featured card spans full width */
         .blog-card.featured {
             grid-column: 1 / -1;
         }
@@ -265,32 +253,41 @@
             margin-bottom: 0.75rem;
         }
 
-        .category-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            flex-shrink: 0;
-        }
-        .category-dot.comparison { background: var(--accent-purple); }
-        .category-dot.data { background: var(--accent-blue); }
-        .category-dot.guide { background: var(--accent-yellow); }
-        .category-dot.update { background: var(--accent-green); }
-
-        .category-label {
-            font-size: 0.68rem;
+        .category-badge {
+            display: inline-flex;
+            align-items: center;
+            font-size: 0.65rem;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            padding: 0.3rem 0.6rem;
+            border-radius: 6px;
         }
-        .category-label.comparison { color: var(--accent-purple); }
-        .category-label.data { color: var(--accent-blue); }
-        .category-label.guide { color: var(--accent-yellow); }
-        .category-label.update { color: var(--accent-green); }
+        .category-badge.comparison { background: rgba(139,92,246,0.15); color: var(--accent-purple); }
+        .category-badge.data { background: rgba(59,130,246,0.15); color: var(--accent-blue); }
+        .category-badge.guide { background: rgba(245,158,11,0.15); color: var(--accent-yellow); }
+        .category-badge.update { background: rgba(34,197,94,0.15); color: var(--accent-green); }
+        .category-badge.reference { background: rgba(239,68,68,0.15); color: var(--accent-red); }
 
         .card-meta {
             font-size: 0.75rem;
             color: var(--text-muted);
             margin-left: auto;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .card-meta span {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .card-meta svg {
+            width: 13px;
+            height: 13px;
+            opacity: 0.7;
         }
 
         .blog-card h2 {
@@ -325,10 +322,15 @@
             font-size: 0.92rem;
         }
 
+        .blog-card.featured .card-footer {
+            border-top: none;
+            padding-top: 0;
+        }
+
         .card-footer {
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            gap: 1.5rem;
             margin-top: 1rem;
             padding-top: 0.75rem;
             border-top: 1px solid var(--border-color);
@@ -391,14 +393,11 @@
         .footer-legal a { color: var(--text-muted); text-decoration: none; }
         .footer-legal a:hover { color: var(--accent-blue); }
 
-        /* ── Responsive ── */
+        .page-title { margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; }
+        .page-title h1 { font-size: 1.75rem; font-weight: 800; }
+        .page-title .subtitle { font-size: 0.9rem; color: var(--text-secondary); margin-top: 0.35rem; line-height: 1.5; }
         @media (max-width: 768px) {
-            body { padding: 0.75rem; }
-            .header { flex-direction: column; gap: 0.75rem; text-align: center; }
-            .header-left { flex-direction: column; align-items: center; width: 100%; }
-            .header-right { flex-wrap: wrap; justify-content: center; gap: 0.5rem; }
-            .header-link { font-size: 0.8rem; padding: 0.4rem 0.6rem; }
-            h1 { font-size: 1.5rem; }
+            .page-title h1 { font-size: 1.5rem; }
             .stats-bar { grid-template-columns: repeat(2, 1fr); }
             .filter-bar { overflow-x: auto; -webkit-overflow-scrolling: touch; }
             .filter-btn { flex: none; padding: 0.5rem 0.75rem; font-size: 0.78rem; }
@@ -406,49 +405,21 @@
             .blog-card { padding: 1.25rem; }
             .blog-card h2 { font-size: 1rem; }
             .blog-card.featured h2 { font-size: 1.1rem; }
+            .card-top { flex-wrap: wrap; }
+            .card-top .card-meta { margin-left: 0; margin-top: 0.25rem; width: 100%; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header class="header">
-            <div class="header-left">
-                <a href="/" class="header-logo-link"><img src="/logo.png" alt="ITR Stats" class="header-logo"></a>
+    <script src="/scripts/sidebar.js"></script>
+    <div class="main-content">
+        <div class="main-inner">
+            <div class="page-title">
                 <div>
                     <h1>Blog</h1>
-                    <p>Insights & Analysis</p>
+                    <p class="subtitle">Latest articles on ITR filing trends, tax updates, and financial analysis to keep you informed.</p>
                 </div>
-            </div>
-            <div class="header-right">
-                <a href="../" class="header-link">Dashboard</a>
-                <a href="../insights/" class="header-link">Insights <span class="new-badge">NEW</span></a>
-                <a href="./" class="header-link active">Blog</a>
-                <a href="/calculator/" class="header-link">Calculator</a>
-                <a href="/about.html" class="header-link">About</a>
-                <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">
-                    <span id="theme-icon"></span>
-                </button>
-            </div>
-        </header>
-
-        <div class="stats-bar">
-            <div class="stat-card">
-                <div class="stat-number">20</div>
-                <div class="stat-label">Articles</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number green">4</div>
-                <div class="stat-label">Updates</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number blue">5</div>
-                <div class="stat-label">Data Analysis</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number yellow">4</div>
-                <div class="stat-label">Guides</div>
-            </div>
-        </div>
+</div>
 
         <main>
 
@@ -465,284 +436,304 @@
             <!-- ── Updates (4) ── -->
             <article class="blog-card featured" data-category="update">
                 <div class="card-top">
-                    <span class="category-dot update"></span>
-                    <span class="category-label update">Budget 2026</span>
-                    <span class="card-meta">Feb 25, 2026</span>
+                    <span class="category-badge update">Budget 2026</span>
                 </div>
                 <h2><a href="./budget-2026-itr-deadlines/">Budget 2026 Changed Your ITR Deadlines</a></h2>
                 <p class="excerpt">Freelancers and small business owners now get August 31. Revised return extended to March 31. Full breakdown of what changed, what didn't, and which deadline applies to you.</p>
+                <div class="card-meta" style="margin-top:0.75rem;">
+                    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg> Feb 25, 2026</span>
+                    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 6 min read</span>
+                </div>
                 <div class="card-footer">
-                    <span class="read-time">6 min read</span>
-                    <a href="./budget-2026-itr-deadlines/" class="read-more">Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                    <a href="./budget-2026-itr-deadlines/" class="read-more">Read Full Article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
                 </div>
             </article>
 
             <article class="blog-card" data-category="update">
                 <div class="card-top">
-                    <span class="category-dot update"></span>
-                    <span class="category-label update">Weekly Update</span>
-                    <span class="card-meta">Feb 19</span>
+                    <span class="category-badge update">Weekly Update</span>
+                    <div class="card-meta">
+                        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg> Feb 10, 2026</span>
+                        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 4 min read</span>
+                    </div>
                 </div>
                 <h2><a href="./weekly-update.html">ITR Processing Weekly Update</a></h2>
                 <p class="excerpt">Feb 14 set a new all-time record — 6.97 lakh returns processed in a single day! Backlog now at 28.7 lakh, down from 37.8L last week.</p>
                 <div class="card-footer">
-                    <span class="read-time">4 min read</span>
-                    <a href="./weekly-update.html" class="read-more">Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                    <a href="./weekly-update.html" class="read-more">Read Article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
                 </div>
             </article>
 
             <article class="blog-card" data-category="update">
                 <div class="card-top">
-                    <span class="category-dot update"></span>
-                    <span class="category-label update">Reference</span>
-                    <span class="card-meta">Feb 15</span>
+                    <span class="category-badge reference">Reference</span>
+                    <div class="card-meta">
+                        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg> Feb 15, 2026</span>
+                        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 10 min read</span>
+                    </div>
                 </div>
                 <h2><a href="./tax-calendar-2026/">Tax Calendar 2026: All Important Dates</a></h2>
                 <p class="excerpt">ITR filing deadlines, advance tax dates, TDS returns, Form 16, tax audit — all important dates in one place. Never miss a deadline.</p>
                 <div class="card-footer">
-                    <span class="read-time">10 min read</span>
-                    <a href="./tax-calendar-2026/" class="read-more">Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                    <a href="./tax-calendar-2026/" class="read-more">Read Article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
                 </div>
             </article>
 
             <article class="blog-card" data-category="update">
                 <div class="card-top">
-                    <span class="category-dot update"></span>
-                    <span class="category-label update">Reference</span>
-                    <span class="card-meta">Feb 10</span>
+                    <span class="category-badge reference">Reference</span>
+                    <div class="card-meta">
+                        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg> Feb 10, 2026</span>
+                        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 5 min read</span>
+                    </div>
                 </div>
                 <h2><a href="./itr-refund-time.html">When Will You Get Your ITR Refund?</a></h2>
                 <p class="excerpt">We analyzed real-time data from the Income Tax portal to give you a clear picture of current processing times and what affects your refund timeline.</p>
                 <div class="card-footer">
-                    <span class="read-time">5 min read</span>
-                    <a href="./itr-refund-time.html" class="read-more">Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                    <a href="./itr-refund-time.html" class="read-more">Read Article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
                 </div>
             </article>
 
             <!-- ── Data Analysis (5) ── -->
             <article class="blog-card" data-category="data">
                 <div class="card-top">
-                    <span class="category-dot data"></span>
-                    <span class="category-label data">Data Analysis</span>
-                    <span class="card-meta">Feb 26</span>
+                    <span class="category-badge data">Data Analysis</span>
+                    <div class="card-meta">
+                        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg> Feb 26, 2026</span>
+                        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 10 min read</span>
+                    </div>
                 </div>
                 <h2><a href="./itr1-decline/">ITR-1 Is Declining for the First Time — Here's Why</a></h2>
                 <p class="excerpt">For the first time ever, ITR-1 filings are down 2.5% YoY. Meanwhile ITR-2 surged 127% in 4 years. We analyzed 5 years of IT portal data to explain the biggest shift in Indian tax filing.</p>
                 <div class="card-footer">
-                    <span class="read-time">10 min read</span>
-                    <a href="./itr1-decline/" class="read-more">Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                    <a href="./itr1-decline/" class="read-more">Read Article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
                 </div>
             </article>
 
             <article class="blog-card" data-category="data">
                 <div class="card-top">
-                    <span class="category-dot data"></span>
-                    <span class="category-label data">Data Analysis</span>
-                    <span class="card-meta">Feb 26</span>
+                    <span class="category-badge data">Data Analysis</span>
+                    <div class="card-meta">
+                        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg> Feb 26, 2026</span>
+                        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 8 min read</span>
+                    </div>
                 </div>
                 <h2><a href="./india-income-percentile/">Earning ₹25,000/Month? You're in India's Top 10%.</a></h2>
                 <p class="excerpt">What salary puts you in India's top 1%, 5%, or 10%? We break down CBDT data, state-wise thresholds, and why the "top 1% illusion" feels so real in Mumbai.</p>
                 <div class="card-footer">
-                    <span class="read-time">8 min read</span>
-                    <a href="./india-income-percentile/" class="read-more">Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                    <a href="./india-income-percentile/" class="read-more">Read Article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
                 </div>
             </article>
 
             <article class="blog-card" data-category="data">
                 <div class="card-top">
-                    <span class="category-dot data"></span>
-                    <span class="category-label data">Data Analysis</span>
-                    <span class="card-meta">Feb 18</span>
+                    <span class="category-badge data">Data Analysis</span>
+                    <div class="card-meta">
+                        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg> Feb 18, 2026</span>
+                        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 8 min read</span>
+                    </div>
                 </div>
                 <h2><a href="./state-wise-itr-filing/">Which States File the Most ITRs?</a></h2>
                 <p class="excerpt">Maharashtra leads with 1.12 crore filings (15.1%), followed by UP and Gujarat. Telangana grew 141% YoY. Complete state-wise breakdown of 7.4 crore ITR filings.</p>
                 <div class="card-footer">
-                    <span class="read-time">8 min read</span>
-                    <a href="./state-wise-itr-filing/" class="read-more">Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                    <a href="./state-wise-itr-filing/" class="read-more">Read Article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
                 </div>
             </article>
 
             <article class="blog-card" data-category="data">
                 <div class="card-top">
-                    <span class="category-dot data"></span>
-                    <span class="category-label data">Data Analysis</span>
-                    <span class="card-meta">Feb 18</span>
+                    <span class="category-badge data">Data Analysis</span>
+                    <div class="card-meta">
+                        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg> Feb 18, 2026</span>
+                        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 7 min read</span>
+                    </div>
                 </div>
                 <h2><a href="./itr-form-comparison/">The Rise of India's Salaried Investors: ITR-2 Grows 27%</a></h2>
                 <p class="excerpt">ITR-1 leads at 42%, but ITR-2 is growing fastest at 27% YoY. We analyzed 7.78 crore filings to show which forms Indians actually use.</p>
                 <div class="card-footer">
-                    <span class="read-time">7 min read</span>
-                    <a href="./itr-form-comparison/" class="read-more">Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                    <a href="./itr-form-comparison/" class="read-more">Read Article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
                 </div>
             </article>
 
             <article class="blog-card" data-category="data">
                 <div class="card-top">
-                    <span class="category-dot data"></span>
-                    <span class="category-label data">Data Analysis</span>
-                    <span class="card-meta">Feb 18</span>
+                    <span class="category-badge data">Data Analysis</span>
+                    <div class="card-meta">
+                        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg> Feb 18, 2026</span>
+                        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 8 min read</span>
+                    </div>
                 </div>
                 <h2><a href="./income-distribution-india/">India's Income Distribution: What 8.5 Crore Tax Returns Reveal</a></h2>
                 <p class="excerpt">Only 1.13% of taxpayers earn above Rs 50 lakh. Only 10,184 people earn above Rs 10 crore. We analyzed 8.57 crore ITR filings to reveal the real picture.</p>
                 <div class="card-footer">
-                    <span class="read-time">8 min read</span>
-                    <a href="./income-distribution-india/" class="read-more">Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                    <a href="./income-distribution-india/" class="read-more">Read Article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
                 </div>
             </article>
 
             <!-- ── Guides (4) ── -->
             <article class="blog-card" data-category="guide">
                 <div class="card-top">
-                    <span class="category-dot guide"></span>
-                    <span class="category-label guide">Tax Guide</span>
-                    <span class="card-meta">Feb 17</span>
+                    <span class="category-badge guide">Tax Guide</span>
+                    <div class="card-meta">
+                        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg> Feb 17, 2026</span>
+                        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 10 min read</span>
+                    </div>
                 </div>
                 <h2><a href="./sip-taxation/">SIP Taxation 2026: LTCG, STCG & The FIFO Trap</a></h2>
                 <p class="excerpt">Each SIP installment is taxed separately. An 18-month SIP doesn't mean all gains are long-term. Learn how FIFO works and how to minimize tax.</p>
                 <div class="card-footer">
-                    <span class="read-time">10 min read</span>
-                    <a href="./sip-taxation/" class="read-more">Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                    <a href="./sip-taxation/" class="read-more">Read Article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
                 </div>
             </article>
 
             <article class="blog-card" data-category="guide">
                 <div class="card-top">
-                    <span class="category-dot guide"></span>
-                    <span class="category-label guide">Tax Guide</span>
-                    <span class="card-meta">Feb 15</span>
+                    <span class="category-badge guide">Tax Guide</span>
+                    <div class="card-meta">
+                        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg> Feb 15, 2026</span>
+                        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 15 min read</span>
+                    </div>
                 </div>
                 <h2><a href="./last-minute-tax-saving/">Last-Minute Tax Saving Before March 31</a></h2>
                 <p class="excerpt">Section 80C, 80D, 80G, NPS, ELSS vs PPF — all deductions explained with limits, eligibility, and recommendations by age group.</p>
                 <div class="card-footer">
-                    <span class="read-time">15 min read</span>
-                    <a href="./last-minute-tax-saving/" class="read-more">Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                    <a href="./last-minute-tax-saving/" class="read-more">Read Article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
                 </div>
             </article>
 
             <article class="blog-card" data-category="guide">
                 <div class="card-top">
-                    <span class="category-dot guide"></span>
-                    <span class="category-label guide">Guide</span>
-                    <span class="card-meta">Feb 14</span>
+                    <span class="category-badge guide">Guide</span>
+                    <div class="card-meta">
+                        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg> Feb 14, 2026</span>
+                        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 8 min read</span>
+                    </div>
                 </div>
                 <h2><a href="./insights-guide/">ITR Insights: Deep Dive into Tax Filing Stats</a></h2>
                 <p class="excerpt">Understand refund processing rates, filing patterns by ITR form type, income distribution across brackets, and state-wise filing data.</p>
                 <div class="card-footer">
-                    <span class="read-time">8 min read</span>
-                    <a href="./insights-guide/" class="read-more">Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                    <a href="./insights-guide/" class="read-more">Read Article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
                 </div>
             </article>
 
             <article class="blog-card" data-category="guide">
                 <div class="card-top">
-                    <span class="category-dot guide"></span>
-                    <span class="category-label guide">Tax Guide</span>
-                    <span class="card-meta">Feb 11</span>
+                    <span class="category-badge guide">Tax Guide</span>
+                    <div class="card-meta">
+                        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg> Feb 11, 2026</span>
+                        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 8 min read</span>
+                    </div>
                 </div>
                 <h2><a href="./sgb-tax-changes/">SGB Tax Changes 2026: End of Tax-Free Gold?</a></h2>
                 <p class="excerpt">Budget 2026 fundamentally changed SGB taxation. Secondary market buyers lose tax exemption entirely. Complete breakdown of old vs new rules.</p>
                 <div class="card-footer">
-                    <span class="read-time">8 min read</span>
-                    <a href="./sgb-tax-changes/" class="read-more">Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                    <a href="./sgb-tax-changes/" class="read-more">Read Article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
                 </div>
             </article>
 
             <!-- ── Comparisons (7) ── -->
             <article class="blog-card" data-category="comparison">
                 <div class="card-top">
-                    <span class="category-dot comparison"></span>
-                    <span class="category-label comparison">Tool Comparison</span>
-                    <span class="card-meta">Feb 26</span>
+                    <span class="category-badge comparison">Tool Comparison</span>
+                    <div class="card-meta">
+                        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg> Feb 26, 2026</span>
+                        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 8 min read</span>
+                    </div>
                 </div>
                 <h2><a href="./best-income-tax-calculators/">7 Best Income Tax Calculators Online for FY 2025-26</a></h2>
                 <p class="excerpt">We tested every major income tax calculator in India — ClearTax, Groww, the official IT portal, Tax2Win and more. Here's our honest ranking.</p>
                 <div class="card-footer">
-                    <span class="read-time">8 min read</span>
-                    <a href="./best-income-tax-calculators/" class="read-more">Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                    <a href="./best-income-tax-calculators/" class="read-more">Read Article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
                 </div>
             </article>
 
             <article class="blog-card" data-category="comparison">
                 <div class="card-top">
-                    <span class="category-dot comparison"></span>
-                    <span class="category-label comparison">Tool Comparison</span>
-                    <span class="card-meta">Feb 26</span>
+                    <span class="category-badge comparison">Tool Comparison</span>
+                    <div class="card-meta">
+                        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg> Feb 26, 2026</span>
+                        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 9 min read</span>
+                    </div>
                 </div>
                 <h2><a href="./best-sip-calculators/">7 Best SIP Calculators Online for 2026</a></h2>
                 <p class="excerpt">We tested every popular SIP calculator for accuracy, step-up SIP support, and chart quality. The correct answer for ₹10K/month at 12% for 20 years is ₹99,91,479.</p>
                 <div class="card-footer">
-                    <span class="read-time">9 min read</span>
-                    <a href="./best-sip-calculators/" class="read-more">Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                    <a href="./best-sip-calculators/" class="read-more">Read Article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
                 </div>
             </article>
 
             <article class="blog-card" data-category="comparison">
                 <div class="card-top">
-                    <span class="category-dot comparison"></span>
-                    <span class="category-label comparison">Tool Comparison</span>
-                    <span class="card-meta">Feb 26</span>
+                    <span class="category-badge comparison">Tool Comparison</span>
+                    <div class="card-meta">
+                        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg> Feb 26, 2026</span>
+                        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 8 min read</span>
+                    </div>
                 </div>
                 <h2><a href="./best-ppf-calculators/">7 Best PPF Calculators Online for 2026</a></h2>
                 <p class="excerpt">We tested every major PPF calculator for accuracy, yearly breakdown, and EEE tax info. For ₹1.5L/year at 7.1% for 15 years, the correct maturity is ₹40,68,209.</p>
                 <div class="card-footer">
-                    <span class="read-time">8 min read</span>
-                    <a href="./best-ppf-calculators/" class="read-more">Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                    <a href="./best-ppf-calculators/" class="read-more">Read Article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
                 </div>
             </article>
 
             <article class="blog-card" data-category="comparison">
                 <div class="card-top">
-                    <span class="category-dot comparison"></span>
-                    <span class="category-label comparison">Tool Comparison</span>
-                    <span class="card-meta">Feb 26</span>
+                    <span class="category-badge comparison">Tool Comparison</span>
+                    <div class="card-meta">
+                        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg> Feb 26, 2026</span>
+                        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 8 min read</span>
+                    </div>
                 </div>
                 <h2><a href="./best-fd-calculators/">7 Best FD Calculators Online for 2026</a></h2>
                 <p class="excerpt">We tested the top fixed deposit calculators for compounding options, TDS info, and effective yield. Most only support one compounding frequency.</p>
                 <div class="card-footer">
-                    <span class="read-time">8 min read</span>
-                    <a href="./best-fd-calculators/" class="read-more">Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                    <a href="./best-fd-calculators/" class="read-more">Read Article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
                 </div>
             </article>
 
             <article class="blog-card" data-category="comparison">
                 <div class="card-top">
-                    <span class="category-dot comparison"></span>
-                    <span class="category-label comparison">Tool Comparison</span>
-                    <span class="card-meta">Feb 26</span>
+                    <span class="category-badge comparison">Tool Comparison</span>
+                    <div class="card-meta">
+                        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg> Feb 26, 2026</span>
+                        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 9 min read</span>
+                    </div>
                 </div>
                 <h2><a href="./best-emi-calculators/">7 Best EMI Calculators Online for 2026</a></h2>
                 <p class="excerpt">We tested every major EMI calculator for amortization schedules, prepayment modelling, and formula accuracy. A ₹50L home loan costs ₹54.14L in interest.</p>
                 <div class="card-footer">
-                    <span class="read-time">9 min read</span>
-                    <a href="./best-emi-calculators/" class="read-more">Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                    <a href="./best-emi-calculators/" class="read-more">Read Article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
                 </div>
             </article>
 
             <article class="blog-card" data-category="comparison">
                 <div class="card-top">
-                    <span class="category-dot comparison"></span>
-                    <span class="category-label comparison">Tool Comparison</span>
-                    <span class="card-meta">Feb 26</span>
+                    <span class="category-badge comparison">Tool Comparison</span>
+                    <div class="card-meta">
+                        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg> Feb 26, 2026</span>
+                        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 9 min read</span>
+                    </div>
                 </div>
                 <h2><a href="./best-nps-calculators/">7 Best NPS Calculators Online for 2026</a></h2>
                 <p class="excerpt">We tested the top NPS calculators for corpus accuracy, 60/40 split, pension estimates, and tax benefit info. ₹5K/month from age 25 to 60 builds ₹1.14 crore.</p>
                 <div class="card-footer">
-                    <span class="read-time">9 min read</span>
-                    <a href="./best-nps-calculators/" class="read-more">Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                    <a href="./best-nps-calculators/" class="read-more">Read Article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
                 </div>
             </article>
 
             <article class="blog-card" data-category="comparison">
                 <div class="card-top">
-                    <span class="category-dot comparison"></span>
-                    <span class="category-label comparison">Tool Comparison</span>
-                    <span class="card-meta">Feb 26</span>
+                    <span class="category-badge comparison">Tool Comparison</span>
+                    <div class="card-meta">
+                        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg> Feb 26, 2026</span>
+                        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 8 min read</span>
+                    </div>
                 </div>
                 <h2><a href="./best-lumpsum-calculators/">7 Best Lumpsum Calculators Online for 2026</a></h2>
                 <p class="excerpt">We tested every popular lumpsum calculator for growth multiplier, charts, and year-by-year breakdown. ₹1L at 12% for 10 years gives 3.11x.</p>
                 <div class="card-footer">
-                    <span class="read-time">8 min read</span>
-                    <a href="./best-lumpsum-calculators/" class="read-more">Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                    <a href="./best-lumpsum-calculators/" class="read-more">Read Article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
                 </div>
             </article>
 
@@ -769,26 +760,7 @@
     </footer>
 
     <script>
-        function getThemePreference() {
-            const saved = localStorage.getItem('theme');
-            if (saved) return saved;
-            return 'dark';
-        }
-
-        function setTheme(theme) {
-            document.documentElement.setAttribute('data-theme', theme);
-            localStorage.setItem('theme', theme);
-            document.getElementById('theme-icon').textContent = theme === 'dark' ? '☀️' : '🌙';
-        }
-
-        function toggleTheme() {
-            const current = document.documentElement.getAttribute('data-theme');
-            setTheme(current === 'dark' ? 'light' : 'dark');
-        }
-
-        setTheme(getThemePreference());
-
-        document.querySelectorAll('.filter-btn').forEach(btn => {
+document.querySelectorAll('.filter-btn').forEach(btn => {
             btn.addEventListener('click', () => {
                 document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
@@ -812,5 +784,6 @@
     <script data-goatcounter="https://itrstats.goatcounter.com/count"
             async src="https://gc.zgo.at/count.js"></script>
     <script defer src="/scripts/subscribe-widget.js"></script>
+</div>
 </body>
 </html>
