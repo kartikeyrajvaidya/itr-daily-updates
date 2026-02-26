@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FD Calculator 2026 - Calculate Fixed Deposit Maturity & Interest | ITR Stats</title>
+    <meta name="description" content="Free FD calculator to estimate fixed deposit maturity amount and interest earned. Supports monthly, quarterly, half-yearly and annual compounding with TDS impact.">
+    <meta name="keywords" content="FD calculator, fixed deposit calculator, FD interest calculator, FD maturity calculator, fixed deposit interest rate, TDS on FD">
+    <meta name="author" content="ITR Stats">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://itrstats.in/calculator/fd/">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://itrstats.in/calculator/fd/">
+    <meta property="og:title" content="FD Calculator 2026 - Calculate Fixed Deposit Maturity & Interest">
+    <meta property="og:description" content="Free FD calculator with compounding options and TDS impact. Estimate your fixed deposit maturity amount.">
+    <meta property="og:image" content="https://itrstats.in/og-image.png">
+    <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="ITR Stats"><meta property="og:locale" content="en_IN">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="FD Calculator 2026 - Calculate Fixed Deposit Maturity & Interest">
+    <meta name="twitter:description" content="Free FD calculator with compounding options and TDS impact.">
+    <meta name="twitter:image" content="https://itrstats.in/og-image.png">
+
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2843260079810330" crossorigin="anonymous"></script>
+
+    <script type="application/ld+json">
+    { "@context": "https://schema.org", "@type": "WebApplication", "name": "FD Calculator 2026", "description": "Free online FD calculator to estimate fixed deposit maturity amount with compounding options and TDS.", "url": "https://itrstats.in/calculator/fd/", "applicationCategory": "FinanceApplication", "operatingSystem": "Any", "offers": { "@type": "Offer", "price": "0", "priceCurrency": "INR" }, "author": { "@type": "Organization", "name": "ITR Stats", "url": "https://itrstats.in" } }
+    </script>
+    <script type="application/ld+json">
+    { "@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
+        { "@type": "Question", "name": "How is FD interest calculated?", "acceptedAnswer": { "@type": "Answer", "text": "FD interest is calculated using the compound interest formula: A = P × (1 + r/n)^(n×t), where P is the principal, r is the annual interest rate, n is the compounding frequency (4 for quarterly, 12 for monthly), and t is the tenure in years. Most banks compound quarterly." } },
+        { "@type": "Question", "name": "Is TDS deducted on fixed deposit interest?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Banks deduct TDS at 10% if your total FD interest from that bank exceeds ₹40,000 in a financial year (₹50,000 for senior citizens aged 60+). If PAN is not provided, TDS is deducted at 20%." } },
+        { "@type": "Question", "name": "Do senior citizens get higher FD rates?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Most banks offer 0.25% to 0.50% additional interest rate to senior citizens (aged 60 and above) on fixed deposits. Some banks offer up to 0.75% extra for super senior citizens (80+)." } },
+        { "@type": "Question", "name": "What is the difference between cumulative and non-cumulative FD?", "acceptedAnswer": { "@type": "Answer", "text": "In a cumulative FD, interest is compounded and paid at maturity along with the principal. In a non-cumulative FD, interest is paid out periodically (monthly, quarterly, etc.) and only the principal is returned at maturity. Cumulative FDs yield higher effective returns due to compounding." } },
+        { "@type": "Question", "name": "Is FD interest taxable?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. FD interest is fully taxable and added to your total income. It is taxed at your applicable income tax slab rate. TDS is just an advance collection — you must still declare the full interest in your ITR and pay any remaining tax." } }
+    ] }
+    </script>
+    <script type="application/ld+json">
+    { "@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://itrstats.in/"},
+        {"@type": "ListItem", "position": 2, "name": "Calculators", "item": "https://itrstats.in/calculator/"},
+        {"@type": "ListItem", "position": 3, "name": "FD Calculator", "item": "https://itrstats.in/calculator/fd/"}
+    ] }
+    </script>
+
+    <style>
+        :root { --bg-primary: #f8fafc; --bg-secondary: #ffffff; --bg-accent: #f1f5f9; --text-primary: #1e293b; --text-secondary: #4a5568; --text-muted: #718096; --accent-blue: #3b82f6; --accent-green: #22c55e; --accent-red: #ef4444; --accent-purple: #8b5cf6; --accent-yellow: #f59e0b; --border-color: #e2e8f0; }
+        [data-theme="dark"] { --bg-primary: #0f172a; --bg-secondary: #1e293b; --bg-accent: #334155; --text-primary: #f1f5f9; --text-secondary: #cbd5e1; --text-muted: #94a3b8; --accent-blue: #60a5fa; --accent-green: #4ade80; --accent-red: #f87171; --accent-purple: #a78bfa; --accent-yellow: #fbbf24; --border-color: #334155; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; background: var(--bg-primary); color: var(--text-primary); min-height: 100vh; padding: 1rem; line-height: 1.6; }
+        .wrapper { max-width: 1000px; margin: 0 auto; }
+        .header { display: flex; justify-content: space-between; align-items: center; padding: 1rem 1.5rem; background: var(--bg-secondary); border-radius: 16px; margin-bottom: 1.5rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .header-left { display: flex; align-items: center; gap: 0.75rem; }
+        .header-logo-link { display: flex; } .header-logo { width: 46px; height: 46px; object-fit: cover; border-radius: 50%; flex-shrink: 0; }
+        .header-left h1 { font-size: 1.5rem; font-weight: 700; margin: 0; } .header-left p { font-size: 0.875rem; color: var(--text-muted); margin-top: 0.25rem; }
+        .header-right { display: flex; align-items: center; gap: 1rem; }
+        .header-link { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; padding: 0.5rem 0.75rem; border-radius: 8px; transition: color 0.2s ease, background 0.2s ease; }
+        .header-link:hover { color: var(--accent-blue); background: var(--bg-accent); } .header-link.active { color: var(--accent-blue); }
+        .new-badge { display: inline-block; margin-left: 0.35rem; padding: 0.1rem 0.35rem; border-radius: 999px; background: #ef4444; color: #fff; font-size: 0.62rem; font-weight: 700; line-height: 1.2; vertical-align: middle; animation: blinkTag 1s steps(2,start) infinite; }
+        @keyframes blinkTag { 50% { opacity: 0.2; } }
+        .theme-toggle { background: var(--bg-accent); border: none; border-radius: 12px; width: 46px; height: 46px; cursor: pointer; font-size: 1.2rem; display: flex; align-items: center; justify-content: center; transition: transform 0.2s ease; }
+        .theme-toggle:hover { transform: scale(1.1); }
+
+        .calculator-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+        .input-section, .result-section { background: var(--bg-secondary); border-radius: 16px; padding: 1.5rem; }
+        .input-section h2, .result-section h2 { font-size: 1.1rem; margin-bottom: 1.5rem; color: var(--text-primary); }
+        .input-group { margin-bottom: 1.25rem; }
+        .input-group label { display: block; font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.5rem; }
+        .input-group .hint { font-size: 0.75rem; color: var(--text-muted); margin-top: 0.25rem; }
+        .input-wrapper { position: relative; }
+        .input-wrapper .prefix { position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: var(--text-muted); font-size: 0.9rem; }
+        input[type="number"] { width: 100%; padding: 0.875rem 1rem 0.875rem 2.25rem; background: var(--bg-accent); border: 1px solid var(--border-color); border-radius: 10px; color: var(--text-primary); font-size: 1rem; transition: border-color 0.2s ease; }
+        input[type="number"]:focus { outline: none; border-color: var(--accent-blue); }
+        input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+        input[type="number"] { -moz-appearance: textfield; }
+        input[type="number"]::placeholder { color: var(--text-muted); }
+
+        select { width: 100%; padding: 0.875rem 1rem; background: var(--bg-accent); border: 1px solid var(--border-color); border-radius: 10px; color: var(--text-primary); font-size: 1rem; cursor: pointer; transition: border-color 0.2s ease; -webkit-appearance: none; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23718096' d='M6 8L1 3h10z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 1rem center; }
+        select:focus { outline: none; border-color: var(--accent-blue); }
+
+        .result-cards { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.75rem; margin-bottom: 1.5rem; }
+        .result-card { background: var(--bg-accent); border-radius: 12px; padding: 1rem; text-align: center; }
+        .result-card .label { font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.375rem; }
+        .result-card .amount { font-size: 1.25rem; font-weight: 700; color: var(--text-primary); }
+        .result-card .sub { font-size: 0.75rem; color: var(--text-muted); margin-top: 0.125rem; }
+        .result-card.highlight { border: 2px solid var(--accent-green); }
+        .result-card.highlight .amount { color: var(--accent-green); }
+
+        .tds-info { background: var(--bg-accent); border-radius: 12px; padding: 1rem; margin-bottom: 1.5rem; font-size: 0.88rem; color: var(--text-secondary); display: flex; align-items: center; gap: 0.75rem; }
+        .tds-info strong { color: var(--accent-yellow); }
+
+        .chart-container { background: var(--bg-accent); border-radius: 12px; padding: 1.25rem; margin-bottom: 1rem; }
+        .chart-container h3 { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 1rem; text-align: center; }
+        .chart-wrapper { position: relative; width: 100%; }
+        .chart-wrapper.doughnut { max-width: 220px; margin: 0 auto; }
+        .chart-wrapper.bar { height: 250px; }
+
+        .breakdown-toggle { background: none; border: none; color: var(--accent-blue); font-size: 0.9rem; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; margin: 1rem auto 0; }
+        .breakdown-toggle:hover { text-decoration: underline; }
+        .breakdown { display: none; margin-top: 1.5rem; } .breakdown.show { display: block; }
+        .breakdown-table { width: 100%; font-size: 0.85rem; border-collapse: collapse; }
+        .breakdown-table th { text-align: left; padding: 0.625rem 0.5rem; color: var(--text-muted); font-weight: 600; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 2px solid var(--border-color); }
+        .breakdown-table th:not(:first-child) { text-align: right; }
+        .breakdown-table td { padding: 0.625rem 0.5rem; color: var(--text-secondary); border-bottom: 1px solid var(--border-color); }
+        .breakdown-table td:not(:first-child) { text-align: right; font-family: 'SF Mono','Consolas',monospace; }
+        .breakdown-table tr:last-child td { font-weight: 600; color: var(--text-primary); border-bottom: none; }
+        .breakdown-table .returns-col { color: var(--accent-green); }
+
+        .content-section { background: var(--bg-secondary); border-radius: 16px; padding: 2rem; margin-top: 1.5rem; }
+        .content-section h2 { font-size: 1.25rem; color: var(--text-primary); margin-bottom: 1rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--border-color); }
+        .content-section h3 { font-size: 1.05rem; color: var(--text-primary); margin: 1.25rem 0 0.75rem; }
+        .content-section p { color: var(--text-secondary); margin-bottom: 1rem; line-height: 1.7; }
+        .content-section ul { color: var(--text-secondary); margin-left: 1.25rem; margin-bottom: 1rem; }
+        .content-section li { margin-bottom: 0.5rem; line-height: 1.6; }
+        .formula-box { background: var(--bg-accent); border-radius: 12px; padding: 1.25rem; margin: 1rem 0; text-align: center; font-family: 'SF Mono','Consolas',monospace; font-size: 0.95rem; color: var(--text-primary); line-height: 1.8; }
+        .faq-section { background: var(--bg-secondary); border-radius: 16px; padding: 2rem; margin-top: 1.5rem; }
+        .faq-section h2 { font-size: 1.25rem; color: var(--text-primary); margin-bottom: 1.5rem; }
+        .faq-item { border-bottom: 1px solid var(--border-color); padding: 1rem 0; }
+        .faq-item:last-child { border-bottom: none; padding-bottom: 0; } .faq-item:first-of-type { padding-top: 0; }
+        .faq-question { font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem; font-size: 0.95rem; }
+        .faq-answer { color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6; }
+
+        footer { text-align: center; padding: 2rem; color: var(--text-muted); font-size: 0.85rem; border-top: 1px solid var(--border-color); margin-top: 2rem; }
+        footer a { color: var(--accent-blue); text-decoration: none; } footer a:hover { text-decoration: underline; }
+        .info-icon { display: inline-flex; align-items: center; justify-content: center; width: 12px; height: 12px; background: var(--text-muted); color: var(--bg-secondary); font-size: 0.5rem; font-weight: 700; cursor: pointer; margin-left: 0.25rem; vertical-align: middle; position: relative; }
+        .info-icon:hover { background: var(--accent-blue); }
+        .info-tooltip { position: absolute; bottom: calc(100% + 8px); left: 50%; transform: translateX(-50%); background: var(--text-primary); color: var(--bg-primary); padding: 0.6rem 0.8rem; border-radius: 6px; font-size: 0.75rem; font-weight: 400; width: 200px; text-align: left; line-height: 1.4; opacity: 0; visibility: hidden; transition: opacity 0.2s ease; z-index: 100; }
+        .info-tooltip::after { content:''; position: absolute; top: 100%; left: 50%; transform: translateX(-50%); border: 5px solid transparent; border-top-color: var(--text-primary); }
+        .info-icon:hover .info-tooltip { opacity: 1; visibility: visible; }
+        .footer-creator { display: flex; align-items: center; justify-content: center; gap: 0.5rem; margin-bottom: 0.25rem; }
+        .footer-creator a { color: var(--text-muted); display: inline-flex; transition: color 0.2s ease; } .footer-creator a:hover { color: var(--accent-blue); }
+        .footer-feedback { font-size: 0.8rem; margin-bottom: 0.75rem; } .footer-legal { font-size: 0.8rem; }
+        .footer-legal a { color: var(--text-muted); text-decoration: none; } .footer-legal a:hover { color: var(--accent-blue); }
+
+        @media (max-width: 768px) {
+            body { padding: 0.75rem; } .calculator-grid { grid-template-columns: 1fr; }
+            .header { flex-direction: column; gap: 0.75rem; text-align: center; }
+            .header-left { flex-direction: column; align-items: center; width: 100%; }
+            .header-right { flex-wrap: wrap; justify-content: center; gap: 0.5rem; }
+            .header-link { font-size: 0.8rem; padding: 0.4rem 0.6rem; } .result-cards { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <header class="header">
+            <div class="header-left">
+                <a href="/" class="header-logo-link"><img src="/logo.png" alt="ITR Stats" class="header-logo"></a>
+                <div><h1>FD Calculator</h1><p>Fixed Deposit Returns Estimator</p></div>
+            </div>
+            <div class="header-right">
+                <a href="/" class="header-link">Dashboard</a>
+                <a href="/insights/" class="header-link">Insights <span class="new-badge">NEW</span></a>
+                <a href="/blog/" class="header-link">Blog</a>
+                <a href="/calculator/" class="header-link active">Calculator</a>
+                <a href="/about.html" class="header-link">About</a>
+                <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span id="theme-icon"></span></button>
+            </div>
+        </header>
+
+        <main>
+            <div class="calculator-grid">
+                <div class="input-section">
+                    <h2>FD Details</h2>
+                    <div class="input-group">
+                        <label for="principal">Deposit Amount</label>
+                        <div class="input-wrapper"><span class="prefix">₹</span>
+                            <input type="number" id="principal" placeholder="e.g. 500000" min="1000" value="500000">
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label for="rate">Interest Rate (% p.a.)</label>
+                        <div class="input-wrapper"><span class="prefix">%</span>
+                            <input type="number" id="rate" placeholder="e.g. 7" min="1" max="15" step="0.1" value="7">
+                        </div>
+                        <p class="hint">Check your bank's current FD rate. Senior citizens usually get +0.5%</p>
+                    </div>
+                    <div class="input-group">
+                        <label for="tenure">Tenure (Years)</label>
+                        <div class="input-wrapper"><span class="prefix">Yr</span>
+                            <input type="number" id="tenure" placeholder="e.g. 5" min="1" max="30" value="5">
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label for="compounding">Compounding Frequency</label>
+                        <select id="compounding">
+                            <option value="12">Monthly</option>
+                            <option value="4" selected>Quarterly (Most Banks)</option>
+                            <option value="2">Half-Yearly</option>
+                            <option value="1">Annually</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="result-section">
+                    <h2>FD Maturity Value</h2>
+                    <div class="result-cards">
+                        <div class="result-card">
+                            <div class="label">Principal</div>
+                            <div class="amount" id="res-principal">₹5.00 L</div>
+                        </div>
+                        <div class="result-card">
+                            <div class="label">Interest Earned</div>
+                            <div class="amount" id="res-interest" style="color: var(--accent-green);">₹2.07 L</div>
+                        </div>
+                        <div class="result-card highlight">
+                            <div class="label">Maturity Amount</div>
+                            <div class="amount" id="res-maturity">₹7.07 L</div>
+                            <div class="sub" id="res-effective">Effective yield: 7.19%</div>
+                        </div>
+                    </div>
+
+                    <div class="tds-info" id="tds-info">
+                        <span>💡</span>
+                        <span>TDS of <strong id="tds-amount">₹0</strong> will be deducted if annual interest exceeds ₹40,000 (₹50,000 for senior citizens).</span>
+                    </div>
+
+                    <div class="chart-container">
+                        <h3>Investment Breakdown</h3>
+                        <div class="chart-wrapper doughnut"><canvas id="doughnut-chart"></canvas></div>
+                    </div>
+
+                    <div class="chart-container">
+                        <h3>Year-by-Year Growth</h3>
+                        <div class="chart-wrapper bar"><canvas id="growth-chart"></canvas></div>
+                    </div>
+
+                    <button class="breakdown-toggle" onclick="toggleBreakdown()">Show year-by-year breakdown ▼</button>
+                    <div class="breakdown" id="breakdown">
+                        <table class="breakdown-table">
+                            <thead><tr><th>Year</th><th>Opening</th><th>Interest</th><th>Closing</th></tr></thead>
+                            <tbody id="breakdown-body"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <section class="content-section">
+            <h2>How the FD Calculator Works</h2>
+            <p>A Fixed Deposit (FD) is a savings instrument offered by banks where you deposit a lump sum for a fixed tenure at a guaranteed interest rate. The interest is compounded at regular intervals, and the maturity amount is paid at the end of the tenure.</p>
+            <h3>The FD Formula</h3>
+            <div class="formula-box">A = P &times; (1 + r/n)<sup>n&times;t</sup></div>
+            <p>Where:</p>
+            <ul>
+                <li><strong>P</strong> = Principal (deposit amount)</li>
+                <li><strong>r</strong> = Annual interest rate (as decimal)</li>
+                <li><strong>n</strong> = Compounding frequency (4 for quarterly, 12 for monthly)</li>
+                <li><strong>t</strong> = Tenure in years</li>
+                <li><strong>A</strong> = Maturity amount</li>
+            </ul>
+            <h3>TDS on Fixed Deposits</h3>
+            <ul>
+                <li>Banks deduct <strong>10% TDS</strong> if your total FD interest from that bank exceeds <strong>₹40,000</strong> in a financial year</li>
+                <li>For senior citizens (60+), the threshold is <strong>₹50,000</strong></li>
+                <li>If you don't provide PAN, TDS is deducted at <strong>20%</strong></li>
+                <li>TDS is just an advance — you must still declare the full interest in your ITR</li>
+            </ul>
+        </section>
+
+        <section class="faq-section">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-item">
+                <div class="faq-question">How is FD interest calculated?</div>
+                <div class="faq-answer">FD interest is calculated using compound interest: A = P × (1 + r/n)^(n×t). Most Indian banks compound quarterly. Monthly compounding gives slightly higher returns. The effective annual yield is always higher than the stated rate due to compounding.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Is FD interest taxable?</div>
+                <div class="faq-answer">Yes, FD interest is fully taxable at your applicable income tax slab rate. Banks deduct TDS at 10% if annual interest exceeds ₹40,000 (₹50,000 for seniors). You must declare the full interest in your ITR regardless of TDS.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">What is the difference between cumulative and non-cumulative FD?</div>
+                <div class="faq-answer">Cumulative FDs reinvest the interest, which compounds and is paid along with principal at maturity. Non-cumulative FDs pay interest periodically (monthly/quarterly). This calculator shows cumulative FD returns, which give higher effective returns.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Do senior citizens get higher FD rates?</div>
+                <div class="faq-answer">Yes. Most banks offer 0.25% to 0.50% extra interest for senior citizens (60+). Some offer up to 0.75% for super senior citizens (80+). Check your bank's specific rate card.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Can I break an FD before maturity?</div>
+                <div class="faq-answer">Yes, most banks allow premature withdrawal, but they typically charge a penalty of 0.5% to 1% on the interest rate. The interest is recalculated at the rate applicable for the actual period the FD was held, minus the penalty.</div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p class="footer-creator"><strong>Built by Kartikey</strong>
+            <a href="https://x.com/kartikey_19" target="_blank" rel="noopener" aria-label="Twitter"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+            <a href="https://www.linkedin.com/in/kartikeyrajvaidya/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+        </p>
+        <p class="footer-feedback">Open to feedback!</p>
+        <p class="footer-legal">&copy; 2026 ITR Stats &middot; <a href="/privacy-policy.html">Privacy</a> &middot; <a href="/about.html">About</a> &middot; <a href="https://eportal.incometax.gov.in" target="_blank" rel="noopener">Data Source</a>
+            <span class="info-icon">i<span class="info-tooltip">Unofficial dashboard &middot; Not affiliated with Income Tax Department</span></span></p>
+    </footer>
+
+    <script data-goatcounter="https://itrstats.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+    <script>
+        function getThemePreference() { return localStorage.getItem('theme') || 'dark'; }
+        function setTheme(t) { document.documentElement.setAttribute('data-theme', t); localStorage.setItem('theme', t); document.getElementById('theme-icon').textContent = t === 'dark' ? '☀️' : '🌙'; }
+        function toggleTheme() { setTheme(document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'); updateChartColors(); }
+        setTheme(getThemePreference());
+
+        let doughnutChart = null, growthChart = null;
+        function getChartColors() {
+            const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+            return { invested: isDark ? '#60a5fa' : '#3b82f6', returns: isDark ? '#4ade80' : '#22c55e', text: isDark ? '#94a3b8' : '#718096', grid: isDark ? 'rgba(148,163,184,0.1)' : 'rgba(113,128,150,0.1)' };
+        }
+
+        function calculateFD(principal, annualRate, years, compoundingFreq) {
+            const r = annualRate / 100;
+            const n = compoundingFreq;
+            const maturity = principal * Math.pow(1 + r / n, n * years);
+            const totalInterest = maturity - principal;
+            const effectiveRate = (Math.pow(1 + r / n, n) - 1) * 100;
+            const yearlyData = [];
+            for (let y = 1; y <= years; y++) {
+                const balanceEnd = principal * Math.pow(1 + r / n, n * y);
+                const balanceStart = y === 1 ? principal : principal * Math.pow(1 + r / n, n * (y - 1));
+                const interestThisYear = balanceEnd - balanceStart;
+                yearlyData.push({ year: y, opening: Math.round(balanceStart), interest: Math.round(interestThisYear), closing: Math.round(balanceEnd) });
+            }
+            const annualInterest = totalInterest / years;
+            const tds = annualInterest > 40000 ? Math.round(totalInterest * 0.10) : 0;
+            return { principal, maturity: Math.round(maturity), totalInterest: Math.round(totalInterest), effectiveRate: effectiveRate.toFixed(2), tds, yearlyData };
+        }
+
+        function formatCurrency(amount) {
+            if (amount >= 10000000) return '₹' + (amount / 10000000).toFixed(2) + ' Cr';
+            if (amount >= 100000) return '₹' + (amount / 100000).toFixed(2) + ' L';
+            return '₹' + Math.round(amount).toLocaleString('en-IN');
+        }
+        function formatCurrencyFull(amount) { return '₹' + Math.round(amount).toLocaleString('en-IN'); }
+
+        function renderDoughnutChart(principal, interest) {
+            const ctx = document.getElementById('doughnut-chart').getContext('2d'); const colors = getChartColors();
+            if (doughnutChart) { doughnutChart.data.datasets[0].data = [principal, interest]; doughnutChart.data.datasets[0].backgroundColor = [colors.invested, colors.returns]; doughnutChart.options.plugins.legend.labels.color = colors.text; doughnutChart.update(); return; }
+            doughnutChart = new Chart(ctx, { type: 'doughnut', data: { labels: ['Principal', 'Interest'], datasets: [{ data: [principal, interest], backgroundColor: [colors.invested, colors.returns], borderWidth: 0, hoverOffset: 6 }] }, options: { responsive: true, maintainAspectRatio: true, cutout: '65%', plugins: { legend: { position: 'bottom', labels: { color: colors.text, padding: 16, usePointStyle: true, pointStyleWidth: 12, font: { size: 12 } } }, tooltip: { callbacks: { label: function(c) { const total = c.dataset.data.reduce((a,b)=>a+b,0); return c.label+': '+formatCurrencyFull(c.raw)+' ('+((c.raw/total)*100).toFixed(1)+'%)'; } } } } } });
+        }
+
+        function renderGrowthChart(yearlyData, principal) {
+            const ctx = document.getElementById('growth-chart').getContext('2d'); const colors = getChartColors();
+            const labels = yearlyData.map(d => 'Yr ' + d.year);
+            const principalData = yearlyData.map(() => principal);
+            const interestData = yearlyData.map(d => d.closing - principal);
+            if (growthChart) { growthChart.data.labels = labels; growthChart.data.datasets[0].data = principalData; growthChart.data.datasets[0].backgroundColor = colors.invested; growthChart.data.datasets[1].data = interestData; growthChart.data.datasets[1].backgroundColor = colors.returns; growthChart.options.scales.x.ticks.color = colors.text; growthChart.options.scales.y.ticks.color = colors.text; growthChart.options.scales.y.grid.color = colors.grid; growthChart.options.plugins.legend.labels.color = colors.text; growthChart.update(); return; }
+            growthChart = new Chart(ctx, { type: 'bar', data: { labels, datasets: [{ label: 'Principal', data: principalData, backgroundColor: colors.invested, borderRadius: 3 }, { label: 'Interest', data: interestData, backgroundColor: colors.returns, borderRadius: 3 }] }, options: { responsive: true, maintainAspectRatio: false, interaction: { mode: 'index', intersect: false }, scales: { x: { stacked: true, ticks: { color: colors.text, font: { size: 11 }, maxRotation: 0 }, grid: { display: false } }, y: { stacked: true, ticks: { color: colors.text, font: { size: 11 }, callback: function(v) { if (v>=10000000) return (v/10000000).toFixed(1)+' Cr'; if (v>=100000) return (v/100000).toFixed(0)+' L'; if (v>=1000) return (v/1000).toFixed(0)+'K'; return v; } }, grid: { color: colors.grid } } }, plugins: { legend: { labels: { color: colors.text, usePointStyle: true, pointStyleWidth: 12, font: { size: 12 }, padding: 16 } }, tooltip: { callbacks: { label: function(c) { return c.dataset.label+': '+formatCurrencyFull(c.raw); } } } } } });
+        }
+
+        function renderBreakdown(yearlyData) {
+            const tbody = document.getElementById('breakdown-body'); let html = '';
+            for (const d of yearlyData) { html += `<tr><td>${d.year}</td><td>${formatCurrency(d.opening)}</td><td class="returns-col">${formatCurrency(d.interest)}</td><td>${formatCurrency(d.closing)}</td></tr>`; }
+            tbody.innerHTML = html;
+        }
+
+        function updateResults() {
+            const principal = Math.max(0, parseFloat(document.getElementById('principal').value) || 0);
+            const rate = Math.max(0, Math.min(15, parseFloat(document.getElementById('rate').value) || 0));
+            const tenure = Math.max(1, Math.min(30, parseInt(document.getElementById('tenure').value) || 1));
+            const compounding = parseInt(document.getElementById('compounding').value);
+            const result = calculateFD(principal, rate, tenure, compounding);
+
+            document.getElementById('res-principal').textContent = formatCurrency(result.principal);
+            document.getElementById('res-interest').textContent = formatCurrency(result.totalInterest);
+            document.getElementById('res-maturity').textContent = formatCurrency(result.maturity);
+            document.getElementById('res-effective').textContent = 'Effective yield: ' + result.effectiveRate + '%';
+            document.getElementById('tds-amount').textContent = formatCurrencyFull(result.tds);
+
+            renderDoughnutChart(result.principal, Math.max(0, result.totalInterest));
+            renderGrowthChart(result.yearlyData, result.principal);
+            renderBreakdown(result.yearlyData);
+        }
+
+        function updateChartColors() { if (doughnutChart || growthChart) updateResults(); }
+        function toggleBreakdown() { const bd = document.getElementById('breakdown'), btn = document.querySelector('.breakdown-toggle'); if (bd.classList.contains('show')) { bd.classList.remove('show'); btn.textContent = 'Show year-by-year breakdown ▼'; } else { bd.classList.add('show'); btn.textContent = 'Hide year-by-year breakdown ▲'; } }
+
+        document.querySelectorAll('input[type="number"]').forEach(input => input.addEventListener('input', updateResults));
+        document.getElementById('compounding').addEventListener('change', updateResults);
+        updateResults();
+    </script>
+    <script defer src="/scripts/subscribe-widget.js"></script>
+</body>
+</html>
