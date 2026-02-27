@@ -145,6 +145,7 @@
     }
     </script>
 
+    <script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
     <link rel="stylesheet" href="/styles/layout.css">
     <style>
         /* Light mode (default) */
@@ -711,6 +712,94 @@
             color: var(--accent-blue);
         }
 
+        .chart-section {
+            margin: 1.5rem 0;
+            text-align: center;
+        }
+
+        .chart-section h3 {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.75rem;
+            text-align: center;
+        }
+
+        .chart-container {
+            position: relative;
+            max-width: 200px;
+            margin: 0 auto;
+        }
+
+        .chart-center-label {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            pointer-events: none;
+        }
+
+        .chart-center-label .value {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            line-height: 1.2;
+        }
+
+        .chart-center-label .sublabel {
+            font-size: 0.65rem;
+            color: var(--text-muted);
+        }
+
+        .chart-legend {
+            display: flex;
+            justify-content: center;
+            gap: 1.25rem;
+            margin-top: 0.75rem;
+            font-size: 0.8rem;
+        }
+
+        .chart-legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.375rem;
+            color: var(--text-secondary);
+        }
+
+        .chart-legend-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .insights-section {
+            margin: 1.5rem 0;
+        }
+
+        .tax-months-card {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.08), rgba(59, 130, 246, 0.03));
+            border: 1px solid rgba(59, 130, 246, 0.15);
+            border-radius: 10px;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .tax-months-card .months-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent-blue);
+            line-height: 1.1;
+        }
+
+        .tax-months-card .months-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 0.375rem;
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             body {
@@ -855,6 +944,28 @@
                             <div class="yearly" id="new-yearly">₹0/year</div>
                             <div class="monthly" id="new-monthly">₹0/month</div>
                         </div>
+                    </div>
+                </div>
+
+                <div class="chart-section" id="chart-section" style="display: none;">
+                    <h3>Your Salary Breakdown</h3>
+                    <div class="chart-container">
+                        <canvas id="tax-chart"></canvas>
+                        <div class="chart-center-label">
+                            <div class="value" id="chart-center-rate">0%</div>
+                            <div class="sublabel">tax rate</div>
+                        </div>
+                    </div>
+                    <div class="chart-legend">
+                        <div class="chart-legend-item"><span class="chart-legend-dot" style="background:#22c55e"></span> Take-home</div>
+                        <div class="chart-legend-item"><span class="chart-legend-dot" style="background:#ef4444"></span> Tax</div>
+                    </div>
+                </div>
+
+                <div class="insights-section" id="insights-section" style="display: none;">
+                    <div class="tax-months-card">
+                        <div class="months-value" id="insight-tax-months">0</div>
+                        <div class="months-label">months of your salary go to taxes</div>
                     </div>
                 </div>
 
@@ -1437,6 +1548,11 @@
             } else {
                 takehomeSection.style.display = 'none';
             }
+
+            const bestTax = Math.min(oldResult.totalTax, newResult.totalTax);
+            const bestRate = income > 0 ? ((bestTax / income) * 100).toFixed(1) : '0';
+            updateChart(income, bestTax, bestRate);
+            updateInsights(income, bestTax);
         }
 
         // Toggle breakdown visibility
@@ -1461,8 +1577,75 @@
         // Age selector also triggers recalculation
         document.getElementById('age').addEventListener('change', updateResults);
 
+        // Chart
+        let taxChart = null;
+
+        function updateChart(income, bestTax, effectiveRate) {
+            const chartSection = document.getElementById('chart-section');
+            if (income <= 0) { chartSection.style.display = 'none'; return; }
+            chartSection.style.display = 'block';
+
+            const takeHome = income - bestTax;
+            const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+            const colors = [isDark ? '#4ade80' : '#22c55e', isDark ? '#f87171' : '#ef4444'];
+
+            document.getElementById('chart-center-rate').textContent = effectiveRate + '%';
+
+            if (taxChart) {
+                taxChart.data.datasets[0].data = [takeHome, bestTax];
+                taxChart.data.datasets[0].backgroundColor = colors;
+                taxChart.update('none');
+                return;
+            }
+
+            const ctx = document.getElementById('tax-chart');
+            if (typeof Chart === 'undefined') return;
+            taxChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Take-home', 'Tax'],
+                    datasets: [{ data: [takeHome, bestTax], backgroundColor: colors, borderWidth: 0, hoverOffset: 6 }]
+                },
+                options: {
+                    cutout: '72%',
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: {
+                                label: function(ctx) { return ctx.label + ': ' + formatCurrency(ctx.raw); }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        window.onThemeChange = function() {
+            if (taxChart) { taxChart.destroy(); taxChart = null; }
+            updateResults();
+        };
+
+        function updateInsights(income, bestTax) {
+            const section = document.getElementById('insights-section');
+            if (income <= 0) { section.style.display = 'none'; return; }
+            section.style.display = 'block';
+
+            const taxMonths = ((bestTax / income) * 12).toFixed(1);
+            document.getElementById('insight-tax-months').textContent = taxMonths;
+        }
+
         // Initialize
-        updateResults();
+        function initCalculator() {
+            updateResults();
+        }
+        if (typeof Chart !== 'undefined') { initCalculator(); }
+        else {
+            const chartScript = document.querySelector('script[src*="chart.js"]');
+            if (chartScript) chartScript.addEventListener('load', initCalculator);
+            else initCalculator();
+        }
     </script>
     <script defer src="/scripts/subscribe-widget.js"></script>
 </div>
