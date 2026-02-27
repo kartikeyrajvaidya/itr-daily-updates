@@ -1,14 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-F4VVXZQZGH"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-F4VVXZQZGH');
-</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -41,10 +33,10 @@
     <meta property="og:locale" content="en_IN">
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <script>document.documentElement.setAttribute('data-theme',localStorage.getItem('theme')||'dark')</script>
 
-    <!-- Preconnect to CDN for faster resource loading -->
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-    <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin>
+    <link rel="preload" href="./data/daily.csv" as="fetch" crossorigin>
 
     <!-- Structured Data (JSON-LD) -->
     <script type="application/ld+json">
@@ -139,6 +131,8 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+        .card.skeleton > *{animation:pulse 1.5s ease-in-out infinite}
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -512,7 +506,7 @@
     </style>
 </head>
 <body>
-    <script src="/scripts/sidebar.js"></script>
+    <script defer src="/scripts/sidebar.js"></script>
     <div class="main-content">
         <div class="main-inner">
             <section class="hero">
@@ -524,7 +518,15 @@
                 <div class="status-item"><span class="live-dot"></span> Live Data</div>
             </div>
 
-            <div id="cards-container"></div>
+            <div id="cards-container">
+                <div class="cards-grid">
+                    <div class="card skeleton"><div class="card-label">&nbsp;</div><div class="card-value" style="background:var(--border-color);border-radius:6px;height:2rem;width:70%">&nbsp;</div><div class="card-delta" style="background:var(--border-color);border-radius:4px;height:1rem;width:40%">&nbsp;</div></div>
+                    <div class="card skeleton"><div class="card-label">&nbsp;</div><div class="card-value" style="background:var(--border-color);border-radius:6px;height:2rem;width:70%">&nbsp;</div><div class="card-delta" style="background:var(--border-color);border-radius:4px;height:1rem;width:40%">&nbsp;</div></div>
+                    <div class="card skeleton"><div class="card-label">&nbsp;</div><div class="card-value" style="background:var(--border-color);border-radius:6px;height:2rem;width:70%">&nbsp;</div><div class="card-delta" style="background:var(--border-color);border-radius:4px;height:1rem;width:40%">&nbsp;</div></div>
+                    <div class="card skeleton"><div class="card-label">&nbsp;</div><div class="card-value" style="background:var(--border-color);border-radius:6px;height:2rem;width:70%">&nbsp;</div><div class="card-delta" style="background:var(--border-color);border-radius:4px;height:1rem;width:40%">&nbsp;</div></div>
+                    <div class="card skeleton"><div class="card-label">&nbsp;</div><div class="card-value" style="background:var(--border-color);border-radius:6px;height:2rem;width:70%">&nbsp;</div><div class="card-delta" style="background:var(--border-color);border-radius:4px;height:1rem;width:40%">&nbsp;</div></div>
+                </div>
+            </div>
 
             <section class="chart-section">
                 <div class="chart-header">
@@ -841,49 +843,8 @@
             });
         }
 
-        function renderDashboard(rows) {
-            allRows = rows;
-            const metaEl = document.getElementById('meta');
 
-            if (rows.length === 0) {
-                document.getElementById('cards-container').innerHTML = '<div class="error">No data available yet.</div>';
-                metaEl.textContent = 'No data';
-                return;
-            }
-
-            const latest = rows[rows.length - 1];
-            const fetchDate = sanitize(latest.fetch_date);
-            const lastUpdated = sanitize(latest.last_updated || '—');
-
-            metaEl.innerHTML = `
-                <div class="status-item"><span class="live-dot"></span> Live Data</div>
-                <div class="status-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg> Fetched: <strong>${fetchDate}</strong></div>
-                <div class="status-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> Portal last updated: <strong>${lastUpdated}</strong></div>
-            `;
-
-            renderCards(latest);
-            renderChart(rows, currentRange);
-        }
-
-        async function loadData() {
-            const metaEl = document.getElementById('meta');
-            const cardsContainer = document.getElementById('cards-container');
-            try {
-                const response = await fetch(CSV_URL);
-                if (!response.ok) throw new Error(`HTTP ${response.status}`);
-                const text = await response.text();
-                const rows = parseCSV(text);
-                renderDashboard(rows);
-            } catch (err) {
-                console.error('Failed to load data:', err);
-                cardsContainer.innerHTML = `
-                    <div style="text-align:center;padding:2rem;background:var(--bg-card);border-radius:16px;border:1px solid var(--border-color);">
-                        <p style="color:var(--accent-red);margin-bottom:1rem;">Live data temporarily unavailable. Please refresh.</p>
-                        <p style="color:var(--text-secondary);font-size:0.9rem;">ITR Stats tracks daily Income Tax Return filing statistics from India's e-Filing Portal.</p>
-                    </div>`;
-                metaEl.innerHTML = '<div class="status-item">Data loading...</div>';
-            }
-        }
+        const csvPromise = fetch(CSV_URL).then(r => { if (!r.ok) throw new Error(`HTTP ${r.status}`); return r.text(); });
 
         document.addEventListener('click', (event) => {
             if (trendChart && !event.target.closest('.chart-section')) {
@@ -915,16 +876,67 @@
             }
         }
 
-        // Initialize
-        if (typeof Chart !== 'undefined') {
-            loadData();
-        } else {
-            document.querySelector('script[src*="chart.js"]').addEventListener('load', loadData);
-        }
+        // Render cards as soon as CSV data is ready (don't wait for Chart.js)
+        csvPromise.then(text => {
+            const rows = parseCSV(text);
+            if (rows.length === 0) return;
+            allRows = rows;
+            const latest = rows[rows.length - 1];
+            const fetchDate = sanitize(latest.fetch_date);
+            const lastUpdated = sanitize(latest.last_updated || '—');
+            document.getElementById('meta').innerHTML = `
+                <div class="status-item"><span class="live-dot"></span> Live Data</div>
+                <div class="status-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg> Fetched: <strong>${fetchDate}</strong></div>
+                <div class="status-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> Portal last updated: <strong>${lastUpdated}</strong></div>
+            `;
+            renderCards(latest);
+
+            // Render chart once Chart.js is loaded
+            function tryRenderChart() {
+                if (typeof Chart !== 'undefined') { renderChart(rows, currentRange); }
+                else { document.querySelector('script[src*="chart.js"]').addEventListener('load', function() { renderChart(rows, currentRange); }); }
+            }
+            tryRenderChart();
+        }).catch(err => {
+            console.error('Failed to load data:', err);
+            document.getElementById('cards-container').innerHTML = `
+                <div style="text-align:center;padding:2rem;background:var(--bg-card);border-radius:16px;border:1px solid var(--border-color);">
+                    <p style="color:var(--accent-red);margin-bottom:1rem;">Live data temporarily unavailable. Please refresh.</p>
+                    <p style="color:var(--text-secondary);font-size:0.9rem;">ITR Stats tracks daily Income Tax Return filing statistics from India's e-Filing Portal.</p>
+                </div>`;
+            document.getElementById('meta').innerHTML = '<div class="status-item">Data loading...</div>';
+        });
     </script>
 
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2843260079810330" crossorigin="anonymous"></script>
-    <script data-goatcounter="https://itrstats.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
     <script defer src="/scripts/subscribe-widget.js"></script>
+    <script>
+    window.addEventListener('load', function() {
+        setTimeout(function() {
+            // Google Analytics
+            var gt = document.createElement('script');
+            gt.src = 'https://www.googletagmanager.com/gtag/js?id=G-F4VVXZQZGH';
+            gt.async = true;
+            document.head.appendChild(gt);
+            gt.onload = function() {
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', 'G-F4VVXZQZGH');
+            };
+            // AdSense
+            var a = document.createElement('script');
+            a.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2843260079810330';
+            a.crossOrigin = 'anonymous';
+            a.async = true;
+            document.body.appendChild(a);
+            // GoatCounter
+            var g = document.createElement('script');
+            g.src = 'https://gc.zgo.at/count.js';
+            g.async = true;
+            g.dataset.goatcounter = 'https://itrstats.goatcounter.com/count';
+            document.body.appendChild(g);
+        }, 2000);
+    });
+    </script>
 </body>
 </html>
