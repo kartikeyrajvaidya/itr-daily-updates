@@ -25,10 +25,10 @@
     var currentTheme = localStorage.getItem('theme') || 'dark';
 
     var html = '<aside class="sidebar" id="sidebar">'
-        + '<div class="sidebar-header">'
+        + '<a href="/" class="sidebar-header" style="text-decoration:none;">'
         + '<div class="sidebar-logo"><img src="/logo.png" alt="ITR Stats" width="40" height="40" style="border-radius:50%;display:block;"></div>'
         + '<div><div class="sidebar-title">ITR Stats</div><div class="sidebar-tagline">India\'s Tax Pulse</div></div>'
-        + '</div>'
+        + '</a>'
         + '<nav class="sidebar-nav">'
         + '<a href="/" class="' + navClass('/') + '">' + icons.dashboard + '<span>Dashboard</span>' + dot('/') + '</a>'
         + '<a href="/insights/" class="' + navClass('/insights/') + '">' + icons.insights + '<span>Insights</span>' + dot('/insights/') + '</a>'
