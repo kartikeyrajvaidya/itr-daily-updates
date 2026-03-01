@@ -65,6 +65,40 @@
     }
     </script>
 
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "What is income percentile in India?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Income percentile tells you what percentage of ITR filers earn less than you. For example, being in the top 10% means 90% of all income tax return filers in India have a lower income than you." }
+            },
+            {
+                "@type": "Question",
+                "name": "How many people file ITR in India?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Approximately 8.75 crore (87.5 million) income tax returns are filed in India annually. However, this represents only about 6-7% of India's total population, since many people fall below the taxable income threshold." }
+            },
+            {
+                "@type": "Question",
+                "name": "What income puts you in the top 1% of ITR filers in India?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Based on Income Tax Department data, the top 1% of ITR filers in India have an annual income of approximately ₹75 lakh or above. The top 2% starts around ₹50 lakh." }
+            },
+            {
+                "@type": "Question",
+                "name": "Is ITR filer percentile the same as the overall population percentile?",
+                "acceptedAnswer": { "@type": "Answer", "text": "No. ITR filers represent only about 7% of India's population — mostly the employed and higher-income segments. If you are filing ITR, you are already in a higher income group compared to the general population. Being top 50% among ITR filers likely places you in the top 5-7% of all Indians." }
+            },
+            {
+                "@type": "Question",
+                "name": "What percentage of ITR filers earn less than 5 lakh in India?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Approximately 65% of all ITR filers in India declare a gross income of ₹5 lakh or below. This makes the ≤5L bracket by far the largest segment of taxpayers." }
+            }
+        ]
+    }
+    </script>
+
     <link rel="stylesheet" href="/styles/layout.css">
     <style>
         :root {
@@ -576,6 +610,41 @@
             .percentile-value { font-size: 2.5rem; }
             .stats-grid { grid-template-columns: repeat(2, 1fr); }
         }
+
+        /* FAQ Section */
+        .faq-section {
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .faq-section h2 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1.25rem;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid var(--border-color);
+            padding: 0.875rem 0;
+        }
+
+        .faq-item:last-child { border-bottom: none; }
+
+        .faq-question {
+            font-size: 0.92rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.4rem;
+        }
+
+        .faq-answer {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
     </style>
 </head>
 <body>
@@ -675,6 +744,30 @@
                 </div>
             </div>
         </main>
+
+        <section class="faq-section">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-item">
+                <div class="faq-question">What is income percentile in India?</div>
+                <div class="faq-answer">Income percentile tells you what percentage of ITR filers earn less than you. Being in the top 10% means 90% of all income tax filers in India have a lower income than you.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">How many people file ITR in India?</div>
+                <div class="faq-answer">Approximately 8.75 crore (87.5 million) income tax returns are filed annually. This is only about 6-7% of India's total population — most people fall below the taxable income threshold.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">What income puts you in the top 1% of ITR filers?</div>
+                <div class="faq-answer">Based on Income Tax Department data, the top 1% of ITR filers earn approximately ₹75 lakh or above annually. The top 2% starts around ₹50 lakh.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Is ITR filer percentile the same as overall population percentile?</div>
+                <div class="faq-answer">No. ITR filers represent only about 7% of India's population. If you file ITR, you're already in a higher income group than most Indians. Being top 50% among ITR filers likely places you in the top 5-7% of all Indians.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">What percentage of ITR filers earn less than ₹5 lakh?</div>
+                <div class="faq-answer">Approximately 65% of all ITR filers declare a gross income of ₹5 lakh or below — by far the largest segment of taxpayers in India.</div>
+            </div>
+        </section>
 
         <!-- Hidden Share Card for Image Generation -->
         <div class="share-card-container">
