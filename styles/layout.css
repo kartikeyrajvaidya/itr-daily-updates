@@ -190,6 +190,21 @@ body.has-sidebar {
     margin: 0 auto;
 }
 
+/* ===== PAGE HEADER (shared across calculator/blog pages) ===== */
+.main-inner h1 {
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: var(--sidebar-text-active);
+    margin-bottom: 0.4rem;
+    line-height: 1.3;
+}
+
+.main-inner .subtitle {
+    color: var(--sidebar-text);
+    font-size: 0.95rem;
+    margin-bottom: 1.75rem;
+}
+
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
     .sidebar {
