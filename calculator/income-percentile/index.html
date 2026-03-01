@@ -114,7 +114,7 @@
             max-width: 1000px;
             margin: 0 auto;
         }
-.main-content {
+.page-layout {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 1.5rem;
@@ -571,7 +571,7 @@
 
         @media (max-width: 768px) {
             body {  }
-            .main-content { grid-template-columns: 1fr; }
+            .page-layout { grid-template-columns: 1fr; }
             .calculator-card { padding: 1.5rem; }
             .percentile-value { font-size: 2.5rem; }
             .stats-grid { grid-template-columns: repeat(2, 1fr); }
@@ -584,7 +584,7 @@
         <div class="main-inner">
         <h1>Income Percentile Calculator</h1>
         <p class="subtitle">See where you rank among Indian taxpayers</p>
-<main>
+<main class="page-layout">
             <div class="calculator-card">
 
                 <div class="input-group">
