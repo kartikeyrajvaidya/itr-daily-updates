@@ -183,7 +183,7 @@ body.has-sidebar {
     padding: 2rem 2.5rem;
     max-width: calc(100% - var(--sidebar-width));
     box-sizing: border-box;
-    overflow-x: hidden;
+    overflow-x: clip;
 }
 
 .main-inner {
