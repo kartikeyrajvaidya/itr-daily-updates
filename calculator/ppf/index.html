@@ -218,7 +218,14 @@
             .calculator-grid { grid-template-columns: 1fr; }
             .result-cards { grid-template-columns: 1fr; }
         }
-    </style>
+    
+        /* Related calculators */
+        .related { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; margin-top: 2rem; }
+        .related a { background: var(--bg-secondary); border-radius: 12px; padding: 1rem; text-align: center; text-decoration: none; color: var(--text-primary); font-weight: 600; font-size: 0.88rem; box-shadow: var(--card-shadow); transition: transform 0.2s, box-shadow 0.2s; border: 1px solid transparent; }
+        .related a:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); border-color: var(--border-color); }
+        .related a .r-icon { margin-bottom: 0.4rem; display: block; }
+        @media (max-width: 600px) { .related { grid-template-columns: 1fr 1fr; } }
+        </style>
 </head>
 <body>
     <script src="/scripts/sidebar.js"></script>
@@ -386,6 +393,22 @@
                 <div class="faq-answer">For most taxpayers, yes. PPF interest is completely tax-free, while FD interest is taxable at your slab rate. A 7.1% PPF gives you the full 7.1%, whereas a 7% FD effectively gives only ~4.9% after 30% tax. The trade-off is PPF's 15-year lock-in vs. FD's 5-year lock-in for tax-saving FDs.</div>
             </div>
         </section>
+    </div>
+
+    <!-- Related Calculators -->
+    <div class="related">
+        <a href="/calculator/sip/">
+            <span class="r-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="22 12 18 8 13 13 9 9 2 16"/></svg></span>
+            SIP Calculator
+        </a>
+        <a href="/calculator/fd/">
+            <span class="r-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="3" y1="22" x2="21" y2="22"/><line x1="3" y1="10" x2="21" y2="10"/><polyline points="5 10 5 22"/><polyline points="19 10 19 22"/><polyline points="12 10 12 22"/><polyline points="2 10 22 10 12 3 2 10"/></svg></span>
+            FD Calculator
+        </a>
+        <a href="/calculator/income-tax/">
+            <span class="r-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="12" y2="14"/></svg></span>
+            Income Tax Calculator
+        </a>
     </div>
 
     <footer>

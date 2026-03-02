@@ -825,7 +825,14 @@
                 grid-template-columns: 1fr;
             }
         }
-    </style>
+    
+        /* Related calculators */
+        .related { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; margin-top: 2rem; }
+        .related a { background: var(--bg-secondary); border-radius: 12px; padding: 1rem; text-align: center; text-decoration: none; color: var(--text-primary); font-weight: 600; font-size: 0.88rem; box-shadow: var(--card-shadow); transition: transform 0.2s, box-shadow 0.2s; border: 1px solid transparent; }
+        .related a:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); border-color: var(--border-color); }
+        .related a .r-icon { margin-bottom: 0.4rem; display: block; }
+        @media (max-width: 600px) { .related { grid-template-columns: 1fr 1fr; } }
+        </style>
 </head>
 <body>
     <script src="/scripts/sidebar.js"></script>
@@ -1095,6 +1102,22 @@
                 <div class="faq-answer">Yes, employer's NPS contribution under Section 80CCD(2) is allowed in both regimes. However, your own NPS contribution under 80CCD(1B) is only allowed in the old regime.</div>
             </div>
         </section>
+    </div>
+
+    <!-- Related Calculators -->
+    <div class="related">
+        <a href="/calculator/hra/">
+            <span class="r-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span>
+            HRA Calculator
+        </a>
+        <a href="/calculator/nps/">
+            <span class="r-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="7" r="4"/><path d="M6 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/></svg></span>
+            NPS Calculator
+        </a>
+        <a href="/calculator/gratuity/">
+            <span class="r-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg></span>
+            Gratuity Calculator
+        </a>
     </div>
 
     <footer>

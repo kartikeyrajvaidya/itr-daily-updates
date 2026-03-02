@@ -136,7 +136,14 @@
             .result-cards { grid-template-columns: 1fr; }
             .result-card.highlight { grid-column: span 1; }
         }
-    </style>
+    
+        /* Related calculators */
+        .related { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; margin-top: 2rem; }
+        .related a { background: var(--bg-secondary); border-radius: 12px; padding: 1rem; text-align: center; text-decoration: none; color: var(--text-primary); font-weight: 600; font-size: 0.88rem; box-shadow: var(--card-shadow); transition: transform 0.2s, box-shadow 0.2s; border: 1px solid transparent; }
+        .related a:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); border-color: var(--border-color); }
+        .related a .r-icon { margin-bottom: 0.4rem; display: block; }
+        @media (max-width: 600px) { .related { grid-template-columns: 1fr 1fr; } }
+        </style>
 </head>
 <body>
     <script src="/scripts/sidebar.js"></script>
@@ -260,6 +267,22 @@
                 <div class="faq-answer">No. Tax deductions under Section 80C and 24(b) are only for home loans. Car and personal loan interest and principal payments are not tax-deductible, unless the personal loan is used for home purchase/renovation or business purposes.</div>
             </div>
         </section>
+    </div>
+
+    <!-- Related Calculators -->
+    <div class="related">
+        <a href="/calculator/hra/">
+            <span class="r-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span>
+            HRA Calculator
+        </a>
+        <a href="/calculator/income-tax/">
+            <span class="r-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="12" y2="14"/></svg></span>
+            Income Tax Calculator
+        </a>
+        <a href="/calculator/fd/">
+            <span class="r-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="3" y1="22" x2="21" y2="22"/><line x1="3" y1="10" x2="21" y2="10"/><polyline points="5 10 5 22"/><polyline points="19 10 19 22"/><polyline points="12 10 12 22"/><polyline points="2 10 22 10 12 3 2 10"/></svg></span>
+            FD Calculator
+        </a>
     </div>
 
     <footer>

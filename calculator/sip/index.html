@@ -405,7 +405,14 @@
         @media (max-width: 480px) {
             .input-section, .result-section { padding: 1.25rem; }
         }
-    </style>
+    
+        /* Related calculators */
+        .related { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; margin-top: 2rem; }
+        .related a { background: var(--bg-secondary); border-radius: 12px; padding: 1rem; text-align: center; text-decoration: none; color: var(--text-primary); font-weight: 600; font-size: 0.88rem; box-shadow: var(--card-shadow); transition: transform 0.2s, box-shadow 0.2s; border: 1px solid transparent; }
+        .related a:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); border-color: var(--border-color); }
+        .related a .r-icon { margin-bottom: 0.4rem; display: block; }
+        @media (max-width: 600px) { .related { grid-template-columns: 1fr 1fr; } }
+        </style>
 </head>
 <body>
     <script src="/scripts/sidebar.js"></script>
@@ -620,6 +627,22 @@
                 <div class="faq-answer">No. SIP returns depend on market performance. The expected return rate in this calculator is an assumption — actual returns can be higher or lower. However, over long periods (10+ years), equity SIPs have historically delivered strong inflation-beating returns.</div>
             </div>
         </section>
+    </div>
+
+    <!-- Related Calculators -->
+    <div class="related">
+        <a href="/calculator/lumpsum/">
+            <span class="r-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg></span>
+            Lumpsum Calculator
+        </a>
+        <a href="/calculator/ppf/">
+            <span class="r-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>
+            PPF Calculator
+        </a>
+        <a href="/calculator/nps/">
+            <span class="r-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="7" r="4"/><path d="M6 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/></svg></span>
+            NPS Calculator
+        </a>
     </div>
 
     <footer>
