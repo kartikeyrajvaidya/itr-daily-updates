@@ -834,6 +834,7 @@
         .related a:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); border-color: var(--border-color); }
         .related a .r-icon { margin-bottom: 0.4rem; display: block; }
         @media (max-width: 600px) { .related { grid-template-columns: 1fr 1fr; } }
+                .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
         </style>
 </head>
 <body>
@@ -987,16 +988,21 @@
                 <div class="breakdown" id="breakdown">
                     <div class="breakdown-section">
                         <h3>Old Regime Calculation</h3>
-                        <table class="breakdown-table" id="old-breakdown">
+                        <div class="table-scroll"><table class="breakdown-table" id="old-breakdown">
                             <tr><td>Gross Income</td><td>₹0</td></tr>
                         </table>
+                        </div>
+</div>
+</div>
                     </div>
 
                     <div class="breakdown-section">
                         <h3>New Regime Calculation</h3>
-                        <table class="breakdown-table" id="new-breakdown">
+                        <div class="table-scroll"><table class="breakdown-table" id="new-breakdown">
                             <tr><td>Gross Income</td><td>₹0</td></tr>
                         </table>
+                        </div>
+</div>
                     </div>
                 </div>
 
@@ -1012,7 +1018,7 @@
             <p>India offers two tax regimes - the Old Regime with deductions and the New Regime with lower rates but fewer deductions. Here's a comparison:</p>
 
             <h3 style="font-size: 1.1rem; margin-top: 1.5rem; margin-bottom: 0.75rem;">New Tax Regime (Default)</h3>
-            <table class="tax-slab-table">
+            <div class="table-scroll"><table class="tax-slab-table">
                 <thead>
                     <tr>
                         <th>Income Slab</th>
@@ -1029,10 +1035,11 @@
                     <tr><td>Above ₹24,00,000</td><td>30%</td></tr>
                 </tbody>
             </table>
+            </div>
             <p style="font-size: 0.85rem; color: var(--text-muted);">Standard deduction: ₹75,000 | Rebate u/s 87A: Full tax rebate if taxable income ≤ ₹12,00,000</p>
 
             <h3 style="font-size: 1.1rem; margin-top: 1.5rem; margin-bottom: 0.75rem;">Old Tax Regime</h3>
-            <table class="tax-slab-table">
+            <div class="table-scroll"><table class="tax-slab-table">
                 <thead>
                     <tr>
                         <th>Income Slab</th>
@@ -1046,6 +1053,7 @@
                     <tr><td>Above ₹10,00,000</td><td>30%</td></tr>
                 </tbody>
             </table>
+            </div>
             <p style="font-size: 0.85rem; color: var(--text-muted);">Standard deduction: ₹50,000 | Rebate u/s 87A: Up to ₹12,500 if taxable income ≤ ₹5,00,000</p>
         </section>
 

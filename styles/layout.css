@@ -19,12 +19,24 @@
     --sidebar-accent: #2dd4bf;
 }
 
+/* Prevent horizontal scroll at viewport level */
+html {
+    overflow-x: hidden;
+}
+
 /* Body becomes flex layout */
 body.has-sidebar {
     display: flex !important;
     padding: 0 !important;
     margin: 0 !important;
     overflow-x: hidden;
+}
+
+/* Ensure <main> is always a constrained block on mobile */
+main {
+    display: block;
+    width: 100%;
+    max-width: 100%;
 }
 
 /* ===== SIDEBAR ===== */
