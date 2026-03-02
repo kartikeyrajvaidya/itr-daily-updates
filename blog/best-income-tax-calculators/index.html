@@ -272,17 +272,17 @@
         /* ── article sidebar (TOC) ── */
         .article-wrap { display: grid; grid-template-columns: 1fr 260px; gap: 2rem; align-items: start; }
         .article-sidebar { position: sticky; top: 1rem; display: flex; flex-direction: column; gap: 1rem; }
-        .sidebar-card { background: var(--bg-accent); border-radius: 12px; padding: 1.25rem; }
+        .sidebar-card { background: var(--bg-secondary); border-radius: 12px; padding: 1.25rem; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
         .sidebar-card h4 { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); margin-bottom: 0.75rem; }
         .toc-links { list-style: none; padding: 0; margin: 0; }
-        .toc-links li { margin-bottom: 0.35rem; }
-        .toc-links a { font-size: 0.85rem; color: var(--text-muted); text-decoration: none; line-height: 1.4; display: block; padding: 0.1rem 0; }
-        .toc-links a::before { content: "→ "; font-size: 0.72rem; }
+        .toc-links li { margin-bottom: 0.5rem; }
+        .toc-links a { font-size: 0.85rem; color: var(--text-muted); text-decoration: none; line-height: 1.5; }
+        .toc-links a::before { content: "→ "; font-size: 0.75rem; }
         .toc-links a:hover { color: var(--accent-teal, #0d9488); }
         .sidebar-links { list-style: none; padding: 0; margin: 0; }
-        .sidebar-links li { padding: 0.4rem 0; border-bottom: 1px solid var(--border-color); }
-        .sidebar-links li:last-child { border-bottom: none; padding-bottom: 0; }
-        .sidebar-links a { font-size: 0.85rem; color: var(--text-secondary); text-decoration: none; line-height: 1.4; }
+        .sidebar-links li { margin-bottom: 0.5rem; }
+        .sidebar-links li:last-child { margin-bottom: 0; }
+        .sidebar-links a { font-size: 0.875rem; color: var(--text-secondary); text-decoration: none; line-height: 1.4; }
         .sidebar-links a:hover { color: var(--accent-blue, #3b82f6); }
         @media (max-width: 900px) {
             .article-wrap { grid-template-columns: 1fr; }
