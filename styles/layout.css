@@ -178,6 +178,7 @@ body.has-sidebar {
     position: relative;
     margin-left: var(--sidebar-width);
     flex: 1;
+    min-width: 0;
     min-height: 100vh;
     padding: 2rem 2.5rem;
     max-width: calc(100% - var(--sidebar-width));
@@ -229,5 +230,11 @@ body.has-sidebar {
         max-width: 100%;
         padding: 1rem;
         padding-top: 4.5rem;
+    }
+
+    /* Fix CSS Grid min-width: auto problem on calculator pages */
+    .input-section,
+    .result-section {
+        min-width: 0;
     }
 }
