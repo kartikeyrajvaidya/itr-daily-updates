@@ -24,7 +24,7 @@ body.has-sidebar {
     display: flex !important;
     padding: 0 !important;
     margin: 0 !important;
-    overflow-x: hidden;
+    overflow-x: clip; /* clip ≠ scroll container, so position:sticky works */
 }
 
 /* ===== SIDEBAR ===== */
