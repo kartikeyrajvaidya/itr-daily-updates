@@ -925,20 +925,17 @@
         // Fetch income distribution data
         async function fetchIncomeData() {
             const now = new Date();
-            const currentMonth = now.getMonth() + 1;
-            const currentYear = now.getFullYear();
+            const monthNames = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 
-            // Determine FY - if before April, use previous FY
-            let fyYear, fyMonth;
-            if (currentMonth < 4) {
-                fyYear = currentYear - 1;
-                fyMonth = currentMonth + 9; // Map Jan=10, Feb=11, Mar=12
-            } else {
-                fyYear = currentYear;
-                fyMonth = currentMonth - 3; // Map Apr=1, May=2, etc.
-            }
+            // Use previous calendar month (same as insights page — API doesn't have current month yet)
+            let monthIndex = now.getMonth() - 1;
+            if (monthIndex < 0) monthIndex = 11; // January → use December
+            const monthStr = monthNames[monthIndex];
 
-            const url = `https://eportal.incometax.gov.in/iec/efilingstatisticsgenerator/getStatistics?year=${fyYear}&month=${fyMonth}&isHistoryData=false`;
+            // FY year: Jan-Mar belongs to previous calendar year's FY
+            const fyYear = now.getMonth() < 3 ? now.getFullYear() - 1 : now.getFullYear();
+
+            const url = `https://eportal.incometax.gov.in/iec/efilingstatisticsgenerator/getStatistics?year=${fyYear}&month=${monthStr}&isHistoryData=false`;
 
             try {
                 const response = await fetch(url);
