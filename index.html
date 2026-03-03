@@ -735,9 +735,9 @@
                         <p class="chart-subtitle">Track the daily growth across all key metrics</p>
                     </div>
                     <div class="chart-filters" role="group" aria-label="Chart time range">
-                        <button class="chart-filter-btn" data-range="7" onclick="setChartRange(7)">7D</button>
+                        <button class="chart-filter-btn active" data-range="7" onclick="setChartRange(7)">7D</button>
                         <button class="chart-filter-btn" data-range="30" onclick="setChartRange(30)">1M</button>
-                        <button class="chart-filter-btn active" data-range="all" onclick="setChartRange('all')">All</button>
+                        <button class="chart-filter-btn" data-range="all" onclick="setChartRange('all')">All</button>
                     </div>
                 </div>
                 <div class="chart-container">
@@ -890,7 +890,7 @@
 
         let trendChart = null;
         let allRows = [];
-        let currentRange = 'all';
+        let currentRange = 7;
 
         // Theme
         window.onThemeChange = function(theme) {
