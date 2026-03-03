@@ -410,7 +410,7 @@
             margin-bottom: 1.5rem;
         }
 
-        .chart-header { margin-bottom: 1rem; }
+        .chart-header { margin-bottom: 1rem; display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
 
         .chart-title {
             font-size: 1.15rem;
@@ -423,6 +423,27 @@
             color: var(--text-muted);
             margin-top: 0.25rem;
         }
+
+        .chart-filters {
+            display: flex;
+            gap: 0.35rem;
+            flex-shrink: 0;
+        }
+
+        .chart-filter-btn {
+            font-size: 0.78rem;
+            font-weight: 600;
+            padding: 0.3rem 0.65rem;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+            background: transparent;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.15s ease;
+        }
+
+        .chart-filter-btn:hover { border-color: var(--accent-blue); color: var(--accent-blue); }
+        .chart-filter-btn.active { background: var(--accent-blue); border-color: var(--accent-blue); color: #fff; }
 
         .chart-container {
             position: relative;
@@ -709,8 +730,15 @@
 
             <section class="chart-section">
                 <div class="chart-header">
-                    <h2 class="chart-title">Daily Growth Trend</h2>
-                    <p class="chart-subtitle">Track the daily growth across all key metrics</p>
+                    <div>
+                        <h2 class="chart-title">Daily Growth Trend</h2>
+                        <p class="chart-subtitle">Track the daily growth across all key metrics</p>
+                    </div>
+                    <div class="chart-filters" role="group" aria-label="Chart time range">
+                        <button class="chart-filter-btn" data-range="7" onclick="setChartRange(7)">7D</button>
+                        <button class="chart-filter-btn" data-range="30" onclick="setChartRange(30)">1M</button>
+                        <button class="chart-filter-btn active" data-range="all" onclick="setChartRange('all')">All</button>
+                    </div>
                 </div>
                 <div class="chart-container">
                     <canvas id="trendChart"></canvas>
@@ -948,6 +976,14 @@
         function filterRowsByRange(rows, range) {
             if (range === 'all' || rows.length <= range) return rows;
             return rows.slice(-range);
+        }
+
+        function setChartRange(range) {
+            currentRange = range;
+            document.querySelectorAll('.chart-filter-btn').forEach(btn => {
+                btn.classList.toggle('active', String(btn.dataset.range) === String(range));
+            });
+            if (allRows.length) renderChart(allRows, range);
         }
 
         function renderChart(rows, range = currentRange) {
