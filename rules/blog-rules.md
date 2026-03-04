@@ -1,7 +1,7 @@
 # Blog Rules — Data-Driven Posts
 
 Reference for writing data-driven guides, analysis posts, and cluster pages on itrstats.in.
-Does NOT apply to calculator comparison roundups (see blog-comparison-rules.md).
+Does NOT apply to calculator comparison roundups (see rules/blog-comparison-rules.md).
 
 ---
 
