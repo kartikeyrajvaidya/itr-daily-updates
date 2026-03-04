@@ -206,7 +206,51 @@ Once the brief exists, use it as the single source of truth for the page's keywo
 
 ---
 
-## 7. Page Header (article top)
+## 7. H2 Structure & Word Count
+
+### Heading hierarchy
+- **H1** — exactly once, at the top. Must match or closely mirror the title tag.
+- **H2** — main sections. 4-7 per article. These are what Google uses for featured snippets.
+- **H3** — subsections within an H2. Use when an H2 has 3+ distinct sub-points.
+- Never skip levels (no H3 without a parent H2, no H4 at all).
+
+### Standard H2 template (adapt per topic)
+```
+H1  [Full page title]
+
+H2  What Is [X]
+H2  How [X] Works  (or: How to Calculate [X])
+H2  Latest Data / Numbers  (the data section — ITR Stats' differentiator)
+H2  [Specific angle from research brief]
+H2  Common Questions / What To Do
+H2  Frequently Asked Questions
+```
+
+The "Latest Data" H2 is mandatory. Every post must have a section grounded in official data.
+
+### Word count by page type
+| Type | Target |
+|---|---|
+| Analysis post (data-driven) | 1,200 - 1,800 words |
+| How-to guide | 1,500 - 2,200 words |
+| Cluster page (refund, HUF etc.) | 1,800 - 2,500 words |
+
+Under 1,000 words = thin content risk. Over 2,500 words = add a ToC.
+
+---
+
+## 7a. Content Angle Rule — The Non-Negotiable
+
+Every post must include **at least one** of:
+- **Original data insight** — a number, percentage, or trend from CBDT/IT portal data that competitors don't show
+- **Worked calculation** — a real example with actual rupee amounts (use `.calc-box`)
+- **Comparison table** — side-by-side comparison of options, rules, or outcomes
+
+If none of these are present, the post is generic and should not be published. This is what separates ITR Stats from every other tax blog.
+
+---
+
+## 8. Page Header (article top)
 
 ```html
 <div class="page-header">
@@ -406,6 +450,15 @@ Can also include related links or a sticky CTA for calculators.
 - Always include `<thead>` with `<th>` headers.
 - Zebra stripe with `tbody tr:nth-child(even)`.
 
+```css
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th { background: var(--bg-accent); color: var(--text-primary); font-weight: 600; text-align: left; padding: 0.75rem 1rem; border-bottom: 2px solid var(--border-color); }
+td { padding: 0.7rem 1rem; border-bottom: 1px solid var(--border-color); color: var(--text-secondary); vertical-align: top; }
+tbody tr:nth-child(even) { background: var(--bg-accent); }
+tbody tr:hover { background: var(--bg-accent); }
+@media (max-width: 600px) { table { font-size: 0.8rem; } th, td { padding: 0.5rem 0.6rem; } }
+```
+
 ---
 
 ## 15. Content Tone & Style
@@ -415,7 +468,29 @@ Can also include related links or a sticky CTA for calculators.
 - **No filler phrases.** Cut "it is important to note that", "in today's world", "as we all know".
 - **Indian context.** Use Rs (not ₹ in body text where formatting may break), lakh/crore not million/billion.
 - **Audience:** Salaried taxpayer who files ITR and reads financial content. Not a CA. Not a beginner.
-- **Cluster-aware.** Every page should link to at least 2 other pages in the same cluster.
+
+---
+
+## 15a. Internal Linking Rules
+
+Every article must have:
+- **Minimum 3 internal links** total
+- **Minimum 1 cluster link** (to a page in the same cluster, via cluster nav or ref-link)
+- **Minimum 1 calculator link** (to a relevant calculator on itrstats.in)
+- **Maximum 2 external links** (only to official sources: incometax.gov.in, CBDT reports, RBI)
+
+Use `.ref-link` chips for contextual cross-links within the article body. Use cluster nav for the cluster set. Do not link externally to ClearTax, ET Money, or competitors.
+
+---
+
+## 15b. Image Rules
+
+- **Maximum 2 images per article.** ITR Stats is a data/text-first site — avoid decorative images.
+- Use images only when they add information (a screenshot, a chart, a table that can't be done in HTML).
+- **Dimensions:** 1200px wide maximum. Compress to under 100KB.
+- **Format:** WebP preferred, PNG for screenshots, JPG for photos.
+- **Always include `alt` text** — descriptive, not keyword-stuffed: `alt="ITR refund status showing Refund Initiated on income tax portal"`.
+- **Never hotlink** external images. Self-host in `/images/` or use inline SVG/HTML for diagrams.
 
 ---
 
@@ -437,3 +512,31 @@ After building any new page:
 1. Add to `sitemap.xml` — `lastmod` = today, `changefreq: monthly`, `priority: 0.9`
 2. Add to `llms.txt` — under the appropriate section with a one-line description
 3. If starting a new cluster, update `llms.txt` with a new `##` section
+
+---
+
+## 18. Update Strategy
+
+Pages are not static. Google rewards freshness, especially for tax/finance content where numbers change.
+
+### Update cadence
+| Page type | Update every |
+|---|---|
+| Live data pages (processing stats, dashboard) | Daily / automated |
+| Cluster pages (refund guides) | 60-90 days |
+| Analysis posts (income percentile, distribution) | When new CBDT data releases |
+| Tax guides (80C, HRA, deadlines) | Each budget cycle (Feb) + FY start (April) |
+| Comparison posts (best calculators) | 90 days |
+
+### What to update on each refresh
+1. **Data numbers** — update stats, percentages, filing counts to latest available
+2. **`article:modified_time`** in OG meta
+3. **`lastmod`** in `sitemap.xml`
+4. **Add 1 new section or expand 1 existing section** — even a small addition signals freshness
+5. **Check internal links** — ensure all linked pages still exist, add new relevant links
+
+### High-priority pages to keep fresh
+- `/itr-refund-status/` — statuses can change with portal updates
+- `/blog/india-income-percentile/` — new CBDT data each year
+- `/blog/tax-calendar-2026/` — update year each April
+- Any page with "2026" in the title — update to "2027" in April 2027
