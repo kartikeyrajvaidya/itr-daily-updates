@@ -4,6 +4,116 @@ Reference for building consistent, accurate calculators on itrstats.in.
 
 ---
 
+## 0. Before You Build — Run /new-calculator
+
+**Never start building a calculator without a spec brief.**
+
+Run `/new-calculator [name]` first. It produces a brief saved to `research/calc-spec-{slug}-{date}.md` covering:
+- Feasibility score (is this worth building?)
+- SERP features check (what is Google rewarding for this query?)
+- Competitor calculator analysis (what gaps exist?)
+- Formula validation against official source
+- Full input/output spec + default values
+- H2 structure for below-calculator content
+- Related calculators and blog cross-links
+
+**If feasibility score is below 5 — don't build.**
+
+---
+
+## 0a. Feasibility Score (0-10)
+
+Run this before any build decision:
+
+| Signal | Points |
+|---|---|
+| Official formula published and verifiable | +3 |
+| Top competitor calculators are weak (no charts, no dark mode, submit button only) | +3 |
+| Can add unique ITR Stats feature (live data, dark mode, shareable result, breakdown table) | +2 |
+| Strong transactional search volume in India | +2 |
+
+- **0-4**: Not worth building — formula is niche or competitors already do it well
+- **5-6**: Build only if there is a clear format gap vs competitors
+- **7-10**: Build
+
+---
+
+## 0b. SERP Features Check (calculator-specific)
+
+For the primary keyword (e.g. "PPF calculator"):
+- [ ] Does Google show a **native built-in calculator**? If yes, kills click-through significantly
+- [ ] **Tools carousel** showing competitor calculators?
+- [ ] **Featured snippet** for formula? → need a clean formula section
+- [ ] **PAA-heavy**? → need strong FAQ section with WebApplication + FAQPage schema
+- [ ] **Freshness signals** (dates in SERP)? → note update cadence needed
+
+---
+
+## 0c. Competitor Calculator Analysis
+
+For each of the top 3 competitor calculators, score these features:
+
+| Feature | Competitor 1 | Competitor 2 | Competitor 3 |
+|---|---|---|---|
+| Real-time (no submit button) | | | |
+| Dark mode | | | |
+| Charts (doughnut + bar) | | | |
+| Year-by-year breakdown table | | | |
+| Mobile-friendly | | | |
+| Formula section | | | |
+| FAQ section | | | |
+| WebApplication schema | | | |
+
+ITR Stats wins by default on: dark mode, real-time, charts, breakdown table, Indian formatting.
+If competitors already have all of these, identify a different differentiator.
+
+---
+
+## 0d. Formula Validation
+
+Before building, cite the official source for the formula. If no official source exists, do not build.
+
+```
+Formula: [write it out]
+Source: [Finance Act section / RBI circular / SEBI regulation / IT Dept FAQ URL]
+Verified: Yes / No
+```
+
+If `Verified: No` — stop. Do not publish a calculator with an unverified formula.
+
+---
+
+## 0e. H2 Structure Below the Calculator
+
+Every calculator must have content below the interactive tool for SEO. Standard structure:
+
+```
+H2  How [X] Works
+H2  [X] Formula
+H2  Example Calculation       ← use .calc-box component
+H2  Tax Treatment / Rules / Limits   ← name based on topic
+H2  Frequently Asked Questions
+```
+
+**Word count below calculator: 600–900 words.** Enough for keyword coverage and FAQ schema. Not so much that it buries the tool.
+
+---
+
+## 0f. Default Values Strategy
+
+Default values must represent a realistic, relatable Indian user scenario — not arbitrary round numbers.
+
+- SIP: Rs 10,000/month, 12% return, 10 years
+- PPF: Rs 1,50,000/year (max), 15 years
+- FD: Rs 1,00,000, 7% rate, 1 year
+- EMI: Rs 30,00,000 (home loan), 8.5% rate, 20 years
+- NPS: Rs 5,000/month, 10% return, 30 years, 6% annuity
+- HRA: Rs 50,000 basic, Rs 20,000 HRA, Rs 15,000 rent, metro
+
+Bad defaults (avoid): Rs 1,000 amounts, 1% rates, 1-year durations — these produce trivial outputs that don't engage users.
+
+---
+
 ## 1. File Location
 
 `calculator/{slug}/index.html`
@@ -425,3 +535,21 @@ After the FAQ or before Related Calculators, add 1-2 cross-links to relevant blo
 After building any new calculator:
 1. Add to `sitemap.xml` — `lastmod` = today, `changefreq: yearly` (static formula) or `monthly` (data-driven), `priority: 0.9`
 2. Add to `llms.txt` under the `## Calculators` section
+
+---
+
+## 20. Update Strategy
+
+| Calculator type | Update trigger |
+|---|---|
+| Static formula (EMI, Gratuity, GST) | Only when govt changes the rule/formula |
+| Rate-based (PPF, FD) | When RBI / govt changes the rate |
+| Tax-based (Income Tax, HRA, NPS) | Each Budget (February) + FY start (April) |
+| Data-driven (Income Percentile) | Automatic via live API — verify API still works monthly |
+
+On each update:
+1. Verify formula is still correct against official source
+2. Update default values if they've become unrealistic
+3. Update `lastmod` in `sitemap.xml`
+4. Check FAQ answers are still accurate (tax limits, rates, rules change)
+5. Update title year if a new FY has started
