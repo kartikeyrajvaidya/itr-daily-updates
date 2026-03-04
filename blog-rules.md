@@ -5,6 +5,25 @@ Does NOT apply to calculator comparison roundups (see blog-comparison-rules.md).
 
 ---
 
+## 0. Before You Write Anything — Run /research
+
+**Never start writing a blog post without a research brief.**
+
+Run `/research [topic]` first. This produces a brief saved to `research/brief-{slug}-{date}.md` covering:
+- Intent classification (confirms this should be a blog, not a calculator or data page)
+- Target keywords and cannibalization check (ensures we're not duplicating an existing page)
+- Competitor gap analysis (identifies what angle competitors miss)
+- ITR Stats differentiation angle (confirms we have a data-driven hook — if not, don't build the page)
+- Internal linking map (which existing pages link to this and vice versa)
+- Recommended URL, H2 structure, title, and meta description
+
+**If the research brief says "not worth building" — don't build it.**
+The most common reason: no data angle that differentiates from ClearTax. Generic tax information without CBDT/IT portal data grounding is not ITR Stats content.
+
+Once the brief exists, use it as the single source of truth for the page's keyword, angle, structure, and SEO elements. Do not deviate from the recommended title/slug without a reason.
+
+---
+
 ## 1. File Location
 
 - Blog posts: `blog/{slug}/index.html`
