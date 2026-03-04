@@ -4,11 +4,11 @@ Reference for building consistent, accurate calculators on itrstats.in.
 
 ---
 
-## 0. Before You Build — Run /new-calculator
+## 0. Before You Build — Run /calculator-research
 
 **Never start building a calculator without a spec brief.**
 
-Run `/new-calculator [name]` first. It produces a brief saved to `research/calc-spec-{slug}-{date}.md` covering:
+Run `/calculator-research [name]` first. It produces a brief saved to `research/calc-spec-{slug}-{date}.md` covering:
 - Feasibility score (is this worth building?)
 - SERP features check (what is Google rewarding for this query?)
 - Competitor calculator analysis (what gaps exist?)
