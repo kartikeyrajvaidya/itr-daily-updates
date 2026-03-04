@@ -1152,9 +1152,10 @@
             }
         });
 
-        // Pre-fetch data on page load
+        // Pre-fetch data on page load, then render result for default value
         fetchIncomeData().then(data => {
             incomeData = data;
+            calculate();
         });
     </script>
     <script defer src="/scripts/subscribe-widget.js"></script>
