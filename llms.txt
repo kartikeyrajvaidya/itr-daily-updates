@@ -1,63 +1,65 @@
+[ITR Stats](https://itrstats.in): India's independent income tax dashboard with live ITR filing and processing statistics, ITR refund guides, income distribution data, and free financial calculators. All data sourced from official CBDT and Income Tax Department portal.
+
 # ITR Stats
 
-> India's independent income tax dashboard. Live ITR processing statistics, refund guides, income data analysis, and free financial calculators — all based on official CBDT and Income Tax Department data.
+> India's independent income tax dashboard. Live ITR processing statistics, refund guides, income data analysis, and free financial calculators - all based on official CBDT and Income Tax Department data.
 
 ITR Stats tracks daily ITR filing and processing numbers pulled directly from the Income Tax e-filing portal. Data is updated twice daily. All calculators use official government data or published tax rules.
 
 ## Core Dashboard
 
-- [Live ITR Dashboard](https://itrstats.in/): Daily ITR filing counts, processing queue, refund stats, and e-verification numbers. Updated twice daily from the IT portal API.
-- [ITR Processing Stats](https://itrstats.in/itr-processing-stats/): How fast is the Income Tax Department processing returns? Daily processing rates, seasonal patterns, and current backlog.
-- [Insights](https://itrstats.in/insights/): Multi-year ITR filing trends, category-wise breakdown, state-wise data, and form-wise comparisons using official CBDT statistics.
+- [Live ITR Dashboard](https://itrstats.in/): Daily ITR filing counts, processing queue size, refund stats, and e-verification numbers for the current filing season. Updated twice daily from the IT portal API.
+- [ITR Processing Stats](https://itrstats.in/itr-processing-stats/): How fast is the Income Tax Department processing returns? Daily processing rates, fastest and slowest periods, weekend vs weekday patterns, and current backlog size.
+- [Insights](https://itrstats.in/insights/): Multi-year ITR filing trends with category-wise breakdown, state-wise data, and form-wise comparisons using official CBDT statistics.
 
 ## ITR Refund Guides
 
-- [ITR Refund Status Guide](https://itrstats.in/itr-refund-status/): What every ITR refund status means - Refund Initiated, Refund Sent to Bank, No Demand No Refund, Refund Failure, and more.
-- [Why Is My ITR Refund Delayed?](https://itrstats.in/itr-refund-delayed/): 8 common reasons for ITR refund delays and how to fix each one.
-- [How ITR Gets Processed at CPC](https://itrstats.in/itr-processed-at-cpc/): Step-by-step explanation of the CPC Bengaluru ITR processing pipeline from e-verification to refund credit.
-- [ITR Refund Interest Under Section 244A](https://itrstats.in/itr-refund-interest/): How Section 244A interest works, when you are eligible for 0.5% per month interest on delayed refunds, and how to calculate it.
+- [ITR Refund Status Guide](https://itrstats.in/itr-refund-status/): What every ITR refund status means - Refund Initiated, Refund Sent to Bank, No Demand No Refund, Refund Failure, Not Determined Yet. Includes how to check refund status step by step.
+- [Why Is My ITR Refund Delayed?](https://itrstats.in/itr-refund-delayed/): 8 common reasons for ITR refund delays and exact steps to fix each - wrong bank account, mismatch in Form 26AS, pending ITR-U, AIS discrepancy, and more.
+- [How ITR Gets Processed at CPC](https://itrstats.in/itr-processed-at-cpc/): Step-by-step explanation of the CPC Bengaluru ITR processing pipeline from e-verification to refund credit. What happens at each stage.
+- [ITR Refund Interest Under Section 244A](https://itrstats.in/itr-refund-interest/): How Section 244A interest on delayed ITR refunds works. Eligibility, 0.5% per month calculation, when the government withholds it, and taxability.
 
 ## Calculators
 
-- [Income Tax Calculator](https://itrstats.in/calculator/income-tax/): Compare old vs new tax regime for FY 2025-26. Enter salary, HRA, deductions under 80C/80D and get exact tax liability under both regimes.
-- [Income Percentile Calculator](https://itrstats.in/calculator/income-percentile/): Enter your annual income and see your percentile rank among 8.5 crore Indian taxpayers. Based on live CBDT ITR data.
-- [SIP Calculator](https://itrstats.in/calculator/sip/): Calculate SIP returns with year-by-year growth chart and inflation-adjusted value.
-- [PPF Calculator](https://itrstats.in/calculator/ppf/): PPF maturity amount with annual compounding at current 7.1% rate.
-- [FD Calculator](https://itrstats.in/calculator/fd/): Fixed deposit maturity with quarterly compounding and TDS deduction.
-- [EMI Calculator](https://itrstats.in/calculator/emi/): Loan EMI with full amortization schedule.
-- [NPS Calculator](https://itrstats.in/calculator/nps/): NPS corpus at retirement with annuity income estimate.
-- [HRA Calculator](https://itrstats.in/calculator/hra/): HRA exemption under Section 10(13A) - metro vs non-metro.
-- [Gratuity Calculator](https://itrstats.in/calculator/gratuity/): Gratuity under Payment of Gratuity Act for government and private employees.
-- [Lumpsum Calculator](https://itrstats.in/calculator/lumpsum/): One-time mutual fund investment growth calculator.
-- [SWP Calculator](https://itrstats.in/calculator/swp/): Systematic Withdrawal Plan - how long your corpus lasts at a given monthly withdrawal.
-- [GST Calculator](https://itrstats.in/calculator/gst/): Add or remove GST at 5%, 12%, 18%, 28% slabs.
+- [Income Tax Calculator](https://itrstats.in/calculator/income-tax/): Compare old vs new tax regime for FY 2025-26. Enter salary, HRA, deductions under 80C and 80D and get exact tax liability under both regimes side by side.
+- [Income Percentile Calculator](https://itrstats.in/calculator/income-percentile/): Enter your annual income and instantly see your percentile rank among 8.5 crore Indian taxpayers. Based on live CBDT ITR data updated monthly.
+- [HRA Calculator](https://itrstats.in/calculator/hra/): Calculate HRA exemption under Section 10(13A). Metro vs non-metro formula, actual rent paid vs 40/50% of salary comparison.
+- [SIP Calculator](https://itrstats.in/calculator/sip/): Calculate SIP mutual fund returns with year-by-year growth chart, inflation-adjusted value, and total invested vs total returns breakdown.
+- [PPF Calculator](https://itrstats.in/calculator/ppf/): PPF maturity amount with annual compounding at current 7.1% rate. 15-year and extended period projections.
+- [FD Calculator](https://itrstats.in/calculator/fd/): Fixed deposit maturity with quarterly compounding, TDS deduction, and effective yield calculation.
+- [EMI Calculator](https://itrstats.in/calculator/emi/): Loan EMI calculator with full amortization schedule showing principal vs interest split every month.
+- [NPS Calculator](https://itrstats.in/calculator/nps/): NPS corpus at retirement with annuity income estimate and Section 80CCD(1B) tax saving.
+- [Gratuity Calculator](https://itrstats.in/calculator/gratuity/): Gratuity calculation under Payment of Gratuity Act for government and private sector employees.
+- [Lumpsum Calculator](https://itrstats.in/calculator/lumpsum/): One-time mutual fund investment growth calculator with CAGR and absolute return.
+- [SWP Calculator](https://itrstats.in/calculator/swp/): Systematic Withdrawal Plan - how long your corpus lasts at a given monthly withdrawal amount.
+- [GST Calculator](https://itrstats.in/calculator/gst/): Add or remove GST at 5%, 12%, 18%, 28% slabs. Shows base price and GST amount separately.
 
 ## Data & Analysis
 
-- [India Income Percentile 2026](https://itrstats.in/blog/india-income-percentile/): What income puts you in India's top 1% (Rs 35L+), top 5% (Rs 12L+), top 10% (Rs 7.4L+). Based on 8.5 crore CBDT ITR filings.
-- [India's Income Distribution](https://itrstats.in/blog/income-distribution-india/): Full income bracket breakdown from 8.5 crore ITR filings. Only 1.1% earn above Rs 50 lakh. Nearly 70% earn under Rs 5 lakh.
-- [State-wise ITR Filing](https://itrstats.in/blog/state-wise-itr-filing/): Which states file the most ITRs? Maharashtra, UP, Gujarat lead. State-level filing patterns and per-capita analysis.
-- [ITR Form Comparison](https://itrstats.in/blog/itr-form-comparison/): ITR-1 vs ITR-2 vs ITR-3 vs ITR-4 - who should file which form.
-- [ITR-1 Decline](https://itrstats.in/blog/itr1-decline/): Why ITR-1 filings are falling as a share of total returns - data analysis.
-- [How Long Does ITR Refund Take?](https://itrstats.in/blog/itr-refund-time.html): Typical ITR refund timelines for salaried vs business taxpayers with historical data.
+- [India Income Percentile 2026](https://itrstats.in/blog/india-income-percentile/): Exact income thresholds for India's top 1% (Rs 35L+), top 5% (Rs 12L+), top 10% (Rs 7.4L+). Based on 8.5 crore CBDT ITR filings with salary vs investment income breakdown.
+- [India's Income Distribution](https://itrstats.in/blog/income-distribution-india/): Full income bracket breakdown from 8.5 crore ITR filings. Only 1.1% of taxpayers earn above Rs 50 lakh. Nearly 70% earn under Rs 5 lakh. Charts and data analysis.
+- [How Long Does ITR Refund Take?](https://itrstats.in/blog/itr-refund-time.html): Typical ITR refund timelines for salaried vs business taxpayers. Historical data on average processing days by filing month.
+- [ITR Form Comparison](https://itrstats.in/blog/itr-form-comparison/): ITR-1 vs ITR-2 vs ITR-3 vs ITR-4 - who should file which form, eligibility criteria, and key differences.
+- [State-wise ITR Filing](https://itrstats.in/blog/state-wise-itr-filing/): Which states file the most ITRs? Maharashtra, UP, Gujarat analysis. State-level filing patterns and per-capita comparisons.
+- [ITR-1 Decline](https://itrstats.in/blog/itr1-decline/): Why ITR-1 filings are falling as a share of total returns. Data-driven analysis of the shift to ITR-2.
 
 ## Tax Guides
 
-- [Budget 2026 ITR Deadlines](https://itrstats.in/blog/budget-2026-itr-deadlines/): All ITR filing deadlines announced in Budget 2026.
-- [Tax Calendar 2026](https://itrstats.in/blog/tax-calendar-2026/): All important income tax dates for FY 2025-26 - advance tax, TDS filing, ITR deadlines.
-- [Last Minute Tax Saving](https://itrstats.in/blog/last-minute-tax-saving/): Tax saving investments under 80C, 80D, NPS before March 31 deadline.
-- [SIP Taxation](https://itrstats.in/blog/sip-taxation/): How mutual fund SIP gains are taxed - STCG vs LTCG, equity vs debt funds.
-- [FD vs Liquid Fund](https://itrstats.in/blog/fd-vs-liquid-fund/): Tax efficiency comparison of bank FDs vs liquid mutual funds after indexation.
-- [SGB Tax Changes](https://itrstats.in/blog/sgb-tax-changes/): Sovereign Gold Bond redemption tax rules after Budget 2024 amendments.
+- [Last Minute Tax Saving](https://itrstats.in/blog/last-minute-tax-saving/): Tax saving investments under 80C, 80D, NPS before March 31 deadline. How much to invest and where to maximise deductions.
+- [Tax Calendar 2026](https://itrstats.in/blog/tax-calendar-2026/): All important income tax dates for FY 2025-26 - advance tax due dates, TDS filing deadlines, ITR filing deadline.
+- [Budget 2026 ITR Deadlines](https://itrstats.in/blog/budget-2026-itr-deadlines/): ITR filing deadline changes announced in Union Budget 2026.
+- [SIP Taxation](https://itrstats.in/blog/sip-taxation/): How mutual fund SIP gains are taxed - STCG vs LTCG, equity vs debt funds, impact of 2024 budget changes.
+- [FD vs Liquid Fund](https://itrstats.in/blog/fd-vs-liquid-fund/): Tax efficiency comparison of bank FDs vs liquid mutual funds. Post-tax returns at different income slabs.
+- [SGB Tax Changes](https://itrstats.in/blog/sgb-tax-changes/): Sovereign Gold Bond redemption tax rules after Budget 2024 amendments. Capital gains exemption on RBI redemption.
 
 ## HUF Tax Series
 
-- [HUF Tax Guide](https://itrstats.in/blog/huf-tax-guide/): Complete guide to Hindu Undivided Family taxation - how HUF saves tax as a separate entity.
-- [How to Open a HUF](https://itrstats.in/blog/huf-how-to-open/): Step-by-step process to create a HUF, open a bank account, and get a HUF PAN card.
-- [HUF Tax Rules](https://itrstats.in/blog/huf-tax-rules/): Detailed HUF income tax rules - what income can be clubbed, deductions available, partition rules.
-- [HUF ITR Filing](https://itrstats.in/blog/huf-itr-filing/): How to file ITR for a HUF - which form, what details, verification process.
-- [HUF Investments](https://itrstats.in/blog/huf-investments/): What investments a HUF can make - PPF restrictions, 80C limits, FD in HUF name.
+- [HUF Tax Guide](https://itrstats.in/blog/huf-tax-guide/): Complete guide to Hindu Undivided Family taxation. How a HUF saves tax as a separate entity with its own PAN and basic exemption limit.
+- [How to Open a HUF](https://itrstats.in/blog/huf-how-to-open/): Step-by-step process to create a HUF, open a HUF bank account, and apply for a HUF PAN card.
+- [HUF Tax Rules](https://itrstats.in/blog/huf-tax-rules/): Detailed HUF income tax rules - what income can be clubbed in HUF, deductions available, partial and full partition rules.
+- [HUF ITR Filing](https://itrstats.in/blog/huf-itr-filing/): How to file ITR for a HUF - which ITR form to use, mandatory details, e-verification process.
+- [HUF Investments](https://itrstats.in/blog/huf-investments/): What investments a HUF can make - PPF restrictions, 80C deduction limits, FD and mutual funds in HUF name.
 
 ## About
 
-- [About ITR Stats](https://itrstats.in/about.html): Independent project tracking India's income tax statistics. Built by Kartikey Rajvaidya.
+- [About ITR Stats](https://itrstats.in/about.html): Independent project tracking India's income tax filing statistics. Built and maintained by Kartikey Rajvaidya.
