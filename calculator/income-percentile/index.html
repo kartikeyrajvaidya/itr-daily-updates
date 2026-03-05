@@ -13,8 +13,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- SEO Meta Tags -->
-    <title>India Income Percentile Calculator 2026 - Find Your Rank | ITR Stats</title>
-    <meta name="description" content="Enter your annual income and instantly see your percentile among 8.5 crore Indian taxpayers. Check if you're in the top 1%, top 5% or top 10%. Based on official CBDT ITR data.">
+    <title>India Income Percentile Calculator 2026 | ITR Stats</title>
+    <meta name="description" content="Enter your annual income and instantly see your percentile among 8.5 crore individual ITR filers. Check if you're in the top 1%, top 5% or top 10%. Based on official Income Tax e-Filing Portal data.">
     <meta name="keywords" content="income percentile calculator india, check income percentile, calculate income percentile, income rank india, where do i stand among indian taxpayers, salary percentile india">
     <meta name="author" content="ITR Stats">
     <meta name="robots" content="index, follow">
@@ -80,12 +80,12 @@
             {
                 "@type": "Question",
                 "name": "How many people file ITR in India?",
-                "acceptedAnswer": { "@type": "Answer", "text": "Approximately 8.75 crore (87.5 million) income tax returns are filed in India annually. However, this represents only about 6-7% of India's total population, since many people fall below the taxable income threshold." }
+                "acceptedAnswer": { "@type": "Answer", "text": "Approximately 8.5 crore (85 million) individual income tax returns are filed in India annually. However, this represents only about 6-7% of India's total population, since many people fall below the taxable income threshold." }
             },
             {
                 "@type": "Question",
                 "name": "What income puts you in the top 1% of ITR filers in India?",
-                "acceptedAnswer": { "@type": "Answer", "text": "Based on Income Tax Department data, the top 1% of ITR filers in India have an annual income of approximately ₹75 lakh or above. The top 2% starts around ₹50 lakh." }
+                "acceptedAnswer": { "@type": "Answer", "text": "Based on Income Tax Department data, the top 1.1% of individual ITR filers earn above ₹50 lakh annually. The top 0.4% earn above ₹1 crore. Only about 9.6 lakh individuals out of 8.5 crore filers cross the ₹50 lakh mark." }
             },
             {
                 "@type": "Question",
@@ -95,7 +95,7 @@
             {
                 "@type": "Question",
                 "name": "What percentage of ITR filers earn less than 5 lakh in India?",
-                "acceptedAnswer": { "@type": "Answer", "text": "Approximately 65% of all ITR filers in India declare a gross income of ₹5 lakh or below. This makes the ≤5L bracket by far the largest segment of taxpayers." }
+                "acceptedAnswer": { "@type": "Answer", "text": "Approximately 44% of individual ITR filers in India declare a gross income of ₹5 lakh or below. Combined with the 5-10 lakh bracket, about 84% of individual filers earn under ₹10 lakh." }
             }
         ]
     }
@@ -736,7 +736,7 @@
                     </button>
 
                     <div class="disclaimer">
-                        <strong>Note:</strong> This comparison is among people who file Income Tax Returns in India (~9 crore), not the entire population. Data source: Income Tax e-Filing Portal.
+                        <strong>Note:</strong> This comparison is among individual Income Tax Return filers in India (~8.5 crore), not the entire population. Data source: Income Tax e-Filing Portal.
                     </div>
                 </div>
             </div>
@@ -761,10 +761,10 @@
                 <div class="info-section">
                     <h2>Quick Facts</h2>
                     <ul>
-                        <li><strong>~9 crore</strong> Indians file ITR annually</li>
-                        <li><strong>~65%</strong> of filers earn ≤5 lakh</li>
-                        <li><strong>~2%</strong> of filers earn above 50 lakh</li>
-                        <li><strong>Top 1%</strong> starts around 75 lakh income</li>
+                        <li><strong>~8.5 crore</strong> individuals file ITR annually</li>
+                        <li><strong>~44%</strong> of filers earn ≤5 lakh</li>
+                        <li><strong>~1.1%</strong> of filers earn above 50 lakh</li>
+                        <li><strong>~84%</strong> of filers earn under 10 lakh</li>
                     </ul>
                 </div>
             </div>
@@ -778,11 +778,11 @@
             </div>
             <div class="faq-item">
                 <div class="faq-question">How many people file ITR in India?</div>
-                <div class="faq-answer">Approximately 8.75 crore (87.5 million) income tax returns are filed annually. This is only about 6-7% of India's total population — most people fall below the taxable income threshold.</div>
+                <div class="faq-answer">Approximately 8.5 crore (85 million) individual income tax returns are filed annually. This is only about 6-7% of India's total population — most people fall below the taxable income threshold.</div>
             </div>
             <div class="faq-item">
                 <div class="faq-question">What income puts you in the top 1% of ITR filers?</div>
-                <div class="faq-answer">Based on Income Tax Department data, the top 1% of ITR filers earn approximately ₹75 lakh or above annually. The top 2% starts around ₹50 lakh.</div>
+                <div class="faq-answer">Based on Income Tax Department data, the top 1.1% of individual ITR filers earn above ₹50 lakh annually. The top 0.4% earn above ₹1 crore. Only about 9.6 lakh individuals out of 8.5 crore filers cross the ₹50 lakh mark.</div>
             </div>
             <div class="faq-item">
                 <div class="faq-question">Is ITR filer percentile the same as overall population percentile?</div>
@@ -790,7 +790,7 @@
             </div>
             <div class="faq-item">
                 <div class="faq-question">What percentage of ITR filers earn less than ₹5 lakh?</div>
-                <div class="faq-answer">Approximately 65% of all ITR filers declare a gross income of ₹5 lakh or below — by far the largest segment of taxpayers in India.</div>
+                <div class="faq-answer">Approximately 44% of individual ITR filers declare a gross income of ₹5 lakh or below. Combined with the ₹5-10 lakh bracket, about 84% of individual filers earn under ₹10 lakh.</div>
             </div>
         </section>
 
@@ -927,13 +927,12 @@
             const now = new Date();
             const monthNames = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 
-            // Use previous calendar month (same as insights page — API doesn't have current month yet)
             let monthIndex = now.getMonth() - 1;
-            if (monthIndex < 0) monthIndex = 11; // January → use December
+            if (monthIndex < 0) monthIndex = 11;
             const monthStr = monthNames[monthIndex];
 
-            // FY year: Jan-Mar belongs to previous calendar year's FY
-            const fyYear = now.getMonth() < 3 ? now.getFullYear() - 1 : now.getFullYear();
+            // Always use previous calendar year = latest completed FY
+            const fyYear = now.getFullYear() - 1;
 
             const url = `https://eportal.incometax.gov.in/iec/efilingstatisticsgenerator/getStatistics?year=${fyYear}&month=${monthStr}&isHistoryData=false`;
 
@@ -946,9 +945,8 @@
                     throw new Error('No data available');
                 }
 
-                // Find Category wise Filing tab
                 const categoryTab = json.statistics.find(tab =>
-                    tab.tabName === 'Category wise Filing'
+                    tab.tabCaption === 'Category wise Filing'
                 );
 
                 if (!categoryTab || !categoryTab.tableData || !categoryTab.tableData[0]) {
@@ -956,15 +954,18 @@
                 }
 
                 const table = categoryTab.tableData[0];
-                const grandTotal = table.grandTotal.map(val =>
-                    parseInt(val.replace(/,/g, '')) || 0
-                );
 
-                return grandTotal;
+                // Use Individual data only (not grandTotal which includes Companies, Firms, HUFs, Trusts)
+                const individualRow = table.forms.find(f => f.headerName === 'Individual');
+                if (!individualRow) {
+                    throw new Error('Individual data not found');
+                }
+
+                return individualRow.dataList.map(val => parseInt(val.replace(/,/g, '')) || 0);
             } catch (error) {
                 console.error('API Error:', error);
-                // Fallback to approximate data (based on typical distribution)
-                return [57000000, 18000000, 11000000, 1500000, 400000, 50000, 20000];
+                // Fallback: FY 2024-25 Individual data
+                return [37474964, 33553667, 12918353, 636047, 295180, 16710, 10117];
             }
         }
 
