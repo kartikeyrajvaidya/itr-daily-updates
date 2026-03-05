@@ -154,6 +154,15 @@
             --border-color: #334155;
         }
 
+        .breadcrumb-bar {
+            background: var(--bg-accent);
+            border-radius: 12px;
+            padding: 0.875rem 1.25rem;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+        .breadcrumb-bar a { color: var(--accent-blue); text-decoration: none; }
+
         * {
             margin: 0;
             padding: 0;
@@ -541,6 +550,9 @@
 <script src="/scripts/sidebar.js"></script>
 <div class="main-content">
 <div class="main-inner">
+<div class="breadcrumb-bar">
+<a href="/">Home</a> → <a href="/blog/">Blog</a> → Insights Guide
+</div>
 <main class="content">
 <div class="article-wrap"><article>
 <h1>ITR Insights: A Deep Dive into India's Tax Filing Statistics</h1>

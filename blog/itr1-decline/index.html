@@ -173,9 +173,14 @@
         .container { max-width: 1000px; margin: 0 auto; }
 .article-wrap { display: grid; grid-template-columns: 1fr 300px; gap: 1.5rem; align-items: start; }
         .article { background: var(--bg-secondary); border-radius: 16px; padding: 2.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
-        .breadcrumb { font-size: 0.82rem; color: var(--text-muted); margin-bottom: 1.5rem; }
-        .breadcrumb a { color: var(--accent-blue); text-decoration: none; }
-        .breadcrumb a:hover { text-decoration: underline; }
+        .breadcrumb-bar {
+    background: var(--bg-accent);
+    border-radius: 12px;
+    padding: 0.875rem 1.25rem;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+}
+.breadcrumb-bar a { color: var(--accent-blue); text-decoration: none; }
         .article-meta { display: flex; gap: 1rem; flex-wrap: wrap; color: var(--text-muted); font-size: 0.82rem; margin-bottom: 1.75rem; padding-bottom: 1.75rem; border-bottom: 1px solid var(--border-color); }
         .tag { padding: 0.2rem 0.6rem; border-radius: 999px; font-size: 0.75rem; font-weight: 600; }
         .tag-data { background: rgba(59,130,246,0.1); color: var(--accent-blue); }
@@ -277,12 +282,11 @@
     <script src="/scripts/sidebar.js"></script>
     <div class="main-content">
         <div class="main-inner">
+<div class="breadcrumb-bar">
+<a href="/">Home</a> → <a href="/blog/">Blog</a> → ITR-1 Decline
+</div>
 <div class="article-wrap">
             <article class="article">
-                <div class="breadcrumb">
-                    <a href="/">Home</a> › <a href="/blog/">Blog</a> › ITR-1 Decline
-                </div>
-
                 <h1>ITR-1 Is Declining for the First Time in History — Here's Why</h1>
 
                 <div class="article-meta">

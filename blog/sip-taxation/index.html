@@ -172,22 +172,14 @@
             max-width: 1000px;
             margin: 0 auto;
         }
-.breadcrumb {
-            display: flex;
-            gap: 0.5rem;
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            margin-bottom: 1.5rem;
-        }
-
-        .breadcrumb a {
-            color: var(--accent-blue);
-            text-decoration: none;
-        }
-
-        .breadcrumb a:hover {
-            text-decoration: underline;
-        }
+.breadcrumb-bar {
+    background: var(--bg-accent);
+    border-radius: 12px;
+    padding: 0.875rem 1.25rem;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+}
+.breadcrumb-bar a { color: var(--accent-blue); text-decoration: none; }
 
         article {
             background: var(--bg-secondary);
@@ -448,11 +440,9 @@
 <script src="/scripts/sidebar.js"></script>
 <div class="main-content">
 <div class="main-inner">
-<nav class="breadcrumb">
-<a href="/">Home</a> /
-            <a href="/blog/">Blog</a> /
-            <span>SIP Taxation</span>
-</nav>
+<div class="breadcrumb-bar">
+<a href="/">Home</a> → <a href="/blog/">Blog</a> → SIP Taxation
+</div>
 <div class="article-wrap"><article>
 <h1>Understanding SIP Taxation in India (2026) – LTCG, STCG &amp; The FIFO Trap</h1>
 <div class="article-meta">

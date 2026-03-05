@@ -37,6 +37,7 @@ ITR Stats tracks daily ITR filing and processing numbers pulled directly from th
 ## Data & Analysis
 
 - [India Income Percentile 2026](https://itrstats.in/blog/india-income-percentile/): Exact income thresholds for India's top 1% (Rs 35L+), top 5% (Rs 12L+), top 10% (Rs 7.4L+). Based on 8.5 crore CBDT ITR filings with salary vs investment income breakdown.
+- [Income Thresholds India 2025](https://itrstats.in/blog/income-thresholds-india/): Top 1%, 5%, 10%, 15% income thresholds in India. Two-column comparison: All-India PLFS data vs ITR filer CBDT data. Monthly equivalents and state-wise top 1% thresholds.
 - [India's Income Distribution](https://itrstats.in/blog/income-distribution-india/): Full income bracket breakdown from 8.5 crore ITR filings. Only 1.1% of taxpayers earn above Rs 50 lakh. Nearly 70% earn under Rs 5 lakh. Charts and data analysis.
 - [How Long Does ITR Refund Take?](https://itrstats.in/blog/itr-refund-time.html): Typical ITR refund timelines for salaried vs business taxpayers. Historical data on average processing days by filing month.
 - [ITR Form Comparison](https://itrstats.in/blog/itr-form-comparison/): ITR-1 vs ITR-2 vs ITR-3 vs ITR-4 - who should file which form, eligibility criteria, and key differences.

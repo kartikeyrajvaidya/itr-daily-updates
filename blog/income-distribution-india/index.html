@@ -165,15 +165,14 @@
         }
 
         .container { max-width: 1000px; margin: 0 auto; }
-.breadcrumb {
-            display: flex;
-            gap: 0.5rem;
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            margin-bottom: 1.5rem;
-        }
-
-        .breadcrumb a { color: var(--accent-blue); text-decoration: none; }
+.breadcrumb-bar {
+    background: var(--bg-accent);
+    border-radius: 12px;
+    padding: 0.875rem 1.25rem;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+}
+.breadcrumb-bar a { color: var(--accent-blue); text-decoration: none; }
 
         article {
             background: var(--bg-secondary);
@@ -436,11 +435,9 @@
 <script src="/scripts/sidebar.js"></script>
 <div class="main-content">
 <div class="main-inner">
-<nav class="breadcrumb">
-<a href="/">Home</a> /
-            <a href="/blog/">Blog</a> /
-            <span>Income Distribution</span>
-</nav>
+<div class="breadcrumb-bar">
+<a href="/">Home</a> → <a href="/blog/">Blog</a> → Income Distribution
+</div>
 <div class="article-wrap"><article>
 <h1>India's Income Distribution: What 8.5 Crore Tax Returns Reveal</h1>
 <div class="article-meta">
@@ -624,6 +621,10 @@
 </tr>
 </tbody>
 </table>
+<a href="/blog/income-thresholds-india/" class="ref-link" style="display: inline-flex; align-items: center; gap: 0.5rem; background: var(--bg-accent); border: 1px solid var(--border-color); border-radius: 8px; padding: 0.55rem 1rem; font-size: 0.85rem; color: var(--accent-blue); text-decoration: none; margin: 0.5rem 0;">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    Quick reference: Top 1%, 5%, 10% Income Thresholds India
+</a>
 <div class="cta-box">
 <h3>Want to know your exact percentile?</h3>
 <p>Use our Income Percentile Calculator to see where you stand among Indian taxpayers.</p>

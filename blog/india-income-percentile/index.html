@@ -183,13 +183,14 @@
             box-shadow: 0 1px 3px rgba(0,0,0,0.1);
         }
 
-        .breadcrumb {
-            font-size: 0.82rem;
-            color: var(--text-muted);
-            margin-bottom: 1.5rem;
+        .breadcrumb-bar {
+            background: var(--bg-accent);
+            border-radius: 12px;
+            padding: 0.875rem 1.25rem;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
         }
-        .breadcrumb a { color: var(--accent-blue); text-decoration: none; }
-        .breadcrumb a:hover { text-decoration: underline; }
+        .breadcrumb-bar a { color: var(--accent-blue); text-decoration: none; }
 
         .article-meta {
             display: flex;
@@ -446,12 +447,11 @@
     <script src="/scripts/sidebar.js"></script>
     <div class="main-content">
         <div class="main-inner">
+<div class="breadcrumb-bar">
+<a href="/">Home</a> → <a href="/blog/">Blog</a> → India Income Percentile
+</div>
 <div class="article-wrap">
             <article class="article">
-                <div class="breadcrumb">
-                    <a href="/">Home</a> › <a href="/blog/">Blog</a> › India Income Percentile
-                </div>
-
                 <h1>Earning ₹25,000/Month? You're in India's Top 10%. Here's the Full Picture.</h1>
 
                 <div class="article-meta">
@@ -505,6 +505,11 @@
                 <h2 id="two-lenses">Two Ways to Measure: All India vs. ITR Filers</h2>
 
                 <p>Here is the critical thing to understand: <strong>which "India" you compare yourself to determines your rank entirely.</strong></p>
+
+                <a href="/blog/income-thresholds-india/" class="ref-link">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                    Quick reference: Top 1%, 5%, 10% Income Thresholds India
+                </a>
 
                 <p>There are two distinct lenses:</p>
 
