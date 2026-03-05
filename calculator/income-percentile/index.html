@@ -14,7 +14,7 @@
 
     <!-- SEO Meta Tags -->
     <title>India Income Percentile Calculator 2026 | ITR Stats</title>
-    <meta name="description" content="Enter your annual income and instantly see your percentile among 8.5 crore individual ITR filers. Check if you're in the top 1%, top 5% or top 10%. Based on official Income Tax e-Filing Portal data.">
+    <meta name="description" content="Enter your annual income and instantly see your percentile among 8.57 crore individual ITR filers. Check if you're in the top 1%, top 5% or top 10%. Based on official Income Tax e-Filing Portal data.">
     <meta name="keywords" content="income percentile calculator india, check income percentile, calculate income percentile, income rank india, where do i stand among indian taxpayers, salary percentile india">
     <meta name="author" content="ITR Stats">
     <meta name="robots" content="index, follow">
@@ -80,12 +80,12 @@
             {
                 "@type": "Question",
                 "name": "How many people file ITR in India?",
-                "acceptedAnswer": { "@type": "Answer", "text": "Approximately 8.5 crore (85 million) individual income tax returns are filed in India annually. However, this represents only about 6-7% of India's total population, since many people fall below the taxable income threshold." }
+                "acceptedAnswer": { "@type": "Answer", "text": "Approximately 8.57 crore (85.7 million) individual income tax returns are filed in India annually. However, this represents only about 6-7% of India's total population, since many people fall below the taxable income threshold." }
             },
             {
                 "@type": "Question",
                 "name": "What income puts you in the top 1% of ITR filers in India?",
-                "acceptedAnswer": { "@type": "Answer", "text": "Based on Income Tax Department data, the top 1.1% of individual ITR filers earn above ₹50 lakh annually. The top 0.4% earn above ₹1 crore. Only about 9.6 lakh individuals out of 8.5 crore filers cross the ₹50 lakh mark." }
+                "acceptedAnswer": { "@type": "Answer", "text": "Based on Income Tax Department data, the top 1.1% of individual ITR filers earn above ₹50 lakh annually. The top 0.4% earn above ₹1 crore. Only about 9.6 lakh individuals out of 8.57 crore filers cross the ₹50 lakh mark." }
             },
             {
                 "@type": "Question",
@@ -736,7 +736,7 @@
                     </button>
 
                     <div class="disclaimer">
-                        <strong>Note:</strong> This comparison is among individual Income Tax Return filers in India (~8.5 crore), not the entire population. Data source: Income Tax e-Filing Portal.
+                        <strong>Note:</strong> This comparison is among individual Income Tax Return filers in India (~8.57 crore), not the entire population. Data source: Income Tax e-Filing Portal.
                     </div>
                 </div>
             </div>
@@ -761,7 +761,7 @@
                 <div class="info-section">
                     <h2>Quick Facts</h2>
                     <ul>
-                        <li><strong>~8.5 crore</strong> individuals file ITR annually</li>
+                        <li><strong>~8.57 crore</strong> individuals file ITR annually</li>
                         <li><strong>~44%</strong> of filers earn ≤5 lakh</li>
                         <li><strong>~1.1%</strong> of filers earn above 50 lakh</li>
                         <li><strong>~84%</strong> of filers earn under 10 lakh</li>
@@ -778,11 +778,11 @@
             </div>
             <div class="faq-item">
                 <div class="faq-question">How many people file ITR in India?</div>
-                <div class="faq-answer">Approximately 8.5 crore (85 million) individual income tax returns are filed annually. This is only about 6-7% of India's total population — most people fall below the taxable income threshold.</div>
+                <div class="faq-answer">Approximately 8.57 crore (85.7 million) individual income tax returns are filed annually. This is only about 6-7% of India's total population — most people fall below the taxable income threshold.</div>
             </div>
             <div class="faq-item">
                 <div class="faq-question">What income puts you in the top 1% of ITR filers?</div>
-                <div class="faq-answer">Based on Income Tax Department data, the top 1.1% of individual ITR filers earn above ₹50 lakh annually. The top 0.4% earn above ₹1 crore. Only about 9.6 lakh individuals out of 8.5 crore filers cross the ₹50 lakh mark.</div>
+                <div class="faq-answer">Based on Income Tax Department data, the top 1.1% of individual ITR filers earn above ₹50 lakh annually. The top 0.4% earn above ₹1 crore. Only about 9.6 lakh individuals out of 8.57 crore filers cross the ₹50 lakh mark.</div>
             </div>
             <div class="faq-item">
                 <div class="faq-question">Is ITR filer percentile the same as overall population percentile?</div>
@@ -803,7 +803,7 @@
         </a>
         <a href="/blog/income-distribution-india/" class="ref-link">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-            India's full income distribution - what 8.5 crore ITRs reveal
+            India's full income distribution - what 8.57 crore ITRs reveal
         </a>
     </div>
 
@@ -925,14 +925,13 @@
         // Fetch income distribution data
         async function fetchIncomeData() {
             const now = new Date();
-            const monthNames = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 
-            let monthIndex = now.getMonth() - 1;
-            if (monthIndex < 0) monthIndex = 11;
-            const monthStr = monthNames[monthIndex];
-
-            // Always use previous calendar year = latest completed FY
-            const fyYear = now.getFullYear() - 1;
+            // Fetch March data (end-of-FY, most complete snapshot)
+            // API requires full word 'March' not abbreviation
+            // From May onwards: current year's March data is available
+            // Jan–Apr: previous year's March data (current year's March not yet ready)
+            const fyYear = now.getMonth() >= 4 ? now.getFullYear() : now.getFullYear() - 1;
+            const monthStr = 'March';
 
             const url = `https://eportal.incometax.gov.in/iec/efilingstatisticsgenerator/getStatistics?year=${fyYear}&month=${monthStr}&isHistoryData=false`;
 
@@ -964,8 +963,8 @@
                 return individualRow.dataList.map(val => parseInt(val.replace(/,/g, '')) || 0);
             } catch (error) {
                 console.error('API Error:', error);
-                // Fallback: FY 2024-25 Individual data
-                return [37474964, 33553667, 12918353, 636047, 295180, 16710, 10117];
+                // Fallback: FY 2024-25 Individual data (year=2025&month=March)
+                return [38101868, 33665123, 12968359, 640659, 297086, 16797, 10184];
             }
         }
 
