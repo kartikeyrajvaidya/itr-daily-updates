@@ -506,12 +506,16 @@ New pages must identify which cluster they belong to and include that cluster's 
 
 ---
 
-## 17. Sitemap & llms.txt
+## 17. Sitemap, llms.txt & Blog Index
 
 After building any new page:
 1. Add to `sitemap.xml` — `lastmod` = today, `changefreq: monthly`, `priority: 0.9`
 2. Add to `llms.txt` — under the appropriate section with a one-line description
 3. If starting a new cluster, update `llms.txt` with a new `##` section
+4. **Add a card to `blog/index.html`** — add the article card under the correct category section, then update the filter bar counts:
+   - Increment `All` count by 1
+   - Increment the matching category count (`guide` / `data` / `comparison` / `update`) by 1
+   - The card must include: category badge, date, read time, H2 title, excerpt (2 sentences max), and a "Read Article" link
 
 ---
 
