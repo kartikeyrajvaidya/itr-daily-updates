@@ -32,6 +32,7 @@ ITR Stats tracks daily ITR filing and processing numbers pulled directly from th
 - [Gratuity Calculator](https://itrstats.in/calculator/gratuity/): Gratuity calculation under Payment of Gratuity Act for government and private sector employees.
 - [Lumpsum Calculator](https://itrstats.in/calculator/lumpsum/): One-time mutual fund investment growth calculator with CAGR and absolute return.
 - [SWP Calculator](https://itrstats.in/calculator/swp/): Systematic Withdrawal Plan - how long your corpus lasts at a given monthly withdrawal amount.
+- [SSY Calculator](https://itrstats.in/calculator/ssy/): Sukanya Samriddhi Yojana maturity calculator. Enter annual deposit and girl's current age. Shows 21-year year-by-year breakdown with girl's age at each milestone, interest rate history 2015–2026, and 8.2% current rate. Adjustable interest rate for scenario modelling.
 - [HUF Tax Calculator](https://itrstats.in/calculator/huf-tax/): Calculate HUF income tax for FY 2025-26 under old and new regime. HUF does not get Section 87A rebate. Compare both regimes with slab-wise breakdown and individual vs HUF comparison.
 - [GST Calculator](https://itrstats.in/calculator/gst/): Add or remove GST at 5%, 12%, 18%, 28% slabs. Shows base price and GST amount separately.
 
