@@ -45,6 +45,10 @@ ITR Stats tracks daily ITR filing and processing numbers pulled directly from th
 - [State-wise ITR Filing](https://itrstats.in/blog/state-wise-itr-filing/): Which states file the most ITRs? Maharashtra, UP, Gujarat analysis. State-level filing patterns and per-capita comparisons.
 - [ITR-1 Decline](https://itrstats.in/blog/itr1-decline/): Why ITR-1 filings are falling as a share of total returns. Data-driven analysis of the shift to ITR-2.
 
+## Tax Saving Schemes
+
+- [Sukanya Samriddhi Yojana Guide](https://itrstats.in/blog/sukanya-samriddhi-yojana/): Complete guide to SSY 2026. Interest rate 8.2%, EEE tax status, eligibility (girl under 10), how to open, withdrawal rules, SSY vs PPF comparison. Includes the new tax regime catch — 80C benefit not available under new regime.
+
 ## Tax Guides
 
 - [Last Minute Tax Saving](https://itrstats.in/blog/last-minute-tax-saving/): Tax saving investments under 80C, 80D, NPS before March 31 deadline. How much to invest and where to maximise deductions.
