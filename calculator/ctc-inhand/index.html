@@ -81,7 +81,7 @@
       "name": "How do you calculate in-hand salary from CTC?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Step 1: Subtract employer EPF (12% of basic) and gratuity (4.81% of basic) from CTC to get Gross Salary. Step 2: Gross Salary minus Employee EPF (12% of basic) minus Professional Tax (state-specific, up to Rs 200/month) minus Income Tax = In-Hand Salary. For FY 2025-26, use new regime slabs: 4-8L at 5%, 8-12L at 10%, with zero tax for income up to Rs 12 lakh due to Section 87A rebate."
+        "text": "Step 1: Subtract employer EPF (12% of basic) and gratuity (~4.81% of basic) from CTC to get Gross Salary. Step 2: Gross Salary minus Employee EPF (12% of basic) minus Professional Tax (max Rs 2,500/year) minus Income Tax = In-Hand Salary. For FY 2025-26, use new regime slabs: 4-8L at 5%, 8-12L at 10%, with zero tax for income up to Rs 12 lakh due to Section 87A rebate."
       }
     },
     {
@@ -89,7 +89,7 @@
       "name": "What percentage of CTC is the in-hand salary?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Typically 70-80% of CTC becomes your monthly in-hand salary. At Rs 10 LPA: in-hand is around 88% of CTC (Rs 73,530/month) under the new regime because EPF, gratuity, and zero tax reduce the gap. At higher CTC like Rs 20 LPA, the percentage drops to 75-78% due to higher income tax. The exact percentage depends on your salary structure, tax regime choice, and state of employment."
+        "text": "Typically 70-80% of CTC becomes your monthly in-hand salary. At Rs 10 LPA: in-hand is around 88% of CTC (Rs 73,531/month) under the new regime because EPF, gratuity, and zero tax reduce the gap. At higher CTC like Rs 20 LPA, the percentage drops to 75-78% due to higher income tax. The exact percentage depends on your salary structure, tax regime choice, and state of employment."
       }
     },
     {
@@ -210,7 +210,10 @@
   .chart-container { background: var(--bg-accent); border-radius: 12px; padding: 1rem; margin-bottom: 0.85rem; }
   .chart-container h3 { font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.75rem; text-align: center; }
   .chart-wrapper { position: relative; width: 100%; }
-  .chart-wrapper.doughnut { max-width: 180px; margin: 0 auto; }
+  .chart-wrapper.doughnut { max-width: 200px; margin: 0 auto; }
+  .chart-legend { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem 1.25rem; margin-top: 0.75rem; font-size: 0.8rem; }
+  .chart-legend-item { display: flex; align-items: center; gap: 0.375rem; color: var(--text-secondary); }
+  .chart-legend-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
   .chart-wrapper.bar-h { height: 130px; }
 
   /* Breakdown toggle & table */
@@ -378,7 +381,7 @@
     <div class="input-group">
       <label for="prof-tax">Professional Tax <span style="font-weight:400;color:var(--text-muted)">(Rs/month)</span></label>
       <input type="number" id="prof-tax" class="no-prefix" value="200" min="0" max="250" inputmode="numeric">
-      <span class="hint">Up to Rs 200/month. Zero in Delhi, UP, Rajasthan, Haryana</span>
+      <span class="hint">Max Rs 2,500/year (Article 276 cap). Zero in Delhi, UP, Rajasthan, Haryana</span>
     </div>
 
     <div class="input-divider">Old Regime Deductions</div>
@@ -462,6 +465,7 @@
       <div class="chart-wrapper doughnut">
         <canvas id="doughnut-chart"></canvas>
       </div>
+      <div class="chart-legend" id="chart-legend"></div>
     </div>
 
     <!-- Breakdown table toggle -->
@@ -492,7 +496,7 @@
   <h2>What Is CTC and How Is In-Hand Salary Different?</h2>
   <p>CTC (Cost to Company) is the total annual expense your employer incurs to employ you. It includes your gross salary plus employer-side costs like the employer's EPF contribution (12% of basic salary) and a gratuity provision (4.81% of basic) that gets paid only after 5 years of service. These costs are real money the company spends but you never see them credited to your account monthly.</p>
   <p>In-hand salary — also called take-home or net salary — is what actually gets credited to your bank account after three deductions: employee EPF (12% of basic), professional tax (up to Rs 200/month depending on your state), and income tax (based on your chosen regime).</p>
-  <p>For a Rs 10 lakh CTC, the gross salary is approximately Rs 9.33 lakh after removing employer EPF and gratuity. Your monthly in-hand under the new regime is approximately Rs 73,530 — that's 88% of CTC because income tax is zero at this level under the new regime's Section 87A rebate.</p>
+  <p>For a Rs 10 lakh CTC, the gross salary is approximately Rs 9.33 lakh after removing employer EPF and gratuity. Your monthly in-hand under the new regime is approximately Rs 73,531 — that's 88% of CTC because income tax is zero at this level under the new regime's Section 87A rebate.</p>
 
   <h2>How CTC Breaks Down Into Salary Components</h2>
   <p>A typical CTC breaks down into these components:</p>
@@ -519,10 +523,10 @@
       <tr><th>CTC</th><th>New Regime In-Hand</th><th>Old Regime In-Hand</th><th>Better Regime</th></tr>
     </thead>
     <tbody>
-      <tr class="win-row"><td>Rs 10 LPA</td><td>~Rs 73,530/month</td><td>~Rs 71,186/month</td><td>New (+Rs 2,344)</td></tr>
-      <tr class="win-row"><td>Rs 15 LPA</td><td>~Rs 1,13,214/month</td><td>~Rs 1,01,353/month</td><td>New (+Rs 11,861)</td></tr>
-      <tr class="win-row"><td>Rs 20 LPA</td><td>~Rs 1,46,750/month</td><td>~Rs 1,33,520/month</td><td>New (+Rs 13,230)</td></tr>
-      <tr><td>Rs 30 LPA</td><td>~Rs 2,08,450/month</td><td>~Rs 2,04,820/month</td><td>New (small gap)</td></tr>
+      <tr class="win-row"><td>Rs 10 LPA</td><td>~Rs 73,531/month</td><td>~Rs 71,186/month</td><td>New (+Rs 2,345)</td></tr>
+      <tr class="win-row"><td>Rs 15 LPA</td><td>~Rs 1,03,582/month</td><td>~Rs 1,01,354/month</td><td>New (+Rs 2,228)</td></tr>
+      <tr class="win-row"><td>Rs 20 LPA</td><td>~Rs 1,33,559/month</td><td>~Rs 1,28,528/month</td><td>New (+Rs 5,031)</td></tr>
+      <tr class="win-row"><td>Rs 30 LPA</td><td>~Rs 1,86,586/month</td><td>~Rs 1,82,166/month</td><td>New (+Rs 4,420)</td></tr>
     </tbody>
   </table>
   <p>The old regime wins only in rare cases where your total deductions are very high — typically you need 80C at Rs 1.5 lakh + 80D at Rs 50,000 + home loan interest of Rs 2 lakh or more. With standard 80C and HRA only, the new regime is better at almost all income levels from FY 2025-26 onwards.</p>
@@ -532,16 +536,16 @@
     <h4>Rs 10 Lakh CTC — Standard Structure (40% Basic, Metro, Full EPF)</h4>
     <div class="calc-row"><span>Annual CTC</span><span>Rs 10,00,000</span></div>
     <div class="calc-row deduct"><span>Less: Employer EPF (12% of Rs 4L basic)</span><span>- Rs 48,000</span></div>
-    <div class="calc-row deduct"><span>Less: Gratuity provision (4.81% of Rs 4L)</span><span>- Rs 19,240</span></div>
-    <div class="calc-row"><span>= Gross Salary (annual)</span><span>Rs 9,32,760</span></div>
-    <div class="calc-row" style="margin-top:0.35rem;"><span style="color:var(--text-muted);font-size:0.82rem;">Gross breakdown: Basic Rs 4L + HRA Rs 2L + Spl. Allow. Rs 3.33L</span><span></span></div>
+    <div class="calc-row deduct"><span>Less: Gratuity provision (~4.81% of Rs 4L basic)</span><span>- Rs 19,231</span></div>
+    <div class="calc-row"><span>= Gross Salary (annual)</span><span>Rs 9,32,769</span></div>
+    <div class="calc-row" style="margin-top:0.35rem;"><span style="color:var(--text-muted);font-size:0.82rem;">Gross breakdown: Basic Rs 4L + HRA Rs 2L + Spl. Allow. Rs 3.33L approx</span><span></span></div>
     <div class="calc-row deduct"><span>Less: Employee EPF (12% of Rs 4L basic)</span><span>- Rs 48,000</span></div>
     <div class="calc-row deduct"><span>Less: Professional Tax (Rs 200/month)</span><span>- Rs 2,400</span></div>
     <div class="calc-row deduct"><span>Less: Income Tax (New Regime — ZERO via 87A rebate)</span><span>- Rs 0</span></div>
-    <div class="calc-row total"><span>Net Annual In-Hand (New Regime)</span><span>Rs 8,82,360</span></div>
-    <div class="calc-row total" style="border-top:none; padding-top: 0;"><span>Monthly In-Hand</span><span>Rs 73,530</span></div>
+    <div class="calc-row total"><span>Net Annual In-Hand (New Regime)</span><span>Rs 8,82,369</span></div>
+    <div class="calc-row total" style="border-top:none; padding-top: 0;"><span>Monthly In-Hand</span><span>Rs 73,531</span></div>
   </div>
-  <p><strong>Why zero income tax?</strong> Gross salary Rs 9,32,760 minus standard deduction Rs 75,000 = taxable income Rs 8,57,760. Tax on this = Rs 25,776. Since taxable income is below Rs 12 lakh, Section 87A rebate covers the entire tax. Net income tax = Rs 0.</p>
+  <p><strong>Why zero income tax?</strong> Gross salary Rs 9,32,769 minus standard deduction Rs 75,000 = taxable income Rs 8,57,769. Tax on this = Rs 25,777. Since taxable income is below Rs 12 lakh, Section 87A rebate covers the entire tax. Net income tax = Rs 0.</p>
 
   <div class="ref-links">
     <p>Related reading</p>
@@ -565,7 +569,7 @@
   <h2>Frequently Asked Questions</h2>
   <div class="faq-item">
     <div class="faq-question">What is the difference between CTC and in-hand salary?</div>
-    <div class="faq-answer">CTC (Cost to Company) is the total annual cost an employer bears for you — including employer EPF (12% of basic), gratuity provision, and other non-cash benefits. In-hand salary is what actually gets credited to your bank account after deducting employee EPF, professional tax, and income tax. For a Rs 10 lakh CTC with standard structure, the monthly in-hand is around Rs 73,530 under the new regime.</div>
+    <div class="faq-answer">CTC (Cost to Company) is the total annual cost an employer bears for you — including employer EPF (12% of basic), gratuity provision, and other non-cash benefits. In-hand salary is what actually gets credited to your bank account after deducting employee EPF, professional tax, and income tax. For a Rs 10 lakh CTC with standard structure, the monthly in-hand is around Rs 73,531 under the new regime.</div>
   </div>
   <div class="faq-item">
     <div class="faq-question">How do you calculate in-hand salary from CTC?</div>
@@ -573,7 +577,7 @@
   </div>
   <div class="faq-item">
     <div class="faq-question">What percentage of CTC is the in-hand salary?</div>
-    <div class="faq-answer">Typically 75-88% of CTC becomes in-hand salary. At Rs 10 LPA with zero income tax (new regime), you keep about 88%. At Rs 20 LPA, it drops to around 78% as income tax increases. At Rs 30 LPA, expect around 72-75% depending on your salary structure and regime choice.</div>
+    <div class="faq-answer">Typically 70-88% of CTC becomes in-hand salary. At Rs 10 LPA with zero income tax (new regime), you keep about 88%. At Rs 20 LPA, it drops to around 80% as income tax increases. At Rs 30 LPA, expect around 75% depending on your salary structure and regime choice.</div>
   </div>
   <div class="faq-item">
     <div class="faq-question">Which tax regime gives higher in-hand salary in FY 2025-26?</div>
@@ -643,29 +647,70 @@ function fmtAnn(n) {
   return '₹' + Math.round(n).toLocaleString('en-IN') + '/yr';
 }
 
+function slabTaxNew(taxable) {
+  if (taxable <= 400000)  return 0;
+  if (taxable <= 800000)  return (taxable - 400000) * 0.05;
+  if (taxable <= 1200000) return 20000 + (taxable - 800000) * 0.10;
+  if (taxable <= 1600000) return 60000 + (taxable - 1200000) * 0.15;
+  if (taxable <= 2000000) return 120000 + (taxable - 1600000) * 0.20;
+  if (taxable <= 2400000) return 200000 + (taxable - 2000000) * 0.25;
+  return 300000 + (taxable - 2400000) * 0.30;
+}
+
+function slabTaxOld(taxable) {
+  if (taxable <= 250000) return 0;
+  if (taxable <= 500000) return (taxable - 250000) * 0.05;
+  if (taxable <= 1000000) return 12500 + (taxable - 500000) * 0.20;
+  return 112500 + (taxable - 1000000) * 0.30;
+}
+
+function surchargeRate(taxable, isNew) {
+  if (taxable <= 5000000) return 0;
+  if (taxable <= 10000000) return 0.10;
+  if (taxable <= 20000000) return 0.15;
+  if (taxable <= 50000000) return 0.25;
+  return isNew ? 0.25 : 0.37;
+}
+
+function totalTaxAt(taxable, isNew) {
+  var tax = isNew ? slabTaxNew(taxable) : slabTaxOld(taxable);
+  var sc = tax * surchargeRate(taxable, isNew);
+  return (tax + sc) * 1.04;
+}
+
+function applyTaxWithSurcharge(tax, taxable, isNew) {
+  var scRate = surchargeRate(taxable, isNew);
+  var sc = tax * scRate;
+  var cess = (tax + sc) * 0.04;
+  var total = tax + sc + cess;
+  if (scRate > 0) {
+    var thresholds = [5000000, 10000000, 20000000, 50000000];
+    for (var i = 0; i < thresholds.length; i++) {
+      if (taxable > thresholds[i]) {
+        var maxTax = totalTaxAt(thresholds[i], isNew) + (taxable - thresholds[i]);
+        if (total > maxTax) total = maxTax;
+      }
+    }
+  }
+  return Math.round(total);
+}
+
 function calcNewRegimeTax(taxable) {
-  let tax = 0;
-  if      (taxable <= 400000)  tax = 0;
-  else if (taxable <= 800000)  tax = (taxable - 400000) * 0.05;
-  else if (taxable <= 1200000) tax = 20000 + (taxable - 800000) * 0.10;
-  else if (taxable <= 1600000) tax = 60000 + (taxable - 1200000) * 0.15;
-  else if (taxable <= 2000000) tax = 120000 + (taxable - 1600000) * 0.20;
-  else if (taxable <= 2400000) tax = 200000 + (taxable - 2000000) * 0.25;
-  else                         tax = 300000 + (taxable - 2400000) * 0.30;
-  // Section 87A rebate (new regime): taxable <= 12L
-  if (taxable <= 1200000) { tax = Math.max(0, tax - Math.min(tax, 60000)); }
-  return Math.round(tax * 1.04); // cess 4%
+  var tax = slabTaxNew(taxable);
+  if (taxable <= 1200000) return 0;
+  var full = applyTaxWithSurcharge(tax, taxable, true);
+  var excess = taxable - 1200000;
+  if (full > excess) return Math.round(excess);
+  return full;
 }
 
 function calcOldRegimeTax(taxable) {
-  let tax = 0;
-  if      (taxable <= 250000)  tax = 0;
-  else if (taxable <= 500000)  tax = (taxable - 250000) * 0.05;
-  else if (taxable <= 1000000) tax = 12500 + (taxable - 500000) * 0.20;
-  else                         tax = 112500 + (taxable - 1000000) * 0.30;
-  // Section 87A rebate (old regime): taxable <= 5L
-  if (taxable <= 500000) { tax = 0; }
-  return Math.round(tax * 1.04); // cess 4%
+  var tax = slabTaxOld(taxable);
+  if (taxable <= 500000) return 0;
+  var full = applyTaxWithSurcharge(tax, taxable, false);
+  var excess = taxable - 500000;
+  if (full > excess) return Math.round(excess);
+  return full;
 }
 
 function calculate() {
@@ -695,8 +740,8 @@ function calculate() {
   const grossSalary    = ctc - emplEPF - (gratuityInCTC ? gratuityAnnual : 0);
   const specialAllow   = Math.max(0, grossSalary - basic - hra);
 
-  // PT (annual)
-  const ptAnnual = ptMonthly * 12;
+  // PT (annual) — capped at Rs 2,500/year per Article 276 of the Constitution
+  const ptAnnual = Math.min(ptMonthly * 12, 2500);
 
   // NEW REGIME
   const stdDedNew      = 75000;
@@ -745,9 +790,14 @@ function renderResults(r) {
   document.getElementById('old-tax-display').textContent = 'Tax: ' + (r.taxOld === 0 ? 'Zero' : fmt(r.taxOld) + '/yr');
 
   // Better badge
-  const betterText = r.betterNew
-    ? 'New Regime saves ' + fmt(r.diff) + '/mo more'
-    : 'Old Regime saves ' + fmt(r.diff) + '/mo more';
+  let betterText;
+  if (r.diff < 1) {
+    betterText = 'Both regimes — same in-hand';
+  } else {
+    betterText = r.betterNew
+      ? 'New Regime saves ' + fmt(r.diff) + '/mo more'
+      : 'Old Regime saves ' + fmt(r.diff) + '/mo more';
+  }
   document.getElementById('better-text').textContent = betterText;
   const zeroBadge = document.getElementById('zero-tax-badge');
   zeroBadge.style.display = r.zeroTaxNew ? 'inline-flex' : 'none';
@@ -797,10 +847,7 @@ function renderDoughnut(r) {
     options: {
       cutout: '65%',
       plugins: {
-        legend: {
-          position: 'bottom',
-          labels: { color: c.text, font: { size: 11 }, padding: 8, boxWidth: 10 }
-        },
+        legend: { display: false },
         tooltip: {
           callbacks: {
             label: (ctx) => {
@@ -813,6 +860,10 @@ function renderDoughnut(r) {
       }
     }
   });
+
+  document.getElementById('chart-legend').innerHTML = filtered.map(x =>
+    '<div class="chart-legend-item"><span class="chart-legend-dot" style="background:' + x.col + '"></span> ' + x.l + '</div>'
+  ).join('');
 }
 
 function renderBreakdown(r) {

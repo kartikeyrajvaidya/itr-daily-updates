@@ -11,6 +11,7 @@
 </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>document.documentElement.setAttribute('data-theme',localStorage.getItem('theme')||'dark')</script>
 
     <!-- SEO Meta Tags -->
     <title>ITR Income Tax Calculator FY 2025-26 (AY 2026-27) | Old vs New Regime | ITR Stats</title>
@@ -147,7 +148,7 @@
     }
     </script>
 
-    <script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
     <link rel="stylesheet" href="/styles/layout.css">
     <style>
         /* Light mode (default) */
@@ -162,6 +163,7 @@
             --accent-green: #22c55e;
             --accent-red: #ef4444;
             --border-color: #e2e8f0;
+            --card-shadow: 0 1px 3px rgba(0,0,0,0.08);
         }
 
         /* Dark mode */
@@ -176,6 +178,7 @@
             --accent-green: #4ade80;
             --accent-red: #f87171;
             --border-color: #334155;
+            --card-shadow: 0 1px 3px rgba(0,0,0,0.3);
         }
 
         * {
@@ -1634,7 +1637,7 @@
                     datasets: [{ data: [takeHome, bestTax], backgroundColor: colors, borderWidth: 0, hoverOffset: 6 }]
                 },
                 options: {
-                    cutout: '72%',
+                    cutout: '65%',
                     responsive: true,
                     maintainAspectRatio: true,
                     plugins: {

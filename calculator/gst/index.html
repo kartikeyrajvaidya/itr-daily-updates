@@ -1,6 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-F4VVXZQZGH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') { gtag('config', 'G-F4VVXZQZGH'); }
+</script>
+<!-- Google AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2843260079810330"
+    crossorigin="anonymous"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -29,7 +40,7 @@
     <link rel="icon" type="image/png" href="/favicon.png">
     <script>document.documentElement.setAttribute('data-theme',localStorage.getItem('theme')||'dark')</script>
 
-    <script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
 
     <script type="application/ld+json">
     {
@@ -77,7 +88,7 @@
             --bg-primary: #f8fafc; --bg-secondary: #ffffff; --bg-accent: #f1f5f9;
             --text-primary: #1e293b; --text-secondary: #4a5568; --text-muted: #718096;
             --accent-blue: #3b82f6; --accent-green: #22c55e; --accent-red: #ef4444;
-            --accent-purple: #8b5cf6; --accent-yellow: #f59e0b; --accent-teal: #0d9488;
+            --accent-purple: #8b5cf6; --accent-orange: #f59e0b; --accent-teal: #0d9488;
             --border-color: #e2e8f0;
             --card-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.06);
         }
@@ -85,7 +96,7 @@
             --bg-primary: #0f172a; --bg-secondary: #1e293b; --bg-accent: #334155;
             --text-primary: #f1f5f9; --text-secondary: #cbd5e1; --text-muted: #94a3b8;
             --accent-blue: #60a5fa; --accent-green: #4ade80; --accent-red: #f87171;
-            --accent-purple: #a78bfa; --accent-yellow: #fbbf24; --accent-teal: #2dd4bf;
+            --accent-purple: #a78bfa; --accent-orange: #fbbf24; --accent-teal: #2dd4bf;
             --border-color: #334155;
             --card-shadow: 0 1px 3px rgba(0,0,0,0.2);
         }
@@ -298,7 +309,7 @@
                                 <span class="value" id="r-sgst">₹900</span>
                             </div>
                             <div class="result-row" id="row-igst" style="display:none">
-                                <span class="label"><span class="dot" style="background:var(--accent-yellow)"></span> IGST (<span id="l-igst-rate">18</span>%)</span>
+                                <span class="label"><span class="dot" style="background:var(--accent-orange)"></span> IGST (<span id="l-igst-rate">18</span>%)</span>
                                 <span class="value" id="r-igst">₹1,800</span>
                             </div>
                             <div class="result-row gst-total">
@@ -511,7 +522,7 @@
                     datasets: [{ data: data, backgroundColor: colors, borderWidth: 0, hoverOffset: 6 }]
                 },
                 options: {
-                    cutout: '70%',
+                    cutout: '65%',
                     responsive: true,
                     maintainAspectRatio: true,
                     plugins: {
@@ -614,14 +625,5 @@
         else init();
     </script>
     <script defer src="/scripts/subscribe-widget.js"></script>
-    <script>
-    window.addEventListener('load', function() {
-        setTimeout(function() {
-            var gt = document.createElement('script'); gt.src = 'https://www.googletagmanager.com/gtag/js?id=G-F4VVXZQZGH'; gt.async = true; document.head.appendChild(gt);
-            gt.onload = function() { window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-F4VVXZQZGH'); };
-            var a = document.createElement('script'); a.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2843260079810330'; a.crossOrigin = 'anonymous'; a.async = true; document.body.appendChild(a);
-        }, 2000);
-    });
-    </script>
 </body>
 </html>
