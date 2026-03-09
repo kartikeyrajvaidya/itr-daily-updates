@@ -279,6 +279,15 @@
   @media (max-width: 900px) { .article-wrap { grid-template-columns: 1fr; } .article-sidebar { position: static; } }
   @media (max-width: 768px) { article { padding: 1.5rem; } article h1 { font-size: 1.5rem; } .stat-grid { grid-template-columns: repeat(2, 1fr); } .two-col { grid-template-columns: 1fr; } .related { grid-template-columns: 1fr 1fr; } }
   @media (max-width: 480px) { .stat-grid { grid-template-columns: 1fr 1fr; } }
+        .related-content { margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border-color); }
+        .related-content h2 { font-size: 1.3rem; margin-bottom: 1.5rem; }
+        .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; }
+        .related-card { background: var(--bg-accent); border-radius: 12px; padding: 1.25rem; text-decoration: none; color: inherit; transition: transform 0.2s ease, box-shadow 0.2s ease; display: flex; flex-direction: column; gap: 0.5rem; }
+        .related-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .related-card .card-icon { display: flex; color: var(--accent-blue); }
+        .related-card .card-title { font-weight: 600; color: var(--text-primary); font-size: 0.95rem; }
+        .related-card .card-desc { font-size: 0.85rem; color: var(--text-muted); line-height: 1.4; }
+        .related-card .card-tag { font-size: 0.7rem; color: var(--accent-blue); font-weight: 600; text-transform: uppercase; }
 </style>
 </head>
 <body class="has-sidebar">
@@ -560,23 +569,13 @@
 
 <div class="disclaimer">Data sources: Ministry of Finance quarterly notifications for interest rates; PIB press release (January 2026) for account count and deposit figures; SSY Rules 2016 for withdrawal and eligibility rules; Section 80C and Section 10(11A) of the Income Tax Act for tax treatment. This article is for informational purposes only and does not constitute tax or financial advice.</div>
 
-<h3 style="margin-top: 2rem; margin-bottom: 1rem; font-size: 1rem; font-weight: 700;">Related Calculators</h3>
-<div class="related">
-  <a href="/calculator/income-tax/">
-    <span class="r-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="12" y2="14"/></svg></span>
-    Income Tax Calculator
-  </a>
-  <a href="/calculator/ppf/">
-    <span class="r-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></span>
-    PPF Calculator
-  </a>
-  <a href="/calculator/nps/">
-    <span class="r-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg></span>
-    NPS Calculator
-  </a>
+
+<section class="related-content">
+<h2 id="explore-more">Explore More</h2>
+<div class="related-grid">
+<a class="related-card" href="/calculator/ssy/"><span class="card-icon"><svg fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="18"><rect height="18" rx="2" width="18" x="3" y="3"></rect><path d="M3 9h18M9 21V9"></path></svg></span><span class="card-title">SSY Calculator</span><span class="card-desc">Year-by-year SSY maturity breakdown with adjustable interest rate</span><span class="card-tag">Calculator</span></a><a class="related-card" href="/calculator/ppf/"><span class="card-icon"><svg fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="18"><rect height="18" rx="2" width="18" x="3" y="3"></rect><path d="M3 9h18M9 21V9"></path></svg></span><span class="card-title">PPF Calculator</span><span class="card-desc">15-year maturity with extended period projections at 7.1%</span><span class="card-tag">Calculator</span></a><a class="related-card" href="/blog/last-minute-tax-saving/"><span class="card-icon"><svg fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="18"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" x2="8" y1="13" y2="13"></line><line x1="16" x2="8" y1="17" y2="17"></line></svg></span><span class="card-title">Last Minute Tax Saving</span><span class="card-desc">All 80C investments you can make before March 31</span><span class="card-tag">Blog</span></a><a class="related-card" href="/calculator/income-tax/"><span class="card-icon"><svg fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="18"><rect height="20" rx="2" width="16" x="4" y="2"></rect><line x1="8" x2="16" y1="6" y2="6"></line><line x1="8" x2="16" y1="10" y2="10"></line><line x1="8" x2="12" y1="14" y2="14"></line></svg></span><span class="card-title">Income Tax Calculator</span><span class="card-desc">See how 80C deductions affect your total tax liability</span><span class="card-tag">Calculator</span></a>
 </div>
-
-
+</section>
 </article>
 
 <aside class="article-sidebar">

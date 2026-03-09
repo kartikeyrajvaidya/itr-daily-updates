@@ -441,7 +441,16 @@
             .data-table { font-size: 0.82rem; }
             .data-table th, .data-table td { padding: 0.6rem 0.75rem; }
         }
-    </style>
+            .related-content { margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border-color); }
+        .related-content h2 { font-size: 1.3rem; margin-bottom: 1.5rem; }
+        .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; }
+        .related-card { background: var(--bg-accent); border-radius: 12px; padding: 1.25rem; text-decoration: none; color: inherit; transition: transform 0.2s ease, box-shadow 0.2s ease; display: flex; flex-direction: column; gap: 0.5rem; }
+        .related-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .related-card .card-icon { display: flex; color: var(--accent-blue); }
+        .related-card .card-title { font-weight: 600; color: var(--text-primary); font-size: 0.95rem; }
+        .related-card .card-desc { font-size: 0.85rem; color: var(--text-muted); line-height: 1.4; }
+        .related-card .card-tag { font-size: 0.7rem; color: var(--accent-blue); font-weight: 600; text-transform: uppercase; }
+</style>
 </head>
 <body>
     <script src="/scripts/sidebar.js"></script>
@@ -709,7 +718,14 @@
                     <li><a href="/blog/itr-form-comparison/">The Rise of India's Salaried Investors: ITR-2 Grows Fastest at 27%</a></li>
                     <li><a href="/blog/last-minute-tax-saving/">Last-Minute Tax Saving Before March 31: Complete Guide</a></li>
                 </ul>
-            </article>
+            
+<section class="related-content">
+<h2 id="explore-more">Explore More</h2>
+<div class="related-grid">
+<a class="related-card" href="/calculator/income-percentile/"><span class="card-icon"><svg fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="18"><path d="M18 20V10M12 20V4M6 20v-6"></path></svg></span><span class="card-title">Income Percentile Calculator</span><span class="card-desc">Enter your income and see your exact percentile rank</span><span class="card-tag">Calculator</span></a><a class="related-card" href="/blog/income-distribution-india/"><span class="card-icon"><svg fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="18"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" x2="8" y1="13" y2="13"></line><line x1="16" x2="8" y1="17" y2="17"></line></svg></span><span class="card-title">India Income Distribution</span><span class="card-desc">Full bracket breakdown from 8.5 crore ITR filings</span><span class="card-tag">Data</span></a><a class="related-card" href="/blog/how-rare-is-salary-india/"><span class="card-icon"><svg fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="18"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" x2="8" y1="13" y2="13"></line><line x1="16" x2="8" y1="17" y2="17"></line></svg></span><span class="card-title">How Rare Is Your Salary?</span><span class="card-desc">Complete CBDT rarity table from ₹3L to ₹1 crore</span><span class="card-tag">Data</span></a><a class="related-card" href="/blog/income-thresholds-india/"><span class="card-icon"><svg fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="18"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" x2="8" y1="13" y2="13"></line><line x1="16" x2="8" y1="17" y2="17"></line></svg></span><span class="card-title">Income Thresholds India</span><span class="card-desc">Top 1%, 5%, 10%, 15% cutoffs with state-wise data</span><span class="card-tag">Data</span></a>
+</div>
+</section>
+</article>
 
             <!-- Sidebar -->
             <aside class="article-sidebar">
