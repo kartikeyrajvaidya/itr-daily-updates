@@ -377,9 +377,14 @@
             letter-spacing: 0.5px;
             color: var(--text-muted);
             margin-bottom: 0.75rem;
+            white-space: nowrap;
         }
 
         .card-icon { display: flex; color: var(--accent-blue); }
+
+        .card-info { position: relative; margin-left: auto; cursor: help; width: 15px; height: 15px; border-radius: 50%; background: var(--border-color); display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: var(--text-muted); }
+        .card-info:hover .card-tooltip { opacity: 1; visibility: visible; transform: translateY(0); }
+        .card-tooltip { position: absolute; top: calc(100% + 6px); right: -8px; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 0.5rem 0.65rem; font-size: 0.72rem; font-weight: 400; color: var(--text-secondary); white-space: normal; width: 180px; text-transform: none; letter-spacing: 0; line-height: 1.4; opacity: 0; visibility: hidden; transition: opacity 0.15s, transform 0.15s, visibility 0.15s; transform: translateY(-4px); z-index: 10; box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
 
         .card-value {
             font-size: 1.6rem;
@@ -532,17 +537,6 @@
             margin-bottom: 1.25rem;
         }
 
-        .metric-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1rem;
-        }
-
-        .metric-entry { display: flex; gap: 0.75rem; align-items: flex-start; }
-        .metric-entry-icon { flex-shrink: 0; margin-top: 0.2rem; color: var(--accent-blue); display: flex; }
-        .metric-entry strong { display: block; font-size: 0.9rem; color: var(--text-primary); margin-bottom: 0.2rem; }
-        .metric-entry p { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; margin: 0; }
-
         .explore-card {
             display: flex;
             flex-direction: column;
@@ -668,7 +662,6 @@
 
             .chart-container { height: 260px; }
 
-            .metric-grid { grid-template-columns: 1fr; }
             .guides-grid { grid-template-columns: 1fr; }
 
             .explore-grid { grid-template-columns: 1fr; }
@@ -786,47 +779,6 @@
                 <a href="/insights/" class="insights-cta-link">Insights →</a>
             </section>
 
-            <section class="content-section" aria-label="Understanding the metrics">
-                <h2>Understanding the Numbers</h2>
-                <p class="section-subtitle">What each metric means and why it matters</p>
-                <div class="metric-grid">
-                    <div class="metric-entry">
-                        <span class="metric-entry-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span>
-                        <div>
-                            <strong>Registered Users</strong>
-                            <p>Total individual taxpayers who have created an account on the Income Tax e-Filing portal. This number grows every day as new users register to file their ITR or access tax services.</p>
-                        </div>
-                    </div>
-                    <div class="metric-entry">
-                        <span class="metric-entry-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></span>
-                        <div>
-                            <strong>Returns Filed</strong>
-                            <p>Total Income Tax Returns submitted on the portal since it went live. This is a cumulative count — every ITR-1, ITR-2, ITR-3, or ITR-4 filed online adds to this number.</p>
-                        </div>
-                    </div>
-                    <div class="metric-entry">
-                        <span class="metric-entry-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-                        <div>
-                            <strong>Returns Verified</strong>
-                            <p>ITRs that have been e-verified by the taxpayer — via Aadhaar OTP, net banking, or physical ITR-V. Only verified returns can be taken up for processing. Unverified ITRs are treated as not filed.</p>
-                        </div>
-                    </div>
-                    <div class="metric-entry">
-                        <span class="metric-entry-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></span>
-                        <div>
-                            <strong>ITRs Processed</strong>
-                            <p>Returns where the Income Tax Department has completed assessment — either issuing a refund, raising a demand, or confirming no tax due. A processed ITR means your filing cycle is complete.</p>
-                        </div>
-                    </div>
-                    <div class="metric-entry">
-                        <span class="metric-entry-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 22h14M5 2h14M12 17a5 5 0 0 0 5-5c0-3-5-8-5-8s-5 5-5 8a5 5 0 0 0 5 5z"/></svg></span>
-                        <div>
-                            <strong>Pending Processing</strong>
-                            <p>The difference between Returns Verified and ITRs Processed. This is the active backlog — verified returns still awaiting assessment. A falling number means the department is clearing the queue faster than new returns are coming in.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
 
             <section class="guides-section" aria-label="ITR refund guides">
                 <h2>ITR Refund Guides</h2>
@@ -986,13 +938,14 @@
         const CSV_URL = './data/daily.csv';
 
         const METRICS = [
-            { key: 'IndvRegUsers', deltaKey: 'delta_IndvRegUsers', label: 'Registered Users', icon: '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>', color: '#3182ce' },
-            { key: 'TotalAadharLinkedPAN', deltaKey: 'delta_TotalAadharLinkedPAN', label: 'Returns Filed', icon: '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>', color: '#805ad5' },
-            { key: 'eVerifiedReturns', deltaKey: 'delta_eVerifiedReturns', label: 'Returns Verified', icon: '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>', color: '#38a169' },
-            { key: 'TotalProcessedRefund', deltaKey: 'delta_TotalProcessedRefund', label: 'ITRs Processed', icon: '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>', color: '#dd6b20' },
+            { key: 'IndvRegUsers', deltaKey: 'delta_IndvRegUsers', label: 'Registered Users', tooltip: 'Taxpayers with an account on the e-Filing portal.', icon: '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>', color: '#3182ce' },
+            { key: 'TotalAadharLinkedPAN', deltaKey: 'delta_TotalAadharLinkedPAN', label: 'Returns Filed', tooltip: 'Cumulative ITRs submitted online (ITR-1 through ITR-4).', icon: '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>', color: '#805ad5' },
+            { key: 'eVerifiedReturns', deltaKey: 'delta_eVerifiedReturns', label: 'Returns Verified', tooltip: 'ITRs e-verified via Aadhaar OTP, net banking, or ITR-V.', icon: '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>', color: '#38a169' },
+            { key: 'TotalProcessedRefund', deltaKey: 'delta_TotalProcessedRefund', label: 'ITRs Processed', tooltip: 'Returns where assessment is complete — refund, demand, or nil tax.', icon: '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>', color: '#dd6b20' },
             {
                 key: 'PendingProcessing',
                 label: 'Pending Processing',
+                tooltip: 'Verified returns still awaiting assessment (backlog).',
                 icon: '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>',
                 color: '#e53e3e',
                 computed: true,
@@ -1078,7 +1031,7 @@
                 const deltaInfo = formatDelta(delta, metric.invertDelta);
                 html += `
                     <div class="card">
-                        <div class="card-label"><span class="card-icon">${metric.icon}</span> ${metric.label.toUpperCase()}</div>
+                        <div class="card-label"><span class="card-icon">${metric.icon}</span> ${metric.label.toUpperCase()}<span class="card-info"><svg width="9" height="9" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="5" r="2.5"/><rect x="9.5" y="10" width="5" height="12" rx="1.5"/></svg><span class="card-tooltip">${metric.tooltip}</span></span></div>
                         <div class="card-value">${formatCrores(value)}</div>
                         <div class="card-delta ${deltaInfo.class}">${deltaInfo.arrow} ${deltaInfo.text}</div>
                     </div>`;
