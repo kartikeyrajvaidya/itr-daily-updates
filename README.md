@@ -202,7 +202,7 @@ Contributions are welcome! Here are some ways you can help:
 
 **Kartikey Rajvaidya**
 
-- Twitter: [@kartikey_19](https://x.com/kartikey_19)
+- Twitter: [@itrstats_in](https://x.com/itrstats_in)
 - LinkedIn: [kartikeyrajvaidya](https://www.linkedin.com/in/kartikeyrajvaidya/)
 
 ---

@@ -441,7 +441,7 @@ After the FAQ or before Related Calculators, add 1-2 cross-links to relevant blo
 <footer>
   <p class="footer-creator">
     <strong>Built by Kartikey</strong>
-    <a href="https://x.com/kartikey_19" target="_blank" rel="noopener" aria-label="Twitter"><!-- Twitter SVG --></a>
+    <a href="https://x.com/itrstats_in" target="_blank" rel="noopener" aria-label="Twitter"><!-- Twitter SVG --></a>
     <a href="https://www.linkedin.com/in/kartikeyrajvaidya/" target="_blank" rel="noopener" aria-label="LinkedIn"><!-- LinkedIn SVG --></a>
   </p>
   <p>© 2026 ITR Stats · <a href="/privacy-policy.html">Privacy</a></p>
