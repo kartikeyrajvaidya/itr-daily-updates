@@ -45,4 +45,3 @@ Allow: /
 Disallow: /*?utm*
 
 Sitemap: https://itrstats.in/sitemap.xml
-LLMs: https://itrstats.in/llms.txt
