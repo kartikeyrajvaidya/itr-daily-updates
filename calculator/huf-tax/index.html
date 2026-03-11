@@ -265,13 +265,14 @@
 
     .chart-section { margin: 1.5rem 0; text-align: center; }
     .chart-section h3 { font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.75rem; text-align: center; }
-    .chart-container { position: relative; max-width: 200px; margin: 0 auto; }
-    .chart-center-label { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; pointer-events: none; }
-    .chart-center-label .value { font-size: 1rem; font-weight: 700; color: var(--text-primary); line-height: 1.2; }
-    .chart-center-label .sublabel { font-size: 0.65rem; color: var(--text-muted); }
-    .chart-legend { display: flex; justify-content: center; gap: 1.25rem; margin-top: 0.75rem; font-size: 0.8rem; }
-    .chart-legend-item { display: flex; align-items: center; gap: 0.375rem; color: var(--text-secondary); }
-    .chart-legend-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+    .chart-doughnut-wrap { position: relative; width: 168px; height: 168px; margin: 0 auto; }
+    .chart-center { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); text-align: center; pointer-events: none; }
+    .chart-center-pct { font-size: 1.45rem; font-weight: 800; color: var(--text-primary); line-height: 1.1; }
+    .chart-center-label { font-size: 0.6rem; color: var(--text-muted); margin-top: 0.15rem; text-transform: uppercase; letter-spacing: 0.4px; }
+    .chart-legend { margin-top: 0.85rem; display: flex; flex-direction: column; gap: 0.3rem; }
+    .legend-row { display: flex; align-items: center; gap: 0.5rem; font-size: 0.8rem; color: var(--text-secondary); }
+    .legend-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+    .legend-val { margin-left: auto; font-weight: 700; color: var(--text-primary); font-size: 0.82rem; font-variant-numeric: tabular-nums; }
 
     .breakdown-toggle {
         background: none; border: none; color: var(--accent-blue); font-size: 0.9rem;
@@ -449,16 +450,16 @@
 
             <div class="chart-section" id="chart-section" style="display:none;">
                 <h3>HUF Income Breakdown</h3>
-                <div class="chart-container">
+                <div class="chart-doughnut-wrap">
                     <canvas id="tax-chart"></canvas>
-                    <div class="chart-center-label">
-                        <div class="value" id="chart-center-rate">0%</div>
-                        <div class="sublabel">tax rate</div>
+                    <div class="chart-center">
+                        <div class="chart-center-pct" id="chart-center-rate">0%</div>
+                        <div class="chart-center-label">tax rate</div>
                     </div>
                 </div>
                 <div class="chart-legend">
-                    <div class="chart-legend-item"><span class="chart-legend-dot" style="background:#22c55e"></span> Retained</div>
-                    <div class="chart-legend-item"><span class="chart-legend-dot" style="background:#ef4444"></span> Tax</div>
+                    <div class="legend-row"><span class="legend-dot" style="background:#22c55e"></span><span>Retained</span><span class="legend-val" id="legend-retained">—</span></div>
+                    <div class="legend-row"><span class="legend-dot" style="background:#ef4444"></span><span>Tax</span><span class="legend-val" id="legend-tax">—</span></div>
                 </div>
             </div>
 
@@ -843,6 +844,8 @@
         const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
         const colors = [isDark ? '#4ade80' : '#22c55e', isDark ? '#f87171' : '#ef4444'];
         document.getElementById('chart-center-rate').textContent = effectiveRate + '%';
+        document.getElementById('legend-retained').textContent = formatCurrency(retained);
+        document.getElementById('legend-tax').textContent = formatCurrency(bestTax);
 
         if (taxChart) {
             taxChart.data.datasets[0].data = [retained, bestTax];
@@ -857,12 +860,12 @@
             type: 'doughnut',
             data: {
                 labels: ['Retained', 'Tax'],
-                datasets: [{ data: [retained, bestTax], backgroundColor: colors, borderWidth: 0, hoverOffset: 6 }]
+                datasets: [{ data: [retained, bestTax], backgroundColor: colors, borderWidth: 0, hoverOffset: 4 }]
             },
             options: {
-                cutout: '65%',
+                cutout: '68%',
                 responsive: true,
-                maintainAspectRatio: true,
+                maintainAspectRatio: false,
                 plugins: {
                     legend: { display: false },
                     tooltip: {
