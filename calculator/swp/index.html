@@ -329,8 +329,15 @@
             letter-spacing: 0.5px; margin-bottom: 1rem; text-align: center;
         }
         .chart-wrapper { position: relative; width: 100%; }
-        .chart-wrapper.doughnut { max-width: 200px; margin: 0 auto; }
         .chart-wrapper.line { height: 250px; }
+        .chart-doughnut-wrap { position: relative; width: 168px; height: 168px; margin: 0 auto; }
+        .chart-center { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; pointer-events: none; }
+        .chart-center-pct { font-size: 1.45rem; font-weight: 800; color: var(--text-primary); line-height: 1.1; }
+        .chart-center-label { font-size: 0.6rem; color: var(--text-muted); margin-top: 0.15rem; text-transform: uppercase; letter-spacing: 0.4px; }
+        .chart-legend { margin-top: 0.85rem; display: flex; flex-direction: column; gap: 0.3rem; }
+        .legend-row { display: flex; align-items: center; gap: 0.5rem; font-size: 0.8rem; color: var(--text-secondary); }
+        .legend-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+        .legend-val { margin-left: auto; font-weight: 700; color: var(--text-primary); font-size: 0.82rem; font-variant-numeric: tabular-nums; }
 
         .breakdown-toggle {
             background: none; border: none; color: var(--accent-blue);
@@ -558,8 +565,29 @@
 
                     <div class="chart-container">
                         <h3>Corpus Breakdown</h3>
-                        <div class="chart-wrapper doughnut">
+                        <div class="chart-doughnut-wrap">
                             <canvas id="doughnut-chart"></canvas>
+                            <div class="chart-center">
+                                <div class="chart-center-pct" id="center-pct">0%</div>
+                                <div class="chart-center-label" id="center-label">withdrawn</div>
+                            </div>
+                        </div>
+                        <div class="chart-legend">
+                            <div class="legend-row">
+                                <span class="legend-dot" style="background:#f87171"></span>
+                                <span>Withdrawn</span>
+                                <span class="legend-val" id="legend-withdrawn">—</span>
+                            </div>
+                            <div class="legend-row">
+                                <span class="legend-dot" style="background:#4ade80"></span>
+                                <span>Returns Earned</span>
+                                <span class="legend-val" id="legend-returns">—</span>
+                            </div>
+                            <div class="legend-row">
+                                <span class="legend-dot" style="background:#60a5fa"></span>
+                                <span>Remaining Balance</span>
+                                <span class="legend-val" id="legend-remaining">—</span>
+                            </div>
                         </div>
                     </div>
 
@@ -814,11 +842,17 @@
             const bgColors = [colors.withdrawn, colors.returns, colors.balance];
             const labels = ['Withdrawn', 'Returns Earned', 'Remaining Balance'];
 
+            const total = data.reduce((a, b) => a + b, 0);
+            const withdrawnPct = total > 0 ? Math.round((withdrawn / total) * 100) : 0;
+            document.getElementById('center-pct').textContent = withdrawnPct + '%';
+            document.getElementById('center-label').textContent = 'withdrawn';
+            document.getElementById('legend-withdrawn').textContent = formatCurrencyFull(withdrawn);
+            document.getElementById('legend-returns').textContent = formatCurrencyFull(Math.max(0, returns));
+            document.getElementById('legend-remaining').textContent = formatCurrencyFull(Math.max(0, remaining));
+
             if (doughnutChart) {
                 doughnutChart.data.datasets[0].data = data;
                 doughnutChart.data.datasets[0].backgroundColor = bgColors;
-                doughnutChart.data.labels = labels;
-                doughnutChart.options.plugins.legend.labels.color = colors.text;
                 doughnutChart.update();
                 return;
             }
@@ -831,23 +865,20 @@
                         data,
                         backgroundColor: bgColors,
                         borderWidth: 0,
-                        hoverOffset: 6,
+                        hoverOffset: 4,
                     }]
                 },
                 options: {
                     responsive: true,
-                    maintainAspectRatio: true,
-                    cutout: '65%',
+                    maintainAspectRatio: false,
+                    cutout: '68%',
                     plugins: {
-                        legend: {
-                            position: 'bottom',
-                            labels: { color: colors.text, padding: 16, usePointStyle: true, pointStyleWidth: 12, font: { size: 12 } }
-                        },
+                        legend: { display: false },
                         tooltip: {
                             callbacks: {
                                 label: function(context) {
-                                    const total = context.dataset.data.reduce((a, b) => a + b, 0);
-                                    const pct = total > 0 ? ((context.raw / total) * 100).toFixed(1) : '0.0';
+                                    const t = context.dataset.data.reduce((a, b) => a + b, 0);
+                                    const pct = t > 0 ? ((context.raw / t) * 100).toFixed(1) : '0.0';
                                     return context.label + ': ' + formatCurrencyFull(context.raw) + ' (' + pct + '%)';
                                 }
                             }
