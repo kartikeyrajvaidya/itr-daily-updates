@@ -403,6 +403,15 @@
       </div>
       <span class="hint">80D (health insurance), home loan interest, NPS 80CCD(1B) etc.</span>
     </div>
+
+    <div class="input-group">
+      <label for="employer-nps">Employer NPS Contribution <span style="font-weight:400;color:var(--text-muted)">(Rs/year)</span></label>
+      <div class="input-wrapper">
+        <span class="prefix">₹</span>
+        <input type="number" id="employer-nps" value="0" min="0" max="1000000" inputmode="numeric">
+      </div>
+      <span class="hint">80CCD(2) — allowed in both regimes. Max 10% of basic+DA (14% for govt). Leave 0 if not applicable.</span>
+    </div>
   </div>
 
   <!-- ── Results ── -->
@@ -720,6 +729,7 @@ function calculate() {
   const ptMonthly    = Math.min(250, Math.max(0, parseFloat(document.getElementById('prof-tax').value) || 0));
   const ded80C       = Math.min(150000, Math.max(0, parseFloat(document.getElementById('deductions-80c').value) || 0));
   const otherDed     = Math.max(0, parseFloat(document.getElementById('other-deductions').value) || 0);
+  const employerNPS  = Math.max(0, parseFloat(document.getElementById('employer-nps').value) || 0);
 
   // Salary components (annual)
   const basic    = ctc * basicPct;
@@ -743,7 +753,7 @@ function calculate() {
 
   // NEW REGIME
   const stdDedNew      = 75000;
-  const taxableNew     = Math.max(0, grossSalary - stdDedNew);
+  const taxableNew     = Math.max(0, grossSalary - stdDedNew - employerNPS);
   const taxNew         = calcNewRegimeTax(taxableNew);
   const inHandNew      = grossSalary - empeEPF - ptAnnual - taxNew;
   const monthlyNew     = inHandNew / 12;
@@ -753,7 +763,7 @@ function calculate() {
   // With rent assumed = HRA: = min(hra - 0.1*basic, hraPct*basic)
   const hraExempt      = Math.max(0, Math.min(hra - 0.1 * basic, hraPct * basic));
   const stdDedOld      = 50000;
-  const totalDedOld    = stdDedOld + hraExempt + ded80C + otherDed;
+  const totalDedOld    = stdDedOld + hraExempt + ded80C + otherDed + employerNPS;
   const taxableOld     = Math.max(0, grossSalary - totalDedOld);
   const taxOld         = calcOldRegimeTax(taxableOld);
   const inHandOld      = grossSalary - empeEPF - ptAnnual - taxOld;
