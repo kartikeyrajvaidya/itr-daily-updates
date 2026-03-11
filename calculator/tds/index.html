@@ -813,7 +813,9 @@ function render(r) {
   tdsEl.textContent  = fmt(r.tdsAmount);
   tdsEl.style.color  = r.noTds ? 'var(--text-muted)' : 'var(--accent-red)';
   document.getElementById('out-tds-sub').textContent =
-    r.noTds ? 'No TDS deducted' : 'at ' + r.displayRateStr + ' on ' + fmt(r.amount);
+    r.noTds ? 'No TDS deducted' :
+    r.t === '194n' ? 'at ' + r.displayRateStr + ' on amount above threshold' :
+    'at ' + r.displayRateStr + ' on ' + fmt(r.amount);
 
   document.getElementById('out-net-amount').textContent = fmt(r.netAmount);
 
@@ -827,8 +829,11 @@ function render(r) {
   aggNote.style.display   = r.showAggregateNote ? '' : 'none';
 
   if (r.noTds && !r.showAggregateNote) {
+    const amtStr = r.t === '194i'
+      ? fmt(Math.round(r.amount / 12)) + '/month (monthly rent)'
+      : fmt(r.amount);
     document.getElementById('ex-reason').textContent =
-      'Payment of ' + fmt(r.amount) + ' is below the ' + r.thresholdLabel +
+      'Payment of ' + amtStr + ' is below the ' + r.thresholdLabel +
       ' threshold under ' + r.sectionName + '. No TDS will be deducted.';
   }
   if (r.showPanNotice) {
