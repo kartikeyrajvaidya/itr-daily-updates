@@ -811,7 +811,6 @@
                 growthChart.options.scales.x.ticks.color = colors.text;
                 growthChart.options.scales.y.ticks.color = colors.text;
                 growthChart.options.scales.y.grid.color = colors.grid;
-                growthChart.options.plugins.legend.labels.color = colors.text;
                 growthChart.update();
                 return;
             }
@@ -861,9 +860,7 @@
                         }
                     },
                     plugins: {
-                        legend: {
-                            labels: { color: colors.text, usePointStyle: true, pointStyleWidth: 12, font: { size: 12 }, padding: 16 }
-                        },
+                        legend: { display: false },
                         tooltip: {
                             callbacks: {
                                 label: function(context) {
