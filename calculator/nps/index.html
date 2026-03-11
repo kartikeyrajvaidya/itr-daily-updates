@@ -96,8 +96,15 @@
         .chart-container { background: var(--bg-accent); border-radius: 12px; padding: 1.25rem; margin-bottom: 1rem; }
         .chart-container h3 { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 1rem; text-align: center; }
         .chart-wrapper { position: relative; width: 100%; }
-        .chart-wrapper.doughnut { max-width: 200px; margin: 0 auto; }
         .chart-wrapper.bar { height: 250px; }
+        .chart-doughnut-wrap { position: relative; width: 168px; height: 168px; margin: 0 auto; }
+        .chart-center { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); text-align: center; pointer-events: none; }
+        .chart-center-pct { font-size: 1.45rem; font-weight: 800; color: var(--text-primary); line-height: 1.1; }
+        .chart-center-label { font-size: 0.6rem; color: var(--text-muted); margin-top: 0.15rem; text-transform: uppercase; letter-spacing: 0.4px; }
+        .chart-legend { margin-top: 0.85rem; display: flex; flex-direction: column; gap: 0.3rem; }
+        .legend-row { display: flex; align-items: center; gap: 0.5rem; font-size: 0.8rem; color: var(--text-secondary); }
+        .legend-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+        .legend-val { margin-left: auto; font-weight: 700; color: var(--text-primary); font-size: 0.82rem; font-variant-numeric: tabular-nums; }
 
         .breakdown-toggle { background: none; border: none; color: var(--accent-blue); font-size: 0.9rem; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; margin: 1rem auto 0; }
         .breakdown-toggle:hover { text-decoration: underline; }
@@ -223,7 +230,25 @@
 
                     <div class="chart-container">
                         <h3>Corpus Breakdown</h3>
-                        <div class="chart-wrapper doughnut"><canvas id="doughnut-chart"></canvas></div>
+                        <div class="chart-doughnut-wrap">
+                            <canvas id="doughnut-chart"></canvas>
+                            <div class="chart-center">
+                                <div class="chart-center-pct" id="center-pct">0%</div>
+                                <div class="chart-center-label" id="center-label">returns</div>
+                            </div>
+                        </div>
+                        <div class="chart-legend">
+                            <div class="legend-row">
+                                <span class="legend-dot" style="background:#60a5fa"></span>
+                                <span>Invested</span>
+                                <span class="legend-val" id="legend-invested">—</span>
+                            </div>
+                            <div class="legend-row">
+                                <span class="legend-dot" style="background:#4ade80"></span>
+                                <span>Returns</span>
+                                <span class="legend-val" id="legend-returns">—</span>
+                            </div>
+                        </div>
                     </div>
                     <div class="chart-container">
                         <h3>Year-by-Year Growth</h3>
@@ -332,8 +357,13 @@ let doughnutChart = null, growthChart = null;
 
         function renderDoughnutChart(invested, returns) {
             const ctx = document.getElementById('doughnut-chart').getContext('2d'); const colors = getChartColors();
-            if (doughnutChart) { doughnutChart.data.datasets[0].data = [invested, returns]; doughnutChart.data.datasets[0].backgroundColor = [colors.invested, colors.returns]; doughnutChart.options.plugins.legend.labels.color = colors.text; doughnutChart.update(); return; }
-            doughnutChart = new Chart(ctx, { type: 'doughnut', data: { labels: ['Invested', 'Returns'], datasets: [{ data: [invested, returns], backgroundColor: [colors.invested, colors.returns], borderWidth: 0, hoverOffset: 6 }] }, options: { responsive: true, maintainAspectRatio: true, cutout: '65%', plugins: { legend: { position: 'bottom', labels: { color: colors.text, padding: 16, usePointStyle: true, pointStyleWidth: 12, font: { size: 12 } } }, tooltip: { callbacks: { label: function(c) { const total = c.dataset.data.reduce((a,b)=>a+b,0); return c.label+': '+formatCurrencyFull(c.raw)+' ('+((c.raw/total)*100).toFixed(1)+'%)'; } } } } } });
+            const total = invested + returns;
+            const retPct = total > 0 ? Math.round((returns / total) * 100) : 0;
+            document.getElementById('center-pct').textContent = retPct + '%';
+            document.getElementById('legend-invested').textContent = formatCurrencyFull(invested);
+            document.getElementById('legend-returns').textContent = formatCurrencyFull(returns);
+            if (doughnutChart) { doughnutChart.data.datasets[0].data = [invested, returns]; doughnutChart.data.datasets[0].backgroundColor = [colors.invested, colors.returns]; doughnutChart.update(); return; }
+            doughnutChart = new Chart(ctx, { type: 'doughnut', data: { labels: ['Invested', 'Returns'], datasets: [{ data: [invested, returns], backgroundColor: [colors.invested, colors.returns], borderWidth: 0, hoverOffset: 4 }] }, options: { responsive: true, maintainAspectRatio: false, cutout: '68%', plugins: { legend: { display: false }, tooltip: { callbacks: { label: function(c) { const t = c.dataset.data.reduce((a,b)=>a+b,0); return c.label+': '+formatCurrencyFull(c.raw)+' ('+((c.raw/t)*100).toFixed(1)+'%)'; } } } } } });
         }
 
         function renderGrowthChart(yearlyData) {
