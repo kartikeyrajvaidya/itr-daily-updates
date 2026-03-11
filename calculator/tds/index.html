@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-F4VVXZQZGH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') { gtag('config', 'G-F4VVXZQZGH'); }
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>document.documentElement.setAttribute('data-theme',localStorage.getItem('theme')||'dark')</script>
+
+<title>TDS Calculator 2025-26 - Instant TDS Deduction | ITR Stats</title>
+<meta name="description" content="Calculate TDS on FD interest, rent, professional fees, contractor and commission payments. Section-wise rates for FY 2025-26. Instant result with chart.">
+<meta name="keywords" content="TDS calculator, TDS calculator India 2025-26, TDS on FD interest, TDS on rent, section 194A calculator, TDS deduction calculator, TDS rate FY 2025-26">
+<meta name="author" content="ITR Stats">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://itrstats.in/calculator/tds/">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://itrstats.in/calculator/tds/">
+<meta property="og:title" content="TDS Calculator 2025-26 - FD, Rent, Professional Fees | ITR Stats">
+<meta property="og:description" content="Calculate TDS on FD interest, rent, professional fees and more. Real-time, dark mode, section-wise breakdown. FY 2025-26 rates.">
+<meta property="og:image" content="https://itrstats.in/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/png">
+<meta property="og:site_name" content="ITR Stats">
+<meta property="og:locale" content="en_IN">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="TDS Calculator 2025-26 | ITR Stats">
+<meta name="twitter:description" content="Instant TDS on FD interest, rent, professional fees for FY 2025-26. Dark mode, real-time, doughnut chart.">
+<meta name="twitter:image" content="https://itrstats.in/og-image.png">
+
+<link rel="icon" type="image/png" href="/favicon.png">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+
+<!-- Google AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2843260079810330" crossorigin="anonymous"></script>
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"TDS Calculator","description":"Calculate TDS on FD interest, rent, professional fees, contractor and commission payments for FY 2025-26. Section-wise rates under 194A, 194C, 194H, 194I, 194J.","url":"https://itrstats.in/calculator/tds/","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"datePublished":"2026-03-11","dateModified":"2026-03-11","author":{"@type":"Organization","name":"ITR Stats","url":"https://itrstats.in"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the TDS rate on FD interest for FY 2025-26?","acceptedAnswer":{"@type":"Answer","text":"TDS on FD interest is 10% under Section 194A for FY 2025-26. The threshold is Rs 50,000 per year for general depositors and Rs 1,00,000 per year for senior citizens aged 60 and above. If PAN is not provided, the rate increases to 20% under Section 206AA. Submit Form 15G or 15H to prevent TDS if total income is below the taxable limit."}},{"@type":"Question","name":"What is the TDS rate on rent for FY 2025-26?","acceptedAnswer":{"@type":"Answer","text":"TDS on rent under Section 194I is 10% for land, building, furniture and fittings, and 2% for plant and machinery. From FY 2025-26, TDS applies when monthly rent exceeds Rs 50,000 - changed from the earlier Rs 2,40,000 annual threshold. If PAN is not provided, TDS rate is 20%."}},{"@type":"Question","name":"What is the TDS rate on professional fees for FY 2025-26?","acceptedAnswer":{"@type":"Answer","text":"TDS on professional fees under Section 194J is 10% for professional services (doctors, lawyers, architects, consultants) and 2% for technical services (IT, call centres). From FY 2025-26, the threshold is raised to Rs 50,000 per year from the earlier Rs 30,000. PAN not provided: rate is 20%."}},{"@type":"Question","name":"How do I claim TDS that has been deducted?","acceptedAnswer":{"@type":"Answer","text":"TDS deducted is reflected in your Form 26AS and Annual Information Statement on the Income Tax portal. When you file your ITR, claim TDS as tax credit in Schedule TDS. If TDS exceeds your final tax liability, the excess is refunded. Check Form 26AS at incometax.gov.in to verify TDS entries before filing."}},{"@type":"Question","name":"What happens if PAN is not provided - what TDS rate applies?","acceptedAnswer":{"@type":"Answer","text":"Under Section 206AA, if PAN is not furnished, TDS must be deducted at 20% or twice the applicable rate, whichever is higher. In practice, 20% applies for all common sections. Section 206AB (higher TDS for non-ITR-filers) was omitted entirely from April 1 2025 - only PAN non-availability now triggers the higher rate."}}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://itrstats.in/"},{"@type":"ListItem","position":2,"name":"Calculators","item":"https://itrstats.in/calculator/"},{"@type":"ListItem","position":3,"name":"TDS Calculator","item":"https://itrstats.in/calculator/tds/"}]}
+</script>
+
+<link rel="stylesheet" href="/styles/layout.css">
+<style>
+  :root {
+    --bg-primary: #f8fafc; --bg-secondary: #ffffff; --bg-accent: #f1f5f9;
+    --text-primary: #1e293b; --text-secondary: #4a5568; --text-muted: #718096;
+    --accent-blue: #3b82f6; --accent-green: #22c55e; --accent-orange: #f59e0b;
+    --accent-red: #ef4444; --accent-purple: #8b5cf6;
+    --border-color: #e2e8f0; --card-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  }
+  [data-theme="dark"] {
+    --bg-primary: #0f172a; --bg-secondary: #1e293b; --bg-accent: #334155;
+    --text-primary: #f1f5f9; --text-secondary: #cbd5e1; --text-muted: #94a3b8;
+    --accent-blue: #60a5fa; --accent-green: #4ade80; --accent-orange: #fbbf24;
+    --accent-red: #f87171; --accent-purple: #a78bfa;
+    --border-color: #334155; --card-shadow: 0 1px 3px rgba(0,0,0,0.3);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; background: var(--bg-primary); color: var(--text-primary); min-height: 100vh; line-height: 1.6; }
+
+  /* Calculator grid */
+  .calculator-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  .input-section, .result-section { background: var(--bg-secondary); border-radius: 16px; padding: 1.5rem; }
+  .input-section h2, .result-section h2 { font-size: 1rem; margin-bottom: 1.25rem; color: var(--text-primary); font-weight: 700; display: flex; align-items: center; gap: 0.5rem; }
+
+  /* Input groups */
+  .input-group { margin-bottom: 1.1rem; }
+  .input-group label { display: block; font-size: 0.83rem; color: var(--text-secondary); margin-bottom: 0.4rem; font-weight: 500; }
+  .input-group .hint { font-size: 0.73rem; color: var(--text-muted); margin-top: 0.2rem; }
+  .input-wrapper { position: relative; }
+  .input-wrapper .prefix { position: absolute; left: 0.9rem; top: 50%; transform: translateY(-50%); color: var(--text-muted); font-size: 0.9rem; pointer-events: none; }
+  input[type="number"] {
+    width: 100%; padding: 0.75rem 1rem 0.75rem 2.1rem;
+    background: var(--bg-accent); border: 1px solid var(--border-color);
+    border-radius: 10px; color: var(--text-primary); font-size: 0.95rem;
+    transition: border-color 0.2s; appearance: none;
+  }
+  select {
+    width: 100%; padding: 0.75rem 1rem;
+    background: var(--bg-accent); border: 1px solid var(--border-color);
+    border-radius: 10px; color: var(--text-primary); font-size: 0.95rem;
+    transition: border-color 0.2s; appearance: none; cursor: pointer;
+  }
+  input[type="number"]:focus, select:focus { outline: none; border-color: var(--accent-blue); }
+  input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+  input[type="number"] { -moz-appearance: textfield; }
+
+  /* Optional input label */
+  .label-optional { font-size: 0.7rem; color: var(--text-muted); font-weight: 400; margin-left: 0.35rem; }
+
+  /* Section divider */
+  .input-divider { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.6px; color: var(--text-muted); font-weight: 700; padding: 0.5rem 0; margin-top: 0.5rem; border-top: 1px solid var(--border-color); }
+
+  /* Toggle groups */
+  .toggle-group { display: flex; border: 1px solid var(--border-color); border-radius: 10px; overflow: hidden; background: var(--bg-accent); }
+  .toggle-group button { flex: 1; padding: 0.55rem 0.4rem; font-size: 0.78rem; font-weight: 500; border: none; background: transparent; color: var(--text-muted); cursor: pointer; transition: all 0.15s; line-height: 1.3; }
+  .toggle-group button.active { background: var(--accent-blue); color: #fff; font-weight: 600; }
+  .toggle-group button:not(.active):hover { background: var(--bg-primary); color: var(--text-primary); }
+
+  /* Key stats */
+  .key-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; margin-bottom: 1rem; }
+  .key-stat { background: var(--bg-accent); border-radius: 10px; padding: 0.75rem 0.9rem; }
+  .key-stat.highlight { background: rgba(34,197,94,0.07); border: 1px solid rgba(34,197,94,0.25); }
+  [data-theme="dark"] .key-stat.highlight { background: rgba(74,222,128,0.08); }
+  .ks-label { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-muted); font-weight: 700; margin-bottom: 0.2rem; }
+  .ks-value { font-size: 1.15rem; font-weight: 800; color: var(--text-primary); line-height: 1.2; }
+  .key-stat.highlight .ks-value { color: var(--accent-green); }
+  .ks-sub { font-size: 0.71rem; color: var(--text-muted); margin-top: 0.15rem; }
+
+  /* Notice cards */
+  .notice { border-radius: 10px; padding: 0.9rem 1rem; margin-bottom: 0.85rem; }
+  .notice strong { display: block; font-size: 0.88rem; margin-bottom: 0.3rem; }
+  .notice p { font-size: 0.82rem; line-height: 1.55; margin: 0; color: var(--text-secondary); }
+  .notice-green { background: rgba(34,197,94,0.07); border: 1px solid rgba(34,197,94,0.3); }
+  [data-theme="dark"] .notice-green { background: rgba(74,222,128,0.08); }
+  .notice-green strong { color: var(--accent-green); }
+  .notice-orange { background: rgba(245,158,11,0.07); border: 1px solid rgba(245,158,11,0.3); }
+  [data-theme="dark"] .notice-orange { background: rgba(251,191,36,0.08); }
+  .notice-orange strong { color: var(--accent-orange); }
+  .notice-blue { background: rgba(59,130,246,0.07); border: 1px solid rgba(59,130,246,0.25); }
+  [data-theme="dark"] .notice-blue { background: rgba(96,165,250,0.08); }
+  .notice-blue strong { color: var(--accent-blue); }
+
+  /* Doughnut chart */
+  .chart-container { background: var(--bg-accent); border-radius: 12px; padding: 1rem; margin-top: 0.75rem; }
+  .chart-container h3 { font-size: 0.68rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.75rem; font-weight: 700; }
+  .chart-doughnut-wrap { position: relative; width: 168px; height: 168px; margin: 0 auto; }
+  .chart-center { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; pointer-events: none; }
+  .chart-center-pct { font-size: 1.45rem; font-weight: 800; color: var(--text-primary); line-height: 1.1; }
+  .chart-center-label { font-size: 0.6rem; color: var(--text-muted); margin-top: 0.15rem; text-transform: uppercase; letter-spacing: 0.4px; }
+  .chart-legend { margin-top: 0.85rem; display: flex; flex-direction: column; gap: 0.3rem; }
+  .legend-row { display: flex; align-items: center; gap: 0.5rem; font-size: 0.8rem; color: var(--text-secondary); }
+  .legend-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+  .legend-val { margin-left: auto; font-weight: 700; color: var(--text-primary); font-size: 0.82rem; font-variant-numeric: tabular-nums; }
+
+  /* Collapsible ref table */
+  .breakdown-toggle { background: none; border: 1px solid var(--border-color); color: var(--accent-blue); font-size: 0.8rem; cursor: pointer; display: flex; align-items: center; gap: 0.4rem; padding: 0.4rem 0.75rem; border-radius: 8px; width: 100%; justify-content: center; margin-top: 0.85rem; transition: border-color 0.15s; font-family: inherit; }
+  .breakdown-toggle:hover { border-color: var(--accent-blue); }
+  .ref-table-wrap { margin-top: 0.75rem; overflow-x: auto; }
+  .ref-table { width: 100%; border-collapse: collapse; font-size: 0.75rem; min-width: 460px; }
+  .ref-table th { text-align: left; padding: 0.4rem 0.5rem; color: var(--text-muted); font-weight: 700; font-size: 0.67rem; text-transform: uppercase; letter-spacing: 0.4px; border-bottom: 2px solid var(--border-color); white-space: nowrap; }
+  .ref-table td { padding: 0.4rem 0.5rem; color: var(--text-secondary); border-bottom: 1px solid var(--border-color); font-size: 0.75rem; }
+  .ref-table tr:last-child td { border-bottom: none; }
+  .ref-table td:nth-child(4), .ref-table td:nth-child(5) { font-weight: 700; color: var(--text-primary); white-space: nowrap; }
+  .ref-table .highlight-row td { background: rgba(96,165,250,0.05); }
+
+  /* Content sections */
+  .content-section { background: var(--bg-secondary); border-radius: 16px; padding: 2rem; margin-top: 1.5rem; }
+  .content-section h2 { font-size: 1.15rem; color: var(--text-primary); margin-bottom: 1rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--border-color); }
+  .content-section h3 { font-size: 0.95rem; color: var(--text-primary); margin: 1.25rem 0 0.5rem; font-weight: 700; }
+  .content-section p { color: var(--text-secondary); margin-bottom: 0.9rem; line-height: 1.7; font-size: 0.95rem; }
+  .content-section ul, .content-section ol { color: var(--text-secondary); margin: 0.5rem 0 1rem 1.25rem; font-size: 0.95rem; }
+  .content-section li { margin-bottom: 0.4rem; line-height: 1.6; }
+  .content-section strong { color: var(--text-primary); }
+
+  /* Rates table inside content */
+  .rates-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; margin: 0.75rem 0 1rem; overflow-x: auto; display: block; }
+  .rates-table th { text-align: left; padding: 0.55rem 0.75rem; border-bottom: 2px solid var(--border-color); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.4px; color: var(--text-muted); font-weight: 700; white-space: nowrap; }
+  .rates-table td { padding: 0.5rem 0.75rem; border-bottom: 1px solid var(--border-color); color: var(--text-secondary); font-size: 0.83rem; }
+  .rates-table tr:last-child td { border-bottom: none; }
+  .rates-table td:nth-child(4), .rates-table td:nth-child(5) { font-weight: 700; color: var(--text-primary); white-space: nowrap; }
+  .rates-table .note-row td { font-size: 0.75rem; color: var(--text-muted); font-style: italic; background: var(--bg-accent); }
+
+  /* Calc box */
+  .calc-box { background: var(--bg-accent); border-radius: 10px; padding: 1.1rem 1.25rem; margin: 1rem 0; }
+  .calc-box h4 { font-size: 0.88rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--text-primary); }
+  .calc-row { display: flex; justify-content: space-between; padding: 0.3rem 0; font-size: 0.88rem; color: var(--text-secondary); border-bottom: 1px solid var(--border-color); }
+  .calc-row:last-child { border-bottom: none; }
+  .calc-row.total { font-weight: 700; color: var(--text-primary); padding-top: 0.5rem; margin-top: 0.2rem; border-top: 2px solid var(--border-color); border-bottom: none; }
+  .calc-row.total span:last-child { color: var(--accent-green); }
+  .calc-row.deduct span:last-child { color: var(--accent-red); font-weight: 700; }
+
+  /* Ref links */
+  .ref-links { margin: 1.25rem 0; display: flex; flex-direction: column; gap: 0.4rem; }
+  .ref-links p { font-size: 0.78rem; color: var(--text-muted); margin: 0 0 0.2rem; }
+  .ref-link { display: inline-flex; align-items: center; gap: 0.45rem; background: var(--bg-accent); border: 1px solid var(--border-color); border-radius: 8px; padding: 0.45rem 0.9rem; font-size: 0.83rem; color: var(--accent-blue); text-decoration: none; transition: border-color 0.15s; }
+  .ref-link:hover { border-color: var(--accent-blue); }
+
+  /* FAQ */
+  .faq-section { background: var(--bg-secondary); border-radius: 16px; padding: 2rem; margin-top: 1.5rem; }
+  .faq-section h2 { font-size: 1.15rem; color: var(--text-primary); margin-bottom: 1.5rem; }
+  .faq-item { border-bottom: 1px solid var(--border-color); padding: 1rem 0; }
+  .faq-item:last-child { border-bottom: none; padding-bottom: 0; }
+  .faq-item:first-of-type { padding-top: 0; }
+  .faq-question { font-weight: 600; color: var(--text-primary); margin-bottom: 0.4rem; font-size: 0.93rem; }
+  .faq-answer { color: var(--text-secondary); font-size: 0.88rem; line-height: 1.65; }
+
+  /* Related */
+  .related { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; margin-top: 2rem; }
+  .related a { background: var(--bg-secondary); border-radius: 12px; padding: 1rem; text-align: center; text-decoration: none; color: var(--text-primary); font-weight: 600; font-size: 0.85rem; box-shadow: var(--card-shadow); transition: transform 0.2s; border: 1px solid var(--border-color); }
+  .related a:hover { transform: translateY(-2px); }
+  .related a .r-icon { margin-bottom: 0.4rem; display: block; color: var(--accent-blue); }
+
+  /* Footer */
+  footer { text-align: center; padding: 2rem; color: var(--text-muted); font-size: 0.85rem; border-top: 1px solid var(--border-color); margin-top: 2rem; }
+  .footer-creator { display: flex; align-items: center; justify-content: center; gap: 0.5rem; margin-bottom: 0.25rem; }
+  .footer-creator a { color: var(--text-muted); display: inline-flex; transition: color 0.2s; }
+  .footer-creator a:hover { color: var(--accent-blue); }
+
+  .disclaimer { font-size: 0.73rem; color: var(--text-muted); text-align: center; margin-top: 1rem; padding: 0.6rem; background: var(--bg-accent); border-radius: 8px; }
+
+  @media (max-width: 768px) {
+    .calculator-grid { grid-template-columns: 1fr; }
+    .related { grid-template-columns: 1fr 1fr; }
+    .rates-table { font-size: 0.78rem; }
+  }
+</style>
+</head>
+<body>
+<script src="/scripts/sidebar.js"></script>
+<div class="main-content">
+<div class="main-inner">
+
+<h1>TDS Calculator for FY 2025-26</h1>
+<p class="subtitle">Calculate TDS on FD interest, rent, professional fees, contractor and commission - Section 194A, 194C, 194H, 194I, 194J</p>
+
+<main>
+<div class="calculator-grid">
+
+  <!-- ── Inputs ── -->
+  <div class="input-section">
+    <h2>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/></svg>
+      Payment Details
+    </h2>
+
+    <div class="input-group">
+      <label for="payment-type">Payment Type</label>
+      <select id="payment-type">
+        <option value="194a" selected>FD Interest / Bank Deposits (Section 194A)</option>
+        <option value="194i">Rent - Land / Building (Section 194I)</option>
+        <option value="194j_prof">Professional Fees - Doctors, Lawyers, Architects (Section 194J)</option>
+        <option value="194j_tech">Technical Services - IT, Consulting, Call Centres (Section 194J)</option>
+        <option value="194c">Contractor / Sub-contractor Payments (Section 194C)</option>
+        <option value="194h">Commission / Brokerage (Section 194H)</option>
+        <option value="194n">Cash Withdrawals from Bank (Section 194N)</option>
+      </select>
+      <span class="hint">Select the type of payment to calculate applicable TDS</span>
+    </div>
+
+    <div class="input-group">
+      <label id="amount-label" for="payment-amount">Annual Interest Income</label>
+      <div class="input-wrapper">
+        <span class="prefix">Rs</span>
+        <input type="number" id="payment-amount" value="120000" min="0" max="100000000" inputmode="numeric">
+      </div>
+      <span class="hint" id="amount-hint">Total FD/bank interest from this bank in FY 2025-26</span>
+    </div>
+
+    <!-- Section 194C only: optional annual aggregate -->
+    <div class="input-group" id="aggregate-group" style="display:none">
+      <label for="annual-aggregate">Total Paid to This Contractor This Year <span class="label-optional">(optional)</span></label>
+      <div class="input-wrapper">
+        <span class="prefix">Rs</span>
+        <input type="number" id="annual-aggregate" value="" placeholder="0" min="0" max="100000000" inputmode="numeric">
+      </div>
+      <span class="hint">Include all previous payments this FY. TDS applies if total exceeds Rs 1,00,000 even on payments below Rs 30,000.</span>
+    </div>
+
+    <div class="input-divider">Payer / Payee Details</div>
+
+    <!-- Section 194A only: senior citizen toggle -->
+    <div class="input-group" id="senior-group">
+      <label>Payee is Senior Citizen (60+)</label>
+      <div class="toggle-group">
+        <button id="btn-senior-no" class="active" onclick="setSenior('no')">No</button>
+        <button id="btn-senior-yes" onclick="setSenior('yes')">Yes - 60 or above</button>
+      </div>
+      <span class="hint">Senior citizens get a Rs 1,00,000 threshold on FD interest (vs Rs 50,000 for others)</span>
+    </div>
+
+    <!-- Section 194C only: contractor type toggle -->
+    <div class="input-group" id="contractor-type-group" style="display:none">
+      <label>Contractor Type</label>
+      <div class="toggle-group">
+        <button id="btn-individual" class="active" onclick="setContractorType('individual')">Individual / HUF</button>
+        <button id="btn-company" onclick="setContractorType('company')">Company / Firm</button>
+      </div>
+      <span class="hint">Rate: 1% for individuals, 2% for companies and firms</span>
+    </div>
+
+    <!-- Section 194I only: property type toggle -->
+    <div class="input-group" id="property-type-group" style="display:none">
+      <label>Property Type</label>
+      <div class="toggle-group">
+        <button id="btn-land" class="active" onclick="setPropertyType('land')">Land / Building / Furniture</button>
+        <button id="btn-plant" onclick="setPropertyType('plant')">Plant / Machinery</button>
+      </div>
+      <span class="hint">Land and building: 10% TDS. Plant and machinery: 2% TDS.</span>
+    </div>
+
+    <!-- Section 194N only: ITR filer toggle -->
+    <div class="input-group" id="itr-filer-group" style="display:none">
+      <label>ITR Filed in Last 3 Years</label>
+      <div class="toggle-group">
+        <button id="btn-itr-yes" class="active" onclick="setItrFiler('yes')">Yes - ITR Filed</button>
+        <button id="btn-itr-no" onclick="setItrFiler('no')">No - ITR Not Filed</button>
+      </div>
+      <span class="hint">Non-filers have a lower Rs 20 lakh threshold and a two-tier rate structure</span>
+    </div>
+
+    <!-- All except 194N: PAN toggle -->
+    <div class="input-group" id="pan-group">
+      <label>PAN Provided by Payee</label>
+      <div class="toggle-group">
+        <button id="btn-pan-yes" class="active" onclick="setPan('yes')">Yes - PAN Provided</button>
+        <button id="btn-pan-no" onclick="setPan('no')">No - PAN Not Provided</button>
+      </div>
+      <span class="hint">Without PAN, TDS rate becomes 20% under Section 206AA</span>
+    </div>
+  </div>
+
+  <!-- ── Results ── -->
+  <div class="result-section">
+    <h2>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+      TDS Breakdown
+    </h2>
+
+    <!-- Key stats 2x2 -->
+    <div class="key-stats">
+      <div class="key-stat">
+        <div class="ks-label">TDS Rate</div>
+        <div class="ks-value" id="out-tds-rate">10%</div>
+        <div class="ks-sub" id="out-rate-sub">Section 194A</div>
+      </div>
+      <div class="key-stat">
+        <div class="ks-label">Threshold Limit</div>
+        <div class="ks-value" id="out-threshold">Rs 50,000/yr</div>
+        <div class="ks-sub" id="out-threshold-sub">TDS applies above this</div>
+      </div>
+      <div class="key-stat" id="tds-amount-card">
+        <div class="ks-label">TDS Deducted</div>
+        <div class="ks-value" id="out-tds-amount">Rs 12,000</div>
+        <div class="ks-sub" id="out-tds-sub">at 10% on Rs 1,20,000</div>
+      </div>
+      <div class="key-stat highlight">
+        <div class="ks-label">Net Amount Received</div>
+        <div class="ks-value" id="out-net-amount">Rs 1,08,000</div>
+        <div class="ks-sub">After TDS deduction</div>
+      </div>
+    </div>
+
+    <!-- Exemption notice (green - below threshold) -->
+    <div id="exemption-notice" class="notice notice-green" style="display:none">
+      <strong>No TDS Applicable</strong>
+      <p id="ex-reason"></p>
+    </div>
+
+    <!-- PAN notice (orange - Section 206AA) -->
+    <div id="pan-notice" class="notice notice-orange" style="display:none">
+      <strong>Higher TDS Rate - Section 206AA</strong>
+      <p>PAN not provided. TDS rate is 20% instead of the normal <span id="pan-normal-rate">10%</span>. Provide PAN to reduce TDS deduction to the standard rate.</p>
+    </div>
+
+    <!-- Aggregate note (blue - 194C, aggregate not filled) -->
+    <div id="aggregate-note" class="notice notice-blue" style="display:none">
+      <strong>No TDS on This Single Payment</strong>
+      <p>This payment of <span id="agg-amount">Rs 0</span> is below the Rs 30,000 per-transaction threshold. However, if total payments to this contractor in FY 2025-26 exceed Rs 1,00,000, TDS applies on all payments including this one. Enter the annual total above for an accurate result.</p>
+    </div>
+
+    <!-- Doughnut chart -->
+    <div class="chart-container">
+      <h3>TDS vs Net Amount</h3>
+      <div class="chart-doughnut-wrap">
+        <canvas id="tds-chart"></canvas>
+        <div class="chart-center">
+          <div class="chart-center-pct" id="center-pct">10%</div>
+          <div class="chart-center-label" id="center-label">TDS rate</div>
+        </div>
+      </div>
+      <div class="chart-legend">
+        <div class="legend-row">
+          <span class="legend-dot" style="background: var(--accent-green)"></span>
+          <span>Net Amount</span>
+          <span class="legend-val" id="legend-net">Rs 1,08,000</span>
+        </div>
+        <div class="legend-row">
+          <span class="legend-dot" style="background: var(--accent-red)"></span>
+          <span>TDS Deducted</span>
+          <span class="legend-val" id="legend-tds">Rs 12,000</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Collapsible section reference table -->
+    <button class="breakdown-toggle" id="ref-toggle-btn" onclick="toggleRefTable()">TDS Rates for All Sections FY 2025-26 ▼</button>
+    <div id="ref-table-wrap" class="ref-table-wrap" style="display:none">
+      <table class="ref-table">
+        <thead>
+          <tr>
+            <th>Section</th>
+            <th>Nature of Payment</th>
+            <th>Threshold (FY 2025-26)</th>
+            <th>Rate (PAN)</th>
+            <th>Rate (No PAN)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="highlight-row"><td>194A</td><td>FD/bank interest - general</td><td>Rs 50,000/yr</td><td>10%</td><td>20%</td></tr>
+          <tr><td>194A</td><td>FD/bank interest - senior citizen (60+)</td><td>Rs 1,00,000/yr</td><td>10%</td><td>20%</td></tr>
+          <tr><td>194A</td><td>Interest from NBFCs / other payers</td><td>Rs 10,000/yr</td><td>10%</td><td>20%</td></tr>
+          <tr><td>194C</td><td>Contractor / sub-contractor (individual/HUF)</td><td>Rs 30,000 single / Rs 1L annual</td><td>1%</td><td>20%</td></tr>
+          <tr><td>194C</td><td>Contractor / sub-contractor (company/firm)</td><td>Rs 30,000 single / Rs 1L annual</td><td>2%</td><td>20%</td></tr>
+          <tr><td>194H</td><td>Commission / brokerage</td><td>Rs 20,000/yr</td><td>2%</td><td>20%</td></tr>
+          <tr><td>194I(a)</td><td>Rent - plant and machinery</td><td>Rs 50,000/month</td><td>2%</td><td>20%</td></tr>
+          <tr><td>194I(b)</td><td>Rent - land, building, furniture</td><td>Rs 50,000/month</td><td>10%</td><td>20%</td></tr>
+          <tr><td>194IB</td><td>Rent by individual/HUF (non-audit cases)</td><td>Rs 50,000/month</td><td>2%</td><td>20%</td></tr>
+          <tr><td>194J</td><td>Professional fees (doctors, lawyers, CAs)</td><td>Rs 50,000/yr</td><td>10%</td><td>20%</td></tr>
+          <tr><td>194J</td><td>Technical services (IT, call centres)</td><td>Rs 50,000/yr</td><td>2%</td><td>20%</td></tr>
+          <tr><td>194N</td><td>Cash withdrawal - ITR filer</td><td>Rs 1 crore</td><td>2% on excess</td><td>N/A</td></tr>
+          <tr><td>194N</td><td>Cash withdrawal - non-filer</td><td>Rs 20 lakh</td><td>2% (20L-1Cr) / 5% (above 1Cr)</td><td>N/A</td></tr>
+          <tr class="note-row"><td colspan="5">Section 206AB (higher TDS for non-ITR-filers) was omitted by Finance Act 2025 effective April 1 2025. Section 206AA (20% for no PAN) continues to apply.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="disclaimer">Estimates for FY 2025-26. Verify TDS amounts with your bank or CA for filing.</p>
+  </div>
+</div>
+
+<!-- ── Content below ── -->
+
+<div class="content-section">
+  <h2>What is TDS and How Does It Work</h2>
+  <p>TDS stands for Tax Deducted at Source. It is a mechanism under the Income Tax Act 1961 where the person making a payment - the payer - deducts a fixed percentage of tax before passing the remaining amount to the recipient. The deducted tax is then deposited directly with the government. This ensures continuous tax collection without waiting for the recipient to file a return.</p>
+  <p>The payer is called the "deductor" and the recipient is the "deductee." The deducted amount is reflected in the deductee's Form 26AS and AIS (Annual Information Statement) on the IT portal, and can be claimed as tax credit when filing the income tax return.</p>
+  <p>TDS applies to specific payment categories above defined threshold limits. For FY 2025-26, the Finance Act 2025 raised several thresholds - bank FD interest to Rs 50,000 (Rs 1,00,000 for senior citizens), rent to Rs 50,000 per month, and professional fees to Rs 50,000 per year. Once a threshold is crossed, TDS applies on the <strong>full payment amount</strong> - not just the excess over the threshold.</p>
+  <p>If the recipient does not provide their PAN, the TDS rate increases to 20% under Section 206AA - regardless of the normal applicable rate. Section 206AB, which previously imposed higher TDS on non-ITR-filers, was omitted entirely from April 1 2025.</p>
+</div>
+
+<div class="content-section">
+  <h2>TDS Rates for FY 2025-26</h2>
+  <p>The table below lists TDS rates for the most common payment types under the Income Tax Act for FY 2025-26 (Assessment Year 2026-27). The Finance Act 2025 revised thresholds for several sections effective April 1 2025. Section 194H saw a rate reduction from 5% to 2% effective October 1 2024.</p>
+  <table class="rates-table">
+    <thead>
+      <tr>
+        <th>Section</th>
+        <th>Nature of Payment</th>
+        <th>Threshold (FY 2025-26)</th>
+        <th>Rate (PAN)</th>
+        <th>Rate (No PAN)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>194A</td><td>FD / bank interest (general)</td><td>Rs 50,000/yr</td><td>10%</td><td>20%</td></tr>
+      <tr><td>194A</td><td>FD / bank interest (senior citizen)</td><td>Rs 1,00,000/yr</td><td>10%</td><td>20%</td></tr>
+      <tr><td>194C</td><td>Contractor - individual/HUF</td><td>Rs 30,000 single / Rs 1L annual</td><td>1%</td><td>20%</td></tr>
+      <tr><td>194C</td><td>Contractor - company/firm</td><td>Rs 30,000 single / Rs 1L annual</td><td>2%</td><td>20%</td></tr>
+      <tr><td>194H</td><td>Commission / brokerage</td><td>Rs 20,000/yr</td><td>2%</td><td>20%</td></tr>
+      <tr><td>194I(a)</td><td>Rent - plant / machinery</td><td>Rs 50,000/month</td><td>2%</td><td>20%</td></tr>
+      <tr><td>194I(b)</td><td>Rent - land / building / furniture</td><td>Rs 50,000/month</td><td>10%</td><td>20%</td></tr>
+      <tr><td>194J</td><td>Professional services</td><td>Rs 50,000/yr</td><td>10%</td><td>20%</td></tr>
+      <tr><td>194J</td><td>Technical services</td><td>Rs 50,000/yr</td><td>2%</td><td>20%</td></tr>
+      <tr><td>194N</td><td>Cash withdrawal (ITR filer)</td><td>Rs 1 crore</td><td>2% on excess</td><td>N/A</td></tr>
+      <tr><td>194N</td><td>Cash withdrawal (non-filer)</td><td>Rs 20 lakh</td><td>2%/5% tiered</td><td>N/A</td></tr>
+      <tr class="note-row"><td colspan="5">Section 206AB omitted by Finance Act 2025. Section 206AA (20% for no PAN) continues to apply to all sections above.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="content-section">
+  <h2>Example TDS Calculation - FD Interest</h2>
+  <p>Scenario: You earn Rs 1,20,000 as FD interest from a bank in FY 2025-26. You are not a senior citizen. You have provided your PAN.</p>
+  <div class="calc-box">
+    <h4>Section 194A - FD Interest Calculation</h4>
+    <div class="calc-row"><span>FD interest received</span><span>Rs 1,20,000</span></div>
+    <div class="calc-row"><span>Threshold limit (194A, general)</span><span>Rs 50,000</span></div>
+    <div class="calc-row"><span>Is amount above threshold?</span><span>Yes (Rs 1,20,000 > Rs 50,000)</span></div>
+    <div class="calc-row"><span>TDS rate (PAN provided)</span><span>10%</span></div>
+    <div class="calc-row deduct"><span>TDS deducted (Rs 1,20,000 x 10%)</span><span>- Rs 12,000</span></div>
+    <div class="calc-row total"><span>Net amount credited to account</span><span>Rs 1,08,000</span></div>
+  </div>
+  <p>TDS is deducted on the full Rs 1,20,000 - not just on the Rs 70,000 excess above the threshold. The deducted Rs 12,000 appears in your Form 26AS and can be claimed as tax credit when filing your ITR.</p>
+  <p><strong>Senior citizen variation:</strong> If you were 60 or above, the threshold would be Rs 1,00,000. On interest of Rs 1,20,000, TDS still applies on the full amount at 10% = Rs 12,000. Net = Rs 1,08,000. The higher threshold benefits depositors whose interest stays below Rs 1,00,000.</p>
+  <p><strong>Without PAN:</strong> TDS would be 20% = Rs 24,000. Net amount = Rs 96,000. Always ensure your PAN is on file with the bank.</p>
+</div>
+
+<div class="content-section">
+  <h2>When TDS Does Not Apply - Form 15G and 15H</h2>
+  <p>TDS is not deducted in two situations: when the payment is below the threshold limit, or when the deductee submits a declaration (Form 15G or 15H) before income is credited.</p>
+  <h3>Below threshold</h3>
+  <p>If your total FD interest from a bank is below Rs 50,000 in a financial year (or Rs 1,00,000 if you are a senior citizen), the bank will not deduct TDS. Note that this threshold applies per bank - if you have FDs with multiple banks, each bank checks against its own interest payments independently.</p>
+  <h3>Form 15G</h3>
+  <p>Available to resident individuals below 60 years of age whose estimated total taxable income for the year is below the basic exemption limit. You declare that no tax is due on your income. The bank is then required not to deduct TDS. Submit at the start of each financial year - a declaration lapses at year-end.</p>
+  <h3>Form 15H</h3>
+  <p>Same as Form 15G but for senior citizens aged 60 and above. The condition is that tax calculated on estimated total income for the year is nil - even if income exceeds the basic exemption limit.</p>
+  <p><strong>Important:</strong> Form 15G cannot be submitted if your total interest income alone exceeds the basic exemption limit. Banks file quarterly returns of all 15G/15H declarations with the IT Department. Form 15G/15H cannot be used to avoid TDS under Section 194N (cash withdrawals).</p>
+</div>
+
+<!-- FAQ -->
+<div class="faq-section">
+  <h2>Frequently Asked Questions</h2>
+
+  <div class="faq-item">
+    <div class="faq-question">What is the TDS rate on FD interest for FY 2025-26?</div>
+    <div class="faq-answer">TDS on FD interest is 10% under Section 194A. The threshold from FY 2025-26 is Rs 50,000 per year for general depositors (raised from Rs 40,000) and Rs 1,00,000 for senior citizens aged 60 and above (raised from Rs 50,000). These thresholds apply when interest is paid by banks, co-operative societies, or post offices. For other payers like NBFCs, the threshold is Rs 10,000. Without PAN, the rate jumps to 20% under Section 206AA.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">What is the TDS rate on rent for FY 2025-26?</div>
+    <div class="faq-answer">TDS on rent under Section 194I is 10% for land, building, furniture, and fittings, and 2% for plant and machinery. From FY 2025-26, TDS applies when monthly rent exceeds Rs 50,000 - changed from the earlier Rs 2,40,000 annual threshold. This change is significant: entities paying rent above Rs 50,000 per month must now track and deduct TDS on a monthly basis. For individuals and HUFs not liable to tax audit, Section 194IB applies separately at 2% for the same Rs 50,000 per month threshold.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">What is the TDS rate on professional fees for FY 2025-26?</div>
+    <div class="faq-answer">Under Section 194J, TDS rates are split: 10% for professional services (doctors, lawyers, architects, chartered accountants, engineers, interior decorators) and 2% for technical services (IT services, managerial services, call centres). The Finance Act 2025 raised the threshold from Rs 30,000 to Rs 50,000 per year per payee. Above Rs 50,000, TDS applies on the full amount. Without PAN, 20% applies under Section 206AA.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">How do I claim TDS that has been deducted?</div>
+    <div class="faq-answer">TDS deducted by any payer appears in your Form 26AS and Annual Information Statement (AIS) on the Income Tax e-filing portal (incometax.gov.in). When you file your ITR, enter TDS details in Schedule TDS. The system matches this against Form 26AS automatically. TDS is credited against your final tax liability. If TDS deducted exceeds your actual tax due, you receive the difference as an income tax refund. Always verify TDS entries in Form 26AS before filing - any mismatch should be resolved with the deductor.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">What happens if PAN is not provided - what rate applies?</div>
+    <div class="faq-answer">Under Section 206AA, if the payee does not furnish their PAN, the deductor must apply TDS at the higher of: (a) the rate specified in the relevant section, (b) the rate in force, or (c) 20%. In practice, 20% applies for all common sections since it is always higher than normal rates (10%, 2%, 1%). Section 206AB, which imposed higher TDS on non-ITR-filers, was omitted entirely from April 1 2025. So from FY 2025-26, only PAN non-availability (206AA) triggers the 20% higher rate.</div>
+  </div>
+</div>
+
+<!-- Ref links -->
+<div class="ref-links">
+  <p>Related reading</p>
+  <a href="/blog/fd-vs-liquid-fund/" class="ref-link">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+    FD vs Liquid Fund - TDS is a key factor in post-tax return comparison
+  </a>
+  <a href="/blog/tax-calendar-2026/" class="ref-link">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+    Tax Calendar 2026 - TDS return due dates for FY 2025-26
+  </a>
+  <a href="/blog/last-minute-tax-saving/" class="ref-link">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+    Last Minute Tax Saving - reduce TDS by filing Form 15G before year-end
+  </a>
+</div>
+
+<!-- Related calculators -->
+<div class="related">
+  <a href="/calculator/fd/">
+    <span class="r-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg></span>
+    FD Calculator
+  </a>
+  <a href="/calculator/income-tax/">
+    <span class="r-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg></span>
+    Income Tax Calculator
+  </a>
+  <a href="/calculator/advance-tax/">
+    <span class="r-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></span>
+    Advance Tax Calculator
+  </a>
+</div>
+
+</main>
+
+<footer>
+  <p class="footer-creator">
+    <strong>Built by Kartikey</strong>
+    <a href="https://x.com/itrstats_in" target="_blank" rel="noopener" aria-label="Twitter">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.739l7.732-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z"/></svg>
+    </a>
+    <a href="https://www.linkedin.com/in/kartikeyrajvaidya/" target="_blank" rel="noopener" aria-label="LinkedIn">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+    </a>
+  </p>
+  <p>© 2026 ITR Stats · <a href="/privacy-policy.html">Privacy</a></p>
+</footer>
+
+</div>
+</div>
+
+<script defer src="/scripts/subscribe-widget.js"></script>
+
+<script>
+// ── State ──
+let paymentType = '194a';
+let panProvided = true;
+let seniorCitizen = false;
+let contractorType = 'individual';
+let itrFiler = true;
+let propertyType = 'land';
+let tdsChart = null;
+
+// ── Amount defaults per payment type ──
+const AMOUNT_DEFAULTS = {
+  '194a': 120000, '194i': 720000, '194j_prof': 150000,
+  '194j_tech': 150000, '194c': 150000, '194h': 50000, '194n': 12000000
+};
+
+// ── Toggle setters ──
+function setSenior(v) {
+  seniorCitizen = v === 'yes';
+  document.getElementById('btn-senior-no').classList.toggle('active', !seniorCitizen);
+  document.getElementById('btn-senior-yes').classList.toggle('active', seniorCitizen);
+  update();
+}
+function setContractorType(v) {
+  contractorType = v;
+  document.getElementById('btn-individual').classList.toggle('active', v === 'individual');
+  document.getElementById('btn-company').classList.toggle('active', v === 'company');
+  update();
+}
+function setPropertyType(v) {
+  propertyType = v;
+  document.getElementById('btn-land').classList.toggle('active', v === 'land');
+  document.getElementById('btn-plant').classList.toggle('active', v === 'plant');
+  update();
+}
+function setItrFiler(v) {
+  itrFiler = v === 'yes';
+  document.getElementById('btn-itr-yes').classList.toggle('active', itrFiler);
+  document.getElementById('btn-itr-no').classList.toggle('active', !itrFiler);
+  update();
+}
+function setPan(v) {
+  panProvided = v === 'yes';
+  document.getElementById('btn-pan-yes').classList.toggle('active', panProvided);
+  document.getElementById('btn-pan-no').classList.toggle('active', !panProvided);
+  update();
+}
+
+// ── Visibility ──
+function updateVisibility() {
+  const t = paymentType;
+  const amountLabels = {
+    '194a':     ['Annual Interest Income',           'Total FD/bank interest from this bank in FY 2025-26'],
+    '194i':     ['Annual Rent Amount',               'Monthly rent x 12. TDS applies when monthly rent exceeds Rs 50,000'],
+    '194j_prof':['Annual Professional Fees',         'Total professional fees from this client in FY 2025-26'],
+    '194j_tech':['Annual Technical Service Fees',    'Total technical service fees from this client in FY 2025-26'],
+    '194c':     ['Payment Amount',                   'Enter this single payment amount. Add annual total below for full accuracy.'],
+    '194h':     ['Annual Commission / Brokerage',    'Total commission or brokerage from this payer in FY 2025-26'],
+    '194n':     ['Annual Cash Withdrawal Amount',    'Total cash withdrawn from this bank (all accounts) in FY 2025-26'],
+  };
+  document.getElementById('amount-label').textContent = amountLabels[t][0];
+  document.getElementById('amount-hint').textContent   = amountLabels[t][1];
+
+  const show = (id, cond) => { document.getElementById(id).style.display = cond ? '' : 'none'; };
+  show('senior-group',          t === '194a');
+  show('contractor-type-group', t === '194c');
+  show('aggregate-group',       t === '194c');
+  show('property-type-group',   t === '194i');
+  show('itr-filer-group',       t === '194n');
+  show('pan-group',             t !== '194n');
+}
+
+// ── Formatting ──
+function fmt(n) {
+  n = Math.round(n);
+  if (n >= 10000000) return 'Rs ' + (n / 10000000).toFixed(2) + ' Cr';
+  if (n >= 100000)   return 'Rs ' + (n / 100000).toFixed(2) + ' L';
+  return 'Rs ' + n.toLocaleString('en-IN');
+}
+
+// ── Calculation ──
+function calculate() {
+  const t      = paymentType;
+  const amount = Math.max(0, parseFloat(document.getElementById('payment-amount').value) || 0);
+
+  let threshold = 0, normalRate = 0, tdsAmount = 0, effectiveRate = 0;
+  let sectionName = '', thresholdLabel = '', noTds = false;
+  let showAggregateNote = false, showPanNotice = false;
+  let displayRateStr = '';
+
+  if (t === '194a') {
+    sectionName    = 'Section 194A';
+    threshold      = seniorCitizen ? 100000 : 50000;
+    thresholdLabel = seniorCitizen ? 'Rs 1,00,000/yr (Sr. Citizen)' : 'Rs 50,000/yr';
+    normalRate     = 0.10;
+    if (amount <= threshold) {
+      noTds = true; displayRateStr = '0%';
+    } else {
+      effectiveRate  = panProvided ? normalRate : 0.20;
+      tdsAmount      = Math.round(amount * effectiveRate);
+      displayRateStr = panProvided ? '10%' : '20% (no PAN)';
+      if (!panProvided) showPanNotice = true;
+    }
+  }
+  else if (t === '194c') {
+    sectionName    = 'Section 194C';
+    thresholdLabel = 'Rs 30,000 single / Rs 1,00,000 annual';
+    normalRate     = contractorType === 'individual' ? 0.01 : 0.02;
+    const annAgg   = Math.max(0, parseFloat(document.getElementById('annual-aggregate').value) || 0);
+    const aggFilled = annAgg > 0;
+    const singleOk  = amount <= 30000;
+    const aggOk     = !aggFilled || (annAgg + amount) <= 100000;
+    threshold = 30000;
+    if (singleOk && aggOk) {
+      noTds = true;
+      showAggregateNote = !aggFilled;
+      displayRateStr = '0%';
+    } else {
+      effectiveRate  = panProvided ? normalRate : 0.20;
+      tdsAmount      = Math.round(amount * effectiveRate);
+      displayRateStr = panProvided ? (normalRate * 100 + '%') : '20% (no PAN)';
+      if (!panProvided) showPanNotice = true;
+    }
+  }
+  else if (t === '194h') {
+    sectionName    = 'Section 194H';
+    threshold      = 20000;
+    thresholdLabel = 'Rs 20,000/yr';
+    normalRate     = 0.02;
+    if (amount <= threshold) {
+      noTds = true; displayRateStr = '0%';
+    } else {
+      effectiveRate  = panProvided ? normalRate : 0.20;
+      tdsAmount      = Math.round(amount * effectiveRate);
+      displayRateStr = panProvided ? '2%' : '20% (no PAN)';
+      if (!panProvided) showPanNotice = true;
+    }
+  }
+  else if (t === '194i') {
+    const monthly  = amount / 12;
+    threshold      = 50000;
+    thresholdLabel = 'Rs 50,000/month';
+    normalRate     = propertyType === 'land' ? 0.10 : 0.02;
+    sectionName    = propertyType === 'land' ? 'Section 194I(b)' : 'Section 194I(a)';
+    if (monthly <= threshold) {
+      noTds = true; displayRateStr = '0%';
+    } else {
+      effectiveRate  = panProvided ? normalRate : 0.20;
+      tdsAmount      = Math.round(amount * effectiveRate);
+      displayRateStr = panProvided ? (normalRate * 100 + '%') : '20% (no PAN)';
+      if (!panProvided) showPanNotice = true;
+    }
+  }
+  else if (t === '194j_prof') {
+    sectionName    = 'Section 194J';
+    threshold      = 50000;
+    thresholdLabel = 'Rs 50,000/yr';
+    normalRate     = 0.10;
+    if (amount <= threshold) {
+      noTds = true; displayRateStr = '0%';
+    } else {
+      effectiveRate  = panProvided ? normalRate : 0.20;
+      tdsAmount      = Math.round(amount * effectiveRate);
+      displayRateStr = panProvided ? '10%' : '20% (no PAN)';
+      if (!panProvided) showPanNotice = true;
+    }
+  }
+  else if (t === '194j_tech') {
+    sectionName    = 'Section 194J';
+    threshold      = 50000;
+    thresholdLabel = 'Rs 50,000/yr';
+    normalRate     = 0.02;
+    if (amount <= threshold) {
+      noTds = true; displayRateStr = '0%';
+    } else {
+      effectiveRate  = panProvided ? normalRate : 0.20;
+      tdsAmount      = Math.round(amount * effectiveRate);
+      displayRateStr = panProvided ? '2%' : '20% (no PAN)';
+      if (!panProvided) showPanNotice = true;
+    }
+  }
+  else if (t === '194n') {
+    sectionName = 'Section 194N';
+    if (itrFiler) {
+      threshold      = 10000000;
+      thresholdLabel = 'Rs 1 crore (ITR filer)';
+      if (amount <= threshold) {
+        noTds = true; displayRateStr = '0%';
+      } else {
+        effectiveRate  = 0.02;
+        tdsAmount      = Math.round((amount - threshold) * 0.02);
+        displayRateStr = '2%';
+      }
+    } else {
+      const t1 = 2000000, t2 = 10000000;
+      threshold      = t1;
+      thresholdLabel = 'Rs 20 lakh (non-filer)';
+      if (amount <= t1) {
+        noTds = true; displayRateStr = '0%';
+      } else if (amount <= t2) {
+        tdsAmount      = Math.round((amount - t1) * 0.02);
+        effectiveRate  = 0.02;
+        displayRateStr = '2%';
+      } else {
+        tdsAmount      = Math.round((t2 - t1) * 0.02 + (amount - t2) * 0.05);
+        effectiveRate  = tdsAmount / amount;
+        displayRateStr = '2% / 5%';
+      }
+    }
+  }
+
+  const netAmount = Math.max(0, amount - tdsAmount);
+  return { t, amount, tdsAmount, effectiveRate, netAmount, normalRate, noTds,
+           threshold, thresholdLabel, sectionName, displayRateStr,
+           showAggregateNote, showPanNotice };
+}
+
+// ── Render ──
+function render(r) {
+  // Cards
+  document.getElementById('out-tds-rate').textContent     = r.displayRateStr;
+  document.getElementById('out-rate-sub').textContent     = r.sectionName;
+  document.getElementById('out-threshold').textContent    = r.thresholdLabel;
+  document.getElementById('out-threshold-sub').textContent = r.noTds ? 'Below threshold - no TDS' : 'TDS applies above this';
+
+  const tdsEl = document.getElementById('out-tds-amount');
+  tdsEl.textContent  = fmt(r.tdsAmount);
+  tdsEl.style.color  = r.noTds ? 'var(--text-muted)' : 'var(--accent-red)';
+  document.getElementById('out-tds-sub').textContent =
+    r.noTds ? 'No TDS deducted' : 'at ' + r.displayRateStr + ' on ' + fmt(r.amount);
+
+  document.getElementById('out-net-amount').textContent = fmt(r.netAmount);
+
+  // Notices - only one visible at a time
+  const exNotice  = document.getElementById('exemption-notice');
+  const panNotice = document.getElementById('pan-notice');
+  const aggNote   = document.getElementById('aggregate-note');
+
+  exNotice.style.display  = (r.noTds && !r.showAggregateNote) ? '' : 'none';
+  panNotice.style.display = r.showPanNotice ? '' : 'none';
+  aggNote.style.display   = r.showAggregateNote ? '' : 'none';
+
+  if (r.noTds && !r.showAggregateNote) {
+    document.getElementById('ex-reason').textContent =
+      'Payment of ' + fmt(r.amount) + ' is below the ' + r.thresholdLabel +
+      ' threshold under ' + r.sectionName + '. No TDS will be deducted.';
+  }
+  if (r.showPanNotice) {
+    document.getElementById('pan-normal-rate').textContent = (r.normalRate * 100) + '%';
+  }
+  if (r.showAggregateNote) {
+    document.getElementById('agg-amount').textContent = fmt(r.amount);
+  }
+
+  renderChart(r);
+}
+
+// ── Chart ──
+function renderChart(r) {
+  const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+  const green  = isDark ? '#4ade80' : '#22c55e';
+  const red    = isDark ? '#f87171' : '#ef4444';
+
+  if (tdsChart) { tdsChart.destroy(); tdsChart = null; }
+  const ctx = document.getElementById('tds-chart').getContext('2d');
+
+  const dataArr   = r.noTds ? [r.amount] : [r.netAmount, r.tdsAmount || 0.001];
+  const colorArr  = r.noTds ? [green]    : [green, red];
+  const labelArr  = r.noTds ? ['Net Amount'] : ['Net Amount', 'TDS Deducted'];
+
+  tdsChart = new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+      labels: labelArr,
+      datasets: [{ data: dataArr, backgroundColor: colorArr, borderWidth: 0, hoverOffset: 4 }]
+    },
+    options: {
+      cutout: '68%',
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: { callbacks: { label: c => ' ' + fmt(c.raw) } }
+      }
+    }
+  });
+
+  // Center text
+  const pctStr = r.noTds ? '0%' : r.displayRateStr;
+  document.getElementById('center-pct').textContent   = pctStr;
+  document.getElementById('center-label').textContent = r.noTds ? 'no TDS' : 'TDS rate';
+
+  // Legend values
+  document.getElementById('legend-net').textContent = fmt(r.netAmount);
+  document.getElementById('legend-tds').textContent = fmt(r.tdsAmount);
+}
+
+// ── Ref table toggle ──
+function toggleRefTable() {
+  const wrap = document.getElementById('ref-table-wrap');
+  const btn  = document.getElementById('ref-toggle-btn');
+  const open = wrap.style.display === 'none';
+  wrap.style.display = open ? '' : 'none';
+  btn.textContent    = open
+    ? 'TDS Rates for All Sections FY 2025-26 ▲'
+    : 'TDS Rates for All Sections FY 2025-26 ▼';
+}
+
+// ── Event listeners ──
+document.getElementById('payment-type').addEventListener('change', function() {
+  paymentType = this.value;
+  document.getElementById('payment-amount').value = AMOUNT_DEFAULTS[this.value];
+  // Reset aggregate
+  document.getElementById('annual-aggregate').value = '';
+  updateVisibility();
+  update();
+});
+document.getElementById('payment-amount').addEventListener('input', update);
+document.getElementById('annual-aggregate').addEventListener('input', update);
+
+// ── Init ──
+updateVisibility();
+update();
+</script>
+</body>
+</html>
