@@ -881,6 +881,9 @@ function renderChart(r) {
   document.getElementById('legend-tds').textContent = fmt(r.tdsAmount);
 }
 
+// ── Update ──
+function update() { render(calculate()); }
+
 // ── Ref table toggle ──
 function toggleRefTable() {
   const wrap = document.getElementById('ref-table-wrap');
