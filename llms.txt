@@ -36,6 +36,7 @@ ITR Stats tracks daily ITR filing and processing numbers pulled directly from th
 - [HUF Tax Calculator](https://itrstats.in/calculator/huf-tax/): Calculate HUF income tax for FY 2025-26 under old and new regime. HUF does not get Section 87A rebate. Compare both regimes with slab-wise breakdown and individual vs HUF comparison.
 - [GST Calculator](https://itrstats.in/calculator/gst/): Add or remove GST at 5%, 12%, 18%, 28% slabs. Shows base price and GST amount separately.
 - [CTC to In-Hand Salary Calculator](https://itrstats.in/calculator/ctc-inhand/): Calculate monthly take-home salary from CTC. Side-by-side new vs old tax regime comparison. EPF, professional tax, income tax, gratuity breakdown. FY 2025-26 slabs with Section 87A rebate.
+- [Advance Tax Calculator](https://itrstats.in/calculator/advance-tax/): Calculate advance tax installments for FY 2025-26. Quarter-wise due dates (Jun 15, Sep 15, Dec 15, Mar 15), 234B/234C penalty simulator, senior citizen exemption check. Covers salaried, business 44AD, professional 44ADA. New and old regime.
 
 ## Data & Analysis
 
