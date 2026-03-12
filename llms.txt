@@ -38,6 +38,7 @@ ITR Stats tracks daily ITR filing and processing numbers pulled directly from th
 - [CTC to In-Hand Salary Calculator](https://itrstats.in/calculator/ctc-inhand/): Calculate monthly take-home salary from CTC. Side-by-side new vs old tax regime comparison. EPF, professional tax, income tax, gratuity breakdown. FY 2025-26 slabs with Section 87A rebate.
 - [Advance Tax Calculator](https://itrstats.in/calculator/advance-tax/): Calculate advance tax installments for FY 2025-26. Quarter-wise due dates (Jun 15, Sep 15, Dec 15, Mar 15), 234B/234C penalty simulator, senior citizen exemption check. Covers salaried, business 44AD, professional 44ADA. New and old regime.
 - [TDS Calculator](https://itrstats.in/calculator/tds/): Calculate TDS on FD interest, rent, professional fees, contractor and commission payments for FY 2025-26. Section-wise rates under 194A, 194C, 194H, 194I, 194J, 194N. Finance Act 2025 thresholds. PAN/no-PAN rates. Senior citizen threshold. Real-time with doughnut chart.
+- [Which ITR Form? Selector](https://itrstats.in/calculator/itr-form/): Interactive 5-question decision tool that determines the correct ITR form (ITR-1 through ITR-7) for FY 2025-26. Covers resident individuals, NRIs, HUFs, firms, companies, and trusts. Shareable result URL with query params. Based on CBDT Rule 12 eligibility criteria.
 
 ## Data & Analysis
 
