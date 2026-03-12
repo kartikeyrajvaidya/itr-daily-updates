@@ -118,6 +118,26 @@ body.has-sidebar {
 .nav-item svg { flex-shrink: 0; opacity: 0.7; }
 .nav-item.active svg, .nav-item:hover svg { opacity: 1; }
 
+@keyframes nav-new-pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(75, 204, 163, 0.5); }
+    50%       { box-shadow: 0 0 0 4px rgba(75, 204, 163, 0); }
+}
+
+.nav-new {
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 0.15rem 0.45rem;
+    border-radius: 999px;
+    background: rgba(75, 204, 163, 0.15);
+    color: #4ECCA3;
+    border: 1px solid rgba(75, 204, 163, 0.4);
+    line-height: 1.4;
+    flex-shrink: 0;
+    animation: nav-new-pulse 1.8s ease-in-out infinite;
+}
+
 /* ===== SIDEBAR FOOTER ===== */
 .sidebar-footer {
     padding: 1rem 0.75rem;
