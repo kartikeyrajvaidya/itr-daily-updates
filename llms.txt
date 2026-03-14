@@ -60,6 +60,7 @@ ITR Stats tracks daily ITR filing and processing numbers pulled directly from th
 ## Tax Guides
 
 - [Which ITR Form for Salaried Employees 2026](https://itrstats.in/blog/which-itr-for-salaried-employees/): ITR-1 or ITR-2 for salaried staff. Quick check, scenario cards, and data from 8.5 Cr returns. FY 2025-26.
+- [Which ITR Form for Freelancers and Self-Employed 2026](https://itrstats.in/blog/which-itr-for-freelancers/): ITR-3 or ITR-4 (Sugam) for freelancers. Presumptive 44AD/44ADA/44AE vs books. Data from 7.78 Cr returns. FY 2025-26.
 - [Last Minute Tax Saving](https://itrstats.in/blog/last-minute-tax-saving/): Tax saving investments under 80C, 80D, NPS before March 31 deadline. How much to invest and where to maximise deductions.
 - [Tax Calendar 2026](https://itrstats.in/blog/tax-calendar-2026/): All important income tax dates for FY 2025-26 - advance tax due dates, TDS filing deadlines, ITR filing deadline.
 - [Budget 2026 ITR Deadlines](https://itrstats.in/blog/budget-2026-itr-deadlines/): ITR filing deadline changes announced in Union Budget 2026.
