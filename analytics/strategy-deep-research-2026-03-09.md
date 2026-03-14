@@ -113,8 +113,7 @@ After the calculator shows your result, generate a shareable card: "I'm in the t
 **2. ITR refund status email alert**
 Enter your acknowledgement number + email → get pinged when status changes. No private site in India does this. Official portal sends one email, nothing more. This creates repeat visits, signup list, and genuine utility.
 
-**3. "Which ITR form?" public decision tool**
-5 questions → definitive answer with explanation and direct link to e-filing portal. Completely standalone, SEO-optimized, shareable URL. ClearTax buries this inside their filing flow. No one has a public tool.
+/Users/kartikeyrajvaidya/pp/itr-daily-updates/docs/tax-ai-board-architecture.md
 
 **4. 80C optimizer**
 Input: income, existing EPF, risk tolerance, lock-in preference → Output: recommended allocation across PPF, ELSS, NPS, insurance with tradeoff chart. Tax2win has a checklist. Nobody has a true optimizer.
